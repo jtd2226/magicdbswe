@@ -1,0 +1,61 @@
+.splash {
+    background-image: url(/images/genesis.jpg);
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+
+
+
+.title h1, .title h2 {
+  text-align: center;
+  color: #EB7026; /* -currently- dark gray */ /*changed it from 000 to 200*/
+}
+
+#main {
+  padding-top: 3em;
+}
+#main h1 {
+  font-size: 72px;
+}
+
+/* 
+  ------------------------
+  SPLASH PAGE - CAROUSEL
+  ------------------------
+*/
+
+.col-md-12 {
+  margin: 0;
+  padding-top: 12em;
+}
+
+#myCarousel {
+  margin-left: auto;
+  margin-right: auto;
+  text-align:center;
+  vertical-align: middle;
+  width: 75vw;
+  height: 50vh;
+}
+
+.carousel,.item,.active {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.carousel-inner {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.item .carousel-caption{
+  vertical-align: top;
+  height: 100%;
+}
+
+.carousel-caption h1 a{
+  font-size: 50px;
+  color: white;
+}
