@@ -1,0 +1,9 @@
+body {
+  background: #e4e4e4;
+}
+
+#bio-section {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
