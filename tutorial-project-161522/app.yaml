@@ -1,0 +1,55 @@
+runtime: php55
+api_version: 1
+threadsafe: true
+
+handlers:
+
+#- url: /www/frontend/html
+#  static_dir: www/frontend/html
+#  application_readable: true
+
+#- url: /
+#  static_files: www/frontend/html/\1
+#  upload: www/frontend/html/(.*)
+
+
+#- url: /
+#  static_files: www/frontend/css/index.css
+#  upload: www/frontend/css/index.css
+
+#works
+- url: /
+  static_files: www/index.html
+  upload: www/index.html
+
+- url: /(.*)
+  static_files: www/\1
+  upload: www/(.*) 
+
+- url: /(.*)
+  static_files: www/css/\1
+  upload: www/css/(.*)
+
+- url: /(.*\.(gif|png|jpg))$
+  static_files: www/images/\1
+  upload: www/images/.*\.(gif|png|jpg)$
+  application_readable: true
+
+
+
+
+
+
+
+#- url: /
+#  mime_type: text/html
+#  static_files: www/frontend/html/\1
+#  upload: www/frontend/html/(.*\.html)
+
+#- url: /(.*)
+#  static_files: www/frontend/css/\1
+#  upload: www/frontend/css/(.*)
+
+
+
+
