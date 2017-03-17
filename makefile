@@ -1,19 +1,12 @@
 .DEFAULT_GOAL := test
 
 FILES :=            \
-    Netflix.html    \
-    Netflix.log     \
-    Netflix.py      \
-    RunNetflix.in   \
-    RunNetflix.out  \
-    RunNetflix.py   \
-    TestNetflix.out \
-    TestNetflix.py  \
+    Magic.html    \
+    Magic.log     \
+    models.py      \
+    TestMagic.out \
+    TestMagic.py  \
     .travis.yml     \
-
-# uncomment these:
-#    Netflix-tests/GitHubID-RunNetflix.in  \
-#    Netflix-tests/GitHubID-RunNetflix.out \
 
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
@@ -48,25 +41,17 @@ endif
 .pylintrc:
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
-Netflix-tests:
-	git clone https://github.com/cs373t-spring-2017/netflix-tests.git
+Magic.html: models.py
+	pydoc3 -w models
 
-Netflix.html: Netflix.py
-	pydoc3 -w Netflix
+Magic.log:
+	git log > Magic.log
 
-Netflix.log:
-	git log > Netflix.log
-
-RunNetflix.tmp: Netflix.py RunNetflix.in RunNetflix.out RunNetflix.py .pylintrc
-	-$(PYLINT) Netflix.py
-	-$(PYLINT) RunNetflix.py
-	$(PYTHON) RunNetflix.py < RunNetflix.in > RunNetflix.tmp
-
-TestNetflix.tmp: Netflix.py TestNetflix.py .pylintrc
-	-$(PYLINT) TestNetflix.py
-	-$(COVERAGE) run    --branch TestNetflix.py >  TestNetflix.tmp 2>&1
-	-$(COVERAGE) report -m                      >> TestNetflix.tmp
-	cat TestNetflix.tmp
+TestMagic.tmp: models.py TestMagic.py .pylintrc
+	-$(PYLINT) TestMagic.py
+	-$(COVERAGE) run    --branch TestMagic.py >  TestMagic.tmp 2>&1
+	-$(COVERAGE) report -m                      >> TestMagic.tmp
+	cat TestMagic.tmp
 
 check:
 	@not_found=0;                                 \
@@ -91,20 +76,17 @@ clean:
 	rm -f  .coverage
 	rm -f  .pylintrc
 	rm -f  *.pyc
-	rm -f  Netflix.html
-	rm -f  Netflix.log
-	rm -f  RunNetflix.tmp
-	rm -f  TestNetflix.tmp
+	rm -f  Magic.html
+	rm -f  Magic.log
+	rm -f  TestMagic.tmp
 	rm -rf __pycache__\
-	rm -rf netflix-tests/
 
 config:
 	git config -l
 
 format:
-	$(AUTOPEP8) -i Netflix.py
-	$(AUTOPEP8) -i RunNetflix.py
-	$(AUTOPEP8) -i TestNetflix.py
+	$(AUTOPEP8) -i models.py
+	$(AUTOPEP8) -i TestMagic.py
 
 status:
 	make clean
@@ -113,11 +95,11 @@ status:
 	git remote -v
 	git status
 
-test: Netflix-tests Netflix.html Netflix.log RunNetflix.tmp TestNetflix.tmp
+test: Magic-tests Magic.html Magic.log TestMagic.tmp
 	ls -al
 	make check
 
-logtml: Netflix.html Netflix.log
+logtml: Magic.html Magic.log
 
 versions:
 	which make
