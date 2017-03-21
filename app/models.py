@@ -25,9 +25,10 @@ class Card(db.Model):
 
 	#consider not making name a primary_key, use multiverseId
 	#unless there are many sets per entry of a card
-	name = db.Column(db.String(MED_LEN), primary_key=True)
+	multiID = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(MED_LEN))
 	mainType = db.Column(db.String(NAME_LEN))
-	subType = db.Column(db.String(NAME_LEN), nullable=True)
+	subType = db.Column(db.String(NAME_LEN), db.ForeignKey('Sets.name'), nullable=True)
 	text = db.Column(db.String(TEXT_LEN), nullable=True)
 	expansionSet = db.Column(db.String(MED_LEN), db.ForeignKey('Sets.name'))
 	manaCost = db.Column(db.Integer) #Wheel of Fate edgecase
@@ -37,8 +38,9 @@ class Card(db.Model):
 	rarity = db.Column(db.String(STG_LEN))
 	artist = db.Column(db.String(MED_LEN), db.ForeignKey('Artists.name'))
 
-	def __init__(self, name, mainType, subType, text, expansionSet,
+	def __init__(self, multiID, name, mainType, subType, text, expansionSet,
 				 manaCost, color, pt, art, rarity, artist):
+		self.multiID = multiID
 		self.name = name
 		self.mainType = mainType
 		self.subType = subType
@@ -88,7 +90,8 @@ class Artist(db.Model):
 	"""
 
 	__tablename__ = 'Artists'
-
+	
+	#Possibility of repeated names
 	name = db.Column(db.String(MED_LEN), primary_key=True)
 	numCards = db.Column(db.Integer)
 	numSets = db.Column(db.Integer)

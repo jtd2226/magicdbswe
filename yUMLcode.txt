@@ -1,0 +1,12 @@
+// Cool Class Diagram
+[Card|Name : String;Type : string;SubType : String;Text : String;Set : String;Color : String;Power and Toughness : String;Art : String;Rarity : String;Artist : String|]
+
+[Set|Name : String;Release Date : String;Number of Cards : Integer;Block : String;Cards : String;Promo Art : String;Artists : String|]<1-1...*>[Card]
+
+[Artist|Name : String;Number of Cards : Integer;Number of Sets : Integer;Cards : String;Sets : String;|]<1-1...*>[Card]
+
+[SubType|Name : String;Number of Cards : Integer;Cards : String;Example Card : String;Artists : String;Sets : String;|]
+
+[Set]<1-1...*>[Artist]
+[Set]<1...*-0...*>[Subtype]
+[SubType]<0...*-1...*>[Card]
