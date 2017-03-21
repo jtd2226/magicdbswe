@@ -1,0 +1,21 @@
+body {
+  background: #e4e4e4;
+}
+
+.magicdb-header {
+  position: relative;
+  left: 10px;
+  padding-bottom: 1%;
+}
+
+table {
+  background-color: #eee
+}
+
+thead {
+  background-color: #ddd;
+}
+
+td, th {
+  border: 3px solid #e4e4e4;
+}

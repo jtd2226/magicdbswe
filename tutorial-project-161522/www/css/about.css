@@ -2,6 +2,11 @@ body {
   background: #e4e4e4;
 }
 
+.col-lg-4 {
+  width: 100%;
+  text-align: center;
+}
+
 #bio-section {
   margin: auto;
   width: 50%;
