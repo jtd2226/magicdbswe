@@ -7,8 +7,25 @@ body {
   text-align: center;
 }
 
-#bio-section {
+.about-section {
   margin: auto;
-  width: 50%;
   text-align: center;
+}
+
+#description {
+  width: 75%;
+  padding-bottom: 4%;
+}
+
+#bio-section, #stats {
+  width: 50%;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  margin-top: 15px;
+  background-color: #ccc;
 }
