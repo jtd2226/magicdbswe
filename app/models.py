@@ -19,18 +19,18 @@ Handling many-to-many relations
 """
 
 set_artist_table = db.Table('set_artist_table',
-    db.Column('set_id', Integer, ForeignKey('set.id')),
-    db.Column('artist_id', Integer, ForeignKey('artist.id'))
+    db.Column('set_id', db.Integer, db.ForeignKey('set.id')),
+    db.Column('artist_id', db.Integer, db.ForeignKey('artist.id'))
 )
 
 set_subtype_table = db.Table('set_subtype_table',
-    db.Column('set_id', Integer, ForeignKey('set.id')),
-    db.Column('subType_id', Integer, ForeignKey('subType.id'))
+    db.Column('set_id', db.Integer, db.ForeignKey('set.id')),
+    db.Column('subType_id', db.Integer, db.ForeignKey('subType.id'))
 )
 
 card_subtype_table = db.Table('card_subtype_table',
-    db.Column('card_id', Integer, ForeignKey('card.id')),
-    db.Column('subType_id', Integer, ForeignKey('subType.id'))
+    db.Column('card_id', db.Integer, db.ForeignKey('card.id')),
+    db.Column('subType_id', db.Integer, db.ForeignKey('subType.id'))
 )
 
 class Card(db.Model):
@@ -41,7 +41,7 @@ class Card(db.Model):
 	cardId = Unique ID to identify a card
 	name = Name of the card
 	mainType = Primary Type of the Card
-	subType = Secondary Type of the Card
+	subType = Secondary Type(s) of the Card
 	text = All of the text written on the card
 	expansionSet = The set under which the card came out
 	manaCost = The Converted Mana Cost of the card
@@ -101,6 +101,7 @@ class Set(db.Model):
 	subTypes = All subtypes in the expansion
 	numCards = Number of cards that came out in the expansion
 	symbol = Symbol used to identify the expansion on cards
+	artists = Artists that made cards for this expansion
 	"""
 
 	__tablename__ = 'Sets'
