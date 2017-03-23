@@ -3,7 +3,7 @@
 #
 # pylint:disable=invalid-name,line-too-long,no-member,too-few-public-methods,locally-disabled
 from flask import Flask
-from flask-sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
@@ -117,7 +117,7 @@ class SubType(db.Model):
 	Information regarding types
 	"""
 
-	__table__ = 'SubTypes'
+	__tablename__ = 'SubTypes'
 
 	name = db.Column(db.String(MED_LEN), primary_key=True)
 	numCards = db.Column(db.Integer)
