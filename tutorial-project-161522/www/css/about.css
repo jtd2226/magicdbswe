@@ -17,8 +17,17 @@ body {
   padding-bottom: 4%;
 }
 
-#bio-section, #stats {
+#bio-section, #stats, #data-sec {
   width: 50%;
+}
+
+#tools-sec {
+  width: 75%;
+  text-align: left;
+}
+
+#tools-sec h1 {
+  text-align: center;
 }
 
 .divider {
