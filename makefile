@@ -1,12 +1,12 @@
 .DEFAULT_GOAL := test
 
 FILES :=            \
-    models.html    \
     Magic.log     \
     models.py      \
     TestMagic.out \
     TestMagic.py  \
     .travis.yml     \
+    #models.html    \
 
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
@@ -95,7 +95,7 @@ status:
 	git remote -v
 	git status
 
-test: Magic.html Magic.log
+test: Magic.html Magic.log #testmagic
 	ls -al
 	make check
 
