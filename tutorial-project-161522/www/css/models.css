@@ -8,14 +8,12 @@ body {
   padding-bottom: 1%;
 }
 
-table {
-  background-color: #eee
+.model-inst {
+	display: inline-block;
+	text-align: center;
+	padding: 1%;
 }
 
-thead {
-  background-color: #ddd;
-}
-
-td, th {
-  border: 3px solid #e4e4e4;
+.model-inst:hover {
+	background: #d8d8d8;
 }
