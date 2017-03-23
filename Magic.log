@@ -1,0 +1,343 @@
+commit 6202a0501ecc11b9bb669546903fd49148f8df3d
+Merge: cb1ebb4 fc04509
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Thu Mar 23 18:56:50 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit cb1ebb4363f1d996b1b39d540e05598bd95834f7
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Thu Mar 23 18:56:35 2017 -0500
+
+    models.py fixed
+
+commit fc04509056f33508075b54ec9aca8828f2085124
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 18:55:07 2017 -0500
+
+    makefile tweeks
+
+commit 96e484e3ea5337e940d4c71cead36f7b08b46e8d
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Thu Mar 23 18:39:52 2017 -0500
+
+    Completed Models
+
+commit 841f0f4b9a3faae865a5be27748119f590f8f3f8
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Thu Mar 23 17:41:13 2017 -0500
+
+    Partial update of models
+
+commit e74ecfe59089298464aa7e808b3b64b6c40b4d97
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Mar 23 16:20:28 2017 -0500
+
+    haha tables aren't allowed rip :(
+
+commit 16bd8bd99effac25527a95766985f53096c5cccd
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 16:04:35 2017 -0500
+
+    changing for travis
+
+commit 348f097cbe0990df54587343554ed1430241227b
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 15:57:23 2017 -0500
+
+    only you travis
+
+commit b8bffa77f35dad29d2faf102ccac47d92962ddc3
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 15:52:29 2017 -0500
+
+    only you travis
+
+commit 69d42817cca6bcdac3fc35d1e90582eb349d9161
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 15:49:20 2017 -0500
+
+    Delete .travis.yml
+
+commit cf964faebdb5ebb69fdccbe35766ebd2fe3f3e44
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 15:49:04 2017 -0500
+
+    Delete makefile
+
+commit 1c7e15633ae59e272d849c2688b97ccc3a3c2b9a
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 15:48:52 2017 -0500
+
+    Delete TestMagic.py
+
+commit 63fd77a8ec2cd311f0b999ebd8ce1a0839ee1042
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 15:48:37 2017 -0500
+
+    Delete TestMagic.out
+
+commit ab096500bec0d7dc1c2597003b604af195e78329
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 15:44:35 2017 -0500
+
+    for you travis
+
+commit d1e862a6282828e5af390b736c54859277a32604
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 15:35:45 2017 -0500
+
+    travis, tests, makefile
+
+commit 5b524827493ccab251042b9948411f428f1fb356
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 15:28:56 2017 -0500
+
+    Update models.py
+
+commit b09c05844c7f69cab8c8e8ce7825d1b259cc728f
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Mar 23 00:00:22 2017 -0500
+
+    more about page stuff
+
+commit d703c7ef34eeba95418e35269cd9bc6866ef3140
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Wed Mar 22 22:36:44 2017 -0500
+
+    small changes to about
+
+commit 0bcbdeea15cc84eda70a8896ab5421562f399163
+Author: Nilo Lisboa <nilobl@wireless-10-147-202-190.public.utexas.edu>
+Date:   Wed Mar 22 19:56:45 2017 -0500
+
+    Updated Models considering relations
+
+commit a1a4813f7fe581da75cad2d81ae3e146ff3649a0
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Mar 21 18:40:40 2017 -0500
+
+    fixes collapsing issue closes #12
+
+commit 00b4c02133772d842e006dd8c4f2a935a21544a9
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Tue Mar 21 18:17:08 2017 -0500
+
+    Changed Logo to percentage
+
+commit e02d34ccb9e919c959ef76db86fc1c2381d1283b
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Tue Mar 21 18:10:01 2017 -0500
+
+    Addded logo and subtitle to main page
+
+commit 41a9c101321efe63975c4ef26c5bbbe708d9442e
+Merge: d63e073 5b6082c
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Mar 21 17:49:30 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit d63e0738f5ce425d2a4eb1bbb862df77f261eed2
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Mar 21 17:49:07 2017 -0500
+
+    more details on the about page
+
+commit 5b6082c6ba316adb6363fb296bc6b774e039e78d
+Author: Nestor Castro <nestorcastro@wireless-10-147-195-73.public.utexas.edu>
+Date:   Tue Mar 21 17:02:54 2017 -0500
+
+    changed about descriptions
+
+commit 8e89bce6b43fe94d26f52429243c9ac5039a2156
+Merge: 5d6cbeb 98f445a
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Mar 21 16:57:19 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 5d6cbeb06484f9a27d5afcb345d836cefd6ac3db
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Mar 21 16:57:12 2017 -0500
+
+    about more stuff
+
+commit 98f445aaba6cabeae4a7ba3a3ede0d953258fdea
+Author: Nestor Castro <nestorcastro@wireless-10-147-195-73.public.utexas.edu>
+Date:   Tue Mar 21 16:37:51 2017 -0500
+
+    changed version in models
+
+commit df631e2d0390f7b969e3d2b72e9b1cdb0fe4f39a
+Merge: 96a50e5 bd5d508
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Mar 21 16:21:55 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 96a50e520167bbf19d7923fcab6ab8c8fd754cc2
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Mar 21 16:20:49 2017 -0500
+
+    added subtypes
+
+commit bd5d5083ebff1a5128395d47ec764b1ff2b5eee1
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Tue Mar 21 16:08:22 2017 -0500
+
+    Added logo image files
+
+commit 3a9f19736abe9bc61badbad7598cb5292ab4d9bf
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Mon Mar 20 23:40:41 2017 -0500
+
+    added artist page andfixed about page glitch fixes #10
+
+commit 756363154a99eab2c9442b231bcf36949519a7d3
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Mon Mar 20 21:09:12 2017 -0500
+
+    UML pdf
+
+commit 03737ea0cfd072b7f0edfd046c2a6f3c45a58b90
+Merge: b10a1a6 760e93e
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Thu Mar 16 19:47:09 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit b10a1a6d386eabaf88cdaf3aa6e4172a93bb6534
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Thu Mar 16 19:46:39 2017 -0500
+
+    models.py
+
+commit 760e93e525cf6f0d56372ed2ede32115a3fcc02a
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 16 19:04:56 2017 -0500
+
+    TestMagic.out
+
+commit e7561a7b629b41c96ccb9197c6f3e55daf142f33
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 16 19:03:22 2017 -0500
+
+    Create TestMagic.py
+
+commit a5b259c5416f5de64565541321a6c72eee0b4454
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 16 18:55:39 2017 -0500
+
+    Update makefile
+
+commit f8a95755516ed2c6bb9b5c7a107aca6737092b3f
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 16 18:45:16 2017 -0500
+
+    Create .travis.yml
+
+commit 63df068c251fc3e18931f576174562003b62a567
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 16 17:20:17 2017 -0500
+
+    default netflix makefile
+
+commit 31484da5349d5738b47156c6a838fc979bbb6212
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 16 16:53:12 2017 -0500
+
+    Added in more bios and placeholders
+
+commit b23b5883b5c96eb227a1d7e6b6b29b0e05d1d248
+Merge: bf6e7b1 61263d7
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 16 16:20:56 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 61263d7a6e5f282e80ed51621430e28b446c6376
+Merge: 113921c 849b73b
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Mar 16 16:13:06 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 113921cc23222a39742859b219e3cb8191c3caae
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Mar 16 16:11:28 2017 -0500
+
+    baby steps on the about page
+
+commit 849b73b3c0d0f145378961e75340b3ce6c5e1d47
+Merge: f2f1a3c 2c45c3b
+Author: Nestor Castro <nestorcastro@wireless-10-147-171-89.public.utexas.edu>
+Date:   Thu Mar 16 15:58:24 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit f2f1a3c4e301574aeca6d2cbaec244d4af64e282
+Author: Nestor Castro <nestorcastro@wireless-10-147-171-89.public.utexas.edu>
+Date:   Thu Mar 16 15:57:57 2017 -0500
+
+    Closes issue #9 'Host web app on GCP'
+
+commit 2c45c3b87c20424eb46c2b53a95269c442dd6fff
+Author: Nicholas Cobb <ncobb314@gmail.com>
+Date:   Thu Mar 16 15:43:47 2017 -0500
+
+    Delete .DS_Store
+
+commit 440b6f6f7e762a2b61a096ce36eecd05f31079da
+Author: Nicholas Cobb <ncobb314@gmail.com>
+Date:   Thu Mar 16 15:43:34 2017 -0500
+
+    Delete .DS_Store
+
+commit f82b571ac72aae17371c66a24228e6a88dd770e8
+Author: Nicholas Cobb <ncobb314@gmail.com>
+Date:   Thu Mar 16 15:43:23 2017 -0500
+
+    Delete .DS_Store
+
+commit d5e87dd7b7a9e11f3de8f22ec5d78bf951a090e8
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Mar 16 15:41:38 2017 -0500
+
+    fixed gitignore
+
+commit d1f2188f609060b510d8b224a6286368e081dede
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Mar 16 15:38:03 2017 -0500
+
+    moved frontend files
+
+commit a4450b8330c3548c5ca40d4a05abbb732902c1fd
+Author: Nestor Castro <nestorcastro@Nestors-MacBook-Pro.local>
+Date:   Thu Mar 16 01:55:47 2017 -0500
+
+    Created app folder containig the app developed inside the frontend folder; App is online
+
+commit 81b9185d59c845d7d7361147b8c2cc468260ed62
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Mar 14 18:22:45 2017 -0500
+
+    initial frontend files
+
+commit bf6e7b17518df9f6debf27b291ebd27da037d1a3
+Author: Joel Davis <rajaadty@gmail.com>
+Date:   Tue Mar 14 17:30:13 2017 -0500
+
+    Finished apiary documentation
+
+commit b7ea91f1d1f9e4ce595eb36ed24331f5a5bf309c
+Author: Joel Davis <rajaadty@gmail.com>
+Date:   Mon Mar 13 18:05:42 2017 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit 0e8125e4ddca4e82b7c2085a74d51109d06c477a
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Mon Mar 13 18:02:53 2017 -0500
+
+    Initial commit
