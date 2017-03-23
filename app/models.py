@@ -1,4 +1,4 @@
-# 
+#
 # A Database for Magic the Gathering Cards
 #
 # pylint:disable=invalid-name,line-too-long,no-member,too-few-public-methods,locally-disabled
@@ -28,12 +28,12 @@ class Card(db.Model):
 	multiID = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(MED_LEN))
 	mainType = db.Column(db.String(NAME_LEN))
-	subType = db.Column(db.String(NAME_LEN), db.ForeignKey('Sets.name'), nullable=True)
+	subType = db.Column(db.String(NAME_LEN), db.ForeignKey('Subtypes.name'), nullable=True)
 	text = db.Column(db.String(TEXT_LEN), nullable=True)
-	expansionSet = db.Column(db.String(MED_LEN), db.ForeignKey('Sets.name'))
-	manaCost = db.Column(db.Integer) #Wheel of Fate edgecase
-	color = db.Column(db.String(SHORT_LEN))
-	pt = db.Column(db.String(STG_LEN))
+	expansionSet = db.Column(db.String(MED_LEN), db.ForeignKey('Sets.code'))
+	manaCost = db.Column(db.Integer, nullable=True) #Wheel of Fate edgecase
+	color = db.Column(db.String(SHORT_LEN), nullable=True)
+	pt = db.Column(db.String(STG_LEN), nullable=True)
 	art = db.Column(db.String(MED_LEN))
 	rarity = db.Column(db.String(STG_LEN))
 	artist = db.Column(db.String(MED_LEN), db.ForeignKey('Artists.name'))
@@ -54,7 +54,7 @@ class Card(db.Model):
 		self.artist = artist
 
 	def __repr__(self):
-		return '<Card %r>' % self.name 
+		return '<Card %r>' % self.name
 
 class Set(db.Model):
 	"""
@@ -63,23 +63,25 @@ class Set(db.Model):
 
 	__tablename__ = 'Sets'
 
-	name = db.Column(db.String(MED_LEN), primary_key=True)
+	code = db.Column(db.String(STG_LEN), primary_key=True)
+	name = db.Column(db.String(MED_LEN))
 	rDate = db.Column(db.String(NAME_LEN))
 	block = db.Column(db.String(NAME_LEN), nullable=True)
-	cards = db.Column(db.String(MED_LEN)) #link
+	#cards = db.Column(db.String(MED_LEN)) #link
 	numCards = db.Column(db.Integer)
-	promo = db.Column(db.String(MED_LEN)) #link
-	artists = db.Column(db.String(NAME_LEN))
+	symbol = db.Column(db.String(MED_LEN)) #link
+	#artists = db.Column(db.String(NAME_LEN))
 
-	def __init__(self, name, rDate, block, cards, numCards,
-				 promo, artists):
+	def __init__(self, code, name, rDate, block, cards, numCards,
+				 symbol, artists):
+		self.code = code
 		self.name = name
 		self.rDate = rDate
 		self.block = block
-		self.cards = cards
+		#self.cards = cards
 		self.numCards = numCards
-		self.promo = promo
-		self.artists = artists
+		self.symbol = symbol
+		#self.artists = artists
 
 	def __repr__(self):
 		return '<Set %r>' % self.name
@@ -90,25 +92,27 @@ class Artist(db.Model):
 	"""
 
 	__tablename__ = 'Artists'
-	
+
 	#Possibility of repeated names
-	name = db.Column(db.String(MED_LEN), primary_key=True)
+	iden = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(MED_LEN))
 	numCards = db.Column(db.Integer)
 	numSets = db.Column(db.Integer)
 	cards = db.Column(db.String(MED_LEN)) #link or something new to write
-	sets = db.Column(db.String(MED_LEN))
+	#sets = db.Column(db.String(MED_LEN))
 
-	def __init__(self, name, numCards, numSets, cards, sets):
+	def __init__(self, iden, name, numCards, numSets, cards, sets):
+		self.iden = iden
 		self.name = name
 		self.numCards = numCards
 		self.numSets = numSets
 		self.cards = cards
-		self.sets = sets
+		#self.sets = sets
 
 	def __repr__(self):
 		return '<Artist %r>' % self.name
 
-class subType(db.Model):
+class SubType(db.Model):
 	"""
 	Information regarding types
 	"""
@@ -117,18 +121,18 @@ class subType(db.Model):
 
 	name = db.Column(db.String(MED_LEN), primary_key=True)
 	numCards = db.Column(db.Integer)
-	exCard = db.Column(db.String(MED_LEN))
-	cards = db.Column(db.String(MED_LEN)) #This is a link
-	artists = db.Column(db.String(NAME_LEN))
-	sets = db.Column(db.String(NAME_LEN))
+	exCard = db.Column(db.String(MED_LEN), db.ForeignKey('Cards.name'))
+	#cards = db.Column(db.String(MED_LEN)) #This is a link
 
-	def __init__(self, name, numCards, cards, exCard, artists, sets):
+	#Set this subtype most appears in
+	mostSet = db.Column(db.String(NAME_LEN), db.ForeignKey('Sets.name'))
+
+	def __init__(self, name, numCards, cards, exCard, mostSet):
 		self.name = name
 		self.numCards = numCards
-		self.cards = cards
-		self.exCard = exCards
-		self.artists = artists
-		self.sets = sets
+		#self.cards = cards
+		self.exCard = exCard
+		self.mostSet = mostSet
 
 	def __repr__(self):
 		return '<Subtype %r>' % self.name
