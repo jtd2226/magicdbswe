@@ -117,7 +117,7 @@ class SubType(db.Model):
 	Information regarding types
 	"""
 
-	__tablename__ = 'SubTypes'
+	__table__ = 'SubTypes'
 
 	name = db.Column(db.String(MED_LEN), primary_key=True)
 	numCards = db.Column(db.Integer)
