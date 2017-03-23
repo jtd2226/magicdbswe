@@ -2,11 +2,11 @@
 
 FILES :=            \
     Magic.log     \
-    models.py      \
-    TestMagic.out \
-    TestMagic.py  \
+    app/models.py      \
+    app/TestMagic.out \
+    app/TestMagic.py  \
     .travis.yml     \
-    #models.html    \
+    models.html    \
 
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
@@ -41,13 +41,13 @@ endif
 .pylintrc:
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
-Magic.html: models.py
-	pydoc3 -w models
+Magic.html: app/models.py
+	pydoc3 -w app/models.py
 
 Magic.log:
 	git log > Magic.log
 
-TestMagic.tmp: models.py TestMagic.py .pylintrc
+TestMagic.tmp: models.py .pylintrc 	#TestMagic.py 
 	-$(PYLINT) TestMagic.py
 	-$(COVERAGE) run    --branch TestMagic.py >  TestMagic.tmp 2>&1
 	-$(COVERAGE) report -m                      >> TestMagic.tmp
