@@ -5,11 +5,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		
 		<title>Subtypes - MagicDB</title>
 
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="css/models.css">
+		<link rel="stylesheet" type="text/css" href="css/instance.css">
 	</head>
 
 
@@ -33,38 +34,56 @@
 						<li><a href="index.html">Home</a></li>
 						<li><a href="cards.html">Cards</a></li>
 						<li><a href="sets.html">Sets</a></li>
-						<li class="active"><a href="#">Subtypes</a></li>
+						<li class="active"><a href="subtypes.html">Subtypes</a></li>
 						<li><a href="artists.html">Artists</a></li>
 						<li><a href="about.html">About</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
-		<div class="magicdb-header">
-			<h1>Subtypes</h1>
-			<h3>Some description about the subtypes...</h3>
+		<div id="instance-main">
 		</div>
-
-		<div class="container-fluid">
-			<div class="model-inst">
-				<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card" class="img-fluid">
-				<h4><a href="subtypes-instance.html?name=&quot;Wurm&quot;&id=0b45d0cdfbf851a256d96b7586c2e98ebcfaeef7">Wurm</h4>
-			</div>
-
-			<div class="model-inst">
-				<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=414295&type=card" class="img-fluid">
-				<h4><a href="subtypes-instance.html?name=&quot;Eldrazi&quot;&id=3961b8f27dfebff5024e0d4cea2e5dedcd8ed3cd">Eldrazi</a></h4>
-			</div>
-
-			<div class="model-inst">
-				<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=401636&type=card" class="img-fluid">
-				<h4><a href="subtypes-instance.html?name=&quot;Angel&quot;&id=16b1bce7dd9f6a77480fb6b33f2b211f1c5b9ebc">Angel</a></h4>
-			</div>
-		</div>
-
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script>
+			var getUrlParams = function() {
+			    var vars = [], hash;
+			    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+			    for(var i = 0; i < hashes.length; i++)
+			    {
+			        hash = hashes[i].split('=');
+			        vars.push(hash[0]);
+			        vars[hash[0]] = hash[1];
+			    }
+			    return vars;
+			}
+			var subtypeName = getUrlParams()["name"].substring(3, getUrlParams()["name"].length - 3);
+
+
+			var xmlHttp = new XMLHttpRequest();
+
+			xmlHttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) { //Successful GET request
+			        var card = JSON.parse(this.responseText);
+
+			        // Append to the DOM
+					$("#instance-main").append("<h1>" + subtypeName + "</h1>");
+					$("#instance-main").append("<img src=" + card["card"]["imageUrl"] + ">");
+
+					setName = card["card"]["setName"] || "N/A"
+					$("#instance-main").append("<h4><strong>Sets: </strong>" + setName + "</h4>");
+
+					$("#instance-main").append("<h4><strong>Cards: </strong>" + card["card"]["name"] + "</h4>");
+					$("#instance-main").append("<h4><strong>Number of Cards: </strong>1</h4>");
+			    }
+			};
+
+			
+			var cardId = getUrlParams()["id"];
+		    xmlHttp.open("GET", "https://api.magicthegathering.io/v1/cards/" + cardId, true); 
+		    xmlHttp.send(null);
+		</script>
 	<body>
 </html>
