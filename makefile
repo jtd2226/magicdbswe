@@ -43,6 +43,7 @@ endif
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
 Magic.html: app/models.py
+	pip3 install flask_sqlalchemy
 	pydoc3 -w app/models.py
 	mv models.html IDB1.html
 	rm -f models.html
