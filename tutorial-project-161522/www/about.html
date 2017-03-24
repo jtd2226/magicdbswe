@@ -158,7 +158,7 @@
 
 			<p><u>Jose Ramirez: Senior, Back-End, Testing</u>
 			<br>
-			Jose is a 4th-year Computer Science major at the University of Texas at Austin. He enjoys game development and participates in ACM activities. In his free time, he plays video games and watches gaming streams on twitch. He was responsible for making unit tests.</p>
+			Jose is a 4th-year Computer Science major at the University of Texas at Austin. He enjoys game development and participates in ACM activities. In his free time, he plays video games and watches gaming streams on twitch. He was responsible for making unit tests and setting up continuous intergragtion framework with Travis CI.</p>
 			<br>
 		</div>
 
@@ -173,7 +173,7 @@
 
 			<img src="images/UML.png" style = "width:30%" align="left">
 			<h4><em>Models</em></h4>
-			<p>Cards - This model contains information specifically regarding cards as implied in a card game, they are of immense importance and thus, have a large number of attributes. Cards have unique IDs identifying each of them</p>
+			<p>Cards - This model contains information specifically regarding cards as implied in a card game, they are of immense importance and thus, have a large number of attributes. Cards have unique IDs identifying each of them</p>report
 			<p>Set - This model contains information pertaining to sets, which in turn, are like containers upon which cards are released in MtG. Sets are a very helpful way to distinguish cards from each other. The Set model also has relations to all other models.</p>
 			<p>Artist - The artist model serves as another method for a user to distinguish cards, as many cards could have been worked on by a specific artist. This model is related to the Set and the Card model.</p>
 			<p>Subtype - The Subtype model serves as a final way to distinguish cards. Cards that have similar subtypes often synergize their effects, so it is important to be able to select subtypes of interest and view all related cards. This model is related to the Card and Set models.</p>
@@ -185,7 +185,7 @@
 			[Set] many-to-many [Artist]<br>
 			[Set] many-to-many [Subtype]</p>
 		</div>
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		<div id="design-sec" class="about-section">
 			<h2>API</h2>
 			<br>
