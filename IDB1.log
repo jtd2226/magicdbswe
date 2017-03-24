@@ -1,3 +1,9 @@
+commit fdb2d765e78ad57b25dc7b2a11b0ec66dd4755f4
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 18:58:09 2017 -0500
+
+    makefile and travis work
+
 commit 6202a0501ecc11b9bb669546903fd49148f8df3d
 Merge: cb1ebb4 fc04509
 Author: Nilo Lisboa <nilo@cs.utexas.edu>

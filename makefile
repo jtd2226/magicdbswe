@@ -1,12 +1,13 @@
 .DEFAULT_GOAL := test
 
 FILES :=            \
-    Magic.log     \
+    IDB1.log     \
     app/models.py      \
     app/TestMagic.out \
     app/TestMagic.py  \
     .travis.yml     \
-    models.html    \
+    IDB1.html    \
+    IDB.pdf		\
 
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
@@ -43,9 +44,11 @@ endif
 
 Magic.html: app/models.py
 	pydoc3 -w app/models.py
+	mv models.html IDB1.html
+	rm -f models.html
 
 Magic.log:
-	git log > Magic.log
+	git log > IDB1.log
 
 TestMagic.tmp: models.py .pylintrc 	#TestMagic.py 
 	-$(PYLINT) TestMagic.py
