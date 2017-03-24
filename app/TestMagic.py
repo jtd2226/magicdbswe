@@ -162,7 +162,7 @@ class TestMagic (TestCase):
             db.session.delete(example1)
             db.session.commit()
     
-    artistdef test_artist_2(self):
+    def test_artist_2(self):
         with app.test_request_context():
             example1 = Artist("name", 10, 5, "card",
                                "sets")
