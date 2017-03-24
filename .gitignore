@@ -2,4 +2,5 @@ __pycache__
 .coverage
 .DS_Store
 .pylintrc
+gitcommits.log
 *.pyc
