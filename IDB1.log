@@ -1,3 +1,41 @@
+commit 61b2ba9e8a2d2a39016ca8be1956ba547a5c73e6
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 23 20:05:49 2017 -0500
+
+    Added in Technical Report
+
+commit 20bf77c9b17f3a8ca2febbedbd6a2ce146a52cdb
+Merge: 062c31f 9865571
+Author: Nestor Castro <nestorcastro@wireless-10-147-171-81.public.utexas.edu>
+Date:   Thu Mar 23 19:38:17 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 062c31f07be5531f3a01bb2969da2ea7425d790d
+Author: Nestor Castro <nestorcastro@wireless-10-147-171-81.public.utexas.edu>
+Date:   Thu Mar 23 19:38:12 2017 -0500
+
+    added subtype carousel
+
+commit 9865571d26b3ba6ca9968a1fa2f5b1cc956426d6
+Merge: 767ee70 adbe6e2
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:34:13 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 767ee70652243a495eaa390645f68830f155327c
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:33:59 2017 -0500
+
+    jfklsadjn
+
+commit adbe6e22af43df4aa8c64332d0763766ac88d213
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Mar 23 19:33:32 2017 -0500
+
+    still salty that I can't use tables, but I added more stuff and instance pages.
+
 commit e9c7035f17a38a0d2b48aa72b8112405714d5de6
 Author: jtd2226 <joeldavi@utexas.edu>
 Date:   Thu Mar 23 19:31:26 2017 -0500
