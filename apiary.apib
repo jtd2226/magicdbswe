@@ -8,418 +8,398 @@ You can use the API to access Magic: The Gathering API endpoints,
 which can get information on cards and sets. All API access is 
 performed over HTTPS and accessed from the api.magicthegathering.io domain.
 
-# Cards [https://api.magicthegathering.io/v1/cards?page=5&pageSize=50]
++ Headers
+    + Link: Link headers with prev, last, next, first links (when appropriate)
+    + Page-Size: The page size for the request
+    + Count: The number of elements returned
+    + Total-Count: The total number of elements (across all pages)
+    + Ratelimit-Limit: The ratelimit for a given user
+    + Ratelimit-Remaining: The number of requests left before the ratelimit is exceeded.
+    
+# Group Cards
 
-## Get All Cards [GET https://api.magicthegathering.io/v1/cards]
++ Parameters
+    + name: Avacyn (string) The card name. For split, double-faced and flip cards, just the name of one side of the card. Basically each ‘sub-card’ has its own record.
+    + layout: normal (string) The card layout. Possible values: normal, split, flip, double-faced, token, plane, scheme, phenomenon, leveler, vanguard
+    + cmc: 5 (Integer) Converted mana cost. Always a number.
+    + colors: red (string) The card colors. Usually this is derived from the casting cost, but some cards are special (like the back of dual sided cards and Ghostfire).
+    + colorIdentity: R (string) The card colors by color code. [“Red”, “Blue”] becomes [“R”, “U”]
+    + type: Creature (string) The card type. This is the type you would see on the card if printed today. Note: The dash is a UTF8 'long dash’ as per the MTG rules
+    + supertypes: Basic (string) The supertypes of the card. These appear to the far left of the card type. Example values: Basic, Legendary, Snow, World, Ongoing
+    + types: Instant (string) The types of the card. These appear to the left of the dash in a card type. Example values: Instant, Sorcery, Artifact, Creature, Enchantment, Land, Planeswalker
+    + subtypes: Trap (string) The subtypes of the card. These appear to the right of the dash in a card type. Usually each word is its own subtype. Example values: Trap, Arcane, Equipment, Aura, Human, Rat, Squirrel, etc.
+    + rarity: Common (string) The rarity of the card. Examples: Common, Uncommon, Rare, Mythic Rare, Special, Basic Land
+    + set: 50 (Integer) The set the card belongs to (set code).
+    + setName: Trogdor (string) The set the card belongs to.
+    + text: lorem ipsum dolor (string) The oracle text of the card. May contain mana symbols and other symbols.
+    + flavor: lorem (string) The flavor text of the card.
+    + artist: Thom Yorke (string) The artist of the card. This may not match what is on the card as MTGJSON corrects many card misprints.
+    + number: 5 (Integer) The card number. This is printed at the bottom-center of the card in small text. This is a string, not an integer, because some cards have letters in their numbers.
+    + power: 1+ (string) The power of the card. This is only present for creatures. This is a string, not an integer, because some cards have powers like: “1+*”
+    + toughness: 1+ (string) The toughness of the card. This is only present for creatures. This is a string, not an integer, because some cards have toughness like: “1+*”
+    + loyalty: the king (string) The loyalty of the card. This is only present for planeswalkers.
+    + foreignName: korewanani (string) The name of a card in a foreign language it was printed in
+    + language: Nihongo (string) The language the card is printed in. Use this parameter when searching by foreignName
+    + gameFormat: Commander (string) The game format, such as Commander, Standard, Legacy, etc. (when used, legality defaults to Legal unless supplied)
+    + legality: Banned (string) The legality of the card for a given format, such as Legal, Banned or Restricted.
+    + page: magicdb.me (string) The page of data to request
+    + pageSize: 5 (Integer) The amount of data to return in a single request. The default is 100, the max is 1000. If more than 1000 is requested, 100 will be returned.
+    + orderBy: type (string) The field to order by in the response results
+    + random: true (string) Fetch any number of cards (controlled by pageSize) randomly
+    + contains: red (string) Filter cards based on whether or not they have a specific field available (like imageUrl)
+
+## Get All Cards [/v1/cards]
+<code>/v1/cards?</code><br>
 This endpoint retrieves all cards.
 
 By default, results are limited to 100 cards. Use the page url parameter to view more results. You can also adjust the limit via the pageSize url parameter. This has a maximum of 100 cards per request.
 
-+ Headers
-    + Link: Link headers with prev, last, next, first links (when appropriate)
-    + Page-Size: The page size for the request
-    + Count: The number of elements returned
-    + Total-Count: The total number of elements (across all pages)
-    + Ratelimit-Limit: The ratelimit for a given user
-    + Ratelimit-Remaining: The number of requests left before the ratelimit is exceeded.
-    
-+ Parameters
-    + name: The card name. For split, double-faced and flip cards, just the name of one side of the card. Basically each ‘sub-card’ has its own record.
-    + layout: The card layout. Possible values: normal, split, flip, double-faced, token, plane, scheme, phenomenon, leveler, vanguard
-    + cmc: Converted mana cost. Always a number.
-    + colors: The card colors. Usually this is derived from the casting cost, but some cards are special (like the back of dual sided cards and Ghostfire).
-    + colorIdentity: The card colors by color code. [“Red”, “Blue”] becomes [“R”, “U”]
-    + type: The card type. This is the type you would see on the card if printed today. Note: The dash is a UTF8 'long dash’ as per the MTG rules
-    + supertypes: The supertypes of the card. These appear to the far left of the card type. Example values: Basic, Legendary, Snow, World, Ongoing
-    + types: The types of the card. These appear to the left of the dash in a card type. Example values: Instant, Sorcery, Artifact, Creature, Enchantment, Land, Planeswalker
-    + subtypes: The subtypes of the card. These appear to the right of the dash in a card type. Usually each word is its own subtype. Example values: Trap, Arcane, Equipment, Aura, Human, Rat, Squirrel, etc.
-    + rarity: The rarity of the card. Examples: Common, Uncommon, Rare, Mythic Rare, Special, Basic Land
-    + set: The set the card belongs to (set code).
-    + setName: The set the card belongs to.
-    + text: The oracle text of the card. May contain mana symbols and other symbols.
-    + flavor: The flavor text of the card.
-    + artist: The artist of the card. This may not match what is on the card as MTGJSON corrects many card misprints.
-    + number: The card number. This is printed at the bottom-center of the card in small text. This is a string, not an integer, because some cards have letters in their numbers.
-    + power: The power of the card. This is only present for creatures. This is a string, not an integer, because some cards have powers like: “1+*”
-    + toughness: The toughness of the card. This is only present for creatures. This is a string, not an integer, because some cards have toughness like: “1+*”
-    + loyalty: The loyalty of the card. This is only present for planeswalkers.
-    + foreignName: The name of a card in a foreign language it was printed in
-    + language: The language the card is printed in. Use this parameter when searching by foreignName
-    + gameFormat: The game format, such as Commander, Standard, Legacy, etc. (when used, legality defaults to Legal unless supplied)
-    + legality: The legality of the card for a given format, such as Legal, Banned or Restricted.
-    + page: The page of data to request
-    + pageSize: The amount of data to return in a single request. The default is 100, the max is 1000. If more than 1000 is requested, 100 will be returned.
-    + orderBy: The field to order by in the response results
-    + random: Fetch any number of cards (controlled by pageSize) randomly
-    + contains: Filter cards based on whether or not they have a specific field available (like imageUrl)
-    
+
+### GET Get All Cards [GET]    
 + Response 200 (application/json)
     
-    {  
-      "cards":[  
         {  
-          "name":"Archangel Avacyn",
-          "names":[  
-            "Archangel Avacyn",
-            "Avacyn, the Purifier"
-          ],
-          "manaCost":"{3}{W}{W}",
-          "cmc":5,
-          "colors":[  
-            "White"
-          ],
-          "colorIdentity":[
-            "W"
-          ],
-          "type":"Legendary Creature — Angel",
-          "supertypes":[  
-            "Legendary"
-          ],
-          "types":[  
-            "Creature"
-          ],
-          "subtypes":[  
-            "Angel"
-          ],
-          "rarity":"Mythic Rare",
-          "set":"SOI",
-          "text":"Flash\nFlying, vigilance\nWhen Archangel Avacyn enters the battlefield, creatures you control gain indestructible until end of turn.\nWhen a non-Angel creature you control dies, transform Archangel Avacyn at the beginning of the next upkeep.",
-          "artist":"James Ryman",
-          "number":"5a",
-          "power":"4",
-          "toughness":"4",
-          "layout":"double-faced",
-          "multiverseid":409741,
-          "imageUrl":"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=409741&type=card",
-          "rulings":[  
+          "cards":[  
             {  
-              "date":"2016-04-08",
-              "text":"Archangel Avacyn’s delayed triggered ability triggers at the beginning of the next upkeep regardless of whose turn it is."
+              "name":"Archangel Avacyn",
+              "names":[  
+                "Archangel Avacyn",
+                "Avacyn, the Purifier"
+              ],
+              "manaCost":"{3}{W}{W}",
+              "cmc":5,
+              "colors":[  
+                "White"
+              ],
+              "colorIdentity":[
+                "W"
+              ],
+              "type":"Legendary Creature — Angel",
+              "supertypes":[  
+                "Legendary"
+              ],
+              "types":[  
+                "Creature"
+              ],
+              "subtypes":[  
+                "Angel"
+              ],
+              "rarity":"Mythic Rare",
+              "set":"SOI",
+              "text":"Flash\nFlying, vigilance\nWhen Archangel Avacyn enters the battlefield, creatures you control gain indestructible until end of turn.\nWhen a non-Angel creature you control dies, transform Archangel Avacyn at the beginning of the next upkeep.",
+              "artist":"James Ryman",
+              "number":"5a",
+              "power":"4",
+              "toughness":"4",
+              "layout":"double-faced",
+              "multiverseid":409741,
+              "imageUrl":"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=409741&type=card",
+              "rulings":[  
+                {  
+                  "date":"2016-04-08",
+                  "text":"Archangel Avacyn’s delayed triggered ability triggers at the beginning of the next upkeep regardless of whose turn it is."
+                },
+                {  
+                  "date":"2016-04-08",
+                  "text":"Archangel Avacyn’s delayed triggered ability won’t cause it to transform back into Archangel Avacyn if it has already transformed into Avacyn, the Purifier, perhaps because several creatures died in one turn."
+                },
+                {  
+                  "date":"2016-04-08",
+                  "text":"For more information on double-faced cards, see the Shadows over Innistrad mechanics article (http://magic.wizards.com/en/articles/archive/feature/shadows-over-innistrad-mechanics)."
+                }
+              ],
+              "foreignNames":[  
+                {  
+                  "name":"大天使艾维欣",
+                  "language":"Chinese Simplified",
+                  "multiverseid":410071
+                },
+                {  
+                  "name":"大天使艾維欣",
+                  "language":"Chinese Traditional",
+                  "multiverseid":410401
+                },
+                {  
+                  "name":"Archange Avacyn",
+                  "language":"French",
+                  "multiverseid":411061
+                },
+                {  
+                  "name":"Erzengel Avacyn",
+                  "language":"German",
+                  "multiverseid":410731
+                },
+                {  
+                  "name":"Arcangelo Avacyn",
+                  "language":"Italian",
+                  "multiverseid":411391
+                },
+                {  
+                  "name":"大天使アヴァシン",
+                  "language":"Japanese",
+                  "multiverseid":411721
+                },
+                {  
+                  "name":"대천사 아바신",
+                  "language":"Korean",
+                  "multiverseid":412051
+                },
+                {  
+                  "name":"Arcanjo Avacyn",
+                  "language":"Portuguese (Brazil)",
+                  "multiverseid":412381
+                },
+                {  
+                  "name":"Архангел Авацина",
+                  "language":"Russian",
+                  "multiverseid":412711
+                },
+                {  
+                  "name":"Arcángel Avacyn",
+                  "language":"Spanish",
+                  "multiverseid":413041
+                }
+              ],
+              "printings":[  
+                "SOI"
+              ],
+              "originalText":"Flash\nFlying, vigilance\nWhen Archangel Avacyn enters the battlefield, creatures you control gain indestructible until end of turn.\nWhen a non-Angel creature you control dies, transform Archangel Avacyn at the beginning of the next upkeep.",
+              "originalType":"Legendary Creature — Angel",
+              "id":"02ea5ddc89d7847abc77a0fbcbf2bc74e6456559"
             },
-            {  
-              "date":"2016-04-08",
-              "text":"Archangel Avacyn’s delayed triggered ability won’t cause it to transform back into Archangel Avacyn if it has already transformed into Avacyn, the Purifier, perhaps because several creatures died in one turn."
-            },
-            {  
-              "date":"2016-04-08",
-              "text":"For more information on double-faced cards, see the Shadows over Innistrad mechanics article (http://magic.wizards.com/en/articles/archive/feature/shadows-over-innistrad-mechanics)."
-            }
-          ],
-          "foreignNames":[  
-            {  
-              "name":"大天使艾维欣",
-              "language":"Chinese Simplified",
-              "multiverseid":410071
-            },
-            {  
-              "name":"大天使艾維欣",
-              "language":"Chinese Traditional",
-              "multiverseid":410401
-            },
-            {  
-              "name":"Archange Avacyn",
-              "language":"French",
-              "multiverseid":411061
-            },
-            {  
-              "name":"Erzengel Avacyn",
-              "language":"German",
-              "multiverseid":410731
-            },
-            {  
-              "name":"Arcangelo Avacyn",
-              "language":"Italian",
-              "multiverseid":411391
-            },
-            {  
-              "name":"大天使アヴァシン",
-              "language":"Japanese",
-              "multiverseid":411721
-            },
-            {  
-              "name":"대천사 아바신",
-              "language":"Korean",
-              "multiverseid":412051
-            },
-            {  
-              "name":"Arcanjo Avacyn",
-              "language":"Portuguese (Brazil)",
-              "multiverseid":412381
-            },
-            {  
-              "name":"Архангел Авацина",
-              "language":"Russian",
-              "multiverseid":412711
-            },
-            {  
-              "name":"Arcángel Avacyn",
-              "language":"Spanish",
-              "multiverseid":413041
-            }
-          ],
-          "printings":[  
-            "SOI"
-          ],
-          "originalText":"Flash\nFlying, vigilance\nWhen Archangel Avacyn enters the battlefield, creatures you control gain indestructible until end of turn.\nWhen a non-Angel creature you control dies, transform Archangel Avacyn at the beginning of the next upkeep.",
-          "originalType":"Legendary Creature — Angel",
-          "id":"02ea5ddc89d7847abc77a0fbcbf2bc74e6456559"
-        },
-        { ... },
-        { ... }
-      ]
-    }
+            { ... },
+            { ... }
+          ]
+        }
 
-## Get a Specific Card [GET https://api.magicthegathering.io/v1/cards/<MultiverseId>]
+## Get a Specific Card [/v1/cards/{ID}]
+<code>/v1/cards?multiverseID={id}</code><br>
 This endpoint retrieves a specific card by its id or multiverseid. It is highly recommended to use the id field, as some cards do not have a multiverseid.
 
-+ Headers
-    + Link: Link headers with prev, last, next, first links (when appropriate)
-    + Page-Size: The page size for the request
-    + Count: The number of elements returned
-    + Total-Count: The total number of elements (across all pages)
-    + Ratelimit-Limit: The ratelimit for a given user
-    + Ratelimit-Remaining: The number of requests left before the ratelimit is exceeded.
-    
+#### Parameters
+- <code>ID</code> *(Integer, required)* - getting a specific card by its ID    
+
 + Parameters
-    + MultiverseID: ID of the card
-    
+    + ID: 12345 (Integer) ID of the card
+
+### GET Get a Specific Card [GET]    
 + Response 200 (application/json)
-    {  
-      "card":{  
-        "name":"Narset, Enlightened Master",
-        "manaCost":"{3}{U}{R}{W}",
-        "cmc":6,
-        "colors":[  
-          "White",
-          "Blue",
-          "Red"
-        ],
-        "type":"Legendary Creature — Human Monk",
-        ...
-      }
-    }
+        
+        {  
+            "card":{  
+            "name":"Narset, Enlightened Master",
+            "manaCost":"{3}{U}{R}{W}",
+            "cmc":6,
+            "colors":[  
+            "White",
+            "Blue",
+            "Red"
+            ],
+            "type":"Legendary Creature — Human Monk",
+            ...
+            }
+        }
 
-# Sets [https://api.magicthegathering.io/v1/sets]
-
-## Get All Sets [GET https://api.magicthegathering.io/v1/sets]
-This endpoint retrieves all sets.
-
-+ Headers
-    + Link: Link headers with prev, last, next, first links (when appropriate)
-    + Page-Size: The page size for the request
-    + Count: The number of elements returned
-    + Total-Count: The total number of elements (across all pages)
-    + Ratelimit-Limit: The ratelimit for a given user
-    + Ratelimit-Remaining: The number of requests left before the ratelimit is exceeded.
+# Group Sets
     
 + Parameters
     + name: the name of the set
     + block: the block the set is in
-    
-+ Response 200 (application/json)
-    {  
-      "sets":[  
-        {  
-          "code":"KTK",
-          "name":"Khans of Tarkir",
-          "type":"expansion",
-          "border":"black",
-          "mkm_id":1495,
-          "booster":[  
-            [  
-              "rare",
-              "mythic rare"
-            ],
-            "uncommon",
-            "uncommon",
-            "uncommon",
-            "common",
-            "common",
-            "common",
-            "common",
-            "common",
-            "common",
-            "common",
-            "common",
-            "common",
-            "common",
-            "land",
-            "marketing"
-          ],
-          "mkm_name":"Khans of Tarkir",
-          "releaseDate":"2014-09-26",
-          "magicCardsInfoCode":"ktk",
-          "block":"Khans of Tarkir"
-        },
-        { ... }.
-        { ... }
-      ]
-    }
 
-## Get a Specific Set [GET https://api.magicthegathering.io/v1/sets/<code>]
+## Get All Sets [/v1/sets]
+<code>/v1/sets?</code><br>
+
+This endpoint retrieves all sets.
+
+### GET Get All Sets [GET]    
++ Response 200 (application/json)
+        
+        {  
+        "sets":[  
+          {  
+            "code":"KTK",
+            "name":"Khans of Tarkir",
+            "type":"expansion",
+            "border":"black",
+            "mkm_id":1495,
+            "booster":[  
+              [  
+                "rare",
+                "mythic rare"
+              ],
+              "uncommon",
+              "uncommon",
+              "uncommon",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "land",
+              "marketing"
+            ],
+            "mkm_name":"Khans of Tarkir",
+            "releaseDate":"2014-09-26",
+            "magicCardsInfoCode":"ktk",
+            "block":"Khans of Tarkir"
+          },
+          { ... }.
+          { ... }
+        ]
+        }
+
+## Get a Specific Set [/v1/sets/{code}]
+<code>/v1/sets/?code={code}</code><br>
 This endpoint retrieves a specific set by its set code.
 
-+ Headers
-    + Link: Link headers with prev, last, next, first links (when appropriate)
-    + Page-Size: The page size for the request
-    + Count: The number of elements returned
-    + Total-Count: The total number of elements (across all pages)
-    + Ratelimit-Limit: The ratelimit for a given user
-    + Ratelimit-Remaining: The number of requests left before the ratelimit is exceeded.
-    
+#### Parameters
+- <code>code</code> *(Integer, required)* - get a specific set by its set code
+
 + Parameters
-    + code: set code
-    
+    + code: 12345 (Integer) set code
+
+### GET Get a Specific Set [GET]    
 + Response 200 (application/json)
-    {  
-      "set":{  
-        "code":"KTK",
-        "name":"Khans of Tarkir",
-        "type":"expansion",
-        "border":"black",
-        "mkm_id":1495,
-        "booster":[  
-          [  
-            "rare",
-            "mythic rare"
-          ],
-          "uncommon",
-          "uncommon",
-          "uncommon",
-          "common",
-          "common",
-          "common",
-          "common",
-          "common",
-          "common",
-          "common",
-          "common",
-          "common",
-          "common",
-          "land",
-          "marketing"
-        ],
-        "mkm_name":"Khans of Tarkir",
-        "releaseDate":"2014-09-26",
-        "magicCardsInfoCode":"ktk",
-        "block":"Khans of Tarkir"
-      }
-    }
     
-## Generate a Booster Pack [GET https://api.magicthegathering.io/v1/sets/<code>/booster]
+        {  
+            "set":{  
+            "code":"KTK",
+            "name":"Khans of Tarkir",
+            "type":"expansion",
+            "border":"black",
+            "mkm_id":1495,
+            "booster":[  
+              [  
+                "rare",
+                "mythic rare"
+              ],
+              "uncommon",
+              "uncommon",
+              "uncommon",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "common",
+              "land",
+              "marketing"
+            ],
+            "mkm_name":"Khans of Tarkir",
+            "releaseDate":"2014-09-26",
+            "magicCardsInfoCode":"ktk",
+            "block":"Khans of Tarkir"
+            }
+        }
+
+## Generate a Booster Pack [/v1/sets/{code}/booster]
+<code>/v1/sets/code={code}/booster</code><br>
 This endpoint generates a booster pack for a specific set
 
-+ Headers
-    + Link: Link headers with prev, last, next, first links (when appropriate)
-    + Page-Size: The page size for the request
-    + Count: The number of elements returned
-    + Total-Count: The total number of elements (across all pages)
-    + Ratelimit-Limit: The ratelimit for a given user
-    + Ratelimit-Remaining: The number of requests left before the ratelimit is exceeded.
-    
+#### Parameters
+- <code>code</code> *(Integer, required)* - get a specific set by its set code
+
 + Parameters
-    + code: set code
+    + code: 12345 (Integer) set code
+    
 
-# Card Types [https://api.magicthegathering.io/v1/types]
+### GET Generate a Booster Pack [GET] 
++ Response 200
 
-## Get All Types [GET https://api.magicthegathering.io/v1/types]
+        {
+            cards = Set.generate_booster('ktk')
+        }
+
+
+# Group Card Types
+
+## Get All Types [/v1/types]
+<code>/v1/types?</code><br>
 This endpoint retrieves all card types
 
-+ Headers
-    + Link: Link headers with prev, last, next, first links (when appropriate)
-    + Page-Size: The page size for the request
-    + Count: The number of elements returned
-    + Total-Count: The total number of elements (across all pages)
-    + Ratelimit-Limit: The ratelimit for a given user
-    + Ratelimit-Remaining: The number of requests left before the ratelimit is exceeded.
-    
+### GET Get All Types [GET]    
 + Response 200 (application/json)
-    {  
-      "types":[  
-        "Artifact",
-        "Conspiracy",
-        "Creature",
-        "Enchantment",
-        "Instant",
-        "Land",
-        "Phenomenon",
-        "Plane",
-        "Planeswalker",
-        "Scheme",
-        "Sorcery",
-        "Tribal",
-        "Vanguard"
-      ]
-    }
+    
+        {  
+          "types":[  
+            "Artifact",
+            "Conspiracy",
+            "Creature",
+            "Enchantment",
+            "Instant",
+            "Land",
+            "Phenomenon",
+            "Plane",
+            "Planeswalker",
+            "Scheme",
+            "Sorcery",
+            "Tribal",
+            "Vanguard"
+          ]
+        }
 
-## Get All Supertypes [GET https://api.magicthegathering.io/v1/supertypes]
+## Get All Supertypes [/v1/supertypes]
+<code>/v1/supertypes?</code><br>
 This endpoint retrieves all card supertypes
 
-+ Headers
-    + Link: Link headers with prev, last, next, first links (when appropriate)
-    + Page-Size: The page size for the request
-    + Count: The number of elements returned
-    + Total-Count: The total number of elements (across all pages)
-    + Ratelimit-Limit: The ratelimit for a given user
-    + Ratelimit-Remaining: The number of requests left before the ratelimit is exceeded.
-    
+### GET Get All Supertypes [GET]     
 + Response 200 (application/json)
-    {  
-      "supertypes":[  
-        "Basic",
-        "Legendary",
-        "Ongoing",
-        "Snow",
-        "World"
-      ]
-    }
+    
+        {  
+          "supertypes":[  
+            "Basic",
+            "Legendary",
+            "Ongoing",
+            "Snow",
+            "World"
+          ]
+        }
 
-## Get All Subtypes [GET https://api.magicthegathering.io/v1/subtypes]
+## Get All Subtypes [/v1/subtypes]
+<code>/v1/subtypes?</code><br>
 This endpoint retrieves all card subtypes
 
-+ Headers
-    + Link: Link headers with prev, last, next, first links (when appropriate)
-    + Page-Size: The page size for the request
-    + Count: The number of elements returned
-    + Total-Count: The total number of elements (across all pages)
-    + Ratelimit-Limit: The ratelimit for a given user
-    + Ratelimit-Remaining: The number of requests left before the ratelimit is exceeded.
-    
+### GET Get All Subtypes [GET]    
 + Response 200 (application/json)
-    {  
-      "subtypes":[  
-        "Advisor",
-        "Ajani",
-        "Alara",
-        "Ally",
-        "Angel",
-        "Antelope",
-        "Ape",
-        "Arcane"
-      ]
-    }
+    
+        {  
+          "subtypes":[  
+            "Advisor",
+            "Ajani",
+            "Alara",
+            "Ally",
+            "Angel",
+            "Antelope",
+            "Ape",
+            "Arcane"
+          ]
+        }
 
-# Formats [https://api.magicthegathering.io/v1/formats]
+# Group Formats
 
-## Get All Formats [GET https://api.magicthegathering.io/v1/formats]
+## Get All Formats [/v1/formats]
+<code>/v1/formats?</code><br>
 This endpoint retrieves all game formats.
 
-+ Headers
-    + Link: Link headers with prev, last, next, first links (when appropriate)
-    + Page-Size: The page size for the request
-    + Count: The number of elements returned
-    + Total-Count: The total number of elements (across all pages)
-    + Ratelimit-Limit: The ratelimit for a given user
-    + Ratelimit-Remaining: The number of requests left before the ratelimit is exceeded.
-    
+### GET Get All Formats [GET]    
 + Response 200 (application/json)
-    {  
-      "formats":[  
-        "Battle for Zendikar Block",
-        "Classic",
-        "Commander",
-        "Freeform",
-        "Standard",
-        ...
-      ]
-    }
+    
+        {  
+          "formats":[  
+            "Battle for Zendikar Block",
+            "Classic",
+            "Commander",
+            "Freeform",
+            "Standard",
+            ...
+          ]
+        }
