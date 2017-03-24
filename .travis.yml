@@ -18,6 +18,7 @@ install:
     - pip3 install flask_sqlalchemy
     - pip install flask_sqlalchemy
     - pip install flask -f lib
+    - pip3 install flask -f lib
 
 before_script:
     - uname -a
