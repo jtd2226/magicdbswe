@@ -1,3 +1,22 @@
+commit 3549ad8993f303d2b4b18a5f2e2cb1f17fe7b069
+Merge: 0ac88e0 5f38167
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:08:01 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 0ac88e0d81e8240e8a022b7789b99a2f1ca53a2d
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:07:43 2017 -0500
+
+    updated file names
+
+commit 5f38167fd565c357409ddaf02313e391851d2bcf
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 23 19:05:33 2017 -0500
+
+    Fixed Unit Test, added number of issues and unit tests per user
+
 commit fdb2d765e78ad57b25dc7b2a11b0ec66dd4755f4
 Author: jtd2226 <joeldavi@utexas.edu>
 Date:   Thu Mar 23 18:58:09 2017 -0500
