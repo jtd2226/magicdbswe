@@ -21,7 +21,13 @@ body {
   width: 50%;
 }
 
-#tools-sec, #report, #introduction, #design-sec, #hosting{
+#tools-sec, #introduction, #design-sec, #hosting, #report-toc {
+  width: 75%;
+  text-align: left;
+}
+
+#report {
+  margin-top: 15px;
   width: 75%;
   text-align: left;
 }
