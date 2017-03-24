@@ -14,11 +14,10 @@ install:
     - pip install numpy
     - pip install pylint
     - pip3 install flask
-    - pip3 install sqlalchemy
+    - pip3 install Flask
     - pip3 install flask_sqlalchemy
-    - pip install flask_sqlalchemy
-    - pip install flask -f lib
-    - pip3 install flask -f lib
+    - pip install Flask-SQLAlchemy
+    - pip3 install Flask-SQLAlchemy
 
 before_script:
     - uname -a
