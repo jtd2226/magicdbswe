@@ -7,7 +7,7 @@ FILES :=            \
     app/TestMagic.py  \
     .travis.yml     \
     IDB1.html    \
-    IDB.pdf		\
+    IDB1.pdf		\
 
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
