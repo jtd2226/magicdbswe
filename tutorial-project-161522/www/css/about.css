@@ -21,7 +21,7 @@ body {
   width: 50%;
 }
 
-#tools-sec {
+#tools-sec, #report, #introduction, #design-sec, #hosting{
   width: 75%;
   text-align: left;
 }

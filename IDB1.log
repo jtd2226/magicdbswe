@@ -1,3 +1,83 @@
+commit 61b2ba9e8a2d2a39016ca8be1956ba547a5c73e6
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 23 20:05:49 2017 -0500
+
+    Added in Technical Report
+
+commit 20bf77c9b17f3a8ca2febbedbd6a2ce146a52cdb
+Merge: 062c31f 9865571
+Author: Nestor Castro <nestorcastro@wireless-10-147-171-81.public.utexas.edu>
+Date:   Thu Mar 23 19:38:17 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 062c31f07be5531f3a01bb2969da2ea7425d790d
+Author: Nestor Castro <nestorcastro@wireless-10-147-171-81.public.utexas.edu>
+Date:   Thu Mar 23 19:38:12 2017 -0500
+
+    added subtype carousel
+
+commit 9865571d26b3ba6ca9968a1fa2f5b1cc956426d6
+Merge: 767ee70 adbe6e2
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:34:13 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 767ee70652243a495eaa390645f68830f155327c
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:33:59 2017 -0500
+
+    jfklsadjn
+
+commit adbe6e22af43df4aa8c64332d0763766ac88d213
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Mar 23 19:33:32 2017 -0500
+
+    still salty that I can't use tables, but I added more stuff and instance pages.
+
+commit e9c7035f17a38a0d2b48aa72b8112405714d5de6
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:31:26 2017 -0500
+
+    trav
+
+commit 395ad34f2a5490c2371f883b142fa0c3b39ddc58
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:29:16 2017 -0500
+
+    travis things
+
+commit 803fde7e39adfadb7dea2277da0727d08a1eb62b
+Author: Nilo Lisboa <nilobl@wireless-10-147-93-152.public.utexas.edu>
+Date:   Thu Mar 23 19:26:35 2017 -0500
+
+    UML Diagram
+
+commit 590e9d4f50cfe75193cc768d1575a9988c316b75
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:25:09 2017 -0500
+
+    travis ily
+
+commit ec52e8c41c2fb75958e7eef929802113b8740cee
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:18:38 2017 -0500
+
+    pleeeeez travvy
+
+commit 752eccd2ea386e9b0c3c099b81d8a315d6de2330
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:16:29 2017 -0500
+
+    travis pls
+
+commit de346398b5a562a459efa2eef1bbb5fee28c4e82
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Mar 23 19:10:27 2017 -0500
+
+    minor makefile change
+
 commit 3549ad8993f303d2b4b18a5f2e2cb1f17fe7b069
 Merge: 0ac88e0 5f38167
 Author: jtd2226 <joeldavi@utexas.edu>
