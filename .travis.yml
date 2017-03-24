@@ -13,9 +13,9 @@ install:
     - pip install coverage
     - pip install numpy
     - pip install pylint
-    - pip3 install flask -f lib
-    - pip3 install sqlalchemy -f lib
-    - pip3 install flask_sqlalchemy -f lib
+    - pip3 install flask 
+    - pip3 install sqlalchemy 
+    - pip3 install flask_sqlalchemy 
 
 before_script:
     - uname -a
@@ -25,4 +25,3 @@ before_script:
 script:
     - date
     - ls -al
-    - make test
