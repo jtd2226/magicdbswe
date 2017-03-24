@@ -42,12 +42,12 @@ endif
 .pylintrc:
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
-Magic.html: app/models.py
+IDB1.html: app/models.py
 	pydoc3 -w app/models.py
 	mv models.html IDB1.html
 	rm -f models.html
 
-Magic.log:
+IDB1.log:
 	git log > IDB1.log
 
 TestMagic.tmp: models.py .pylintrc 	#TestMagic.py 
@@ -98,7 +98,7 @@ status:
 	git remote -v
 	git status
 
-test: Magic.html Magic.log #testmagic
+test: IDB1.html IDB1.log #testmagic
 	ls -al
 	make check
 

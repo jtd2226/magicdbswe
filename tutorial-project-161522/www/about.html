@@ -181,7 +181,7 @@
 			<h4><em>Use Cases</em></h4>
 			<p>There are many use cases for such a database among players. Perhaps a player is looking for a specific card to put in their deck, but is unsure of what that card does, in which case a user can look for that card in our database to read up on its characteristics. Alternatively, Magic has many formats of play, and some of them can only make use of specific card sets. Standard format, the most popular, only allows players to build decks with the 2 most recent years of expansion releases. A player attempting to make standard a standard deck would look for cards among the sets that are permitted in that format by filtering our cards based on the sets they belong to. Some players specifically want cards that match an artstyle they like or just collect cards they think are pretty. In this case, a player would be able to look on our artist table and view which cards they worked on. Lastly, players could be trying to make Tribal decks, which look for cards of specific subtypes with the purpose of synergizing their effects. A user would then be able to visit our subtype table, and check out cards filtered by subtype, additionally, if they don’t even know which subtype they want to pick for a deck, there will be example cards of those subtypes available for users to view.</p>
 
-			<img src="images/UML.png" style = "width:30%" align="left">
+			<img src="images/UML.png" style = "width:25%; margin-right: 10px;" align="left">
 			<h4><em>Models</em></h4>
 			<p>Cards - This model contains information specifically regarding cards as implied in a card game, they are of immense importance and thus, have a large number of attributes. Cards have unique IDs identifying each of them</p>report
 			<p>Set - This model contains information pertaining to sets, which in turn, are like containers upon which cards are released in MtG. Sets are a very helpful way to distinguish cards from each other. The Set model also has relations to all other models.</p>
@@ -195,8 +195,8 @@
 			[Set] many-to-many [Artist]<br>
 			[Set] many-to-many [Subtype]</p>
 		</div>
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<div id="design-sec" class="about-section">
+
+		<div id="design-sec" class="about-section" style="clear: both;">
 			<h2>API</h2>
 			<br>
 			<p>The Magic: The Gathering API we are using is structured in a way that allows for easy searching through cards and sets and works with a variety of parameters. The database is grouped into four pillars: Cards, Sets, Card Types, and Formats. </p>
