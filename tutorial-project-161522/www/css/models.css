@@ -17,3 +17,12 @@ body {
 .model-inst:hover {
 	background: #d8d8d8;
 }
+
+.btn-group {
+	margin-top: 3%;
+	left: 1.5%;
+}
+
+.btn-group ol {
+	margin: 10px;
+}
