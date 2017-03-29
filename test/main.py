@@ -7,9 +7,42 @@ app = Flask(__name__)
 
 
 @app.route('/')
+@app.route('/index')
 def hello():
-        return render_template('index.html')
+    return render_template('index.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+#--------CARDS------------
+@app.route('/cards')
+def cards():
+    return render_template('cards.html')
+
+#Cards_instance
+
+#--------ARTISTS----------
+@app.route('/artists')
+def artists():
+    return render_template('artists.html')
+
+#artists_instance
+
+#--------SETS--------------
+@app.route('/sets')
+def sets():
+    return render_template('sets.html')
+
+
+#sets_instance
+
+#-------SUBTYPES-----------
+@app.route('/subtypes')
+def subtpes():
+    return render_template('subtypes.html')
+
+#subtypes_instance
 
 @app.route('/form')
 def form():
