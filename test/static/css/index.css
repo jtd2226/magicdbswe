@@ -1,7 +1,7 @@
 .splash {
     background-image: url(../images/genesis.jpg);
     background-repeat: no-repeat;
-    background-size: 100vw 100vh;
+    background-size: cover;
 }
 
 
@@ -24,7 +24,7 @@
 .col-md-12 {
   margin: 0;
   padding-top: 64px;
-  padding-bottom: 500px;
+  padding-bottom: 200px;
 }
 
 #myCarousel {
