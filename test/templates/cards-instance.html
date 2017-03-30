@@ -1,111 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		
-		<title>Cards - MagicDB</title>
+{%extends "base.html"%}
 
-		<!-- Bootstrap -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="css/instance.css">
-	</head>
+{%block content%}
 
-
-	<body>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">MagicDB</a>
-				</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><a href="index.html">Home</a></li>
-						<li class="active"><a href="cards.html">Cards</a></li>
-						<li><a href="sets.html">Sets</a></li>
-						<li><a href="subtypes.html">Subtypes</a></li>
-						<li><a href="artists.html">Artists</a></li>
-						<li><a href="about.html">About</a></li>
-					</ul>
-				</div><!-- /.navbar-collapse -->
-			</div><!-- /.container-fluid -->
-		</nav>
-		<div id="instance-main">
-		</div>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-		<script>
-			var getUrlParams = function() {
-			    var vars = [], hash;
-			    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-			    for(var i = 0; i < hashes.length; i++)
-			    {
-			        hash = hashes[i].split('=');
-			        vars.push(hash[0]);
-			        vars[hash[0]] = hash[1];
-			    }
-			    return vars;
-			}
+<link rel="stylesheet" type="text/css" href="css/instance.css">
+<div id="instance-main">
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+	var getUrlParams = function() {
+	    var vars = [], hash;
+	    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	    for(var i = 0; i < hashes.length; i++)
+	    {
+	        hash = hashes[i].split('=');
+	        vars.push(hash[0]);
+	        vars[hash[0]] = hash[1];
+	    }
+	    return vars;
+	}
 
 
-			var xmlHttp = new XMLHttpRequest();
+	var xmlHttp = new XMLHttpRequest();
 
-			xmlHttp.onreadystatechange = function() {
-			    if (this.readyState == 4 && this.status == 200) { //Successful GET request
-			        var card = JSON.parse(this.responseText);
+	xmlHttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) { //Successful GET request
+	        var card = JSON.parse(this.responseText);
 
-			        // Append to the DOM
-					$("#instance-main").append("<h1>" + card["card"]["name"] + "</h1>");
-					$("#instance-main").append("<img src=" + card["card"]["imageUrl"] + ">");
-					
-					text = card["card"]["text"] || "N/A"
-					$("#instance-main").append("<h4><strong>Text: </strong>" + text + "</h4>");
+	        // Append to the DOM
+			$("#instance-main").append("<h1>" + card["card"]["name"] + "</h1>");
+			$("#instance-main").append("<img src=" + card["card"]["imageUrl"] + ">");
+			
+			text = card["card"]["text"] || "N/A"
+			$("#instance-main").append("<h4><strong>Text: </strong>" + text + "</h4>");
 
-					type = card["card"]["types"] || "N/A"
-					$("#instance-main").append("<h4><strong>Types: </strong>" + type + "</h4>");
+			type = card["card"]["types"] || "N/A"
+			$("#instance-main").append("<h4><strong>Types: </strong>" + type + "</h4>");
 
-					subtype = card["card"]["subtypes"] || "N/A"
-					$("#instance-main").append("<h4><strong>Subtypes: </strong>" + subtype + "</h4>");
+			subtype = card["card"]["subtypes"] || "N/A"
+			$("#instance-main").append("<h4><strong>Subtypes: </strong>" + subtype + "</h4>");
 
-					setName = card["card"]["setName"] || "N/A"
-					$("#instance-main").append("<h4><strong>Set Name: </strong>" + setName + "</h4>");
+			setName = card["card"]["setName"] || "N/A"
+			$("#instance-main").append("<h4><strong>Set Name: </strong>" + setName + "</h4>");
 
-					manaCost = card["card"]["cmc"] || "N/A"
-					$("#instance-main").append("<h4><strong>Mana Cost: </strong>" + manaCost + "</h4>");
+			manaCost = card["card"]["cmc"] || "N/A"
+			$("#instance-main").append("<h4><strong>Mana Cost: </strong>" + manaCost + "</h4>");
 
-					colors = card["card"]["colors"] || "N/A"
-					$("#instance-main").append("<h4><strong>Colors: </strong>" + colors + "</h4>");
+			colors = card["card"]["colors"] || "N/A"
+			$("#instance-main").append("<h4><strong>Colors: </strong>" + colors + "</h4>");
 
-					power = card["card"]["power"] || "N/A"
-					$("#instance-main").append("<h4><strong>Power: </strong>" + power + "</h4>");
+			power = card["card"]["power"] || "N/A"
+			$("#instance-main").append("<h4><strong>Power: </strong>" + power + "</h4>");
 
-					toughness = card["card"]["toughness"] || "N/A"
-					$("#instance-main").append("<h4><strong>Toughness: </strong>" + toughness + "</h4>");
+			toughness = card["card"]["toughness"] || "N/A"
+			$("#instance-main").append("<h4><strong>Toughness: </strong>" + toughness + "</h4>");
 
-					rarity = card["card"]["rarity"] || "N/A"
-					$("#instance-main").append("<h4><strong>Rarity: </strong>" + rarity + "</h4>");
+			rarity = card["card"]["rarity"] || "N/A"
+			$("#instance-main").append("<h4><strong>Rarity: </strong>" + rarity + "</h4>");
 
-					artist = card["card"]["artist"] || "N/A"
-					$("#instance-main").append("<h4><strong>Artist: </strong>" + artist + "</h4>");
-			    }
-			};
+			artist = card["card"]["artist"] || "N/A"
+			$("#instance-main").append("<h4><strong>Artist: </strong>" + artist + "</h4>");
+	    }
+	};
 
-			var cardId = getUrlParams()["id"];
-		    xmlHttp.open("GET", "https://api.magicthegathering.io/v1/cards/" + cardId, true); 
-		    xmlHttp.send(null);
-		</script>
-	<body>
-</html>
+	var cardId = getUrlParams()["id"];
+    xmlHttp.open("GET", "https://api.magicthegathering.io/v1/cards/" + cardId, true); 
+    xmlHttp.send(null);
+</script>
+
+{% endblock%}
