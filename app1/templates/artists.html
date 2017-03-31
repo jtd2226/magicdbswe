@@ -1,0 +1,47 @@
+{%extends "base.html"%}
+
+{%block content%}
+	<link rel="stylesheet" type="text/css" href="../static/css/models.css">
+	<div class="magicdb-header">
+		<h1>Artists</h1>
+		<h3>Magic the Gathering is unique in such a way that each card is designed by one of many individual artists, here are some of those artists. </h3>
+		<div class="btn-group">
+		  <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Sort By: <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu">
+		    <ol>Name</ol>
+		    <ol>Number of Cards</ol>
+		    <ol>Number of Sets</ol>
+		  </ul>
+		</div>
+		<div class="btn-group">
+		  <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Filter By: <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu">
+		    <ol><label class="checkbox-inline"><input type="checkbox" value="">Name</label><input type="text" class="form-control" id="usr"></ol>
+		    <ol><label class="checkbox-inline"><input type="checkbox" value="">Number of Cards</label><input type="text" class="form-control" id="usr"></ol>
+		    <ol><label class="checkbox-inline"><input type="checkbox" value="">Number of Sets</label><input type="text" class="form-control" id="usr"></ol>
+		  </ul>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=413585&type=card" class="img-fluid">
+			<h4><a href="artists-instance.html?name=&quot;Zach Stella&quot;&id=b611177dca2da89d2915f6ac4b5268a1426086cb">Zach Stella</h4>
+		</div>
+
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=425915&type=card" class="img-fluid">
+			<h4><a href="artists-instance.html?name=&quot;Franz Vohwinkel&quot;&id=6e978e23a63cefdfaa34aee0bb4bdadd2ddfd459">Franz Vohwinkel</a></h4>
+		</div>
+
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=382866&type=card" class="img-fluid">
+			<h4><a href="artists-instance.html?name=&quot;Chris Rahn&quot;&id=6ad6463d56da447ab490a1a2b2b8a18759befc5f">Chris Rahn</a></h4>
+		</div>
+	</div>
+
+{%endblock%}

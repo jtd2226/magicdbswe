@@ -1,0 +1,46 @@
+body {
+  background: #e4e4e4;
+}
+
+.col-lg-4 {
+  width: 100%;
+  text-align: center;
+}
+
+.about-section {
+  margin: auto;
+  text-align: center;
+}
+
+#description {
+  width: 75%;
+  padding-bottom: 4%;
+}
+
+#bio-section, #stats, #data-sec {
+  width: 50%;
+}
+
+#tools-sec, #introduction, #design-sec, #hosting, #report-toc {
+  width: 75%;
+  text-align: left;
+}
+
+#report {
+  margin-top: 15px;
+  width: 75%;
+  text-align: left;
+}
+
+#tools-sec h1 {
+  text-align: center;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  margin-top: 15px;
+  background-color: #ccc;
+}

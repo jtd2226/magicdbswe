@@ -1,0 +1,17 @@
+body {
+  background: #e4e4e4;
+}
+
+h1 {
+	margin-bottom: 3%;
+}
+
+#instance-main {
+  text-align: center;
+}
+
+img {
+	display: block;
+	margin: auto;
+	margin-bottom: 2%;
+}
