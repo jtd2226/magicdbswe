@@ -1,4 +1,4 @@
-#!/v/filer4b/v38q001/matthewm/WebApp/magicdbswe/test/flask/bin/python
+#!/v/filer4b/v38q001/matthewm/WebApp/magicdbswe/app/flask/bin/python
 
 import sys
 import getopt
