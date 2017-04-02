@@ -17,7 +17,6 @@ install:
     - pip install Jinja2
     - pip install Werkzeug
     - pip install itsdangerous
-    - pip install wsgiref
     - pip install Flask-restful 
     - pip install Flask_SQLAlchemy 
 
