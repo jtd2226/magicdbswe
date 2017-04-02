@@ -13,10 +13,13 @@ install:
     - pip install coverage
     - pip install numpy
     - pip install pylint
-    - pip install flask
-    - pip install flask-restful 
-    - pip install sqlalchemy 
-    - pip install flask_sqlalchemy 
+    - pip install Flask
+    - pip install Jinja2
+    - pip install Werkzeug
+    - pip install itsdangerous
+    - pip install wsgiref
+    - pip install Flask-restful 
+    - pip install Flask_SQLAlchemy 
 
 before_script:
     - uname -a
