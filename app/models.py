@@ -5,8 +5,6 @@
 #from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
-
 db = SQLAlchemy(app)
 STG_LEN = 12
 NAME_LEN = 32
