@@ -13,12 +13,9 @@ install:
     - pip install coverage
     - pip install numpy
     - pip install pylint
-    - pip install Flask
     - pip install Jinja2
     - pip install Werkzeug
-    - pip install itsdangerous
-    - pip install Flask-restful 
-    - pip install Flask_SQLAlchemy 
+    - pip install itsdangerous 
 
 before_script:
     - uname -a
