@@ -1,9 +1,9 @@
 import logging
 
 from flask import Flask, render_template, request
+from models import db
 
-
-app = Flask(__name__)
+#app = Flask(__name__)
 
 
 @app.route('/')

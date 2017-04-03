@@ -2,11 +2,10 @@
 # A Database for Magic the Gathering Cards
 #
 # pylint:disable=invalid-name,line-too-long,no-member,too-few-public-methods,locally-disabled
-from Flask import Flask
+# from Flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-
 db = SQLAlchemy(app)
 STG_LEN = 12
 NAME_LEN = 32
