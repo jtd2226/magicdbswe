@@ -1,7 +1,10 @@
 import logging
 
 from flask import Flask, render_template, request
-from models import db, app as app
+from models import db
+
+app = Flask(__name__)
+db.init_app(app)
 
 @app.route('/')
 @app.route('/index')

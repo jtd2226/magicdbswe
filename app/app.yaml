@@ -2,6 +2,19 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+env_variables:
+    # Replace user, password, database, and instance connection name with the values obtained
+    # when configuring your Cloud SQL instance.
+    # Username: magicdb
+    # Password: mt***
+    # Database: postgres
+    # Instance connection name: tutorial-project-161522:us-central1:magicinstance
+    SQLALCHEMY_DATABASE_URI: >-
+      postgresql+psycopg2://magicdb:mtgdb@/postgres?host=/cloudsql/tutorial-project-161522:us-central1:magicinstance
+
+beta_settings:
+    cloud_sql_instances: tutorial-project-161522:us-central1:magicinstance
+
 handlers:
 - url: /static
   static_dir: static
