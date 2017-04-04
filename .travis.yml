@@ -5,15 +5,6 @@ language: python
 python:
    - "3.5"
 
-services:
-   - redis
-
-env:
-  - FLASK=0.10.1
-  - FLASK=0.9
-  - FLASK=0.8.1
-  - FLASK=0.7.2
-
 before_install:
     - pip install --upgrade pip
 
@@ -25,8 +16,6 @@ install:
     - pip install Jinja2
     - pip install Werkzeug
     - pip install itsdangerous 
-    - pip install -q Flask==$FLASK
-    - pip install -q -e .
 
 before_script:
     - uname -a

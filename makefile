@@ -98,11 +98,11 @@ status:
 	git remote -v
 	git status
 
-test: IDB1.html IDB1.log #testmagic
+test: #testmagic
 	ls -al
 	make check
 
-logtml: Magic.html Magic.log
+logtml: IDB1.html IDB1.log 
 
 versions:
 	which make
