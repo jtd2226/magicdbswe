@@ -4,7 +4,9 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@35.188.87.113:5432/postgres'
+#?unix_socket=/cloudsql/tutorial-project-161522:us-central1:magicinstance
+#?host=/cloudsql/tutorial-project-161522:us-central1:magicinstance
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@35.188.87.113:5432/magicdb'
 db = SQLAlchemy(app)
 
 import models
@@ -21,7 +23,7 @@ def about():
 
 @app.route('/test')
 def test():
-    text = Test.query.all()
+    text = models.Test.query.all()
     return render_template('test.html',text=text)
 
 #--------CARDS------------
@@ -81,3 +83,6 @@ def server_error(e):
     # Log the error and stacktrace.
     logging.exception('An error occurred during a request.')
     return 'An internal error occurred.', 500
+
+if __name__ == "__main__":
+    app.run(host='127.0.0.1', port=8080, debug=True)
