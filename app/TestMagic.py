@@ -13,8 +13,10 @@
 
 from io import StringIO
 from unittest import main, TestCase
+from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
+from models import db, Card, Set, Artist, Subtype
 
-from models import Card, Set, Artist, SubType
 # -----------
 # TestMagic
 # -----------
@@ -25,217 +27,200 @@ class TestMagic (TestCase):
     # ----
     # CARD
     # ----
-
-    #MODEL EXAMPLE TEST
-    # def test_company_model_2(self):
-    # """Test querying the database by attribute using simple keywords"""
-
-    # with app.test_request_context():
-    #     example1 = Company("id", "name", "summary", "people",
-    #                        "city", "finorgs", "twitter", "website", "logo")
-
-    #     db.session.add(example1)
-    #     db.session.commit()
-
-    #     company = db.session.query(Company).filter_by(name="name").first()
-    #     self.assertEqual(company.city, "city")
-    #     self.assertEqual(company.twitter, "twitter")
-
-    #     db.session.delete(example1)
-    #     db.session.commit()
-
-    #MODEL METHOD EXAMPLE TEST
-    # def test_financial_org_dictionary_1(self):
-    # """Test dictionary method of financial org class"""
-
-    # example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
-    #                         "website", "logo")
-    # dict_rep = example1.dictionary()
-
-    # self.assertEqual(dict_rep['financial_org_id'], "id")
-    # self.assertEqual(dict_rep['name'], "name")
-    # self.assertEqual(dict_rep['summary'], "summary")
-    # self.assertEqual(dict_rep['city'], "city")
-
     def test_card_1(self):
-        with app.test_request_context():
-            example1 = Card("name", "Creature", "Angel", "shine",
-                               "Ham", 5, "Red", "pt", "url", "common", "thomas")
 
-            db.session.add(example1)
-            db.session.commit()
+    # cardId = db.Column(db.Integer, primary_key=True)
+    # name = db.Column(db.String(MED_LEN))
+    # mainType = db.Column(db.String(NAME_LEN))
+    # subtype = db.Column(db.String(MED_LEN), db.ForeignKey('subtypes.name'))
+    # text = db.Column(db.String(TEXT_LEN), nullable=True)
+    # expansionSet = db.Column(db.String(STG_LEN), db.ForeignKey('Sets.code'))
+    # manaCost = db.Column(db.Integer, nullable=True)
+    # color = db.Column(db.String(SHORT_LEN), nullable=True)
+    # power = db.Column(db.Integer, nullable=True)
+    # toughness = db.Column(db.Integer, nullable=True)
+    # art = db.Column(db.String(MED_LEN))
+    # rarity = db.Column(db.String(STG_LEN))
+    # artist = db.Column(db.String(MED_LEN), db.ForeignKey('Artists.name'))
+        app = Flask(__name__)
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@35.188.87.113:5432/magicdb'
+        db = SQLAlchemy(app)
 
-            card = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(card.name, "name")
-            self.assertEqual(card.mainType, "Creature")
+        example1 = Card(123, 'name', 'Creature', 'Angel', 'shine', '1234567891', 5, 'Red', 1, 1, 'url', 'common', 'thomas')
+        db.session.add(example1)
+        db.session.commit()
 
-            db.session.delete(example1)
-            db.session.commit()
+        card = db.session.query(Card).filter_by(name="name").first()
+        self.assertEqual(card.name, "name")
+        self.assertEqual(card.mainType, "Creature")
 
-    def test_card_2(self):
-        with app.test_request_context():
-            example1 = Card("name", "Creature", "Angel", "shine",
-                               "Ham", 5, "Red", "pt", "url", "common", "thomas")
+        db.session.delete(example1)
+        db.session.commit()
 
-            db.session.add(example1)
-            db.session.commit()
+    # def test_card_2(self):
+    #     with app.test_request_context():
+    #         example1 = Card("name", "Creature", "Angel", "shine",
+    #                            "Ham", 5, "Red", "pt", "url", "common", "thomas")
 
-            card = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(card.SubType, "Angel")
-            self.assertEqual(card.text, "shine")
+    #         db.session.add(example1)
+    #         db.session.commit()
 
-            db.session.delete(example1)
-            db.session.commit()
+    #         card = db.session.query(Company).filter_by(name="name").first()
+    #         self.assertEqual(card.SubType, "Angel")
+    #         self.assertEqual(card.text, "shine")
 
-    def test_card_3(self):
-        with app.test_request_context():
-            example1 = Card("name", "Creature", "Angel", "shine",
-                               "Ham", 5, "Red", "pt", "url", "common", "thomas")
+    #         db.session.delete(example1)
+    #         db.session.commit()
 
-            db.session.add(example1)
-            db.session.commit()
+    # def test_card_3(self):
+    #     with app.test_request_context():
+    #         example1 = Card("name", "Creature", "Angel", "shine",
+    #                            "Ham", 5, "Red", "pt", "url", "common", "thomas")
 
-            card = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(card.color, "Red")
-            self.assertEqual(card.pt, "pt")
+    #         db.session.add(example1)
+    #         db.session.commit()
 
-            db.session.delete(example1)
-            db.session.commit()
+    #         card = db.session.query(Company).filter_by(name="name").first()
+    #         self.assertEqual(card.color, "Red")
+    #         self.assertEqual(card.pt, "pt")
 
-    def test_set_1(self):
-        with app.test_request_context():
-            example1 = Set("name", "date", "block", "card",
-                               5,"promo", "artist" )
+    #         db.session.delete(example1)
+    #         db.session.commit()
 
-            db.session.add(example1)
-            db.session.commit()
+    # def test_set_1(self):
+    #     with app.test_request_context():
+    #         example1 = Set("name", "date", "block", "card",
+    #                            5,"promo", "artist" )
 
-            setz = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(setz.name, "name")
-            self.assertEqual(setz.block, "block")
+    #         db.session.add(example1)
+    #         db.session.commit()
 
-            db.session.delete(example1)
-            db.session.commit()
+    #         setz = db.session.query(Company).filter_by(name="name").first()
+    #         self.assertEqual(setz.name, "name")
+    #         self.assertEqual(setz.block, "block")
 
-    def test_set_2(self):
-        with app.test_request_context():
-            example1 = Set("name", "date", "block", "card",
-                               5,"promo", "artist" )
+    #         db.session.delete(example1)
+    #         db.session.commit()
 
-            db.session.add(example1)
-            db.session.commit()
+    # def test_set_2(self):
+    #     with app.test_request_context():
+    #         example1 = Set("name", "date", "block", "card",
+    #                            5,"promo", "artist" )
 
-            setz = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(setz.numCards, 5)
-            self.assertEqual(setz.promo, "promo")
+    #         db.session.add(example1)
+    #         db.session.commit()
 
-            db.session.delete(example1)
-            db.session.commit()
+    #         setz = db.session.query(Company).filter_by(name="name").first()
+    #         self.assertEqual(setz.numCards, 5)
+    #         self.assertEqual(setz.promo, "promo")
 
-    def test_set_3(self):
-        with app.test_request_context():
-            example1 = Set("name", "date", "block", "card",
-                               5,"promo", "artist" )
+    #         db.session.delete(example1)
+    #         db.session.commit()
 
-            db.session.add(example1)
-            db.session.commit()
+    # def test_set_3(self):
+    #     with app.test_request_context():
+    #         example1 = Set("name", "date", "block", "card",
+    #                            5,"promo", "artist" )
 
-            setz = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(setz.cards, "card")
-            self.assertEqual(setz.rDate, "date")
+    #         db.session.add(example1)
+    #         db.session.commit()
 
-            db.session.delete(example1)
-            db.session.commit()
+    #         setz = db.session.query(Company).filter_by(name="name").first()
+    #         self.assertEqual(setz.cards, "card")
+    #         self.assertEqual(setz.rDate, "date")
 
-    def test_artist_1(self):
-        with app.test_request_context():
-            example1 = Artist("name", 10, 5, "card",
-                               "sets")
+    #         db.session.delete(example1)
+    #         db.session.commit()
 
-            db.session.add(example1)
-            db.session.commit()
+    # def test_artist_1(self):
+    #     with app.test_request_context():
+    #         example1 = Artist("name", 10, 5, "card",
+    #                            "sets")
 
-            artist = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(artist.name, "name")
-            self.assertEqual(artist.numCards, 10)
+    #         db.session.add(example1)
+    #         db.session.commit()
 
-            db.session.delete(example1)
-            db.session.commit()
-    
-    def test_artist_2(self):
-        with app.test_request_context():
-            example1 = Artist("name", 10, 5, "card",
-                               "sets")
+    #         artist = db.session.query(Company).filter_by(name="name").first()
+    #         self.assertEqual(artist.name, "name")
+    #         self.assertEqual(artist.numCards, 10)
 
-            db.session.add(example1)
-            db.session.commit()
+    #         db.session.delete(example1)
+    #         db.session.commit()
 
-            artist = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(artist.numSets, 5)
-            self.assertEqual(artist.numCards, 10)
+    # def test_artist_2(self):
+    #     with app.test_request_context():
+    #         example1 = Artist("name", 10, 5, "card",
+    #                            "sets")
 
-            db.session.delete(example1)
-            db.session.commit()
+    #         db.session.add(example1)
+    #         db.session.commit()
 
-    def test_artist_3(self):
-        with app.test_request_context():
-            example1 = Artist("name", 10, 5, "card",
-                               "sets")
+    #         artist = db.session.query(Company).filter_by(name="name").first()
+    #         self.assertEqual(artist.numSets, 5)
+    #         self.assertEqual(artist.numCards, 10)
 
-            db.session.add(example1)
-            db.session.commit()
+    #         db.session.delete(example1)
+    #         db.session.commit()
 
-            artist = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(artist.cards, "card")
-            self.assertEqual(artist.sets, "sets")
+    # def test_artist_3(self):
+    #     with app.test_request_context():
+    #         example1 = Artist("name", 10, 5, "card",
+    #                            "sets")
 
-            db.session.delete(example1)
-            db.session.commit()
+    #         db.session.add(example1)
+    #         db.session.commit()
 
-    def test_subType_1(self):
-        with app.test_request_context():
-            example1 = SubType("name", 10, "link", "cardlink",
-                               "Thomas", "setlink")
+    #         artist = db.session.query(Company).filter_by(name="name").first()
+    #         self.assertEqual(artist.cards, "card")
+    #         self.assertEqual(artist.sets, "sets")
 
-            db.session.add(example1)
-            db.session.commit()
+    #         db.session.delete(example1)
+    #         db.session.commit()
 
-            subType = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(subType.name, "name")
-            self.assertEqual(subType.numCards, 10)
+    # def test_subType_1(self):
+    #     with app.test_request_context():
+    #         example1 = SubType("name", 10, "link", "cardlink",
+    #                            "Thomas", "setlink")
 
-            db.session.delete(example1)
-            db.session.commit()
+    #         db.session.add(example1)
+    #         db.session.commit()
 
-    def test_subType_2(self):
-        with app.test_request_context():
-            example1 = SubType("name", 10, "link", "cardlink",
-                               "Thomas", "setlink")
+    #         subType = db.session.query(Company).filter_by(name="name").first()
+    #         self.assertEqual(subType.name, "name")
+    #         self.assertEqual(subType.numCards, 10)
 
-            db.session.add(example1)
-            db.session.commit()
+    #         db.session.delete(example1)
+    #         db.session.commit()
 
-            subType = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(subType.cards, "link")
-            self.assertEqual(subType.exCard, "cardlink")
+    # def test_subType_2(self):
+    #     with app.test_request_context():
+    #         example1 = SubType("name", 10, "link", "cardlink",
+    #                            "Thomas", "setlink")
 
-            db.session.delete(example1)
-            db.session.commit()
+    #         db.session.add(example1)
+    #         db.session.commit()
 
-    def test_subType_3(self):
-        with app.test_request_context():
-            example1 = SubType("name", 10, "link", "cardlink",
-                               "Thomas", "setlink")
+    #         subType = db.session.query(Company).filter_by(name="name").first()
+    #         self.assertEqual(subType.cards, "link")
+    #         self.assertEqual(subType.exCard, "cardlink")
 
-            db.session.add(example1)
-            db.session.commit()
+    #         db.session.delete(example1)
+    #         db.session.commit()
 
-            subType = db.session.query(Company).filter_by(name="name").first()
-            self.assertEqual(subType.artists, "Thomas")
-            self.assertEqual(subType.sets, "setlink")
+    # def test_subType_3(self):
+    #     with app.test_request_context():
+    #         example1 = SubType("name", 10, "link", "cardlink",
+    #                            "Thomas", "setlink")
 
-            db.session.delete(example1)
-            db.session.commit()
+    #         db.session.add(example1)
+    #         db.session.commit()
+
+    #         subType = db.session.query(Company).filter_by(name="name").first()
+    #         self.assertEqual(subType.artists, "Thomas")
+    #         self.assertEqual(subType.sets, "setlink")
+
+    #         db.session.delete(example1)
+    #         db.session.commit()
 # ----
 # main
 # ----
