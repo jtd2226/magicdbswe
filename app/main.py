@@ -2,11 +2,12 @@ import logging
 
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from models import db
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgresql+psycopg2://magicdb:mtgdb@127.0.0.1:5432/postgres'
-db.init_app(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@127.0.0.1:5432/postgres'
+db = SQLAlchemy(app)
+
+import models
 
 @app.route('/')
 @app.route('/index')
@@ -16,6 +17,12 @@ def hello():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+
+@app.route('/test')
+def test():
+    text = Test.query.all()
+    return render_template('test.html',text=text)
 
 #--------CARDS------------
 @app.route('/cards')
