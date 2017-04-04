@@ -20,6 +20,11 @@ def about():
 def cards():
     return render_template('cards.html')
 
+@app.route('/cards/<name>')
+def cards_instance(name):
+    cards_instance = #QueryHere
+    return render_template()
+
 #Cards_instance
 
 #--------ARTISTS----------
