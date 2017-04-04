@@ -26,7 +26,6 @@ install:
     - pip install Werkzeug
     - pip install itsdangerous 
     - pip install -q Flask==$FLASK
-    - pip install -q -r dev_requirements.txt
     - pip install -q -e .
 
 before_script:
