@@ -1,9 +1,11 @@
 import logging
 
 from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
 from models import db
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgresql+psycopg2://magicdb:mtgdb@127.0.0.1:5432/postgres'
 db.init_app(app)
 
 @app.route('/')
@@ -22,7 +24,7 @@ def cards():
 
 @app.route('/cards/<name>')
 def cards_instance(name):
-    cards_instance = #QueryHere
+    #cards_instance = #QueryHere
     return render_template()
 
 #Cards_instance
