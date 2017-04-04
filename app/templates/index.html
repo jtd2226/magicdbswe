@@ -24,7 +24,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MagicDB</a>
+          <a class="navbar-brand" href="#"><img src="static/images/MainLogo.png" id="bar-logo" style="position: relative; width: 80px; top: -8px;"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,7 +42,7 @@
     </nav>
 
     <div class="overlay">
-      <img src="static/images/MainLogo.png" id="main-logo" style="display: block; margin: auto; width: 50%;">
+      <img src="static/images/MainLogo.png" id="main-logo" style="display: block; margin: auto;">
       <h1 class="index-descr">Magic the Gathering Database</h1>
     </div>
 
@@ -118,11 +118,15 @@
       // A script to dynamically adjust the font size of the text and image on the splash.
       function fontResize(){
         unit = $(window).width() / 100;
-        carouselSize = Math.min(Math.max(10, 2.5 * unit), 40);   
-        indexDescr = Math.min(Math.max(16, 4 * unit), 64);
+        carouselSize = Math.min(Math.max(10, 2.5 * unit), 30);   
+        indexDescr = Math.min(Math.max(16, 4 * unit), 48);   
+        imageWidth = Math.min(Math.max(100, 50 * unit), 450);
 
         $('.carousel-caption h2').css('font-size', carouselSize + 'px');
         $('.index-descr').css('font-size', indexDescr + 'px');
+        document.getElementById("main-logo").width = imageWidth.toString();
+        document.getElementById("main-logo").height = (imageWidth / 3).toString();
+
       }
       fontResize();
       $(window).resize( function () {fontResize()});
