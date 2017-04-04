@@ -5,7 +5,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
+
+# Username: magicdb
+# Password: mt***
+# Database: postgres
 
 db = SQLAlchemy(app)
 STG_LEN = 12
