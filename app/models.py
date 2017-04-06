@@ -6,9 +6,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-import main
-from main import app
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 
 def init_app(app):
 	app.config.setdefault('SQLALCHEMY_TRACK_MODIFICATIONS', False)

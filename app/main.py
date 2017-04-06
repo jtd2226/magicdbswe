@@ -15,12 +15,10 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object(config)
-
-"""
 with app.app_context():
         model = models
         model.init_app(app)
-"""
+
 
 @app.route('/')
 @app.route('/index')
@@ -29,65 +27,66 @@ def hello():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html',title='About')
 
 
 @app.route('/test')
 def test():
-    text = models.Test.query.all()
-    return render_template('test.html',text=text)
+    return render_template('test.html')
 
 #--------CARDS------------
 @app.route('/cards')
 def cards():
-    return render_template('cards.html')
+    cards = models.MCard.query.all()
+    return render_template('cards.html',cards=cards, title = 'Cards')
 
 @app.route('/cards/<name>')
 def cards_instance(name):
-    #cards_instance = #QueryHere
-    return render_template()
+    cards_instance = models.MCard.query.filter_by(name=name).first()
+    return render_template('cards-instance.html',cards_instance=cards_instance, title = name)
 
-#Cards_instance
+
 
 #--------ARTISTS----------
 @app.route('/artists')
 def artists():
-    return render_template('artists.html')
+    artists = models.MArtist.query.all()
+    return render_template('artists.html',artists=artists, title = 'Artists')
 
-#artists_instance
+@app.route('/artists/<name>')
+def artists_instance(name):
+    cards_instance = models.MArtist.query.filter_by(name=name).first()
+    return render_template('artists-instance.html',artists_instance=artists_instance, title = name)
+
+
 
 #--------SETS--------------
 @app.route('/sets')
 def sets():
-    return render_template('sets.html')
+    sets = models.MSets.query.all()
+    return render_template('sets.html',sets=sets, title = 'Sets')
 
 
-#sets_instance
+@app.route('/sets/<name>')
+def sets_instance(name):
+    cards_instance = models.MSets.query.filter_by(name=name).first()
+    return render_template('sets-instance.html',sets_instance=sets_instance, title = name)
+
+
+
 
 #-------SUBTYPES-----------
 @app.route('/subtypes')
-def subtpes():
-    return render_template('subtypes.html')
+def subtypes():
+    subtypes = models.MSubtypes.query.all()
+    return render_template('subtypes.html',subtypes=subtypes, title = 'Subtypes')
 
-#subtypes_instance
+@app.route('/subtypes/<name>')
+def subtypes_instance(name):
+    cards_instance = models.MSubtypes.query.filter_by(name=name).first()
+    return render_template('subtypes-instance.html',subtypes_instance=subtypes_instance, title = name)
 
-@app.route('/form')
-def form():
-        return render_template('form.html')
 
-@app.route('/submitted', methods=['POST'])
-def submitted_form():
-        name = request.form['name']
-        email = request.form['email']
-        site = request.form['site_url']
-        comments = request.form['comments']
-        return render_template(
-                    'submitted_form.html',
-                    name=name,
-                    email=email,
-                    site=site,
-                    comments=comments
-                )
 
 @app.errorhandler(500)
 def server_error(e):
