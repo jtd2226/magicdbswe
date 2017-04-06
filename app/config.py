@@ -65,7 +65,7 @@ LOCAL_SQLALCHEMY_DATABASE_URI = (
 # instance.
 LIVE_SQLALCHEMY_DATABASE_URI = (
     'postgresql+psycopg2://{user}:{password}@localhost/{database}'
-    '?unix_socket=/cloudsql/{connection_name}').format(
+    '?host=/cloudsql/{connection_name}').format(
         user=CLOUDSQL_USER, password=CLOUDSQL_PASSWORD,
         database=CLOUDSQL_DATABASE, connection_name=CLOUDSQL_CONNECTION_NAME)
 

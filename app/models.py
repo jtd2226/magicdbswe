@@ -4,8 +4,6 @@
 # pylint:disable=invalid-name,line-too-long,no-member,too-few-public-methods,locally-disabled
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import main
-from main import db #you can just include db here
 
 STG_LEN = 12
 NAME_LEN = 32
@@ -14,21 +12,22 @@ MED_LEN = 256
 TEXT_LEN = 1024
 
 
-# class Test(db.Model):
-# 	__tablename__ = 'Test'
-  		  
-# 	name = db.Column(db.String(MED_LEN), primary_key=True)
-
-# 	def __init__(self,name):
-# 		self.name = name
-  		  
-# 	def __repr__(self):
-#  		return '<Name %r>' % self.name
+db = SQLAlchemy()
 
 def init_app(app):
-	
 	app.config.setdefault('SQLALCHEMY_TRACK_MODIFICATIONS', False)
 	db.init_app(app)
+
+class Test(db.Model):
+	__tablename__ = 'Test'
+  		  
+	name = db.Column(db.String(MED_LEN), primary_key=True)
+
+	def __init__(self,name):
+		self.name = name
+  		  
+	def __repr__(self):
+ 		return '<Name %r>' % self.name
 
 def _create_database():
     """
