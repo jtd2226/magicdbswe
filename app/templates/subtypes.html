@@ -10,12 +10,16 @@
 				</ol>
 			);
 		}
+
+		function sortOrderChange() {
+			$("#sort-order").toggleClass("glyphicon-arrow-down glyphicon-arrow-up")
+		}
 			
 		function SortList() {
 			return (
 				<div className="btn-group">
 					<button className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					    Sort By: <span className="caret"></span>
+					    Sort By: <span id="sort-order" className="glyphicon glyphicon-arrow-down" onClick={sortOrderChange}></span>
 					</button>
 					<ul className="dropdown-menu">
 						<SortOption name="Name"/>
@@ -42,16 +46,12 @@
 				</ol>
 			);
 		}
-
-		function sortOrderChange() {
-			$("#sort-order").toggleClass("glyphicon-arrow-down glyphicon-arrow-up")
-		}
 			
 		function FilterList() {
 			return (
 				<div className="btn-group">
 					<button className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    			Sort By: <span id="sort-order" className="glyphicon glyphicon-arrow-down" onClick={sortOrderChange}></span>
+		    			Filter By: <span className="caret"></span>
 		  			</button>
 					<ul className="dropdown-menu" id="filtering-options">
 						<FilterOption name="Number of Cards"/>

@@ -2,7 +2,7 @@ import logging
 import config
 import models
 
-#from models import db
+from models import db, MSubtype, MCard, MArtist, MSet
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
@@ -78,12 +78,12 @@ def sets_instance(name):
 #-------SUBTYPES-----------
 @app.route('/subtypes')
 def subtypes():
-    subtypes = models.MSubtypes.query.all()
+    subtypes = db.session.query(MSubtype).filter_by(name="name").first()
     return render_template('subtypes.html',subtypes=subtypes, title = 'Subtypes')
 
 @app.route('/subtypes/<name>')
 def subtypes_instance(name):
-    cards_instance = models.MSubtypes.query.filter_by(name=name).first()
+    cards_instance = models.MSubtype.query.filter_by(name=name).first()
     return render_template('subtypes-instance.html',subtypes_instance=subtypes_instance, title = name)
 
 
