@@ -1,11 +1,9 @@
-import json
-from mtgsdk import Card, Set, Subtype
+import models
 
+from mtgsdk import Card, Set, Subtype
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from models import MCard, MSet, MArtist, MSubtype
-
-
+from models import db, MCard, MSet, MArtist, MSubtype
 
 
 #----------
@@ -18,7 +16,7 @@ for stype in subtypes:
  					  .all()
 	temp = MSubtype(stype, len(cardSetList))
 	db.session.add(temp)
-    db.session.commit()
+	db.session.commit()
 
 
 

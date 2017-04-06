@@ -58,7 +58,7 @@ CLOUDSQL_CONNECTION_NAME = 'tutorial-project-161522:us-central1:magicinstance'
 # Alternatively, you could use a local MySQL instance for testing.
 #Instance IP: 35.188.87.113:5432 (Importing to database purposes)
 LOCAL_SQLALCHEMY_DATABASE_URI = (
-    'postgresql+psycopg2://{user}:{password}@127.0.0.1:3306/{database}').format(
+    'postgresql+psycopg2://{user}:{password}@35.188.87.113:5432/{database}').format(
         user=CLOUDSQL_USER, password=CLOUDSQL_PASSWORD,
         database=CLOUDSQL_DATABASE)
 

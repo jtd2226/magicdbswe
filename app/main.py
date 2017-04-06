@@ -15,9 +15,12 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object(config)
+
+"""
 with app.app_context():
         model = models
         model.init_app(app)
+"""
 
 
 @app.route('/')
