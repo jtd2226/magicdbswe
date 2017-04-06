@@ -1,0 +1,26 @@
+{
+[
+{
+"cardID":926234c2fe8863f49220a878346c4c5ca79b6046
+"name":"Air Elemental"
+"mainType":"Creature — Elemental"
+"subtype":['Elemental']
+"text":"Flying"
+"expansionSet":"LEA"
+"manaCost":5
+"color":['Blue']
+"power":"4"
+"toughness":"4"
+"art":"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=94&type=card"
+"rarity":"Uncommon"
+}
+, 
+{
+"cardID":aa74b7dc3b30b2e7559598f983543755e226811d
+"name":"Ancestral Recall"
+"mainType":"Instant"
+"subtype":['none']
+"text":"Target player draws three cards."
+"expansionSet":"LEA"
+"manaCost":1
+"color":['Blue']

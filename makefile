@@ -42,15 +42,15 @@ endif
 .pylintrc:
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
-IDB1.html: app/models.py
-	pydoc3 -w app/models.py
-	mv models.html IDB1.html
-	rm -f models.html
+IDB1.html: app/testmodels.py
+	pydoc3 -w app/testmodels.py
+	mv testmodels.html IDB1.html
+	rm -f testmodels.html
 
 IDB1.log:
 	git log > IDB1.log
 
-TestMagic.tmp: IDB1.html IDB1.log app/models.py .pylintrc app/TestMagic.py 
+TestMagic.tmp: IDB1.html IDB1.log app/testmodels.py .pylintrc app/TestMagic.py 
 	-$(PYLINT) app/TestMagic.py
 	-$(COVERAGE) run    --branch app/TestMagic.py >  TestMagic.tmp 2>&1
 	-$(COVERAGE) report -m                      >> TestMagic.tmp

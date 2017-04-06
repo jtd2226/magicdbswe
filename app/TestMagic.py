@@ -15,7 +15,7 @@ from io import StringIO
 from unittest import main, TestCase
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from models import app, db, MCard, MSet, MArtist, MSubtype
+from testmodels import app, db, MCard, MSet, MArtist, MSubtype
 
 # -----------
 # TestMagic
@@ -76,7 +76,7 @@ class TestMagic (TestCase):
         db.session.add(example2)
         db.session.commit()
 
-        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link")
+        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
         db.session.add(exampleSet)
         db.session.commit()
 
@@ -96,7 +96,7 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        example1 = MCard(123, "name", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        example1 = MCard(123, "name", "Creature", [example3], "flying", 'LEA', 5, "Red", 1, 1, "url", "common", "thomas")
         db.session.add(example1)
         db.session.commit()
 
@@ -109,6 +109,35 @@ class TestMagic (TestCase):
 
         db.session.commit()
         db.drop_all()
+
+
+    def test_many_relations(self):
+
+        db.session.commit()
+        db.drop_all()
+        db.create_all()
+
+        example3 = MSubtype("gobbo", 2)
+        db.session.add(example3)
+        db.session.commit()
+
+        example1 = MCard(123, "name", "Creature", [example3], "flying", 'LEA', 5, "Red", 1, 1, "url", "common", "thomas")
+        db.session.add(example1)
+        db.session.commit()
+
+        example2 = MCard(124, "weewoocardnumber2", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        db.session.add(example2)
+        db.session.commit()
+
+        est = db.session.query(MSubtype).filter_by(name="gobbo").first()
+        self.assertEqual(len(est.xcards.all()), 2)
+
+        db.session.commit()
+        db.drop_all()
+
+
+    #added subtypes to set
+    #added sets to artist 
 
     # def test_card_2(self):
     #     with app.test_request_context():

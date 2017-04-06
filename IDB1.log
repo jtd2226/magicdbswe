@@ -1,3 +1,77 @@
+commit 85339673a472b6a99e24c1329bb9abe19858ad85
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Apr 6 00:15:10 2017 -0500
+
+    Added subtypes to db
+
+commit 8c18059ffb8e0163e00ee083663c268abdf8dba1
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Wed Apr 5 23:22:04 2017 -0500
+
+    new things
+
+commit d5ff78e66908ad785eb69aab31d2e0f3fe14206c
+Merge: 9c70eff 37db92c
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Wed Apr 5 23:15:47 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 9c70eff783fa131baf65a521af512fc74e06e8da
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Wed Apr 5 23:15:43 2017 -0500
+
+    funny thing
+
+commit 37db92c7a1cffe5b01e6434613bb5bd6bc582dcf
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Wed Apr 5 23:13:38 2017 -0500
+
+    merged models
+
+commit ca2435aca99662b6bdb21a4502383661c701faa2
+Author: Nestor Castro <nestorcastro@wireless-10-147-111-252.public.utexas.edu>
+Date:   Wed Apr 5 22:41:39 2017 -0500
+
+    deployed, database cleared
+
+commit bef42254a96ed6a6dfee63051ec5d992ae7f020a
+Author: Nestor Castro <nestorcastro@wireless-10-147-111-252.public.utexas.edu>
+Date:   Wed Apr 5 21:27:02 2017 -0500
+
+    Successfully connected to database. FINALLY.
+
+commit 286f1dd3c756eb9b7b3ae221403584acacd493fe
+Author: Nestor Castro <nestorcastro@wireless-10-147-111-252.public.utexas.edu>
+Date:   Wed Apr 5 20:19:10 2017 -0500
+
+    added init_app to models.py
+
+commit e3b0f111290febea630d7c5c423ed0b9a0976584
+Author: Nestor Castro <nestorcastro@wireless-10-147-111-252.public.utexas.edu>
+Date:   Wed Apr 5 20:11:13 2017 -0500
+
+    proxy set up, now trying to connect to database
+
+commit f24078623f95c72b2ae5ba732a614df3d0b8806d
+Author: Nestor Castro <nestorcastro@wireless-10-147-210-149.public.utexas.edu>
+Date:   Wed Apr 5 16:19:55 2017 -0500
+
+    added test module to models
+
+commit f64de7d1fffc007da7fab1bda1b38892dee47345
+Merge: 6d9cdca 6b967c5
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Apr 4 18:25:33 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 6d9cdcac28b2c048afcee928c3ddbea049cdba57
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Apr 4 18:25:09 2017 -0500
+
+    oh yeah bby look at that logo on the nav bar on all of the pages now & the splash is dynamiccccccccccc.
+
 commit 6b967c5db7dbeb9567f4ec84b56aa8ae259405a3
 Author: jtd2226 <joeldavi@utexas.edu>
 Date:   Tue Apr 4 17:49:46 2017 -0500
