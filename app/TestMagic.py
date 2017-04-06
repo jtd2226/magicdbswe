@@ -13,49 +13,102 @@
 
 from io import StringIO
 from unittest import main, TestCase
-from flask import Flask, render_template, request
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from models import db, Card, Set, Artist, Subtype
+from models import app, db, MCard, MSet, MArtist, MSubtype
 
 # -----------
 # TestMagic
 # -----------
 
-
 class TestMagic (TestCase):
 
+
+    def create_app(self):
+        return app
+
+    def setUp(self):
+        db.create_all()
+
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
     # ----
     # CARD
     # ----
+
     def test_card_1(self):
 
-    # cardId = db.Column(db.Integer, primary_key=True)
-    # name = db.Column(db.String(MED_LEN))
-    # mainType = db.Column(db.String(NAME_LEN))
-    # subtype = db.Column(db.String(MED_LEN), db.ForeignKey('subtypes.name'))
-    # text = db.Column(db.String(TEXT_LEN), nullable=True)
-    # expansionSet = db.Column(db.String(STG_LEN), db.ForeignKey('Sets.code'))
-    # manaCost = db.Column(db.Integer, nullable=True)
-    # color = db.Column(db.String(SHORT_LEN), nullable=True)
-    # power = db.Column(db.Integer, nullable=True)
-    # toughness = db.Column(db.Integer, nullable=True)
-    # art = db.Column(db.String(MED_LEN))
-    # rarity = db.Column(db.String(STG_LEN))
-    # artist = db.Column(db.String(MED_LEN), db.ForeignKey('Artists.name'))
-        app = Flask(__name__)
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@35.188.87.113:5432/magicdb'
-        db = SQLAlchemy(app)
+        db.session.commit()
+        db.drop_all()
+        db.create_all()
 
-        example1 = Card(123, 'name', 'Creature', 'Angel', 'shine', '1234567891', 5, 'Red', 1, 1, 'url', 'common', 'thomas')
+        example3 = MSubtype("gobbo", 2)
+        db.session.add(example3)
+        db.session.commit()
+
+        example1 = MCard(123, "name", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
         db.session.add(example1)
         db.session.commit()
 
-        card = db.session.query(Card).filter_by(name="name").first()
+        card = db.session.query(MCard).filter_by(name="name").first()
         self.assertEqual(card.name, "name")
         self.assertEqual(card.mainType, "Creature")
 
-        db.session.delete(example1)
         db.session.commit()
+        db.drop_all()
+
+    def test_relations(self):
+
+        db.session.commit()
+        db.drop_all()
+        db.create_all()
+
+        example3 = MSubtype("gobbo", 2)
+        db.session.add(example3)
+        db.session.commit()
+
+        example1 = MCard(123, "name", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        db.session.add(example1)
+        db.session.commit()
+
+        example2 = MCard(124, "weewoocardnumber2", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        db.session.add(example2)
+        db.session.commit()
+
+        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link")
+        db.session.add(exampleSet)
+        db.session.commit()
+
+        eset = db.session.query(MSet).filter_by(code='ktk').first()
+        self.assertEqual(len(eset.cards.all()), 2)
+
+        db.session.commit()
+        db.drop_all()
+
+    def test_many_relations(self):
+
+        db.session.commit()
+        db.drop_all()
+        db.create_all()
+
+        example3 = MSubtype("gobbo", 2)
+        db.session.add(example3)
+        db.session.commit()
+
+        example1 = MCard(123, "name", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        db.session.add(example1)
+        db.session.commit()
+
+        example2 = MCard(124, "weewoocardnumber2", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        db.session.add(example2)
+        db.session.commit()
+
+        est = db.session.query(MSubtype).filter_by(name="gobbo").first()
+        self.assertEqual(len(est.xcards.all()), 2)
+
+        db.session.commit()
+        db.drop_all()
 
     # def test_card_2(self):
     #     with app.test_request_context():

@@ -1,3 +1,351 @@
+commit 6b967c5db7dbeb9567f4ec84b56aa8ae259405a3
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Tue Apr 4 17:49:46 2017 -0500
+
+    Update models.py
+
+commit 3f803e470cdb045ee123c0e42a57dfa39c6364fd
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Tue Apr 4 17:48:58 2017 -0500
+
+    Update TestMagic.py
+
+commit f090db6e490ca755249c2e059e0bd426087ea3e8
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Tue Apr 4 17:48:09 2017 -0500
+
+    Update makefile
+
+commit a6a7a0a31cd325f10a9624fae7d3a38cecd53b6f
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Tue Apr 4 17:30:51 2017 -0500
+
+    fixed URI and main function
+
+commit cc5f2a11bc99f8bbd59e20e29d565fe4317c6fee
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Tue Apr 4 17:12:20 2017 -0500
+
+    the monsterSON returns
+
+commit 6d2483d44c3dfa023bbf16524e935caed0308d35
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Tue Apr 4 14:32:22 2017 -0500
+
+    NILO IS IN THE DATABASE
+
+commit e252290d193637515b45d47c5abc852ee9da9ae7
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Mon Apr 3 21:50:51 2017 -0500
+
+    ayyyyyyyyy
+
+commit 619320c9427cd6315ecc5a6bb76d342c60a9a62f
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Mon Apr 3 21:23:35 2017 -0500
+
+    round threeeeeeeeeeeeeeeeeeeeEEEE
+
+commit 54bd089d5a52209628b4dad0ee7d491623515dad
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Mon Apr 3 21:21:31 2017 -0500
+
+    typo blah blah balh.
+
+commit 84303cd2173d5c7e318a1cbc9f71bd476ebf5d08
+Merge: b069f5b 181242f
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Mon Apr 3 21:00:25 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 181242ffd2f267527fa187e6fd91964728929c38
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Mon Apr 3 20:59:46 2017 -0500
+
+    Fixed links
+
+commit b069f5b54aa46c11cd643b267e936fe54c13db85
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Mon Apr 3 20:59:36 2017 -0500
+
+    smh even the images. i need to move eeeeeverything up in here lol.
+
+commit 8579df2f55d8f8577be94cdc02b0680fb8caa65e
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Mon Apr 3 20:54:52 2017 -0500
+
+    Test database and no env folder
+
+commit 6e9b384b17b93d816166fa276a3e1bd11153aaf6
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Mon Apr 3 20:54:26 2017 -0500
+
+    Test Class for database
+
+commit 4d6b3f26a3512f6a5a00c4ff66fad11e2e250fb8
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Mon Apr 3 20:52:55 2017 -0500
+
+    files are in the app folder now? what is happening anymore lmao
+
+commit 6490ef2e15278334db5980ea77f760a9ac24d3dd
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Mon Apr 3 20:45:59 2017 -0500
+
+    oooooo~~~ shiny splash on the front page wow nicc did a good job with this tbh.
+
+commit 8f87b9b745912a76ad0f448c74d8254551864cc6
+Author: Nestor Castro <nestorcastro@wireless-10-147-158-241.public.utexas.edu>
+Date:   Mon Apr 3 19:40:06 2017 -0500
+
+    added SQLAlchemy to main.py
+
+commit 4f21b464034c87c58d758ac2f1ccba69abdfbed2
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Mon Apr 3 19:17:31 2017 -0500
+
+    Hi there
+
+commit 885393f0ced1a8784d27021893892ea807713922
+Merge: 697b218 3733c84
+Author: Nestor Castro <nestorcastro@wireless-10-147-158-241.public.utexas.edu>
+Date:   Mon Apr 3 19:15:39 2017 -0500
+
+    removed local models.py (nc)
+
+commit 697b2181c3ab3a3e9c46eb22cecac49a8f54725b
+Author: Nestor Castro <nestorcastro@wireless-10-147-158-241.public.utexas.edu>
+Date:   Mon Apr 3 19:12:53 2017 -0500
+
+    started SQLAlchemy set up
+
+commit 3733c845b4efb0e00b9bf622da59de0d78e9f024
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Mon Apr 3 19:04:37 2017 -0500
+
+    travis
+
+commit 002ec441777c4d9db9b36029362d106425ce3cf7
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Mon Apr 3 19:01:19 2017 -0500
+
+    travis.yml update
+
+commit dd49671959e8c641b1b7c55daced0607cdbe66ed
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Mon Apr 3 18:59:17 2017 -0500
+
+    travis.yml update
+
+commit 8b1ddd4c5b8db3a874e4553ef320d9a43f18140d
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Mon Apr 3 18:54:47 2017 -0500
+
+    travis
+
+commit 4ec767354df5d6a05c0acdabaa2b8af8b0c46659
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Mon Apr 3 18:53:28 2017 -0500
+
+    cmon boi
+
+commit 8f8e67fae6f427fb3b20963fa998c7531663e2b7
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Mon Apr 3 18:50:25 2017 -0500
+
+    trav again
+
+commit 242a62a10ebef53554a3d10cc30141be762bac76
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Mon Apr 3 18:45:53 2017 -0500
+
+    travis agian
+
+commit ad7e28288ce9ae878952448d3c0b61f0c85b7e25
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Mon Apr 3 18:39:26 2017 -0500
+
+    travis again
+
+commit afe3d385e01df846bbd79fb3bb2859ea0e0b3059
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Mon Apr 3 18:38:34 2017 -0500
+
+    travisily
+
+commit 1c07cdb5d14630227e9d46c7136a2e5325b1a8b0
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Sun Apr 2 15:00:36 2017 -0500
+
+    again
+
+commit 7f4ef1bb82d1e69ed21d80e31686bcb49e1371bd
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Sun Apr 2 14:58:45 2017 -0500
+
+    More install statments in travis.yml
+
+commit 4ccb0cbfd71e0d97a1bcf223ecfaadb7461fb151
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Fri Mar 31 00:55:41 2017 -0500
+
+    Changing to python 2.7 breaks lol
+
+commit e1f9df518e4515f9e2480c2210a28a25e48a014e
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Fri Mar 31 00:53:35 2017 -0500
+
+    change pip3 to pip?
+
+commit 0ec87c120fae4d65ab295ad5a5b7f07a060fd72a
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 30 20:28:55 2017 -0500
+
+    PLZZZZZZZZ
+
+commit 27d4e2027d57313de47e201aac64baf1636119da
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 30 20:25:13 2017 -0500
+
+    Please travis I love you
+
+commit 8ddf2a0f24700c5fada95d079b0cc7c18bb0c1b6
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 30 20:04:11 2017 -0500
+
+    Trying travis again
+
+commit d391f408747cdb02433d0a31bd895cd025a95cab
+Author: JoseLRC <joser@cs.utexas.edu>
+Date:   Thu Mar 30 18:49:45 2017 -0500
+
+    testing travis2
+
+commit daae91fc637b4e05ee292c025fe7e20cea92602f
+Author: JoseLRC <joser@cs.utexas.edu>
+Date:   Thu Mar 30 18:47:59 2017 -0500
+
+    testing travis
+
+commit 9562baede2d9ccd423a1f0ce08cd36a6e8e56b15
+Author: Nestor Castro <nestorcastro@wireless-10-147-50-227.public.utexas.edu>
+Date:   Thu Mar 30 18:10:30 2017 -0500
+
+    fixed grammar
+
+commit f8fc644b7b4002de2e5af2fedcee309132c0f1f8
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 30 17:40:34 2017 -0500
+
+    Fixed the splash, doesn't extend base
+
+commit 1d90d627a12c1039ff65330127009072dc50e6de
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 30 16:37:03 2017 -0500
+
+    Time to read from the database lesss goooooooo
+
+commit c420c15daf11e2b599d8f5ace5b677689f809c63
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 30 16:17:22 2017 -0500
+
+    Fixed navbar, splash background still wrong :/
+
+commit 5865afdab4f86b90878cfa1668a4dafe75cb6873
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 30 15:55:45 2017 -0500
+
+    Made base layout, need cleaner way to fix splash background
+
+commit a48f2469232daec6dfe363c48c913d408d1fd45a
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 30 02:12:32 2017 -0500
+
+    Moved CSS folder, all main pages are running, just have to fix instances
+
+commit 96fbeba61c9fe6145b50864e3caaf880c710b1d5
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Wed Mar 29 00:22:55 2017 -0500
+
+    More flask, need to create base template and maybe move css folder. Sorry for moving old template files oops
+
+commit 69aeb0da6ac340d2ec5f6a086466e9b616616b2e
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Tue Mar 28 18:19:44 2017 -0500
+
+    Stuggling to figure out flask, maybe getting somewhere
+
+commit 81fa1d082e4e0c6aa0a9cb414180412d638b79d6
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Fri Mar 24 12:34:36 2017 -0500
+
+    filter/toc
+
+commit 79ac550e55f6b9a9d91ea411affa11ef95a1b4e4
+Merge: 4c71aa4 eff2500
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Fri Mar 24 12:29:43 2017 -0500
+
+    Merge branch 'master' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 4c71aa441889a2310c39789c72914292bbc545de
+Merge: aa1e1a3 4c335ce
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Fri Mar 24 12:29:06 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit aa1e1a30d44c93d4e61518feca050aa71fd4dd3b
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Fri Mar 24 12:29:03 2017 -0500
+
+    added table of contents/filter
+
+commit eff250027d0dee65cba8aecb1afb86b171ba465d
+Merge: 49f7820 2c347fc
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 23 22:40:51 2017 -0500
+
+    Merge branch 'master' of https://github.com/jtd2226/magicdbswe
+
+commit 49f7820bdc274072fb01bbb3fb558cbab32f2346
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 23 22:40:35 2017 -0500
+
+    Fixed data section
+
+commit 2c347fcdbac2f4f6cb5450dfb05dc768ce916ba7
+Author: Joel Davis <rajaadty@gmail.com>
+Date:   Thu Mar 23 22:31:26 2017 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit bdfb0dec0b39f96c6e8bad48afd130cede021cd7
+Merge: 2bc7555 461ba87
+Author: JoseLRC <joser@cs.utexas.edu>
+Date:   Thu Mar 23 21:55:39 2017 -0500
+
+    Merge branch 'master' of https://github.com/jtd2226/magicdbswe
+
+commit 461ba87636319759d80203e9e802ce8cb1729002
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 23 21:55:23 2017 -0500
+
+    asdkj
+
+commit 56850d6c66f2ed46149737f08703db3f891b5d11
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Mar 23 21:55:10 2017 -0500
+
+    asdkj
+
+commit 2bc75556227eb813845b7d90042a8483a0afb1b2
+Author: JoseLRC <joser@cs.utexas.edu>
+Date:   Thu Mar 23 21:55:02 2017 -0500
+
+    Final
+
 commit 4c335ce7122c60fae739d1b05f7ef14ec1caa665
 Author: JoseLRC <joser@cs.utexas.edu>
 Date:   Thu Mar 23 21:47:08 2017 -0500

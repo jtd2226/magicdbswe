@@ -2,10 +2,31 @@
 # A Database for Magic the Gathering Cards
 #
 # pylint:disable=invalid-name,line-too-long,no-member,too-few-public-methods,locally-disabled
-#from flask import Flask
+
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import main
-from main import db
+
+db = SQLAlchemy()
+
+def init_app(app):
+	app.config.setdefault('SQLALCHEMY_TRACK_MODIFICATIONS', False)
+	db.init_app(app)
+
+def _create_database():
+    """
+    If this script is run directly, create all the tables necessary to run the
+    application.
+    """
+    app = Flask(__name__)
+    app.config.from_pyfile('config.py')
+    init_app(app)				#added "db."
+    with app.app_context():
+        db.create_all()
+    print("All tables created")
+
+
+if __name__ == '__main__':
+    _create_database()
 
 STG_LEN = 12
 NAME_LEN = 32
@@ -17,8 +38,12 @@ TEXT_LEN = 1024
 """
 Handling many-to-many relations
 """
+subtype_table = db.Table('subtype_table',
+    db.Column('subtype_name', db.String(MED_LEN), db.ForeignKey('subtypes.name')),
+    db.Column('card_id', db.Integer, db.ForeignKey('cards.cardId'))
+)
 
-class Card(db.Model):
+class MCard(db.Model):
 
 	"""
 	Information regarding specific cards
@@ -44,13 +69,13 @@ class Card(db.Model):
 	cardId = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(MED_LEN))
 	mainType = db.Column(db.String(NAME_LEN))
-	subtype = db.Column(db.String(MED_LEN), db.ForeignKey('subtypes.name'))
+	subType = db.relationship('MSubtype', secondary=subtype_table, backref=db.backref('xcards', lazy='dynamic'))
 	text = db.Column(db.String(TEXT_LEN), nullable=True)
 	expansionSet = db.Column(db.String(STG_LEN), db.ForeignKey('sets.code'))
 	manaCost = db.Column(db.Integer, nullable=True)
 	color = db.Column(db.String(SHORT_LEN), nullable=True)
-	power = db.Column(db.Integer, nullable=True)
-	toughness = db.Column(db.Integer, nullable=True)
+	power = db.Column(db.String(SHORT_LEN), nullable=True)
+	toughness = db.Column(db.String(SHORT_LEN), nullable=True)
 	art = db.Column(db.String(MED_LEN))
 	rarity = db.Column(db.String(STG_LEN))
 	artist = db.Column(db.String(MED_LEN), db.ForeignKey('artists.name'))
@@ -72,9 +97,9 @@ class Card(db.Model):
 		self.artist = artist
 
 	def __repr__(self):
-		return '<Card %r>' % self.name
+		return '<MCard %r>' % self.name
 
-class Set(db.Model):
+class MSet(db.Model):
 	"""
 	Information regarding card sets (A.K.A.: expansions)
 
@@ -95,24 +120,24 @@ class Set(db.Model):
 	name = db.Column(db.String(MED_LEN))
 	rDate = db.Column(db.String(NAME_LEN))
 	block = db.Column(db.String(NAME_LEN), nullable=True)
-	cards = db.relationship('Card', backref='set', lazy='dynamic')
+	cards = db.relationship('MCard', backref='set', lazy='dynamic')
 	numCards = db.Column(db.Integer)
 	symbol = db.Column(db.String(MED_LEN)) #link
 
-	def __init__(self, code, name, rDate, block, cards, numCards,
+	def __init__(self, code, name, rDate, block, numCards,
 				 symbol):
 		self.code = code
 		self.name = name
 		self.rDate = rDate
 		self.block = block
-		self.cards = cards
+		# self.cards = cards
 		self.numCards = numCards
 		self.symbol = symbol
 
 	def __repr__(self):
-		return '<Set %r>' % self.name
+		return '<MSet %r>' % self.code
 
-class Artist(db.Model):
+class MArtist(db.Model):
 	"""
 	Information regarding artists of MtG cards
 
@@ -127,23 +152,21 @@ class Artist(db.Model):
 	__tablename__ = 'artists'
 
 	#Possibility of repeated names
-	artistId = db.Column(db.Integer, primary_key=True)
-	name = db.Column(db.String(MED_LEN))
+	name = db.Column(db.String(MED_LEN), primary_key=True)
 	numCards = db.Column(db.Integer)
 	numSets = db.Column(db.Integer)
-	cards = db.relationship('Card', backref='artistboi', lazy='dynamic')
+	cards = db.relationship('MCard', backref='artistboi', lazy='dynamic')
 
-	def __init__(self, artistId, name, numCards, numSets, cards):
-		self.artistId = artistId
+	def __init__(self, name, numCards, numSets):
 		self.name = name
 		self.numCards = numCards
 		self.numSets = numSets
-		self.cards = cards
+		#self.cards = cards
 
 	def __repr__(self):
-		return '<Artist %r>' % self.name
+		return '<MArtist %r>' % self.name
 
-class Subtype(db.Model):
+class MSubtype(db.Model):
 	"""
 	Information regarding types
 
@@ -158,12 +181,12 @@ class Subtype(db.Model):
 
 	name = db.Column(db.String(MED_LEN), primary_key=True)
 	numCards = db.Column(db.Integer)
-	cards = db.relationship('Card', backref='scard', lazy='dynamic') 
+	#cards = db.relationship('Card', backref='subtype', lazy='dynamic') 
 
-	def __init__(self, name, numCards, cards):
+	def __init__(self, name, numCards):
 		self.name = name
 		self.numCards = numCards
-		self.cards = cards
+		#self.cards = cards
 
 	def __repr__(self):
-		return '<Subtype %r>' % self.name
+		return '<MSubtype %r>' % self.name
