@@ -78,8 +78,28 @@ def sets_instance(name):
 #-------SUBTYPES-----------
 @app.route('/subtypes')
 def subtypes():
-    subtypes = db.session.query(MSubtype).filter_by(name="name").first()
-    return render_template('subtypes.html',subtypes=subtypes, title = 'Subtypes')
+    subtypes = db.session.query(MSubtype).all()
+    imageUrls = {}
+    #for subtype in subtypes:
+    #   imageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=imageUrls)
+
+@app.route('/subtypes/sort/<field>')
+def subtypes_sort(field):
+    if field == "name" :
+        subtypes = db.session.query(MSubtype).all()
+    elif field == "numCards" :
+        subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).all()
+    elif field == "numSets" :
+        subtypes = db.session.query(MSubtype).all()
+        #subtypes = db.session.query(MSubtype).order_by(MSubtype.numSets).all()
+
+    imageUrls = {}
+    #for subtype in subtypes:
+    #   imageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=imageUrls)
 
 @app.route('/subtypes/<name>')
 def subtypes_instance(name):

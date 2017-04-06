@@ -1,18 +1,18 @@
 {%extends "base.html"%}
 
 {%block content%}
-	<link rel="stylesheet" type="text/css" href="../static/css/models.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/models.css">
 	<script type="text/babel">
 		function SortOption(props) {
 			return (
 				<ol>
-					<button className="btn btn-default">{props.name}</button>
+					<button className="btn btn-default"><a href={props.link}>{props.name}</a></button>
 				</ol>
 			);
 		}
 
 		function sortOrderChange() {
-			$("#sort-order").toggleClass("glyphicon-arrow-down glyphicon-arrow-up")
+			$("#sort-order").toggleClass("glyphicon-arrow-down glyphicon-arrow-up");
 		}
 			
 		function SortList() {
@@ -22,9 +22,9 @@
 					    Sort By: <span id="sort-order" className="glyphicon glyphicon-arrow-down" onClick={sortOrderChange}></span>
 					</button>
 					<ul className="dropdown-menu">
-						<SortOption name="Name"/>
-						<SortOption name="Number of Cards"/>
-						<SortOption name="Number of Sets"/>
+						<SortOption name="Name" link="/subtypes/sort/name"/>
+						<SortOption name="Number of Cards" link="/subtypes/sort/numCards"/>
+						<SortOption name="Number of Sets" link="/subtypes/sort/numSets"/>
 					</ul>
 				</div>
 			);
@@ -73,7 +73,16 @@
 		<span id="sorting-options"></span>
 		<span id="filtering-options"></span>
 	</div>
-
+	
+	<div class="container-fluid">
+		{% for subtype in subtypes %}
+			<div class="model-inst">
+				<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card" class="img-fluid">
+				<h4><a href={{"/subtypes/" + subtype.name}}>{{subtype.name}}</a></h4>
+			</div>
+		{% endfor %}
+	</div>
+<!--
 	<div class="container-fluid">
 		<div class="model-inst">
 			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card" class="img-fluid">
@@ -90,5 +99,5 @@
 			<h4><a href="subtypes-instance.html?name=&quot;Angel&quot;&id=16b1bce7dd9f6a77480fb6b33f2b211f1c5b9ebc">Angel</a></h4>
 		</div>
 	</div>
-
+-->
 {%endblock%}
