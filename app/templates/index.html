@@ -43,7 +43,7 @@
 
     <div class="overlay">
       <img src="static/images/MainLogo.png" id="main-logo" style="display: block; margin: auto;">
-      <h1 class="index-descr">Magic the Gathering Database</h1>
+      <h1 class="index-descr" style="font-family: ;">Magic the Gathering Database</h1>
     </div>
 
     <!-- Full Page Image Background Carousel Header -->
@@ -62,40 +62,40 @@
                 <!-- Set the first background image using inline CSS below. -->
                 <div class="fill" style="background-image:url('static/images/genesis.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Card: Progenitus</h2>
-                    <h2>Set: Conflux</h2>
-                    <h2>Subtype: Hydra Avatar</h2>
-                    <h2>Artist: Jaime Jones</h2>
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Card: Progenitus</h4>
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Set: Conflux</h4>
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Subtype: Hydra Avatar</h4>
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Artist: Jaime Jones</h4>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
                 <div class="fill" style="background-image:url('static/images/resurgent.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Card: Zendikar Resurgent</h2>
-                    <h2>Set: Oath of the Gatewatch</h2>
-                    <h2>Subtype: N/A</h2>
-                    <h2>Artist: Chris Rallis</h2>
+                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Card: Zendikar Resurgent</h4>
+                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Set: Oath of the Gatewatch</h4>
+                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Subtype: N/A</h4>
+                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Artist: Chris Rallis</h4>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
                 <div class="fill" style="background-image:url('static/images/planar.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Card: Planar Bridge</h2>
-                    <h2>Set: Aether Revolt</h2>
-                    <h2>Subtype: N/A</h2>
-                    <h2>Artist: Chase Stone</h2>
+                    <h4>Card: Planar Bridge</h4>
+                    <h4>Set: Aether Revolt</h4>
+                    <h4>Subtype: N/A</h4>
+                    <h4>Artist: Chase Stone</h4>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
                 <div class="fill" style="background-image:url('static/images/viserys.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Card: Anguished Unmaking</h2>
-                    <h2>Set: Shadows over Innistrad</h2>
-                    <h2>Subtype: N/A</h2>
-                    <h2>Artist: Wesley Burt</h2>
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;">Card: Anguished Unmaking</h4>
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" >Set: Shadows over Innistrad</h4>
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" >Subtype: N/A</h4>
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" >Artist: Wesley Burt</h4>
                 </div>
             </div>
         </div>
@@ -126,6 +126,7 @@
         $('.index-descr').css('font-size', indexDescr + 'px');
         document.getElementById("main-logo").width = imageWidth.toString();
         document.getElementById("main-logo").height = (imageWidth / 3).toString();
+        //font-family: "Times New Roman", Times, serif;
 
       }
       fontResize();
