@@ -76,7 +76,7 @@ class MCard(db.Model):
 	__tablename__ = 'cards'
 
 	#Relevant attributes for a card
-	cardId = db.Column(db.String(TEXT_LEN), primary_key=True)
+	cardId = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(MED_LEN))
 	mainType = db.Column(db.String(NAME_LEN))
 	subType = db.relationship('MSubtype', secondary=subtype_table, backref=db.backref('xcards', lazy='dynamic'))
@@ -191,13 +191,11 @@ class MSubtype(db.Model):
 	__tablename__ = 'subtypes'
 
 	name = db.Column(db.String(MED_LEN), primary_key=True)
-	numCards = db.Column(db.Integer)
-	#cards = db.relationship('Card', backref='subtype', lazy='dynamic') 
+	numCards = db.Column(db.Integer) 
 
 	def __init__(self, name, numCards):
 		self.name = name
 		self.numCards = numCards
-		#self.cards = cards
 
 	def __repr__(self):
 		return '<MSubtype %r>' % self.name

@@ -1,5 +1,6 @@
 import logging
 import config
+import models
 
 from models import db, MSubtype, MCard, MArtist, MSet
 from flask import Flask, render_template, request
@@ -14,8 +15,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object(config)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-
 with app.app_context():
         model = models
         model.init_app(app)
