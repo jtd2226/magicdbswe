@@ -2,6 +2,7 @@ import logging
 import config
 import models
 
+from models import db
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 

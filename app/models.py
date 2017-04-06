@@ -2,6 +2,7 @@
 # A Database for Magic the Gathering Cards
 #
 # pylint:disable=invalid-name,line-too-long,no-member,too-few-public-methods,locally-disabled
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
@@ -36,7 +37,7 @@ def _create_database():
     """
     app = Flask(__name__)
     app.config.from_pyfile('config.py')
-    init_app(app)
+    init_app(app)				#added "db."
     with app.app_context():
         db.create_all()
     print("All tables created")
