@@ -6,19 +6,76 @@ from flask_sqlalchemy import SQLAlchemy
 from models import db, MCard, MSet, MArtist, MSubtype
 
 
-#----------
-# SUBTYPES
-#----------
+# ----------
+#  SUBTYPES
+# ----------
+
+db.session.commit()
+db.drop_all()
+db.create_all()
 subtypes = Subtype.all() 
 
 for stype in subtypes:
 	cardSetList = Card.where(subtypes=stype) \
  					  .all()
-	temp = MSubtype(stype, len(cardSetList))
+	temp = MSubtype(stype, int(len(cardSetList)))
+
 	db.session.add(temp)
 	db.session.commit()
 
 
+-------
+CARDS
+-------
+
+cards = Card.all()
+
+for card in cards:
+
+	print("------------------------")
+	
+	card_Id = card.multiverse_id
+	print(card_Id)
+
+	card_name = card.name
+	print(card_name)
+
+	card_mainType = card.type
+	print(card_mainType)
+
+	card_subtype = MSubtype(str(card.subtypes), 1)		#todo: relationship between subtypes and cards
+
+	card_text = card.text
+	print(card_text)
+
+	card_expansionSet = card.set  
+	print(card_expansionSet)
+
+	card_manaCost = card.cmc
+	print(card_manaCost)
+
+	card_color = str(card.colors)		#todo
+	print(card_color)
+
+	card_power =  card.power
+	print(card_power)
+
+	card_toughness = card.toughness
+	print(card_toughness)
+
+	card_art = card.image_url
+	print(card_art)
+
+	card_rarity = card.rarity
+	print(card_rarity)
+
+	card_artist = card.artist   
+	print(card_artist)	
+
+	temp = MCard(card_Id, card_name, card_mainType, [card_subtype], card_text, card_expansionSet, card_manaCost, card_color, card_power, card_toughness, card_art, card_rarity, card_artist)
+
+	db.session.add(temp)
+	db.session.commit()
 
 #------
 # SETS
@@ -51,54 +108,6 @@ for stype in subtypes:
 # 	set_symbol = str()
 
 
-#-------
-# CARDS
-#-------
-
-# cards = Card.all()
-
-# for card in cards:
-
-# 	print("------------------------")
-	
-# 	card_Id = card.multiverse_id
-# 	print(card_Id)
-
-# 	card_name = card.name
-# 	print(card_name)
-
-# 	card_mainType = card.type
-# 	print(card_mainType)
-
-# 	card_subtype = str(card.subtypes)		#todo: relationship between subtypes and cards
-# 	print(card_subtype)
-
-# 	card_text = card.text
-# 	print(card_text)
-
-# 	card_expansionSet = card.set  
-# 	print(card_expansionSet)
-
-# 	card_manaCost = card.cmc
-# 	print(card_manaCost)
-
-# 	card_color = str(card.colors)		#todo
-# 	print(card_color)
-
-# 	card_power =  card.power
-# 	print(card_power)
-
-# 	card_toughness = card.toughness
-# 	print(card_toughness)
-
-# 	card_art = card.image_url
-# 	print(card_art)
-
-# 	card_rarity = card.rarity
-# 	print(card_rarity)
-
-# 	card_artist = card.artist   
-# 	print(card_artist)	
 
 #---------
 # ARTISTS

@@ -2,7 +2,7 @@ import logging
 import config
 import models
 
-from models import db
+#from models import db
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
@@ -21,7 +21,6 @@ with app.app_context():
         model = models
         model.init_app(app)
 """
-
 
 @app.route('/')
 @app.route('/index')
