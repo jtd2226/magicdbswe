@@ -1,15 +1,24 @@
 import logging
+import config
+import models
 
+from models import db
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
+#app = Flask(__name__)
+
 #?unix_socket=/cloudsql/tutorial-project-161522:us-central1:magicinstance
 #?host=/cloudsql/tutorial-project-161522:us-central1:magicinstance
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@35.188.87.113:5432/magicdb'
-db = SQLAlchemy(app)
 
-import models
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@35.188.87.113:5432/magicdb'
+
+app = Flask(__name__)
+app.config.from_object(config)
+with app.app_context():
+        model = models
+        model.init_app(app)
+
 
 @app.route('/')
 @app.route('/index')
