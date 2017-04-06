@@ -66,7 +66,7 @@ class MCard(db.Model):
 	__tablename__ = 'cards'
 
 	#Relevant attributes for a card
-	cardId = db.Column(db.String(TEXT_LEN), primary_key=True)
+	cardId = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(MED_LEN))
 	mainType = db.Column(db.String(NAME_LEN))
 	subType = db.relationship('MSubtype', secondary=subtype_table, backref=db.backref('xcards', lazy='dynamic'))
@@ -173,7 +173,7 @@ class MSubtype(db.Model):
 	name = Name of the subtype
 	numCards = Number of existing cards of this subtype
 	exCard = Image of a card of this subtype, to represent the subtype
-	xcards = cards that are of this subtype
+	cards = cards that are of this subtype
 	sets = Sets that contain cards of this subtype
 	"""
 
