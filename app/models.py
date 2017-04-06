@@ -2,10 +2,10 @@
 # A Database for Magic the Gathering Cards
 #
 # pylint:disable=invalid-name,line-too-long,no-member,too-few-public-methods,locally-disabled
-#from flask import Flask
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import main
-from main import db
+from main import db #you can just include db here
 
 STG_LEN = 12
 NAME_LEN = 32
@@ -14,18 +14,39 @@ MED_LEN = 256
 TEXT_LEN = 1024
 
 
-
-
-class Test(db.Model):
-	__tablename__ = 'Test'
+# class Test(db.Model):
+# 	__tablename__ = 'Test'
   		  
-	name = db.Column(db.String(MED_LEN), primary_key=True)
+# 	name = db.Column(db.String(MED_LEN), primary_key=True)
 
-	def __init__(self,name):
-		self.name = name
+# 	def __init__(self,name):
+# 		self.name = name
   		  
-	def __repr__(self):
- 		return '<Name %r>' % self.name
+# 	def __repr__(self):
+#  		return '<Name %r>' % self.name
+
+def init_app(app):
+	
+	app.config.setdefault('SQLALCHEMY_TRACK_MODIFICATIONS', False)
+	db.init_app(app)
+
+def _create_database():
+    """
+    If this script is run directly, create all the tables necessary to run the
+    application.
+    """
+    app = Flask(__name__)
+    app.config.from_pyfile('config.py')
+    init_app(app)
+    with app.app_context():
+        db.create_all()
+    print("All tables created")
+
+
+if __name__ == '__main__':
+    _create_database()
+
+
 
 
 
