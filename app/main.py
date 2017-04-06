@@ -37,7 +37,7 @@ def test():
 #--------CARDS------------
 @app.route('/cards')
 def cards():
-    #cards = models.MCard.query.all()
+    cards = models.MCard.query.all()
     return render_template('cards.html',cards=cards, title = 'Cards')
 
 @app.route('/cards/<name>')
