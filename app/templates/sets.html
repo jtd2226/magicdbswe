@@ -2,30 +2,76 @@
 
 {%block content%}
 	<link rel="stylesheet" type="text/css" href="../static/css/models.css">
+	<script type="text/babel">
+		function SortOption(props) {
+			return (
+				<ol>
+					<button className="btn btn-default">{props.name}</button>
+				</ol>
+			);
+		}
+
+		function sortOrderChange() {
+			$("#sort-order").toggleClass("glyphicon-arrow-down glyphicon-arrow-up")
+		}
+			
+		function SortList() {
+			return (
+				<div className="btn-group">
+					<button className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    Sort By: <span id="sort-order" className="glyphicon glyphicon-arrow-down" onClick={sortOrderChange}></span>
+					</button>
+					<ul className="dropdown-menu">
+						<SortOption name="Name"/>
+						<SortOption name="Code"/>
+						<SortOption name="Release Date"/>
+						<SortOption name="Number of Cards"/>
+					</ul>
+				</div>
+			);
+		}
+		ReactDOM.render(
+			<SortList/>,
+			document.getElementById('sorting-options')
+		);
+	</script>
+	<script type="text/babel">
+		function FilterOption(props) {
+			return (
+				<ol>
+					<label className="checkbox-inline">
+						<input type="checkbox" value=""></input>
+						{props.name}
+					</label>
+					<input type="text" className="form-control" id={"filter-" + props.name.toLowerCase().replace(/\s/g,'')}></input>
+				</ol>
+			);
+		}
+			
+		function FilterList() {
+			return (
+				<div className="btn-group">
+					<button className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    			Filter By: <span className="caret"></span>
+		  			</button>
+					<ul className="dropdown-menu" id="filtering-options">
+						<FilterOption name="Release Year"/>
+						<FilterOption name="Number of Cards"/>
+					</ul>
+				</div>
+			);
+		}
+		ReactDOM.render(
+			<FilterList/>,
+			document.getElementById('filtering-options')
+		);
+	</script>
+	
 	<div class="magicdb-header">
 		<h1>Sets</h1>
 		<h3>Cards are released in different sets, here are some of them. </h3>
-		<div class="btn-group">
-		  <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    Sort By: <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu">
-		    <ol>Name</ol>
-		    <ol>Code</ol>
-		    <ol>Release Date</ol>
-		    <ol>Number of Cards</ol>
-		  </ul>
-		</div>
-		<div class="btn-group">
-		  <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    Filter By: <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu">
-		    <ol><label class="checkbox-inline"><input type="checkbox" value="">Name</label><input type="text" class="form-control" id="usr"></ol>
-		    <ol><label class="checkbox-inline"><input type="checkbox" value="">Release Year</label><input type="text" class="form-control" id="usr"></ol>
-		    <ol><label class="checkbox-inline"><input type="checkbox" value="">Number of Cards</label><input type="text" class="form-control" id="usr"></ol>
-		  </ul>
-		</div>
+		<span id="sorting-options"></span>
+		<span id="filtering-options"></span>
 	</div>
 
 	<div class="container-fluid">
