@@ -63,7 +63,7 @@ def artists_instance(name):
 #--------SETS--------------
 @app.route('/sets')
 def sets():
-    sets = models.MSets.query.all()
+    #sets = models.MSets.query.all()
     return render_template('sets.html',sets=sets, title = 'Sets')
 
 
