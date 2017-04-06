@@ -42,7 +42,7 @@ def cards():
 
 @app.route('/cards/<name>')
 def cards_instance(name):
-    cards_instance = models.MCard.query.filter_by(name=name).first()
+    #cards_instance = models.MCard.query.filter_by(name=name).first()
     return render_template('cards-instance.html',cards_instance=cards_instance, title = name)
 
 
