@@ -96,6 +96,10 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
+        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
+        db.session.add(exampleSet)
+        db.session.commit()
+
         example1 = MCard(123, "name", "Creature", [example3], "flying", 'LEA', 5, "Red", 1, 1, "url", "common", "thomas")
         db.session.add(example1)
         db.session.commit()
@@ -111,7 +115,7 @@ class TestMagic (TestCase):
         db.drop_all()
 
 
-    def test_many_relations(self):
+    def test_many_relations2(self):
 
         db.session.commit()
         db.drop_all()
@@ -121,19 +125,48 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        example1 = MCard(123, "name", "Creature", [example3], "flying", 'LEA', 5, "Red", 1, 1, "url", "common", "thomas")
-        db.session.add(example1)
+        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
+        db.session.add(exampleSet)
         db.session.commit()
 
-        example2 = MCard(124, "weewoocardnumber2", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
-        db.session.add(example2)
+        exampleSet2 = MSet('LEA', "Khans of Tarkir", "1", "none", 5, "link", [example3])
+        db.session.add(exampleSet2)
         db.session.commit()
 
         est = db.session.query(MSubtype).filter_by(name="gobbo").first()
-        self.assertEqual(len(est.xcards.all()), 2)
+        self.assertEqual(len(est.ssets.all()), 2)
 
         db.session.commit()
         db.drop_all()
+
+    def test_many_relations3(self):
+
+        db.session.commit()
+        db.drop_all()
+        db.create_all()
+
+        example3 = MSubtype("gobbo", 2)
+        db.session.add(example3)
+        db.session.commit()
+
+        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
+        db.session.add(exampleSet)
+        db.session.commit()
+
+        example1 = MArtist('Thomas', 5, 5, [exampleSet])
+        db.session.add(example1)
+        db.session.commit()
+
+        example2 = MArtist('Thom', 5, 5, [exampleSet])
+        db.session.add(example2)
+        db.session.commit()
+
+        est = db.session.query(MSet).filter_by(code="ktk").first()
+        self.assertEqual(len(est.xartists.all()), 2)
+
+        db.session.commit()
+        db.drop_all()
+
 
 
     #added subtypes to set

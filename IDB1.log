@@ -1,3 +1,71 @@
+commit 72d56aceb14de827383bf3c8f84cb62cdc7e093e
+Merge: b7df0ac f4296e1
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Apr 6 18:02:43 2017 -0500
+
+    cash n models
+
+commit b7df0acc0f5bba31623cc4723381527482bcd096
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Apr 6 18:01:10 2017 -0500
+
+    models n cash
+
+commit f4296e1b2457004ecd164101e6fe743734d3a9cd
+Merge: 0304393 87bb480
+Author: Nestor Castro <nestorcastro@wireless-10-147-61-208.public.utexas.edu>
+Date:   Thu Apr 6 17:51:46 2017 -0500
+
+    Font in home page changed; Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 03043931f2abf983d0ec2e58f743a9f766e3042f
+Author: Nestor Castro <nestorcastro@wireless-10-147-61-208.public.utexas.edu>
+Date:   Thu Apr 6 17:51:27 2017 -0500
+
+    changed color and font of home descriptions
+
+commit 87bb480aa756a53f07b554fbd89042222580a6d4
+Author: Nilo Lisboa <nilobl@wireless-10-147-49-154.public.utexas.edu>
+Date:   Thu Apr 6 17:17:18 2017 -0500
+
+    Updated most of the Tech Report
+
+commit 9d744afb4749fbb5a8e2e2a5769493c45b811775
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Apr 6 16:53:43 2017 -0500
+
+    i cannot get this flask thing strait lmao.
+
+commit e6876adaae2ed8c184e814c5bbbf50d4446a8f10
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Apr 6 16:21:36 2017 -0500
+
+    qwerwqerqwerqwerwqerwqerwqer
+
+commit 68b0d13bb697e4b14a6ad55b965c50665423ee53
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Apr 6 16:17:56 2017 -0500
+
+    asdfljhdjbe45
+
+commit 5955765590a97af3576a83386821503bc368b55c
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Apr 6 16:17:37 2017 -0500
+
+    asdfljhdjbe45
+
+commit 05bc20ee3b4dd183470943698d2d828b32a9bf1b
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Thu Apr 6 14:36:32 2017 -0500
+
+    did a bit of react js.
+
+commit 009ec5dd1fcb4c6c799844455d7133092e8b241a
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Thu Apr 6 02:46:07 2017 -0500
+
+    Added routing addresses and easter egg, fixed title tag
+
 commit 85339673a472b6a99e24c1329bb9abe19858ad85
 Author: Mfam22 <m.martinez1120@gmail.com>
 Date:   Thu Apr 6 00:15:10 2017 -0500

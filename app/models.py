@@ -43,6 +43,16 @@ subtype_table = db.Table('subtype_table',
     db.Column('card_id', db.Integer, db.ForeignKey('cards.cardId'))
 )
 
+set_artist_table = db.Table('set_artist_table',
+	db.Column('set_code', db.String(STG_LEN), db.ForeignKey('sets.code')),
+	db.Column('artist_name', db.String(MED_LEN), db.ForeignKey('artists.name'))
+)
+
+set_subtype_table = db.Table('set_subtype_table',
+    db.Column('subtype_name', db.String(MED_LEN), db.ForeignKey('subtypes.name')),
+    db.Column('set_code', db.String(STG_LEN), db.ForeignKey('sets.code'))
+)
+
 class MCard(db.Model):
 
 	"""
@@ -111,7 +121,7 @@ class MSet(db.Model):
 	subTypes = All subtypes in the expansion
 	numCards = Number of cards that came out in the expansion
 	symbol = Symbol used to identify the expansion on cards
-	artists = Artists that made cards for this expansion
+	xartists = Artists that made cards for this expansion
 	"""
 
 	__tablename__ = 'sets'
@@ -123,16 +133,17 @@ class MSet(db.Model):
 	cards = db.relationship('MCard', backref='set', lazy='dynamic')
 	numCards = db.Column(db.Integer)
 	symbol = db.Column(db.String(MED_LEN)) #link
+	subTypes = db.relationship('MSubtype', secondary=set_subtype_table, backref=db.backref('ssets', lazy='dynamic'))
 
 	def __init__(self, code, name, rDate, block, numCards,
-				 symbol):
+				 symbol, subTypes):
 		self.code = code
 		self.name = name
 		self.rDate = rDate
 		self.block = block
-		# self.cards = cards
 		self.numCards = numCards
 		self.symbol = symbol
+		self.subTypes = subTypes
 
 	def __repr__(self):
 		return '<MSet %r>' % self.code
@@ -156,12 +167,13 @@ class MArtist(db.Model):
 	numCards = db.Column(db.Integer)
 	numSets = db.Column(db.Integer)
 	cards = db.relationship('MCard', backref='artistboi', lazy='dynamic')
+	sets = db.relationship('MSet', secondary=set_artist_table, backref=db.backref('xartists', lazy='dynamic'))
 
-	def __init__(self, name, numCards, numSets):
+	def __init__(self, name, numCards, numSets, sets):
 		self.name = name
 		self.numCards = numCards
 		self.numSets = numSets
-		#self.cards = cards
+		self.sets = sets
 
 	def __repr__(self):
 		return '<MArtist %r>' % self.name
@@ -172,9 +184,8 @@ class MSubtype(db.Model):
 
 	name = Name of the subtype
 	numCards = Number of existing cards of this subtype
-	exCard = Image of a card of this subtype, to represent the subtype
 	xcards = cards that are of this subtype
-	sets = Sets that contain cards of this subtype
+	ssets = Sets that contain cards of this subtype
 	"""
 
 	__tablename__ = 'subtypes'
