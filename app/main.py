@@ -33,9 +33,8 @@ def about():
 @app.route('/run-tests')
 def run_tests():
     import subprocess
-    output = subprocess.run(['python3', 'TestMagic.py'], stdout = subprocess.PIPE).stdout.decode()
-    print (output)
-    return render_template('run-tests.html',output =  output, title = 'Run Tests')
+    #output = subprocess.run(['python3', 'TestMagic.py'], stdout = subprocess.PIPE).stdout.decode()
+    return render_template('run-tests.html', title = 'Run Tests')
 
 #--------CARDS------------
 @app.route('/cards')
