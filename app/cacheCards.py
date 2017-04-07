@@ -69,7 +69,12 @@ for card in cards:
 	card_rarity = "none"
 	if card.rarity is not None:
 		card_rarity = card.rarity
-	print("			\"rarity\":" + "\"" + card_rarity + "\"")
+	print("			\"rarity\":" + "\"" + card_rarity + "\",")
+
+	card_artist = "none"
+	if card.artist is not None:
+		card_artist = card.artist
+	print("			\"artist\":" + "\"" + card_artist + "\"")
 
 	print("		},")
 

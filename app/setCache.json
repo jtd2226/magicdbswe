@@ -1,0 +1,1831 @@
+{
+"allsets":	[
+{
+"code":"LEA",
+"name":"Limited Edition Alpha",
+"rDate":"1993-08-05",
+"block":"none",
+"numCards":295,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_AlphaBetaUnlimited_SetLogo.png",
+			"subTypes":["Zombie"]
+},
+{
+"code":"LEB",
+"name":"Limited Edition Beta",
+"rDate":"1993-10-01",
+"block":"none",
+"numCards":302,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_AlphaBetaUnlimited_SetLogo.png",
+			"subTypes":["Zombie"]
+},
+{
+"code":"ARN",
+"name":"Arabian Nights",
+"rDate":"1993-12-01",
+"block":"none",
+"numCards":92,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ARN_SetLogo.png",
+			"subTypes":["Efreet"]
+},
+{
+"code":"2ED",
+"name":"Unlimited Edition",
+"rDate":"1993-12-01",
+"block":"none",
+"numCards":302,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_AlphaBetaUnlimited_SetLogo.png",
+			"subTypes":["Zombie"]
+},
+{
+"code":"CED",
+"name":"Collector's Edition",
+"rDate":"1993-12-01",
+"block":"none",
+"numCards":302,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Zombie"]
+},
+{
+"code":"CEI",
+"name":"International Collector's Edition",
+"rDate":"1993-12-01",
+"block":"none",
+"numCards":302,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Zombie"]
+},
+{
+"code":"pDRC",
+"name":"Dragon Con",
+"rDate":"1994-01-01",
+"block":"none",
+"numCards":1,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Dragon"]
+},
+{
+"code":"ATQ",
+"name":"Antiquities",
+"rDate":"1994-03-01",
+"block":"none",
+"numCards":100,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ATQ_SetLogo.png",
+			"subTypes":["Soldier"]
+},
+{
+"code":"3ED",
+"name":"Revised Edition",
+"rDate":"1994-04-01",
+"block":"none",
+"numCards":306,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_3ED_SetLogo.png",
+			"subTypes":["Zombie"]
+},
+{
+"code":"LEG",
+"name":"Legends",
+"rDate":"1994-06-01",
+"block":"none",
+"numCards":310,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_LED_SetLogo.png",
+			"subTypes":["Bird"]
+},
+{
+"code":"DRK",
+"name":"The Dark",
+"rDate":"1994-08-01",
+"block":"none",
+"numCards":119,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DRK_SetLogo.png",
+			"subTypes":["Treefolk"]
+},
+{
+"code":"FEM",
+"name":"Fallen Empires",
+"rDate":"1994-11-01",
+"block":"none",
+"numCards":187,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_FEM_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"pMEI",
+"name":"Media Inserts",
+"rDate":"1995-01-01",
+"block":"none",
+"numCards":148,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Goblin"]
+},
+{
+"code":"pLGM",
+"name":"Legend Membership",
+"rDate":"1995-01-01",
+"block":"none",
+"numCards":2,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":[]
+},
+{
+"code":"4ED",
+"name":"Fourth Edition",
+"rDate":"1995-04-01",
+"block":"none",
+"numCards":378,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_4ED_SetLogo.png",
+			"subTypes":["Zombie"]
+},
+{
+"code":"ICE",
+"name":"Ice Age",
+"rDate":"1995-06-01",
+"block":"Ice Age",
+"numCards":383,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ICE_SetLogo.png",
+			"subTypes":["Human", "Wizard"]
+},
+{
+"code":"CHR",
+"name":"Chronicles",
+"rDate":"1995-07-01",
+"block":"none",
+"numCards":125,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_CHR_SetLogo.png",
+			"subTypes":["Demon"]
+},
+{
+"code":"HML",
+"name":"Homelands",
+"rDate":"1995-10-01",
+"block":"none",
+"numCards":140,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_HML_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"ALL",
+"name":"Alliances",
+"rDate":"1996-06-10",
+"block":"Ice Age",
+"numCards":199,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ALL_SetLogo.png",
+			"subTypes":["Insect"]
+},
+{
+"code":"RQS",
+"name":"Rivals Quick Start Set",
+"rDate":"1996-07-01",
+"block":"none",
+"numCards":54,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Bird"]
+},
+{
+"code":"pARL",
+"name":"Arena League",
+"rDate":"1996-08-02",
+"block":"none",
+"numCards":83,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":[]
+},
+{
+"code":"pCEL",
+"name":"Celebration",
+"rDate":"1996-08-14",
+"block":"none",
+"numCards":6,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Chicken", "Construct"]
+},
+{
+"code":"MIR",
+"name":"Mirage",
+"rDate":"1996-10-08",
+"block":"Mirage",
+"numCards":350,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_MIR_SetLogo.png",
+			"subTypes":["Griffin"]
+},
+{
+"code":"MGB",
+"name":"Multiverse Gift Box",
+"rDate":"1996-11-01",
+"block":"none",
+"numCards":10,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":[]
+},
+{
+"code":"ITP",
+"name":"Introductory Two-Player Set",
+"rDate":"1996-12-31",
+"block":"none",
+"numCards":57,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Bird"]
+},
+{
+"code":"VIS",
+"name":"Visions",
+"rDate":"1997-02-03",
+"block":"Mirage",
+"numCards":167,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_VIS_SetLogo.png",
+			"subTypes":["Human", "Knight"]
+},
+{
+"code":"5ED",
+"name":"Fifth Edition",
+"rDate":"1997-03-24",
+"block":"none",
+"numCards":449,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_5ED_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"pPOD",
+"name":"Portal Demo Game",
+"rDate":"1997-05-01",
+"block":"none",
+"numCards":6,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Bird"]
+},
+{
+"code":"POR",
+"name":"Portal",
+"rDate":"1997-05-01",
+"block":"none",
+"numCards":222,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_POR_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"VAN",
+"name":"Vanguard",
+"rDate":"1997-05-01",
+"block":"none",
+"numCards":116,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_VAN_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"WTH",
+"name":"Weatherlight",
+"rDate":"1997-06-09",
+"block":"Mirage",
+"numCards":167,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_WTH_SetLogo.png",
+			"subTypes":["Zombie"]
+},
+{
+"code":"pPRE",
+"name":"Prerelease Events",
+"rDate":"1997-10-04",
+"block":"none",
+"numCards":307,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Goblin", "Ally"]
+},
+{
+"code":"TMP",
+"name":"Tempest",
+"rDate":"1997-10-14",
+"block":"Tempest",
+"numCards":350,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_TEM_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"STH",
+"name":"Stronghold",
+"rDate":"1998-03-02",
+"block":"Tempest",
+"numCards":143,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_STH_SetLogo_0.png",
+			"subTypes":["Human", "Knight"]
+},
+{
+"code":"PO2",
+"name":"Portal Second Age",
+"rDate":"1998-06-01",
+"block":"none",
+"numCards":165,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_P02_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"pJGP",
+"name":"Judge Gift Program",
+"rDate":"1998-06-01",
+"block":"none",
+"numCards":100,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":[]
+},
+{
+"code":"EXO",
+"name":"Exodus",
+"rDate":"1998-06-15",
+"block":"Tempest",
+"numCards":143,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_EXO_SetLogo_0.png",
+			"subTypes":[]
+},
+{
+"code":"UGL",
+"name":"Unglued",
+"rDate":"1998-08-11",
+"block":"none",
+"numCards":94,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_UGL_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"pALP",
+"name":"Asia Pacific Land Program",
+"rDate":"1998-09-01",
+"block":"none",
+"numCards":15,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Swamp"]
+},
+{
+"code":"USG",
+"name":"Urza's Saga",
+"rDate":"1998-10-12",
+"block":"Urza's",
+"numCards":350,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_USG_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"ATH",
+"name":"Anthologies",
+"rDate":"1998-11-01",
+"block":"none",
+"numCards":81,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ATH_SetLogo.png",
+			"subTypes":["Human", "Knight"]
+},
+{
+"code":"ULG",
+"name":"Urza's Legacy",
+"rDate":"1999-02-15",
+"block":"Urza's",
+"numCards":143,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ULG_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"6ED",
+"name":"Classic Sixth Edition",
+"rDate":"1999-04-21",
+"block":"none",
+"numCards":350,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_6ED_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"PTK",
+"name":"Portal Three Kingdoms",
+"rDate":"1999-05-01",
+"block":"none",
+"numCards":180,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_PTK_SetLogo_0.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"UDS",
+"name":"Urza's Destiny",
+"rDate":"1999-06-07",
+"block":"Urza's",
+"numCards":143,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_UDS_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"S99",
+"name":"Starter 1999",
+"rDate":"1999-07-01",
+"block":"none",
+"numCards":173,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_S99_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"pGRU",
+"name":"Guru",
+"rDate":"1999-07-12",
+"block":"none",
+"numCards":5,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Swamp"]
+},
+{
+"code":"pWOR",
+"name":"Worlds",
+"rDate":"1999-08-04",
+"block":"none",
+"numCards":1,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Human", "Barbarian"]
+},
+{
+"code":"pWOS",
+"name":"Wizards of the Coast Online Store",
+"rDate":"1999-09-04",
+"block":"none",
+"numCards":1,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Angel"]
+},
+{
+"code":"MMQ",
+"name":"Mercadian Masques",
+"rDate":"1999-10-04",
+"block":"Masques",
+"numCards":350,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_MMQ_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"BRB",
+"name":"Battle Royale Box Set",
+"rDate":"1999-11-12",
+"block":"none",
+"numCards":136,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_BRB_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"pSUS",
+"name":"Super Series",
+"rDate":"1999-12-01",
+"block":"none",
+"numCards":32,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Elf"]
+},
+{
+"code":"pFNM",
+"name":"Friday Night Magic",
+"rDate":"2000-02-01",
+"block":"none",
+"numCards":193,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":[]
+},
+{
+"code":"pELP",
+"name":"European Land Program",
+"rDate":"2000-02-05",
+"block":"none",
+"numCards":15,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Swamp"]
+},
+{
+"code":"NMS",
+"name":"Nemesis",
+"rDate":"2000-02-14",
+"block":"Masques",
+"numCards":143,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_NEM_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"S00",
+"name":"Starter 2000",
+"rDate":"2000-04-01",
+"block":"none",
+"numCards":58,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_S00_SetLogo.png",
+			"subTypes":["Drake"]
+},
+{
+"code":"PCY",
+"name":"Prophecy",
+"rDate":"2000-06-05",
+"block":"Masques",
+"numCards":143,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_PCY_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"BTD",
+"name":"Beatdown Box Set",
+"rDate":"2000-10-01",
+"block":"none",
+"numCards":90,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_BTD_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"INV",
+"name":"Invasion",
+"rDate":"2000-10-02",
+"block":"Invasion",
+"numCards":355,
+"symbol":"http://magic.wizards.com/sites/mtg/files/EN_INV_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"PLS",
+"name":"Planeshift",
+"rDate":"2001-02-05",
+"block":"Invasion",
+"numCards":146,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_PLS_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"7ED",
+"name":"Seventh Edition",
+"rDate":"2001-04-11",
+"block":"none",
+"numCards":350,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_7ED_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"pMPR",
+"name":"Magic Player Rewards",
+"rDate":"2001-05-01",
+"block":"none",
+"numCards":53,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":[]
+},
+{
+"code":"APC",
+"name":"Apocalypse",
+"rDate":"2001-06-04",
+"block":"Invasion",
+"numCards":148,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_APC_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"ODY",
+"name":"Odyssey",
+"rDate":"2001-10-01",
+"block":"Odyssey",
+"numCards":350,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ODY_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"DKM",
+"name":"Deckmasters",
+"rDate":"2001-12-01",
+"block":"none",
+"numCards":56,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DKM_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"TOR",
+"name":"Torment",
+"rDate":"2002-02-04",
+"block":"Odyssey",
+"numCards":143,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_TOR_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"JUD",
+"name":"Judgment",
+"rDate":"2002-05-27",
+"block":"Odyssey",
+"numCards":143,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_JUD_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"ONS",
+"name":"Onslaught",
+"rDate":"2002-10-07",
+"block":"Onslaught",
+"numCards":350,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ONS_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"LGN",
+"name":"Legions",
+"rDate":"2003-02-03",
+"block":"Onslaught",
+"numCards":145,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_LGN_SetLogo.png",
+			"subTypes":["Elf"]
+},
+{
+"code":"SCG",
+"name":"Scourge",
+"rDate":"2003-05-26",
+"block":"Onslaught",
+"numCards":143,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_SCG_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"pREL",
+"name":"Release Events",
+"rDate":"2003-07-26",
+"block":"none",
+"numCards":14,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Elemental"]
+},
+{
+"code":"8ED",
+"name":"Eighth Edition",
+"rDate":"2003-07-28",
+"block":"none",
+"numCards":357,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_8ED_SetLogo.png",
+			"subTypes":["Ape"]
+},
+{
+"code":"MRD",
+"name":"Mirrodin",
+"rDate":"2003-10-02",
+"block":"Mirrodin",
+"numCards":306,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_MRD_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"DST",
+"name":"Darksteel",
+"rDate":"2004-02-06",
+"block":"Mirrodin",
+"numCards":165,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DST_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"5DN",
+"name":"Fifth Dawn",
+"rDate":"2004-06-04",
+"block":"Mirrodin",
+"numCards":165,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_5DN_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"CHK",
+"name":"Champions of Kamigawa",
+"rDate":"2004-10-01",
+"block":"Kamigawa",
+"numCards":317,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_CHK_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"UNH",
+"name":"Unhinged",
+"rDate":"2004-11-19",
+"block":"none",
+"numCards":145,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_UHN_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"BOK",
+"name":"Betrayers of Kamigawa",
+"rDate":"2005-02-04",
+"block":"Kamigawa",
+"numCards":170,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_BOK_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"SOK",
+"name":"Saviors of Kamigawa",
+"rDate":"2005-06-03",
+"block":"Kamigawa",
+"numCards":170,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_SOK_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"9ED",
+"name":"Ninth Edition",
+"rDate":"2005-07-29",
+"block":"none",
+"numCards":359,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_9ED_SetLogo.png",
+			"subTypes":["Wurm"]
+},
+{
+"code":"RAV",
+"name":"Ravnica: City of Guilds",
+"rDate":"2005-10-07",
+"block":"Ravnica",
+"numCards":306,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_RAV_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"p2HG",
+"name":"Two-Headed Giant Tournament",
+"rDate":"2005-12-09",
+"block":"none",
+"numCards":1,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":[]
+},
+{
+"code":"pGTW",
+"name":"Gateway",
+"rDate":"2006-01-01",
+"block":"none",
+"numCards":20,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Merfolk", "Wizard"]
+},
+{
+"code":"GPT",
+"name":"Guildpact",
+"rDate":"2006-02-03",
+"block":"Ravnica",
+"numCards":165,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_GPT_SetLogo.png",
+			"subTypes":["Mountain", "Forest"]
+},
+{
+"code":"pCMP",
+"name":"Champs and States",
+"rDate":"2006-03-18",
+"block":"none",
+"numCards":12,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":[]
+},
+{
+"code":"DIS",
+"name":"Dissension",
+"rDate":"2006-05-05",
+"block":"Ravnica",
+"numCards":190,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DIS_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"CSP",
+"name":"Coldsnap",
+"rDate":"2006-07-21",
+"block":"Ice Age",
+"numCards":155,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_CSP_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"CST",
+"name":"Coldsnap Theme Decks",
+"rDate":"2006-07-21",
+"block":"none",
+"numCards":62,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"V11",
+"name":"From the Vault: Legends",
+"rDate":"2011-08-26",
+"block":"none",
+"numCards":15,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_V11_SetLogo.png",
+			"subTypes":["Gorgon"]
+},
+{
+"code":"TSP",
+"name":"Time Spiral",
+"rDate":"2006-10-06",
+"block":"Time Spiral",
+"numCards":301,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_TSP_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"TSB",
+"name":"Time Spiral \"Timeshifted\"",
+"rDate":"2006-10-06",
+"block":"Time Spiral",
+"numCards":122,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_TSP_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"pHHO",
+"name":"Happy Holidays",
+"rDate":"2006-12-31",
+"block":"none",
+"numCards":10,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":[]
+},
+{
+"code":"PLC",
+"name":"Planar Chaos",
+"rDate":"2007-02-02",
+"block":"Time Spiral",
+"numCards":168,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_PLC_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"pPRO",
+"name":"Pro Tour",
+"rDate":"2007-02-09",
+"block":"none",
+"numCards":5,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Ajani"]
+},
+{
+"code":"pGPX",
+"name":"Grand Prix",
+"rDate":"2007-02-24",
+"block":"none",
+"numCards":11,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Demon"]
+},
+{
+"code":"FUT",
+"name":"Future Sight",
+"rDate":"2007-05-04",
+"block":"Time Spiral",
+"numCards":180,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_FUT_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"10E",
+"name":"Tenth Edition",
+"rDate":"2007-07-13",
+"block":"none",
+"numCards":383,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_10E_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"pMGD",
+"name":"Magic Game Day",
+"rDate":"2007-07-14",
+"block":"none",
+"numCards":50,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Merfolk", "Wizard"]
+},
+{
+"code":"MED",
+"name":"Masters Edition",
+"rDate":"2007-09-10",
+"block":"none",
+"numCards":195,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ME1_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"LRW",
+"name":"Lorwyn",
+"rDate":"2007-10-12",
+"block":"Lorwyn",
+"numCards":301,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_LRW_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"EVG",
+"name":"Duel Decks: Elves vs. Goblins",
+"rDate":"2007-11-16",
+"block":"none",
+"numCards":65,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_EVG_SetLogo.png",
+			"subTypes":["Goblin"]
+},
+{
+"code":"pLPA",
+"name":"Launch Parties",
+"rDate":"2008-02-01",
+"block":"none",
+"numCards":33,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Dragon"]
+},
+{
+"code":"MOR",
+"name":"Morningtide",
+"rDate":"2008-02-01",
+"block":"Lorwyn",
+"numCards":150,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_MOR_SetLogo_0.png",
+			"subTypes":[]
+},
+{
+"code":"p15A",
+"name":"15th Anniversary",
+"rDate":"2008-04-01",
+"block":"none",
+"numCards":2,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Human", "Barbarian"]
+},
+{
+"code":"DDH",
+"name":"Duel Decks: Ajani vs. Nicol Bolas",
+"rDate":"2011-09-02",
+"block":"none",
+"numCards":83,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDH_SetLogo.png",
+			"subTypes":["Mountain"]
+},
+{
+"code":"SHM",
+"name":"Shadowmoor",
+"rDate":"2008-05-02",
+"block":"Shadowmoor",
+"numCards":301,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_SHM_SetLogo_0.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"pSUM",
+"name":"Summer of Magic",
+"rDate":"2007-07-21",
+"block":"none",
+"numCards":2,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":[]
+},
+{
+"code":"EVE",
+"name":"Eventide",
+"rDate":"2008-07-25",
+"block":"Shadowmoor",
+"numCards":180,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_EVE_SetLogo_1.png",
+			"subTypes":[]
+},
+{
+"code":"DRB",
+"name":"From the Vault: Dragons",
+"rDate":"2008-08-29",
+"block":"none",
+"numCards":15,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DRB_SetLogo.png",
+			"subTypes":["Dragon"]
+},
+{
+"code":"ME2",
+"name":"Masters Edition II",
+"rDate":"2008-09-22",
+"block":"none",
+"numCards":245,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ME2_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"pWPN",
+"name":"Wizards Play Network",
+"rDate":"2008-10-01",
+"block":"none",
+"numCards":45,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Wurm"]
+},
+{
+"code":"ALA",
+"name":"Shards of Alara",
+"rDate":"2008-10-03",
+"block":"Alara",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ALA_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"DD2",
+"name":"Duel Decks: Jace vs. Chandra",
+"rDate":"2008-11-07",
+"block":"none",
+"numCards":63,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DD2_SetLogo.png",
+			"subTypes":["Elemental", "Shaman"]
+},
+{
+"code":"CON",
+"name":"Conflux",
+"rDate":"2009-02-06",
+"block":"Alara",
+"numCards":145,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_CON_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"DDC",
+"name":"Duel Decks: Divine vs. Demonic",
+"rDate":"2009-04-10",
+"block":"none",
+"numCards":65,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDC_SetLogo.png",
+			"subTypes":["Thrull"]
+},
+{
+"code":"ARB",
+"name":"Alara Reborn",
+"rDate":"2009-04-30",
+"block":"Alara",
+"numCards":145,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ARB_SetLogo.png",
+			"subTypes":["Bird"]
+},
+{
+"code":"M10",
+"name":"Magic 2010",
+"rDate":"2009-07-17",
+"block":"none",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_M10_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"V09",
+"name":"From the Vault: Exiled",
+"rDate":"2009-08-28",
+"block":"none",
+"numCards":15,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_V09_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"HOP",
+"name":"Planechase",
+"rDate":"2009-09-04",
+"block":"none",
+"numCards":212,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_PC2_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"ME3",
+"name":"Masters Edition III",
+"rDate":"2009-09-07",
+"block":"none",
+"numCards":230,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ME3_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"ZEN",
+"name":"Zendikar",
+"rDate":"2009-10-02",
+"block":"Zendikar",
+"numCards":269,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ZEN_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"DDD",
+"name":"Duel Decks: Garruk vs. Liliana",
+"rDate":"2009-10-30",
+"block":"none",
+"numCards":66,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDD_SetLogo.png",
+			"subTypes":["Elephant"]
+},
+{
+"code":"H09",
+"name":"Premium Deck Series: Slivers",
+"rDate":"2009-11-20",
+"block":"none",
+"numCards":41,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_H09_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"WWK",
+"name":"Worldwake",
+"rDate":"2010-02-05",
+"block":"Zendikar",
+"numCards":145,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_WWK_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"DDE",
+"name":"Duel Decks: Phyrexia vs. the Coalition",
+"rDate":"2010-03-19",
+"block":"none",
+"numCards":74,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDE_SetLogo.png",
+			"subTypes":["Saproling"]
+},
+{
+"code":"ROE",
+"name":"Rise of the Eldrazi",
+"rDate":"2010-04-23",
+"block":"Zendikar",
+"numCards":248,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ROE_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"DPA",
+"name":"Duels of the Planeswalkers",
+"rDate":"2010-06-04",
+"block":"none",
+"numCards":113,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_XDA_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"ARC",
+"name":"Archenemy",
+"rDate":"2010-06-18",
+"block":"none",
+"numCards":196,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ARC_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"M11",
+"name":"Magic 2011",
+"rDate":"2010-07-16",
+"block":"none",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_M11_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"V10",
+"name":"From the Vault: Relics",
+"rDate":"2010-08-27",
+"block":"none",
+"numCards":15,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_V10_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"DDF",
+"name":"Duel Decks: Elspeth vs. Tezzeret",
+"rDate":"2010-09-03",
+"block":"none",
+"numCards":79,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDF_SetLogo.png",
+			"subTypes":["Island"]
+},
+{
+"code":"SOM",
+"name":"Scars of Mirrodin",
+"rDate":"2010-10-01",
+"block":"Scars of Mirrodin",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_SOM_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"PD2",
+"name":"Premium Deck Series: Fire and Lightning",
+"rDate":"2010-11-19",
+"block":"none",
+"numCards":34,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_PD2_SetLogo.png",
+			"subTypes":["Mountain"]
+},
+{
+"code":"ME4",
+"name":"Masters Edition IV",
+"rDate":"2011-01-10",
+"block":"none",
+"numCards":269,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ME4_SetLogo.png",
+			"subTypes":["Island", "Mountain"]
+},
+{
+"code":"MBS",
+"name":"Mirrodin Besieged",
+"rDate":"2011-02-04",
+"block":"Scars of Mirrodin",
+"numCards":155,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_MBS_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"DDG",
+"name":"Duel Decks: Knights vs. Dragons",
+"rDate":"2011-04-01",
+"block":"none",
+"numCards":81,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDG_SetLogo.png",
+			"subTypes":["Mountain"]
+},
+{
+"code":"NPH",
+"name":"New Phyrexia",
+"rDate":"2011-05-13",
+"block":"Scars of Mirrodin",
+"numCards":175,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_NPH_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"CMD",
+"name":"Magic: The Gathering-Commander",
+"rDate":"2011-06-17",
+"block":"none",
+"numCards":320,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_C13_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"M12",
+"name":"Magic 2012",
+"rDate":"2011-07-15",
+"block":"none",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_M12_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"ISD",
+"name":"Innistrad",
+"rDate":"2011-09-30",
+"block":"Innistrad",
+"numCards":284,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ISD_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"PD3",
+"name":"Premium Deck Series: Graveborn",
+"rDate":"2011-11-18",
+"block":"none",
+"numCards":30,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_PD3_SetLogo_0.png",
+			"subTypes":["Swamp"]
+},
+{
+"code":"DKA",
+"name":"Dark Ascension",
+"rDate":"2012-02-03",
+"block":"Innistrad",
+"numCards":171,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DKA_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"DDI",
+"name":"Duel Decks: Venser vs. Koth",
+"rDate":"2012-03-30",
+"block":"none",
+"numCards":77,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDI_SetLogo.png",
+			"subTypes":["Mountain"]
+},
+{
+"code":"AVR",
+"name":"Avacyn Restored",
+"rDate":"2012-05-04",
+"block":"Innistrad",
+"numCards":244,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_AVR_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"PC2",
+"name":"Planechase 2012 Edition",
+"rDate":"2012-06-01",
+"block":"none",
+"numCards":197,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_PC2_SetLogo.png",
+			"subTypes":["Xerex"]
+},
+{
+"code":"M13",
+"name":"Magic 2013",
+"rDate":"2012-07-13",
+"block":"none",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_M13_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"V12",
+"name":"From the Vault: Realms",
+"rDate":"2012-08-31",
+"block":"none",
+"numCards":15,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_V12_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"DDJ",
+"name":"Duel Decks: Izzet vs. Golgari",
+"rDate":"2012-09-07",
+"block":"none",
+"numCards":92,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDJ_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"RTR",
+"name":"Return to Ravnica",
+"rDate":"2012-10-05",
+"block":"Return to Ravnica",
+"numCards":274,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_RTR_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"CM1",
+"name":"Commander's Arsenal",
+"rDate":"2012-11-02",
+"block":"none",
+"numCards":18,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_CM1_SetLogo.png",
+			"subTypes":["Human", "Wizard"]
+},
+{
+"code":"GTC",
+"name":"Gatecrash",
+"rDate":"2013-02-01",
+"block":"Return to Ravnica",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_GTC_SetLogo.png",
+			"subTypes":["Island", "Swamp"]
+},
+{
+"code":"DDK",
+"name":"Duel Decks: Sorin vs. Tibalt",
+"rDate":"2013-03-15",
+"block":"none",
+"numCards":80,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDK_SetLogo.png",
+			"subTypes":["Swamp"]
+},
+{
+"code":"pWCQ",
+"name":"World Magic Cup Qualifiers",
+"rDate":"2013-04-06",
+"block":"none",
+"numCards":2,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Spirit", "Cleric"]
+},
+{
+"code":"DGM",
+"name":"Dragon's Maze",
+"rDate":"2013-05-03",
+"block":"Return to Ravnica",
+"numCards":171,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DGM_SetLogo.png",
+			"subTypes":["Gate"]
+},
+{
+"code":"MMA",
+"name":"Modern Masters",
+"rDate":"2013-06-07",
+"block":"none",
+"numCards":229,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_MMA_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"M14",
+"name":"Magic 2014 Core Set",
+"rDate":"2013-07-19",
+"block":"none",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_M14_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"V13",
+"name":"From the Vault: Twenty",
+"rDate":"2013-08-23",
+"block":"none",
+"numCards":20,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_V13_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"DDL",
+"name":"Duel Decks: Heroes vs. Monsters",
+"rDate":"2013-09-06",
+"block":"none",
+"numCards":81,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDL_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"THS",
+"name":"Theros",
+"rDate":"2013-09-27",
+"block":"Theros",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_THS_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"C13",
+"name":"Commander 2013 Edition",
+"rDate":"2013-11-01",
+"block":"none",
+"numCards":357,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_C13_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"BNG",
+"name":"Born of the Gods",
+"rDate":"2014-02-07",
+"block":"Theros",
+"numCards":165,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_BNG_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"DDM",
+"name":"Duel Decks: Jace vs. Vraska",
+"rDate":"2014-03-14",
+"block":"none",
+"numCards":88,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDM_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"JOU",
+"name":"Journey into Nyx",
+"rDate":"2014-05-02",
+"block":"Theros",
+"numCards":165,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_JOU_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"MD1",
+"name":"Modern Event Deck 2014",
+"rDate":"2014-05-30",
+"block":"none",
+"numCards":26,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_MD1_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"CNS",
+"name":"Magic: The Gathering—Conspiracy",
+"rDate":"2014-06-06",
+"block":"none",
+"numCards":210,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_CNS_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"VMA",
+"name":"Vintage Masters",
+"rDate":"2014-06-16",
+"block":"none",
+"numCards":325,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_VMA_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"M15",
+"name":"Magic 2015 Core Set",
+"rDate":"2014-07-18",
+"block":"none",
+"numCards":284,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_M15_SetLogo.png",
+			"subTypes":["Beast"]
+},
+{
+"code":"CPK",
+"name":"Clash Pack",
+"rDate":"2014-07-18",
+"block":"none",
+"numCards":12,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":[]
+},
+{
+"code":"V14",
+"name":"From the Vault: Annihilation (2014)",
+"rDate":"2014-08-22",
+"block":"none",
+"numCards":15,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_V14_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"DDN",
+"name":"Duel Decks: Speed vs. Cunning",
+"rDate":"2014-09-05",
+"block":"none",
+"numCards":82,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDN_SetLogo.png",
+			"subTypes":["Goblin"]
+},
+{
+"code":"C15",
+"name":"Commander 2015",
+"rDate":"2015-11-13",
+"block":"none",
+"numCards":342,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_C15_SetLogo_1.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"KTK",
+"name":"Khans of Tarkir",
+"rDate":"2014-09-26",
+"block":"Khans of Tarkir",
+"numCards":269,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_KTK_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"C14",
+"name":"Commander 2014",
+"rDate":"2014-11-07",
+"block":"none",
+"numCards":337,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_C13_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"DD3_DVD",
+"name":"Duel Decks Anthology, Divine vs. Demonic",
+"rDate":"2014-12-05",
+"block":"none",
+"numCards":62,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DD3_SetLogo.png",
+			"subTypes":["Swamp"]
+},
+{
+"code":"DD3_EVG",
+"name":"Duel Decks Anthology, Elves vs. Goblins",
+"rDate":"2014-12-05",
+"block":"none",
+"numCards":62,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DD3_SetLogo.png",
+			"subTypes":["Mountain"]
+},
+{
+"code":"DD3_GVL",
+"name":"Duel Decks Anthology, Garruk vs. Liliana",
+"rDate":"2014-12-05",
+"block":"none",
+"numCards":63,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DD3_SetLogo.png",
+			"subTypes":["Swamp"]
+},
+{
+"code":"DD3_JVC",
+"name":"Duel Decks Anthology, Jace vs. Chandra",
+"rDate":"2014-12-05",
+"block":"none",
+"numCards":62,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DD3_SetLogo.png",
+			"subTypes":["Mountain"]
+},
+{
+"code":"FRF_UGIN",
+"name":"Ugin's Fate promos",
+"rDate":"2015-01-17",
+"block":"none",
+"numCards":26,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_FRF_SetLogo.png",
+			"subTypes":["Equipment"]
+},
+{
+"code":"FRF",
+"name":"Fate Reforged",
+"rDate":"2015-01-23",
+"block":"Khans of Tarkir",
+"numCards":185,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_FRF_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"DDO",
+"name":"Duel Decks: Elspeth vs. Kiora",
+"rDate":"2015-02-27",
+"block":"none",
+"numCards":67,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDO_SetLogo_0.png",
+			"subTypes":["Kraken"]
+},
+{
+"code":"DTK",
+"name":"Dragons of Tarkir",
+"rDate":"2015-03-27",
+"block":"Khans of Tarkir",
+"numCards":264,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DTK_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"TPR",
+"name":"Tempest Remastered",
+"rDate":"2015-05-06",
+"block":"none",
+"numCards":269,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_TPR_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"MM2",
+"name":"Modern Masters 2015 Edition",
+"rDate":"2015-05-22",
+"block":"none",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_MM2_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"ORI",
+"name":"Magic Origins",
+"rDate":"2015-07-17",
+"block":"none",
+"numCards":293,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_ORI_SetLogo.png",
+			"subTypes":["Beast"]
+},
+{
+"code":"V15",
+"name":"From the Vault: Angels",
+"rDate":"2015-08-21",
+"block":"none",
+"numCards":15,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_V15_SetLogo.png",
+			"subTypes":["Angel"]
+},
+{
+"code":"DDP",
+"name":"Duel Decks: Zendikar vs. Eldrazi",
+"rDate":"2015-08-28",
+"block":"none",
+"numCards":80,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDP_SetLogo.png",
+			"subTypes":["Plant"]
+},
+{
+"code":"BFZ",
+"name":"Battle for Zendikar",
+"rDate":"2015-10-02",
+"block":"Battle for Zendikar",
+"numCards":299,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_BFZ_SetLogo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"EXP",
+"name":"Zendikar Expeditions",
+"rDate":"2015-10-02",
+"block":"none",
+"numCards":45,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_BFZ_SetLogo.png",
+			"subTypes":[]
+},
+{
+"code":"OGW",
+"name":"Oath of the Gatewatch",
+"rDate":"2016-01-22",
+"block":"Battle for Zendikar",
+"numCards":186,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_OGW_Logo.png",
+			"subTypes":[]
+},
+{
+"code":"DDQ",
+"name":"Duel Decks: Blessed vs. Cursed",
+"rDate":"2016-02-26",
+"block":"none",
+"numCards":80,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDQ_LOGO.png",
+			"subTypes":["Zombie"]
+},
+{
+"code":"W16",
+"name":"Welcome Deck 2016",
+"rDate":"2016-04-08",
+"block":"Shadows over Innistrad",
+"numCards":16,
+"symbol":"https://tournamentcenter.eu/sites/default/files/mtg-logo.png",
+			"subTypes":["Elemental"]
+},
+{
+"code":"SOI",
+"name":"Shadows over Innistrad",
+"rDate":"2016-04-08",
+"block":"Shadows over Innistrad",
+"numCards":330,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_SOI_Logo.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"EMA",
+"name":"Eternal Masters",
+"rDate":"2016-06-10",
+"block":"none",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_EMA_Name.png",
+			"subTypes":[]
+},
+{
+"code":"EMN",
+"name":"Eldritch Moon",
+"rDate":"2016-07-22",
+"block":"Shadows over Innistrad",
+"numCards":223,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_EMN_Logo_0.png",
+			"subTypes":[]
+},
+{
+"code":"V16",
+"name":"From the Vault: Lore",
+"rDate":"2016-08-19",
+"block":"none",
+"numCards":15,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_V16_Name.png",
+			"subTypes":[]
+},
+{
+"code":"CN2",
+"name":"Conspiracy: Take the Crown",
+"rDate":"2016-08-26",
+"block":"none",
+"numCards":222,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_CN2_Name.png",
+			"subTypes":["Kaya"]
+},
+{
+"code":"DDR",
+"name":"Duel Decks: Nissa vs. Ob Nixilis",
+"rDate":"2016-09-02",
+"block":"none",
+"numCards":75,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_DDR_Name_0.png",
+			"subTypes":["Plant"]
+},
+{
+"code":"KLD",
+"name":"Kaladesh",
+"rDate":"2016-09-30",
+"block":"Kaladesh",
+"numCards":274,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_KLD_Name.png",
+			"subTypes":[]
+},
+{
+"code":"MPS",
+"name":"Masterpiece Series: Kaladesh Inventions",
+"rDate":"2016-09-30",
+"block":"none",
+"numCards":54,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_KLD_Name.png",
+			"subTypes":["Wurm"]
+},
+{
+"code":"C16",
+"name":"Commander 2016",
+"rDate":"2016-11-11",
+"block":"none",
+"numCards":353,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_C16_Name.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"PCA",
+"name":"Planechase Anthology",
+"rDate":"2016-11-25",
+"block":"none",
+"numCards":242,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_PCA_Name.png",
+			"subTypes":["Forest"]
+},
+{
+"code":"AER",
+"name":"Aether Revolt",
+"rDate":"2017-01-20",
+"block":"Kaladesh",
+"numCards":194,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_AER_Logo.png",
+			"subTypes":[]
+},
+{
+"code":"MM3",
+"name":"Modern Masters 2017 Edition",
+"rDate":"2017-03-17",
+"block":"none",
+"numCards":249,
+"symbol":"http://magic.wizards.com/sites/mtg/files/images/featured/EN_MM3_Name.png",
+			"subTypes":[]
+}
+	]
+}

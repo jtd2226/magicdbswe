@@ -24,7 +24,7 @@ Handling many-to-many relations
 """
 subtype_table = db.Table('subtype_table',
     db.Column('subtype_name', db.String(MED_LEN), db.ForeignKey('subtypes.name')),
-    db.Column('card_id', db.Integer, db.ForeignKey('cards.cardId'))
+    db.Column('card_id', db.String(TEXT_LEN), db.ForeignKey('cards.cardId'))
 )
 
 set_artist_table = db.Table('set_artist_table',

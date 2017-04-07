@@ -13,8 +13,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@35.188.87.113:5432/magicdb'
 
-app = Flask(__name__)
-app.config.from_object(config)
 with app.app_context():
         model = models
         model.init_app(app)
