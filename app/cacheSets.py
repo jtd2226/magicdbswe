@@ -40,12 +40,12 @@ for iset in sets:
 	print("\"symbol\":" + "\"" + surldict[iset.code] + "\",")
 
 	set_subTypes = ["none"]
+	slist = list()
 	for card in cardSetList: 
-		slist = list()
 		if card.subtypes is not None:
 			for stype in card.subtypes:
 				slist.append(stype)
-		set_subTypes = slist
+			set_subTypes = slist
 	set_subTypes = json.dumps(set_subTypes)
 	print("			\"subTypes\":" + set_subTypes)
 

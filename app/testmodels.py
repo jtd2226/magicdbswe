@@ -62,7 +62,7 @@ class MCard(db.Model):
 	#Relevant attributes for a card
 	cardId = db.Column(db.String(TEXT_LEN), primary_key=True)
 	name = db.Column(db.String(MED_LEN))
-	mainType = db.Column(db.String(NAME_LEN))
+	mainType = db.Column(db.String(MED_LEN))
 	subType = db.relationship('MSubtype', secondary=subtype_table, backref=db.backref('xcards', lazy='dynamic'))
 	text = db.Column(db.String(TEXT_LEN), nullable=True)
 	expansionSet = db.Column(db.String(STG_LEN), db.ForeignKey('sets.code'))
