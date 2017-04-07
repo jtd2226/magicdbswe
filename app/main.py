@@ -30,9 +30,11 @@ def about():
     return render_template('about.html',title='About')
 
 
-@app.route('/test')
-def test():
-    return render_template('test.html')
+@app.route('/run-tests')
+def run_tests():
+    import subprocess
+    #output = subprocess.run(['python3', 'TestMagic.py'], stdout = subprocess.PIPE).stdout.decode()
+    return render_template('run-tests.html', title = 'Run Tests')
 
 #--------CARDS------------
 @app.route('/cards')
@@ -44,7 +46,6 @@ def cards():
 def cards_instance(name):
     #cards_instance = models.MCard.query.filter_by(name=name).first()
     return render_template('cards-instance.html',cards_instance=cards_instance, title = name)
-
 
 
 #--------ARTISTS----------
@@ -147,6 +148,9 @@ def subtypes_instance(name):
     subtypes_instance = db.session.query(MSubtype).filter_by(name=name).first()
     return render_template('subtypes-instance.html',subtypes_instance=subtypes_instance, title = name)
 
+@app.route('/cool')
+def test():
+    return render_template('cool.html')
 
 
 @app.errorhandler(500)
