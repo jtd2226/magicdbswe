@@ -50,7 +50,7 @@ IDB2.html: app/testmodels.py
 IDB2.log:
 	git log > IDB2.log
 
-TestMagic.tmp: IDB2.html IDB2.log app/testmodels.py .pylintrc app/TestMagic.py 
+TestMagic.tmp: app/testmodels.py .pylintrc app/TestMagic.py 
 	-$(PYLINT) app/TestMagic.py
 	-$(COVERAGE) run    --branch app/TestMagic.py >  TestMagic.tmp 2>&1
 	-$(COVERAGE) report -m                      >> TestMagic.tmp
