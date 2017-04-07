@@ -57,10 +57,10 @@
 		}
 
 		function filterApply() {
-			var numCards = document.getElementById("filter-check-releaseyear").checked ? $("#filter-releaseyear").val() : "NO-RELYEAR";
-			var numSets = document.getElementById("filter-check-numberofcards").checked ? $("#filter-numberofcards").val() : "NO-NUMCARD";
+			var relYear = document.getElementById("filter-check-releaseyear").checked ? $("#filter-releaseyear").val() : "NO-RELYEAR";
+			var numCards = document.getElementById("filter-check-numberofcards").checked ? $("#filter-numberofcards").val() : "NO-NUMCARD";
 
-			window.location.href = "/sets/filter/" + (numCards ? numCards : "NO-RELYEAR") + "&" + (numSets ? numSets : "NO-NUMSETS");
+			window.location.href = "/sets/filter/" + (relYear ? relYear : "NO-RELYEAR") + "&" + (numCards ? numCards : "NO-NUMCARD");
 		}
 			
 		function FilterList() {

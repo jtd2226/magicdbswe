@@ -2,9 +2,11 @@ import logging
 import config
 import models
 
-from models import db, MSubtype, MCard, MArtist, MSet
-from flask import Flask, render_template, request
+from config import POSTS_PER_PAGE
+from models import db, app, MSubtype, MCard, MArtist, MSet
+from flask import Flask, render_template, request, Markup
 from flask_sqlalchemy import SQLAlchemy
+from flask_paginate import Pagination # make sure to pyhton3 -m pip install
 
 #app = Flask(__name__)
 
@@ -13,9 +15,9 @@ from flask_sqlalchemy import SQLAlchemy
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@35.188.87.113:5432/magicdb'
 
-with app.app_context():
-        model = models
-        model.init_app(app)
+# with app.app_context():
+#         model = models
+#         model.init_app(app)
 
 
 @app.route('/')
@@ -31,14 +33,17 @@ def about():
 @app.route('/run-tests')
 def run_tests():
     import subprocess
-    #output = subprocess.run(['python3', 'TestMagic.py'], stdout = subprocess.PIPE).stdout.decode()
-    return render_template('run-tests.html', title = 'Run Tests')
+    output = subprocess.run(['make','test', '-C', '../'], stdout = subprocess.PIPE).stdout.decode('utf-8')
+    output = "<br />".join(output.split("\n"))
+    output = Markup(output)
+    return render_template('run-tests.html', output = output, title = 'Run Tests')
 
 #--------CARDS------------
 @app.route('/cards')
 def cards():
-    cards = models.MCard.query.all()
+    cards = db.session.query(MCard).all()
     return render_template('cards.html',cards=cards, title = 'Cards')
+
 
 @app.route('/cards/<name>')
 def cards_instance(name):
@@ -79,7 +84,7 @@ def sets_filter(relYear, numCard):
     #for set in sets:
     #   imageUrls[set.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
 
-    return render_template('sets.html', sets=sets, title = 'Subtypes',)
+    return render_template('sets.html', sets=sets, title = 'Subtypes')
 
 
 @app.route('/sets/<name>')
@@ -91,60 +96,127 @@ def sets_instance(name):
 
 
 #-------SUBTYPES-----------
-@app.route('/subtypes')
-def subtypes():
-    subtypes = db.session.query(MSubtype).all()
-    imageUrls = {}
-    #for subtype in subtypes:
-    #   imageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+# @app.route('/', methods=['GET', 'POST'])
+@app.route('/subtypes', methods=['GET', 'POST']) #included for pagination
+@app.route('/subtypes/<int:page>', methods=['GET', 'POST']) #included for pagination
+# @app.route('/subtypes')
+# @app.route('/subtypes/')
+@app.route('/subtypes/filter')
+@app.route('/subtypes/sort')
+def subtypes(page = 1):
+    #subtypes = db.session.query(MSubtype).all()
+    subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items #included for pagination
+    #Get Images
+    subtypeImageUrls = {}
+    for subtype in subtypes:
+        if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
+            subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+        else:
+            subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=imageUrls)
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls)
 
-@app.route('/subtypes/sort/<field>&<order>')
-def subtypes_sort(field, order):
+@app.route('/subtypes/sort/<field>&<order>', methods=['GET', 'POST'])
+@app.route('/subtypes/sort/<field>&<order>/<int:page>', methods=['GET', 'POST'])
+def subtypes_sort(field, order, page=1):
     if "desc" in order : # Descending Order
         if field == "name" :
-            subtypes = db.session.query(MSubtype).all()
+            #subtypes = db.session.query(MSubtype).all()
+            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numCards" :
-            subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).all()
+            #subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).all()
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numSets" :
-            subtypes = db.session.query(MSubtype).all()#fix
+            #subtypes = db.session.query(MSubtype).all
+            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
+            subtypes.sort(key=lambda x: len(x.ssets.all()))
     else : # Ascending Order
         if field == "name" :
-            subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).all()
+            #subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).all()
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numCards" :
-            subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).all()
+            #subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).all()
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numSets" :
-            subtypes = db.session.query(MSubtype).all()#fix
+            #subtypes = db.session.query(MSubtype).all()
+            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
+            subtypes.sort(key=lambda x: len(x.ssets.all()), reverse=True)
 
-    imageUrls = {}
-    #for subtype in subtypes:
-    #   imageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+    subtypeImageUrls = {}
+    for subtype in subtypes:
+        if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
+            subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+        else:
+            subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=imageUrls)
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls)
 
 @app.route('/subtypes/filter/<numCards>&<numSets>&<setName>')
 def subtypes_filter(numCards, numSets, setName):
-    subtypes = db.session.query(MSubtype);
-    if numCards != "NO-NUMCARD":
-        subtypes = subtypes.filter_by(numCards=numCards)
-    if numSets != "NO-NUMSETS":
-        pass
-    if setName != "NO-SETNAME":
-        pass
+    subtypes = None
+    intNumSets = 0
 
-    subtypes = subtypes.all()
+    #VAriables
+    try: #Verify that a real number is passed
+        int(numCards)
+    except ValueError:
+        numCards="NO-NUMCARD"
 
-    imageUrls = {}
-    #for subtype in subtypes:
-    #   imageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+    try: #Verify that a real number is passed
+        intNumSets = int(numSets)
+    except ValueError:
+        numSets = "NO-NUMSETS"
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=imageUrls)
+    setName = setName.replace("%20", " ").replace("%2C", "")
+
+
+    if numCards != "NO-NUMCARD": #NumCard Filter
+        subtypes = db.session.query(MSubtype).filter_by(numCards=numCards).all()
+    if numSets != "NO-NUMSETS": #NumSet Filter
+        if numCards == "NO-NUMCARD":
+            subtypes = db.session.query(MSubtype).all()
+        newsub = []
+        for subtype in subtypes:
+            curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
+            if len(curr_sets) == intNumSets:
+                newsub.append(subtype)
+        subtypes = newsub
+    if setName != "NO-SETNAME": #SetName Filter
+        if numCards == "NO-NUMCARD" and numSets == "NO-NUMSETS":
+            subtypes = db.session.query(MSubtype).all()
+
+        print(str(len(subtypes)))
+        for subtype in subtypes:
+            isInSets = False
+            print(subtype.name)
+            curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
+            for cset in curr_sets:
+                if cset.code == setName :
+                    isInSets = True
+                    break
+            if not isInSets:
+                subtypes.remove(subtype)
+
+    subtypeImageUrls = {}
+    for subtype in subtypes:
+        if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
+            subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+        else:
+            subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
+
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls)
 
 @app.route('/subtypes/<name>')
 def subtypes_instance(name):
     subtypes_instance = db.session.query(MSubtype).filter_by(name=name).first()
-    return render_template('subtypes-instance.html',subtypes_instance=subtypes_instance, title = name)
+
+    subtypeImageUrls = ""
+    if db.session.query(MSubtype).filter_by(name=subtypes_instance.name).first().xcards.first():
+        subtypeImageUrls = db.session.query(MSubtype).filter_by(name=subtypes_instance.name).first().xcards.first().art
+    else:
+        subtypeImageUrls = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
+
+    return render_template('subtypes-instance.html',subtypes_instance=subtypes_instance, title = name, imageUrls=subtypeImageUrls)
 
 @app.route('/cool')
 def test():

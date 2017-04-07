@@ -81,8 +81,15 @@
 		<span id="filtering-options"></span>
 	</div>
 
-	
 	<div class="container-fluid">
+		{% for card in cards %}
+			<div class="model-inst">
+				<img src={{card.art}} class="img-fluid">
+				<h4><a href={{"/card/" + card.name}}>{{card.name}}</a></h4>
+			</div>
+		{% endfor %}
+	</div>
+	<!--<div class="container-fluid">
 		<div class="model-inst">
 			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=413585&type=card">
 			<h4><a href="cards-instance.html?id=b611177dca2da89d2915f6ac4b5268a1426086cb">Counterspell</a></h4>
@@ -97,7 +104,7 @@
 			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=382866&type=card">
 			<h4><a href="cards-instance.html?id=6ad6463d56da447ab490a1a2b2b8a18759befc5f">Black Lotus</a></h4>
 		</div>
-	</div>
+	</div>-->
 
 
 {%endblock%}
