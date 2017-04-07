@@ -97,8 +97,8 @@ def sets_instance(name):
 
 #-------SUBTYPES-----------
 # @app.route('/', methods=['GET', 'POST'])
-@app.route('/subtypes', methods=['GET', 'POST']) #included for pagination
-@app.route('/subtypes/<int:page>', methods=['GET', 'POST']) #included for pagination
+@app.route('/subtypes') #included for pagination
+@app.route('/subtypes/<int:page>') #included for pagination
 # @app.route('/subtypes')
 # @app.route('/subtypes/')
 @app.route('/subtypes/filter')
@@ -116,8 +116,8 @@ def subtypes(page = 1):
 
     return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls)
 
-@app.route('/subtypes/sort/<field>&<order>', methods=['GET', 'POST'])
-@app.route('/subtypes/sort/<field>&<order>/<int:page>', methods=['GET', 'POST'])
+@app.route('/subtypes/sort/<field>&<order>')
+@app.route('/subtypes/sort/<field>&<order>/<int:page>')
 def subtypes_sort(field, order, page=1):
     if "desc" in order : # Descending Order
         if field == "name" :
@@ -152,7 +152,8 @@ def subtypes_sort(field, order, page=1):
     return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls)
 
 @app.route('/subtypes/filter/<numCards>&<numSets>&<setName>')
-def subtypes_filter(numCards, numSets, setName):
+@app.route('/subtypes/filter/<numCards>&<numSets>&<setName>/<int:page>')
+def subtypes_filter(numCards, numSets, setName, page=1):
     subtypes = None
     intNumSets = 0
 
@@ -171,25 +172,30 @@ def subtypes_filter(numCards, numSets, setName):
 
 
     if numCards != "NO-NUMCARD": #NumCard Filter
-        subtypes = db.session.query(MSubtype).filter_by(numCards=numCards).all()
+        #subtypes = db.session.query(MSubtype).filter_by(numCards=numCards).all()
+        subtypes = db.session.query(MSubtype).filter_by(numCards=numCards).paginate(page, POSTS_PER_PAGE, False).items
     if numSets != "NO-NUMSETS": #NumSet Filter
         if numCards == "NO-NUMCARD":
-            subtypes = db.session.query(MSubtype).all()
+            #subtypes = db.session.query(MSubtype).all()
+            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
         newsub = []
         for subtype in subtypes:
-            curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
+            #curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
+            curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.paginate(page, POSTS_PER_PAGE, False).items
             if len(curr_sets) == intNumSets:
                 newsub.append(subtype)
         subtypes = newsub
     if setName != "NO-SETNAME": #SetName Filter
         if numCards == "NO-NUMCARD" and numSets == "NO-NUMSETS":
-            subtypes = db.session.query(MSubtype).all()
+            #subtypes = db.session.query(MSubtype).all()
+            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
 
         print(str(len(subtypes)))
         for subtype in subtypes:
             isInSets = False
             print(subtype.name)
-            curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
+            #curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
+            curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.paginate(page, POSTS_PER_PAGE, False).items
             for cset in curr_sets:
                 if cset.code == setName :
                     isInSets = True
