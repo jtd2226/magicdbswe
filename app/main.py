@@ -40,12 +40,15 @@ def run_tests():
 
 #--------CARDS------------
 @app.route('/cards')
-def cards():
-    cards = db.session.query(MCard).all()
+@app.route('/cards/<int:page>')
+def cards(page=1):
+    #cards = db.session.query(MCard).all()
+    cards = db.session.query(MCard).paginate(page, POSTS_PER_PAGE, False).items
     return render_template('cards.html',cards=cards, title = 'Cards')
 
-
+# ****** Pagination required
 @app.route('/cards/<name>')
+#@app.route('/cards/<name>/<int:page>')
 def cards_instance(name):
     #cards_instance = models.MCard.query.filter_by(name=name).first()
     return render_template('cards-instance.html',cards_instance=cards_instance, title = name)
@@ -53,8 +56,10 @@ def cards_instance(name):
 
 #--------ARTISTS----------
 @app.route('/artists')
-def artists():
-    artists = db.session.query(MArtist).all()
+@app.route('/artists/<int:page>')
+def artists(page=1):
+    #artists = db.session.query(MArtist).all()
+    artists = db.session.query(MArtist).paginate(page, POSTS_PER_PAGE, False).items
     return render_template('artists.html',artists=artists, title = 'Artists')
 
 @app.route('/artists/<name>')
@@ -66,19 +71,22 @@ def artists_instance(name):
 
 #--------SETS--------------
 @app.route('/sets')
-def sets():
-    sets = db.session.query(MSet).all()
+@app.route('/sets/<int:page>')
+def sets(page=1):
+    #sets = db.session.query(MSet).all()
+    sets = db.session.query(MSet).paginate(page, POSTS_PER_PAGE, False).items
     return render_template('sets.html',sets=sets, title = 'Sets')
 
 @app.route('/sets/filter/<relYear>&<numCard>')
-def sets_filter(relYear, numCard):
+def sets_filter(relYear, numCard, page=1):
     sets = db.session.query(MSet);
     if relYear != "NO-RELYEAR":
         sets = sets.filter_by(rDate=relYear)
     if numCard != "NO-NUMCARD":
         sets = sets.filter_by(numCards=numCard)
 
-    sets = sets.all()
+    #sets = sets.all()
+    sets = sets.paginate(page, POSTS_PER_PAGE, False).items
 
     imageUrls = {}
     #for set in sets:
