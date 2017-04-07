@@ -39,8 +39,9 @@ def run_tests():
 #--------CARDS------------
 @app.route('/cards')
 def cards():
-    cards = models.MCard.query.all()
+    cards = db.session.query(MArtist).all()[0:10]
     return render_template('cards.html',cards=cards, title = 'Cards')
+
 
 @app.route('/cards/<name>')
 def cards_instance(name):
@@ -81,7 +82,7 @@ def sets_filter(relYear, numCard):
     #for set in sets:
     #   imageUrls[set.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
 
-    return render_template('sets.html', sets=sets, title = 'Subtypes',)
+    return render_template('sets.html', sets=sets, title = 'Subtypes')
 
 
 @app.route('/sets/<name>')
