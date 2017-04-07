@@ -50,7 +50,7 @@ def cards_instance(name):
 #--------ARTISTS----------
 @app.route('/artists')
 def artists():
-    artists = models.MArtist.query.all()
+    artists = db.session.query(MArtist).all()
     return render_template('artists.html',artists=artists, title = 'Artists')
 
 @app.route('/artists/<name>')
@@ -63,13 +63,29 @@ def artists_instance(name):
 #--------SETS--------------
 @app.route('/sets')
 def sets():
-    #sets = models.MSets.query.all()
+    sets = db.session.query(MSet).all()
     return render_template('sets.html',sets=sets, title = 'Sets')
+
+@app.route('/sets/filter/<relYear>&<numCard>')
+def sets_filter(relYear, numCard):
+    sets = db.session.query(MSet);
+    if relYear != "NO-RELYEAR":
+        sets = sets.filter_by(rDate=relYear)
+    if numCard != "NO-NUMCARD":
+        sets = sets.filter_by(numCards=numCard)
+
+    sets = sets.all()
+
+    imageUrls = {}
+    #for set in sets:
+    #   imageUrls[set.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+
+    return render_template('sets.html', sets=sets, title = 'Subtypes',)
 
 
 @app.route('/sets/<name>')
 def sets_instance(name):
-    cards_instance = models.MSets.query.filter_by(name=name).first()
+    sets_instance = db.session.query(MSet).filter_by(name=name).first()
     return render_template('sets-instance.html',sets_instance=sets_instance, title = name)
 
 
@@ -85,15 +101,40 @@ def subtypes():
 
     return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=imageUrls)
 
-@app.route('/subtypes/sort/<field>')
-def subtypes_sort(field):
-    if field == "name" :
-        subtypes = db.session.query(MSubtype).all()
-    elif field == "numCards" :
-        subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).all()
-    elif field == "numSets" :
-        subtypes = db.session.query(MSubtype).all()
-        #subtypes = db.session.query(MSubtype).order_by(MSubtype.numSets).all()
+@app.route('/subtypes/sort/<field>&<order>')
+def subtypes_sort(field, order):
+    if "desc" in order : # Descending Order
+        if field == "name" :
+            subtypes = db.session.query(MSubtype).all()
+        elif field == "numCards" :
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).all()
+        elif field == "numSets" :
+            subtypes = db.session.query(MSubtype).all()#fix
+    else : # Ascending Order
+        if field == "name" :
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).all()
+        elif field == "numCards" :
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).all()
+        elif field == "numSets" :
+            subtypes = db.session.query(MSubtype).all()#fix
+
+    imageUrls = {}
+    #for subtype in subtypes:
+    #   imageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=imageUrls)
+
+@app.route('/subtypes/filter/<numCards>&<numSets>&<setName>')
+def subtypes_filter(numCards, numSets, setName):
+    subtypes = db.session.query(MSubtype);
+    if numCards != "NO-NUMCARD":
+        subtypes = subtypes.filter_by(numCards=numCards)
+    if numSets != "NO-NUMSETS":
+        pass
+    if setName != "NO-SETNAME":
+        pass
+
+    subtypes = subtypes.all()
 
     imageUrls = {}
     #for subtype in subtypes:
@@ -103,7 +144,7 @@ def subtypes_sort(field):
 
 @app.route('/subtypes/<name>')
 def subtypes_instance(name):
-    cards_instance = models.MSubtype.query.filter_by(name=name).first()
+    subtypes_instance = db.session.query(MSubtype).filter_by(name=name).first()
     return render_template('subtypes-instance.html',subtypes_instance=subtypes_instance, title = name)
 
 

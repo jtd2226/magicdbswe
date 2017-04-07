@@ -6,14 +6,21 @@
 	<script type="text/babel">
 		function SortOption(props) {
 			return (
-				<ol>
-					<button className="btn btn-default">{props.name}</button>
+				<ol class="sort-button">
+					<button className="btn btn-default"><a href={props.link}>{props.name}</a></button>
 				</ol>
 			);
 		}
 
 		function sortOrderChange() {
-			$("#sort-order").toggleClass("glyphicon-arrow-down glyphicon-arrow-up")
+			$("#sort-order").toggleClass("glyphicon-arrow-down glyphicon-arrow-up");
+			$(".sort-button a").each(function() {
+				if (this.href.indexOf("desc") !== -1) {
+					this.href = this.href.replace("desc", "asce");
+				} else {
+					this.href = this.href.replace("asce", "desc");
+				}
+			});
 		}
 			
 		function SortList() {
@@ -23,10 +30,10 @@
 					    Sort By: <span id="sort-order" className="glyphicon glyphicon-arrow-down" onClick={sortOrderChange}></span>
 					</button>
 					<ul className="dropdown-menu">
-						<SortOption name="Name"/>
-						<SortOption name="Code"/>
-						<SortOption name="Release Date"/>
-						<SortOption name="Number of Cards"/>
+						<SortOption name="Name" link="/sets/sort/name&desc"/>
+						<SortOption name="Code" link="/sets/sort/code&desc"/>
+						<SortOption name="Release Date" link="/sets/sort/relDate&desc"/>
+						<SortOption name="Number of Cards" link="/sets/sort/numCards&desc"/>
 					</ul>
 				</div>
 			);
@@ -41,12 +48,19 @@
 			return (
 				<ol>
 					<label className="checkbox-inline">
-						<input type="checkbox" value=""></input>
+						<input type="checkbox" id={"filter-check-" + props.name.toLowerCase().replace(/\s/g,'')} value=""></input>
 						{props.name}
 					</label>
 					<input type="text" className="form-control" id={"filter-" + props.name.toLowerCase().replace(/\s/g,'')}></input>
 				</ol>
 			);
+		}
+
+		function filterApply() {
+			var numCards = document.getElementById("filter-check-releaseyear").checked ? $("#filter-releaseyear").val() : "NO-RELYEAR";
+			var numSets = document.getElementById("filter-check-numberofcards").checked ? $("#filter-numberofcards").val() : "NO-NUMCARD";
+
+			window.location.href = "/sets/filter/" + (numCards ? numCards : "NO-RELYEAR") + "&" + (numSets ? numSets : "NO-NUMSETS");
 		}
 			
 		function FilterList() {
@@ -58,6 +72,7 @@
 					<ul className="dropdown-menu" id="filtering-options">
 						<FilterOption name="Release Year"/>
 						<FilterOption name="Number of Cards"/>
+						<ol><button className="btn btn-default" onClick={filterApply}>Filter!</button></ol>
 					</ul>
 				</div>
 			);
@@ -67,7 +82,7 @@
 			document.getElementById('filtering-options')
 		);
 	</script>
-	
+
 	<div class="magicdb-header">
 		<h1>Sets</h1>
 		<h3>Cards are released in different sets, here are some of them. </h3>
@@ -75,6 +90,15 @@
 		<span id="filtering-options"></span>
 	</div>
 
+	<div class="container-fluid">
+		{% for set in sets %}
+			<div class="model-inst">
+				<img src={{set.symbol}} width="400" class="img-fluid">
+				<h4><a href={{"/set/" + set.name}}>{{set.name}}</a></h4>
+			</div>
+		{% endfor %}
+	</div>
+<!--
 	<div class="container-fluid">
 		<div class="model-inst">
 			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=413585&type=card">
@@ -90,5 +114,5 @@
 			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=382866&type=card">
 			<h4><a href="sets-instance.html?code=&quot;VMA&quot;&cards=&quot;Black Lotus&quot;&name=&quot;Chris Rahn&quot;">VMA</a></h4>
 		</div>
-	</div>
+	</div>-->
 {%endblock%}

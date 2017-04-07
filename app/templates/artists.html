@@ -72,7 +72,15 @@
 		<span id="sorting-options"></span>
 		<span id="filtering-options"></span>
 	</div>
-
+	<div class="container-fluid">
+		{% for artist in artists %}
+			<div class="model-inst">
+				<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card" class="img-fluid">
+				<h4><a href={{"/artists/" + artist.name}}>{{artist.name}}</a></h4>
+			</div>
+		{% endfor %}
+	</div>
+<!--
 	<div class="container-fluid">
 		<div class="model-inst">
 			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=413585&type=card" class="img-fluid">
@@ -88,6 +96,6 @@
 			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=382866&type=card" class="img-fluid">
 			<h4><a href="artists-instance.html?name=&quot;Chris Rahn&quot;&id=6ad6463d56da447ab490a1a2b2b8a18759befc5f">Chris Rahn</a></h4>
 		</div>
-	</div>
+	</div>-->
 
 {%endblock%}
