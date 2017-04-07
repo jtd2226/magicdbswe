@@ -3,7 +3,7 @@ import config
 import models
 
 from models import db, app, MSubtype, MCard, MArtist, MSet
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Markup
 from flask_sqlalchemy import SQLAlchemy
 
 #app = Flask(__name__)
@@ -31,8 +31,10 @@ def about():
 @app.route('/run-tests')
 def run_tests():
     import subprocess
-    #output = subprocess.run(['python3', 'TestMagic.py'], stdout = subprocess.PIPE).stdout.decode()
-    return render_template('run-tests.html', title = 'Run Tests')
+    output = subprocess.run(['make','test', '-C', '../'], stdout = subprocess.PIPE).stdout.decode('utf-8')
+    output = "<br />".join(output.split("\n"))
+    output = Markup(output)
+    return render_template('run-tests.html', output = output, title = 'Run Tests')
 
 #--------CARDS------------
 @app.route('/cards')

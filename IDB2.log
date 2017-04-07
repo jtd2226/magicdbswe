@@ -1,3 +1,27 @@
+commit 9c979502c23d6c5075b2500b5fd015a2fa902bf9
+Author: JoseLRC <joser@cs.utexas.edu>
+Date:   Fri Apr 7 17:48:22 2017 -0500
+
+    updated travis
+
+commit 4b6c33839ec218291ea47c29dec9e1ac0082fcee
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Fri Apr 7 15:23:06 2017 -0500
+
+    Added way to run tests from about page
+
+commit 65b9e4f0657c026294951da2f0f08bfbd3b038f9
+Author: Nestor Castro <nestorcastro@wireless-10-147-61-208.public.utexas.edu>
+Date:   Thu Apr 6 22:27:38 2017 -0500
+
+    t2
+
+commit a71f5bcd92145eeba48b52459c154689f4b39841
+Author: Nestor Castro <nestorcastro@wireless-10-147-61-208.public.utexas.edu>
+Date:   Thu Apr 6 22:26:08 2017 -0500
+
+    t
+
 commit 3a9e25abadd12b9af6c84165a67aac8112cb6656
 Author: Nestor Castro <nestorcastro@wireless-10-147-61-208.public.utexas.edu>
 Date:   Thu Apr 6 22:02:46 2017 -0500
