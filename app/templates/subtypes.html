@@ -93,7 +93,7 @@
 	<div class="container-fluid">
 		{% for subtype in subtypes %}
 			<div class="model-inst">
-				<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card" class="img-fluid">
+				<img src={{imageUrls[subtype.name]}} class="img-fluid">
 				<h4><a href={{"/subtypes/" + subtype.name}}>{{subtype.name}}</a></h4>
 			</div>
 		{% endfor %}

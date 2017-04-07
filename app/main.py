@@ -37,7 +37,7 @@ def run_tests():
 #--------CARDS------------
 @app.route('/cards')
 def cards():
-    cards = db.session.query(MArtist).all()[0:10]
+    cards = db.session.query(MCard).all()
     return render_template('cards.html',cards=cards, title = 'Cards')
 
 
@@ -93,13 +93,21 @@ def sets_instance(name):
 
 #-------SUBTYPES-----------
 @app.route('/subtypes')
+@app.route('/subtypes/')
+@app.route('/subtypes/filter')
+@app.route('/subtypes/sort')
 def subtypes():
     subtypes = db.session.query(MSubtype).all()
-    imageUrls = {}
-    #for subtype in subtypes:
-    #   imageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=imageUrls)
+    #Get Images
+    subtypeImageUrls = {}
+    for subtype in subtypes:
+        if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
+            subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+        else:
+            subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
+
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls)
 
 @app.route('/subtypes/sort/<field>&<order>')
 def subtypes_sort(field, order):
@@ -109,43 +117,92 @@ def subtypes_sort(field, order):
         elif field == "numCards" :
             subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).all()
         elif field == "numSets" :
-            subtypes = db.session.query(MSubtype).all()#fix
+            subtypes = db.session.query(MSubtype).all()
+            subtypes.sort(key=lambda x: len(x.ssets.all()))
     else : # Ascending Order
         if field == "name" :
             subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).all()
         elif field == "numCards" :
             subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).all()
         elif field == "numSets" :
-            subtypes = db.session.query(MSubtype).all()#fix
+            subtypes = db.session.query(MSubtype).all()
+            subtypes.sort(key=lambda x: len(x.ssets.all()), reverse=True)
 
-    imageUrls = {}
-    #for subtype in subtypes:
-    #   imageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+    subtypeImageUrls = {}
+    for subtype in subtypes:
+        if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
+            subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+        else:
+            subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=imageUrls)
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls)
 
 @app.route('/subtypes/filter/<numCards>&<numSets>&<setName>')
 def subtypes_filter(numCards, numSets, setName):
-    subtypes = db.session.query(MSubtype);
-    if numCards != "NO-NUMCARD":
-        subtypes = subtypes.filter_by(numCards=numCards)
-    if numSets != "NO-NUMSETS":
-        pass
-    if setName != "NO-SETNAME":
-        pass
+    subtypes = None
+    intNumSets = 0
 
-    subtypes = subtypes.all()
+    #VAriables
+    try: #Verify that a real number is passed
+        int(numCards)
+    except ValueError:
+        numCards="NO-NUMCARD"
 
-    imageUrls = {}
-    #for subtype in subtypes:
-    #   imageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+    try: #Verify that a real number is passed
+        intNumSets = int(numSets)
+    except ValueError:
+        numSets = "NO-NUMSETS"
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=imageUrls)
+    setName = setName.replace("%20", " ").replace("%2C", "")
+
+
+    if numCards != "NO-NUMCARD": #NumCard Filter
+        subtypes = db.session.query(MSubtype).filter_by(numCards=numCards).all()
+    if numSets != "NO-NUMSETS": #NumSet Filter
+        if numCards == "NO-NUMCARD":
+            subtypes = db.session.query(MSubtype).all()
+        newsub = []
+        for subtype in subtypes:
+            curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
+            if len(curr_sets) == intNumSets:
+                newsub.append(subtype)
+        subtypes = newsub
+    if setName != "NO-SETNAME": #SetName Filter
+        if numCards == "NO-NUMCARD" and numSets == "NO-NUMSETS":
+            subtypes = db.session.query(MSubtype).all()
+
+        print(str(len(subtypes)))
+        for subtype in subtypes:
+            isInSets = False
+            print(subtype.name)
+            curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
+            for cset in curr_sets:
+                if cset.code == setName :
+                    isInSets = True
+                    break
+            if not isInSets:
+                subtypes.remove(subtype)
+
+    subtypeImageUrls = {}
+    for subtype in subtypes:
+        if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
+            subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+        else:
+            subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
+
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls)
 
 @app.route('/subtypes/<name>')
 def subtypes_instance(name):
     subtypes_instance = db.session.query(MSubtype).filter_by(name=name).first()
-    return render_template('subtypes-instance.html',subtypes_instance=subtypes_instance, title = name)
+
+    subtypeImageUrls = ""
+    if db.session.query(MSubtype).filter_by(name=subtypes_instance.name).first().xcards.first():
+        subtypeImageUrls = db.session.query(MSubtype).filter_by(name=subtypes_instance.name).first().xcards.first().art
+    else:
+        subtypeImageUrls = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
+
+    return render_template('subtypes-instance.html',subtypes_instance=subtypes_instance, title = name, imageUrls=subtypeImageUrls)
 
 @app.route('/cool')
 def test():
