@@ -29,120 +29,71 @@ for stype in subtypes:
 	db.session.add(temp)
 	db.session.commit()
 
-# # ------
-# # SETS
-# # ------
-# with open('logo.json') as surl:
-#     surldict = json.load(surl)
+# ------
+# SETS
+# ------
+print("starting sets")
+with open('setCache.json') as sc:
+    sets = json.load(sc)["allsets"]
 
-# sets = Set.all()
+for iset in sets:
 
-# for iset in sets:
+	set_subTypes = list()
+	for stype in iset["subTypes"]:
+		set_subTypes.append(subCache[stype])
 
-# 	print("------------------------")
+	if len(set_subTypes) == 0:
+		set_subTypes = [subCache["none"]]
 
-# 	set_code = iset.code
-# 	print(set_code)
+	temp = MSet(iset["code"], iset["name"], iset["rDate"], iset["block"], iset["numCards"], iset["symbol"], set_subTypes)
+	setCache[iset["code"]] = temp
 
-# 	set_name = iset.name
-# 	print(set_name)
+	db.session.add(temp)
+	db.session.commit()
 
-# 	set_rDate = iset.release_date
-# 	print(set_rDate)
+# ---------
+# ARTISTS
+# ---------
+print("starting artists")
+with open('artistCache.json') as ac:
+    artists = json.load(ac)
 
-# 	set_block = iset.block
-# 	print(set_block)
+for artist in artists:
 
-# 	cardSetList = Card.where(set=iset.code) \
-# 					  .all()
-	
-# 	set_numCards = len(cardSetList)
-# 	print(set_numCards)
+	artists_sets = list()
+	for a in artists[artist]["sets"]:
+		artists_sets.append(setCache[a])
 
-# 	set_symbol = surldict[iset.code]
-# 	print(set_symbol)
+	if len(artists_sets) == 0:
+		artists_sets = [setCache["none"]]
 
-# 	set_subTypes = [subCache["none"]]
+	temp = MArtist(artist, artists[artist]["numCards"], artists[artist]["numSets"], artists_sets)
+	artCache[artist] = temp
 
-# 	temp = MSet(set_code, set_name, set_rDate, set_block, set_numCards, set_symbol, set_subTypes)
-
-# 	db.session.add(temp)
-# 	db.session.commit()
-
-# # -------
-# # CARDS
-# # -------
-
-# cards = Card.all()
-
-# for card in cards:
-
-# 	print("------------------------")
-	
-# 	card_Id = card.id
-# 	print(card_Id)
-
-# 	card_name = card.name
-# 	print(card_name)
-
-# 	card_mainType = card.type
-# 	print(card_mainType)
-
-# 	card_subtype = [subCache["none"]]
-# 	if(card.subtypes is not None):
-# 		slist = list()
-# 		for stype in card.subtypes:
-# 			slist.append(subCache[stype])
-# 		card_subtype = slist
-	
-# 	card_text = card.text
-# 	print(card_text)
-
-# 	card_expansionSet = card.set  
-# 	print(card_expansionSet)
-
-# 	card_manaCost = card.cmc
-# 	print(card_manaCost)
-
-# 	card_color = str(card.colors)		#todo
-# 	print(card_color)
-
-# 	card_power =  card.power
-# 	print(card_power)
-
-# 	card_toughness = card.toughness
-# 	print(card_toughness)
-
-# 	card_art = card.image_url
-# 	print(card_art)
-
-# 	card_rarity = card.rarity
-# 	print(card_rarity)
+	db.session.add(temp)
+	db.session.commit()
 
 
-# # ---------
-# # ARTISTS
-# # ---------
+# -------
+# CARDS
+# -------
+print ("starting cards")
+with open('cardCache.json') as cc:
+    cards = json.load(cc)["allcards"]
 
-# 	cardArtList = Card.where(artist=card.artist) \
-#  					  .all()
+cardCount = 0
+for card in cards:
+	cardCount = cardCount + 1
+	print(str(cardCount) + " card(s) added")
+	card_subTypes = list()
+	for stype in card["subtype"]:
+		card_subTypes.append(subCache[stype])
 
-#  	artist_sets = list()
+	if len(card_subTypes) == 0:
+		card_subTypes = [subCache["none"]]
 
-# 	disArtCache = dict()
-# 	for zcard in cardArtList:
-#   		disArtCache[zcard.set] = 1
+	temp = MCard(card["cardID"], card["name"], card["mainType"], card_subTypes, card["text"], card["expansionSet"], card["manaCost"], ", ".join(card["color"]), card["power"], card["toughness"], card["art"], card["rarity"], card["artist"])
+	db.session.add(temp)
+	db.session.commit()
 
-# 	if card.artist not in artCache:
-# 		artCache[card.artist] = 1
-# 		tempa = MArtist(card.artist, int(len(cardArtList)), len(disArtCache.keys()), artist_sets)
-# 		db.session.add(tempa)
-# 		db.session.commit()
 
-# 	card_artist = card.artist
-# 	print(card_artist)
-
-# 	temp = MCard(card_Id, card_name, card_mainType, card_subtype, card_text, card_expansionSet, card_manaCost, card_color, card_power, card_toughness, card_art, card_rarity, card_artist)
-
-# 	db.session.add(temp)
-# 	db.session.commit()

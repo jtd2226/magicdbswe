@@ -2,15 +2,17 @@
 # A Database for Magic the Gathering Cards
 #
 # pylint:disable=invalid-name,line-too-long,no-member,too-few-public-methods,locally-disabled
-
+import config
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
 
-def init_app(app):
-	app.config.setdefault('SQLALCHEMY_TRACK_MODIFICATIONS', False)
+app = Flask(__name__)
+app.config.from_object(config)
+db = SQLAlchemy(app)
+with app.app_context():
 	db.init_app(app)
+
 
 def _create_database():
     """
@@ -23,7 +25,6 @@ def _create_database():
     with app.app_context():
         db.create_all()
     print("All tables created")
-
 
 if __name__ == '__main__':
     _create_database()
@@ -40,7 +41,7 @@ Handling many-to-many relations
 """
 subtype_table = db.Table('subtype_table',
     db.Column('subtype_name', db.String(MED_LEN), db.ForeignKey('subtypes.name')),
-    db.Column('card_id', db.Integer, db.ForeignKey('cards.cardId'))
+    db.Column('card_id', db.String(TEXT_LEN), db.ForeignKey('cards.cardId'))
 )
 
 set_artist_table = db.Table('set_artist_table',
@@ -76,7 +77,7 @@ class MCard(db.Model):
 	__tablename__ = 'cards'
 
 	#Relevant attributes for a card
-	cardId = db.Column(db.Integer, primary_key=True)
+	cardId = db.Column(db.String(TEXT_LEN), primary_key=True)
 	name = db.Column(db.String(MED_LEN))
 	mainType = db.Column(db.String(NAME_LEN))
 	subType = db.relationship('MSubtype', secondary=subtype_table, backref=db.backref('xcards', lazy='dynamic'))
@@ -152,7 +153,6 @@ class MArtist(db.Model):
 	"""
 	Information regarding artists of MtG cards
 
-	artistId = ID for artist
 	name = Name of artist
 	numCards = Number of cards this artist has worked on
 	numSets = Number of Sets this artist has worked on
