@@ -2,9 +2,11 @@ import logging
 import config
 import models
 
+from config import POSTS_PER_PAGE
 from models import db, app, MSubtype, MCard, MArtist, MSet
 from flask import Flask, render_template, request, Markup
 from flask_sqlalchemy import SQLAlchemy
+from flask_paginate import Pagination # make sure to pyhton3 -m pip install
 
 #app = Flask(__name__)
 
@@ -94,13 +96,16 @@ def sets_instance(name):
 
 
 #-------SUBTYPES-----------
-@app.route('/subtypes')
-@app.route('/subtypes/')
+# @app.route('/', methods=['GET', 'POST'])
+@app.route('/subtypes', methods=['GET', 'POST']) #included for pagination
+@app.route('/subtypes/<int:page>', methods=['GET', 'POST']) #included for pagination
+# @app.route('/subtypes')
+# @app.route('/subtypes/')
 @app.route('/subtypes/filter')
 @app.route('/subtypes/sort')
-def subtypes():
-    subtypes = db.session.query(MSubtype).all()
-
+def subtypes(page = 1):
+    #subtypes = db.session.query(MSubtype).all()
+    subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items #included for pagination
     #Get Images
     subtypeImageUrls = {}
     for subtype in subtypes:
