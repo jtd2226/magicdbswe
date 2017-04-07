@@ -1,13 +1,13 @@
 .DEFAULT_GOAL := test
 
 FILES :=            \
-    IDB1.log     \
+    IDB2.log     \
     app/models.py      \
     app/TestMagic.out \
     app/TestMagic.py  \
     .travis.yml     \
-    IDB1.html    \
-    IDB1.pdf		\
+    IDB2.html    \
+    IDB2.pdf		\
 
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
@@ -42,15 +42,15 @@ endif
 .pylintrc:
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
-IDB1.html: app/testmodels.py
+IDB2.html: app/testmodels.py
 	pydoc3 -w app/testmodels.py
-	mv testmodels.html IDB1.html
+	mv testmodels.html IDB2.html
 	rm -f testmodels.html
 
-IDB1.log:
-	git log > IDB1.log
+IDB2.log:
+	git log > IDB2.log
 
-TestMagic.tmp: IDB1.html IDB1.log app/testmodels.py .pylintrc app/TestMagic.py 
+TestMagic.tmp: IDB2.html IDB2.log app/testmodels.py .pylintrc app/TestMagic.py 
 	-$(PYLINT) app/TestMagic.py
 	-$(COVERAGE) run    --branch app/TestMagic.py >  TestMagic.tmp 2>&1
 	-$(COVERAGE) report -m                      >> TestMagic.tmp
@@ -81,6 +81,8 @@ clean:
 	rm -f  *.pyc
 	rm -f  IDB1.html
 	rm -f  IDB1.log
+	rm -f  IDB2.html
+	rm -f  IDB2.log
 	rm -f  TestMagic.tmp
 	rm -rf __pycache__\
 
@@ -102,7 +104,7 @@ test: TestMagic.tmp
 	ls -al
 	make check
 
-logtml: IDB1.html IDB1.log 
+logtml: IDB2.html IDB2.log 
 
 versions:
 	which make

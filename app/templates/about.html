@@ -13,8 +13,8 @@
 			<h2>Nestor Castro</h2>
 			<p>Nestor is a 3rd-year Computer Science major at the University of Texas at Austin. He is the current VP of Communications of Sigma Lambda Beta, a Latino-based multicultural Fraternity. In his free time, he enjoys exploring the outdoors, playing pool, and jamming out to the Red Hot Chili Peppers.<p>
 			<p><strong>Responsibilities: </strong>front-end, hosting</p>
-			<p><strong>Number of commits: 9</strong></p>
-			<p><strong>Number of issues: 2</strong></p>
+			<p><strong>Number of commits: 23</strong></p>
+			<p><strong>Number of issues: 4</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
 		</div>
 
@@ -23,7 +23,7 @@
 			<h2>Nicholas Cobb</h2>
 			<p>Nicholas is a 3rd-year Computer Science major at the University of Texas at Austin. Nicholas has interned at Google two times and is about to again this summer. In his free time, he enjoys writing music and participating in political clubs on campus.</p>
 			<p><strong>Responsibilities: </strong>front-end, coding</p>
-			<p><strong>Number of commits: 27</strong></p>
+			<p><strong>Number of commits: 41</strong></p>
 			<p><strong>Number of issues: 1</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
 		</div>
@@ -33,7 +33,7 @@
 			<h2>Joel Davis</h2>
 			<p>Joel is a 4th-year Computer Science major at the University of Texas at Austin. Enjoys game development and software engineering. In his free time he likes video games, guitar, and skateboarding.</p>
 			<p><strong>Responsibilities: </strong>back-end, API</p>
-			<p><strong>Number of commits: 30</strong></p>
+			<p><strong>Number of commits: 50</strong></p>
 			<p><strong>Number of issues: 0</strong></p>
 			<p><strong>Number of unit tests: 6</strong></p>
 		</div>
@@ -43,7 +43,7 @@
 			<h2>Nilo Lisboa</h2>
 			<p>Nilo is a 4th-year Computer Science Major at UT Austin. He has interned twice at IBM both part-time and full-time. He really enjoys story-driven video games as well as archery and kendo.</p>
 			<p><strong>Responsibilities: </strong>back-end, Phase I Leader</p>
-			<p><strong>Number of commits: 9</strong></p>
+			<p><strong>Number of commits: 21</strong></p>
 			<p><strong>Number of issues: 0</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
 		</div>
@@ -53,8 +53,8 @@
 			<h2>Matthew Martinez</h2>
 			<p>Matthew is a 3rd-year Computer Science major at the University of Texas at Austin. He is the vice-president of Lambda Omega Alpha, an independent Catholic Service Fraternity on campus. In his very little free time he enjoys watching Netflix and spending quality time with friends.</p>
 			<p><strong>Responsibilities: </strong>front-end, design</p>
-			<p><strong>Number of commits: 14</strong></p>
-			<p><strong>Number of issues: 13</strong></p>
+			<p><strong>Number of commits: 35</strong></p>
+			<p><strong>Number of issues: 24</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
 		</div>
 
@@ -63,7 +63,7 @@
 			<h2>Jose Ramirez</h2>
 			<p>Jose is a 4th-year Computer Science major at the University of Texas at Austin. He enjoys game development and participates in ACM activities. In his free time, he plays video games and watches gaming streams on Twitch. </p>
 			<p><strong>Responsibilities: </strong>back-end, testing</p>
-			<p><strong>Number of commits: 11</strong></p>
+			<p><strong>Number of commits: 21</strong></p>
 			<p><strong>Number of issues: 0</strong></p>
 			<p><strong>Number of unit tests: 6</strong></p>
 		</div>
@@ -73,8 +73,8 @@
 
 	<div id="stats" class="about-section">
 		<h1><strong>Stats</strong></h1>
-		<p><strong>Number of commits: 100</strong></p>
-		<p><strong>Number of issues: 16</strong></p>
+		<p><strong>Number of commits: 191</strong></p>
+		<p><strong>Number of issues: 29</strong></p>
 		<p><strong>Number of unit tests: 12</strong></p>
 		<p><strong><a href="http://docs.apimagicthegatheringio.apiary.io">Link to Apiary API</strong></p>
 		<p><strong><a href="https://github.com/jtd2226/magicdbswe/issues">Link to Github Issue Tracker</a></strong></p>
@@ -99,7 +99,8 @@
 		<h4>4. <a href="#tools-sec">Tools</a></h4>
 		<h4>5. <a href="#hosting">Hosting</a></h4>
 	</div>
-
+	<div class="divider"></div><div class="divider"></div>
+	<center><h2><a href = "/run-tests">Run Tests</a></h2></center>
 	<div class="divider"></div><div class="divider"></div>
 
 	<div id="report" class="about-section">
@@ -142,9 +143,9 @@
 		<h4><em>Use Cases</em></h4>
 		<p>There are many use cases for such a database among players. Perhaps a player is looking for a specific card to put in their deck, but is unsure of what that card does, in which case a user can look for that card in our database to read up on its characteristics. Alternatively, Magic has many formats of play, and some of them can only make use of specific card sets. Standard format, the most popular, only allows players to build decks with the 2 most recent years of expansion releases. A player attempting to make standard a standard deck would look for cards among the sets that are permitted in that format by filtering our cards based on the sets they belong to. Some players specifically want cards that match an artstyle they like or just collect cards they think are pretty. In this case, a player would be able to look on our artist table and view which cards they worked on. Lastly, players could be trying to make Tribal decks, which look for cards of specific subtypes with the purpose of synergizing their effects. A user would then be able to visit our subtype table, and check out cards filtered by subtype, additionally, if they don’t even know which subtype they want to pick for a deck, there will be example cards of those subtypes available for users to view.</p>
 
-		<img src="/static/images/UML.png" style = "width:25%; margin-right: 10px;" align="left">
+		<img src="/static/images/UML2.png" style = "width:50%; margin-right: 10px;" align="left">
 		<h4><em>Database Models</em></h4>
-		<p><b>MCard</b> - The model for a Card, it includes the attributes: cardID, name, mainType, subType, text, expansionSet, manaCost, color, power, toughness, art, rarity, and artist. This model contains information pertaining to sets, which in turn, are like containers upon which cards are released in MtG. Sets are a very helpful way to distinguish cards from each other.</p>report
+		<p><b>MCard</b> - The model for a Card, it includes the attributes: cardID, name, mainType, subType, text, expansionSet, manaCost, color, power, toughness, art, rarity, and artist. This model contains information pertaining to sets, which in turn, are like containers upon which cards are released in MtG. Sets are a very helpful way to distinguish cards from each other.</p>
 		<p><b>MSet</b> - The model for a set, it includes the attributes: code, name, rDate, block, cards, numCards, symbol. The cards attribute is a relationship. Any time a card is instantiated to the database, a relationship is established between a set and any cards that are in that set. This model contains information pertaining to sets, which in turn, are like containers upon which cards are released in MtG. Sets are a very helpful way to distinguish cards from each other.</p>
 		<p><b>MArtist</b> - The model for an artist, it includes the attributes: name, numCards, numSets, and cards. The cards attribute is a relationship. Any time a card is instantiated to the database, a relationship is established between an artist and any cards that the particular artist designed. This model  serves as another method for a user to distinguish cards, as many cards could have been worked on by a specific artist.</p>
 		<p><b>MSubtype</b> - The model for a subtype, it includes the attributes: name, numCards, sets, and cards. Any time a card is instantiated to the database, if that card has a valid subtype, a relationship is established between that subtype and any cards that share the same subtype attribute. Cards that have similar subtypes often synergize their effects, so it is important to be able to select subtypes of interest and view all related cards. This model is related to the MCard and MSet models.</p>
@@ -232,6 +233,14 @@
 		<p><u>GitHub</u>- GitHub is used for version control for our project. Every member of our group pushed to the same public GitHub repository, to bring the entire project together, even when we were working separately or remotely. If there is ever an issue with an update to the code, rolling back to an old version is simple and quick. When one member makes a change, other members can easily see what code was removed or added, so we could pick up where someone else left off. Another helpful tool GitHub provides is the Issue Tracker. It’s an easy way to see what tasks need to be done, as well as keep track of bugs that need to be fixed.</p>
 
 		<p><u>Slack</u>- We used Slack as our main method of communication. It has a web and mobile application that we used to coordinate meeting times, and share pictures, information, and anything else we needed to communicate quickly with the group. Slack is integrated with the GitHub repo so in between personal communication we could all see when commits or issues were created.</p>
+
+		<p><u>JSON</u>- JSON is a lightweight data format that makes it easier for people to read and very useful for computers to parse information. Given our project’s immense amount of data, we had to create JSON caches for data to be accessible in a timely manner as well as gather information that was missing from the API. These come in the form of the following:</p>
+		<ul>
+  		  <li><b>logo.json</b>- This JSON file contains the promotional art for the names of each expansion set. Some sets have no promotional art and are given a default “Magic: the Gathering” image.</li>
+				<li><b>artistCache.json</b>- This JSON file contains information regarding all of the artists and their attributes. Given that artists are not considered their own models by the API, we had to gather information on them based on each card they worked on and then each set those cards appeared in.</li>
+				<li><b>cardCache.json</b>- This JSON file contains all information regarding cards. The API provided provided a JSON source, but that lacked card image information, so we had to scrape the API to create this one.</li>
+				<li><b>setCache.json</b>- This file contains all information regarding sets and had to be created to accommodate for the extra information we wanted to use (f.e.: the promo art in logo.json).</li>
+				<li><b>stypeCache.json</b>- Like artists, Subtypes were not treated separately from Sets and Cards in the API, thus we also had to aggregate the data for them manually into this JSON file, which contains all relevant information regarding them.</li>
 		<br>
 	</div>
 
@@ -248,9 +257,11 @@
 		<h4><em>Project-ID Directory</em></h4>
 		<p>In the first phase of our project, we tried to do all of our app routing through the app.yaml file as described below (We later migrated and refactored our code so that we could use flask instead):</p>
 		<p>One file in particular, the “app.yaml” file, required us to do quite some research. This file works as a sort of “makefile” and maps URLs to your static files so the web app can be displayed on your browser, therefore making sure it was properly implemented was extremely important. Also, along with the .yaml file we had our .html, .css, and image files in there respective folders so we made sure that every time something was added, deleted or moved, the .yaml file was updated. </p>
+		<p>As mentioned, we later changed our project to use flask instead. This was  a much easier implementation of the mapping process because individual routes could be mapped. It also allowed us to be able to dynamically map the routing to different names based on a single template. We changed our app.yaml file to just run this python script instead. Using flask also allowed us to start a server locally and test our code without having to deploy to the server. This is useful because all of the flask specific things don’t get run until the server starts.</p>
 		<br>
 		<h4><em>Deploying the App</em></h4>
 		<p>Now that we had created our project inside the console, installed the SDK, and placed our web app inside the &ltProject-ID> directory, we were ready to deploy and successfully host our app using the GCP server. To do just that, we had to go into the “bin” folder of our SDK directory and run the “gcloud app deploy &ltpath to app.yaml file> app.yaml” command. Having deployed successfully, we then ran the “gcloud app browse” command and a new window displaying our app popped up. We had finally completed our hosting process and our app was now online.</p>
+		<p>In the second phase of our project, we changed the runtime environment from a standard python 2.7 environment to a flexible python 3.5 environment. This fixed a major bug we were having with pyscopg2, probably because of a compatibility error between python 2.7 and python 3.5. It increased the time it took for us to deploy, which made it even more crucial that we got flask running properly.</p>
 		<br>
 		<h4><em>Custom Domain</em></h4>
 		<p>In addition, after completing our hosting process, we wanted to link our web app to a custom domain. To accomplish this we used <i>Namecheap</i>’s free educational bundle and acquired the <i>magicdb.me</i> domain. Next, we went over to our console’s settings and added and verified our new domain. Once verified, we added all of the custom domain records to <i>namecheap</i> and waited for a few hours for the linkage to complete. Having completed this process, we were finally able to browse for our website under the <i>magicdb.me</i> URL.</p>
