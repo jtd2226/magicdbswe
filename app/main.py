@@ -2,7 +2,7 @@ import logging
 import config
 import models
 
-from models import db, MSubtype, MCard, MArtist, MSet
+from models import db, app, MSubtype, MCard, MArtist, MSet
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
@@ -13,9 +13,9 @@ from flask_sqlalchemy import SQLAlchemy
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@35.188.87.113:5432/magicdb'
 
-with app.app_context():
-        model = models
-        model.init_app(app)
+# with app.app_context():
+#         model = models
+#         model.init_app(app)
 
 
 @app.route('/')
