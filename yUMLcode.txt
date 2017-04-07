@@ -1,7 +1,7 @@
 // Cool Class Diagram
 [MCard|cardId:String;name : String;mainType : string;subType : MSubtype;text : String;expansionSet : String;manaCost : Integer;color : String;power : String;toughness : String;art : String|]
 
-[MSet|Name : code : String;name : String;rDate : String;block : String;cards : MCard;numCards : Integer;symbol : String;subTypes : MSubtype |]<1-1...*>[MCard]
+[MSet|code : String;name : String;rDate : String;block : String;cards : MCard;numCards : Integer;symbol : String;subTypes : MSubtype |]<1-1...*>[MCard]
 
 [MArtist|name : String;numCards : Integer;numSets : Integer;cards : MCard;sets : MSet;|]<1-1...*>[MCard]
 
