@@ -23,7 +23,12 @@ with open('stypeCache.json') as scache:
 
 subCache["none"] = MSubtype("none", 0)
 
+stypeCount = 0
+
 for stype in subtypes:
+	stypeCount = stypeCount + 1
+	print(str(stypeCount) + " subtype(s) added")
+
 	temp = MSubtype(stype["name"], stype["numCards"])
 	subCache[stype["name"]] = temp
 	db.session.add(temp)
@@ -36,11 +41,15 @@ print("starting sets")
 with open('setCache.json') as sc:
     sets = json.load(sc)["allsets"]
 
+setCount = 0
 for iset in sets:
+	setCount = setCount + 1
+	print(str(setCount) + " set(s) added")
 
 	set_subTypes = list()
 	for stype in iset["subTypes"]:
-		set_subTypes.append(subCache[stype])
+		if stype in subCache:
+			set_subTypes.append(subCache[stype])
 
 	if len(set_subTypes) == 0:
 		set_subTypes = [subCache["none"]]
@@ -58,7 +67,10 @@ print("starting artists")
 with open('artistCache.json') as ac:
     artists = json.load(ac)
 
+artistCount = 0
 for artist in artists:
+	artistCount = artistCount + 1
+	print(str(artistCount) + " artist(s) added")
 
 	artists_sets = list()
 	for a in artists[artist]["sets"]:
@@ -87,12 +99,15 @@ for card in cards:
 	print(str(cardCount) + " card(s) added")
 	card_subTypes = list()
 	for stype in card["subtype"]:
-		card_subTypes.append(subCache[stype])
+		if stype in subCache:
+			card_subTypes.append(subCache[stype])
 
 	if len(card_subTypes) == 0:
 		card_subTypes = [subCache["none"]]
 
 	temp = MCard(card["cardID"], card["name"], card["mainType"], card_subTypes, card["text"], card["expansionSet"], card["manaCost"], ", ".join(card["color"]), card["power"], card["toughness"], card["art"], card["rarity"], card["artist"])
+	
+	#if db.session.query(MCard).filter_by(cardId=card["cardID"]).first() is None:
 	db.session.add(temp)
 	db.session.commit()
 

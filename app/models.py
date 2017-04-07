@@ -1,7 +1,11 @@
-#
-# A Database for Magic the Gathering Cards
-#
-# pylint:disable=invalid-name,line-too-long,no-member,too-few-public-methods,locally-disabled
+"""
+A Database for Magic the Gathering Cards
+"""
+# pylint:disable=invalid-name,line-too-long,no-member
+# pylint:disable=too-few-public-methods,locally-disabled, mixed-indentation, bad-continuation
+# pylint:disable=mixed-indentation, bad-continuation, redefined-outer-name, undefined-variable
+# pylint:disable=too-many-instance-attributes, too-many-arguments
+
 import config
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -79,7 +83,7 @@ class MCard(db.Model):
 	#Relevant attributes for a card
 	cardId = db.Column(db.String(TEXT_LEN), primary_key=True)
 	name = db.Column(db.String(MED_LEN))
-	mainType = db.Column(db.String(NAME_LEN))
+	mainType = db.Column(db.String(MED_LEN))
 	subType = db.relationship('MSubtype', secondary=subtype_table, backref=db.backref('xcards', lazy='dynamic'))
 	text = db.Column(db.String(TEXT_LEN), nullable=True)
 	expansionSet = db.Column(db.String(STG_LEN), db.ForeignKey('sets.code'))
@@ -191,8 +195,7 @@ class MSubtype(db.Model):
 	__tablename__ = 'subtypes'
 
 	name = db.Column(db.String(MED_LEN), primary_key=True)
-	numCards = db.Column(db.Integer) 
-
+	numCards = db.Column(db.Integer)
 	def __init__(self, name, numCards):
 		self.name = name
 		self.numCards = numCards
