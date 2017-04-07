@@ -1,3 +1,28 @@
+commit 083de98336a2be822231133ee081d639cf9355eb
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Apr 6 21:40:46 2017 -0500
+
+    populated db
+
+commit f880f43aba6954ffba5f5dceb530e0e51df8549f
+Merge: 9c6f284 abd33d6
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Apr 6 18:22:57 2017 -0500
+
+    updated models
+
+commit 9c6f28433e364db603abc2e670a46ace567a0787
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Thu Apr 6 18:20:57 2017 -0500
+
+    updated models
+
+commit abd33d6ab2751a5e041dfd20ac7e8a707dbfb6a9
+Author: Nestor Castro <nestorcastro@wireless-10-147-61-208.public.utexas.edu>
+Date:   Thu Apr 6 18:17:31 2017 -0500
+
+    changes to main.py
+
 commit 72d56aceb14de827383bf3c8f84cb62cdc7e093e
 Merge: b7df0ac f4296e1
 Author: jtd2226 <joeldavi@utexas.edu>
