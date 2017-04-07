@@ -116,23 +116,30 @@ def subtypes(page = 1):
 
     return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls)
 
-@app.route('/subtypes/sort/<field>&<order>')
-def subtypes_sort(field, order):
+@app.route('/subtypes/sort/<field>&<order>', methods=['GET', 'POST'])
+@app.route('/subtypes/sort/<field>&<order>/<int:page>', methods=['GET', 'POST'])
+def subtypes_sort(field, order, page=1):
     if "desc" in order : # Descending Order
         if field == "name" :
-            subtypes = db.session.query(MSubtype).all()
+            #subtypes = db.session.query(MSubtype).all()
+            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numCards" :
-            subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).all()
+            #subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).all()
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numSets" :
-            subtypes = db.session.query(MSubtype).all()
+            #subtypes = db.session.query(MSubtype).all
+            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
             subtypes.sort(key=lambda x: len(x.ssets.all()))
     else : # Ascending Order
         if field == "name" :
-            subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).all()
+            #subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).all()
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numCards" :
-            subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).all()
+            #subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).all()
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numSets" :
-            subtypes = db.session.query(MSubtype).all()
+            #subtypes = db.session.query(MSubtype).all()
+            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
             subtypes.sort(key=lambda x: len(x.ssets.all()), reverse=True)
 
     subtypeImageUrls = {}
