@@ -6,7 +6,7 @@
 	<script type="text/babel">
 		function SortOption(props) {
 			return (
-				<ol class="sort-button">
+				<ol className="sort-button">
 					<button className="btn btn-default"><a href={props.link}>{props.name}</a></button>
 				</ol>
 			);
@@ -57,7 +57,7 @@
 		}
 
 		function filterApply() {
-			var relYear = document.getElementById("filter-check-releaseyear").checked ? $("#filter-releaseyear").val() : "NO-RELYEAR";
+			var relYear = document.getElementById("filter-check-releasedate").checked ? $("#filter-releasedate").val() : "NO-RELYEAR";
 			var numCards = document.getElementById("filter-check-numberofcards").checked ? $("#filter-numberofcards").val() : "NO-NUMCARD";
 
 			window.location.href = "/sets/filter/" + (relYear ? relYear : "NO-RELYEAR") + "&" + (numCards ? numCards : "NO-NUMCARD");
@@ -70,7 +70,7 @@
 		    			Filter By: <span className="caret"></span>
 		  			</button>
 					<ul className="dropdown-menu" id="filtering-options">
-						<FilterOption name="Release Year"/>
+						<FilterOption name="Release Date"/>
 						<FilterOption name="Number of Cards"/>
 						<ol><button className="btn btn-default" onClick={filterApply}>Filter!</button></ol>
 					</ul>
@@ -94,7 +94,7 @@
 		{% for set in sets %}
 			<div class="model-inst">
 				<img src={{set.symbol}} width="400" class="img-fluid">
-				<h4><a href={{"/set/" + set.name}}>{{set.name}}</a></h4>
+				<h4><a href={{"/sets/" + set.code}}>{{set.name}}</a></h4>
 			</div>
 		{% endfor %}
 	</div>

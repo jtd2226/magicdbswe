@@ -64,9 +64,13 @@ def artists_instance(name):
 
 #--------SETS--------------
 @app.route('/sets')
+@app.route('/sets/')
+@app.route('/sets/filter')
+@app.route('/sets/sort')
 def sets():
     sets = db.session.query(MSet).all()
-    return render_template('sets.html',sets=sets, title = 'Sets')
+
+    return render_template('sets.html', sets=sets, title = 'Sets')
 
 @app.route('/sets/filter/<relYear>&<numCard>')
 def sets_filter(relYear, numCard):
@@ -79,16 +83,35 @@ def sets_filter(relYear, numCard):
     sets = sets.all()
 
     imageUrls = {}
-    #for set in sets:
-    #   imageUrls[set.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+    return render_template('sets.html', sets=sets, title = 'Sets')
 
-    return render_template('sets.html', sets=sets, title = 'Subtypes')
+@app.route('/sets/sort/<field>&<order>')
+def sets_sort(field, order):
+    if "desc" in order : # Descending Order
+        if field == "name" :
+            sets = db.session.query(MSet).order_by(MSet.name).all()
+        elif field == "code" :
+            sets = db.session.query(MSet).order_by(MSet.code).all()
+        elif field == "relDate" :
+            sets = db.session.query(MSet).order_by(MSet.rDate).all()
+        elif field == "numCards" :
+            sets = db.session.query(MSet).order_by(MSet.numCards).all()
+    else : # Ascending Order
+        if field == "name" :
+            sets = db.session.query(MSet).order_by(MSet.name.desc()).all()
+        elif field == "code" :
+            sets = db.session.query(MSet).order_by(MSet.code.desc()).all()
+        elif field == "relDate" :
+            sets = db.session.query(MSet).order_by(MSet.rDate.desc()).all()
+        elif field == "numCards" :
+            sets = db.session.query(MSet).order_by(MSet.numCards.desc()).all()
 
+    return render_template('sets.html', sets=sets, title = 'Sets')
 
-@app.route('/sets/<name>')
-def sets_instance(name):
-    sets_instance = db.session.query(MSet).filter_by(name=name).first()
-    return render_template('sets-instance.html',sets_instance=sets_instance, title = name)
+@app.route('/sets/<code>')
+def sets_instance(code):
+    sets_instance = db.session.query(MSet).filter_by(code=code).first()
+    return render_template('sets-instance.html', sets_instance=sets_instance, title = sets_instance.name)
 
 
 
