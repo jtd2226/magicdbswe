@@ -1,0 +1,151 @@
+{%extends "base.html"%}
+
+{%block content%}
+	<link rel="stylesheet" type="text/css" href="/static/css/models.css">
+	<script type="text/babel">
+		function SortOption(props) {
+			return (
+				<ol className="sort-button">
+					<button className="btn btn-default"><a href={props.link}>{props.name}</a></button>
+				</ol>
+			);
+		}
+
+		function sortOrderChange() {
+			$("#sort-order").toggleClass("glyphicon-arrow-down glyphicon-arrow-up")
+			$(".sort-button a").each(function() {
+				if (this.href.indexOf("desc") !== -1) {
+					this.href = this.href.replace("desc", "asce");
+				} else {
+					this.href = this.href.replace("asce", "desc");
+				}
+			});
+		}
+			
+		function SortList() {
+			return (
+				<div className="btn-group">
+					<button className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    Sort By: <span id="sort-order" className="glyphicon glyphicon-arrow-down" onClick={sortOrderChange}></span>
+					</button>
+					<ul className="dropdown-menu">
+						<SortOption name="Name" link="/cards/sort/name&desc"/>
+						<SortOption name="Mana Cost" link="/cards/sort/manaCost&desc"/>
+						<SortOption name="Power" link="/cards/sort/power&desc"/>
+						<SortOption name="Toughness" link="/cards/sort/toughness&desc"/>
+						<SortOption name="Rarity" link="/cards/sort/rarity&desc"/>
+						<SortOption name="Color" link="/cards/sort/color&desc"/>
+						<SortOption name="Type" link="/cards/sort/type&desc"/>
+					</ul>
+				</div>
+			);
+		}
+		ReactDOM.render(
+			<SortList/>,
+			document.getElementById('sorting-options')
+		);
+	</script>
+	<script type="text/babel">
+		function FilterOption(props) {
+			return (
+				<ol>
+					<label className="checkbox-inline">
+						<input type="checkbox" id={"filter-check-" + props.name.toLowerCase().replace(/\s/g,'')} value=""></input>
+						{props.name}
+					</label>
+					<input type="text" className="form-control" id={"filter-" + props.name.toLowerCase().replace(/\s/g,'')}></input>
+				</ol>
+			);
+		}
+
+		function filterApply() {
+			var manaCost = document.getElementById("filter-check-manacost").checked ? $("#filter-manacost").val() : "NO-MANA";
+			var power = document.getElementById("filter-check-power").checked ? $("#filter-power").val() : "NO-POWER";
+			var toughness = document.getElementById("filter-check-toughness").checked ? $("#filter-toughness").val() : "NO-TOUGH";
+			var rarity = document.getElementById("filter-check-rarity").checked ? $("#filter-rarity").val() : "NO-RARITY";
+			var color = document.getElementById("filter-check-color").checked ? $("#filter-color").val() : "NO-COLOR";
+			var type = document.getElementById("filter-check-type").checked ? $("#filter-type").val() : "NO-TYPE";
+
+			window.location.href = "/cards/filter/" + (manaCost ? manaCost : "NO-MANA") + "&" + (power ? power : "NO-POWER") + "&" + (toughness ? toughness : "NO-TOUGH") + "&" + (rarity ? rarity : "NO-RARITY") + "&" + (color ? color : "NO-COLOR") + "&" + (type ? type : "NO-TYPE");
+		}
+			
+		function FilterList() {
+			return (
+				<div className="btn-group">
+					<button className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    			Filter By: <span className="caret"></span>
+		  			</button>
+					<ul className="dropdown-menu" id="filtering-options">
+						<FilterOption name="Mana Cost"/>
+						<FilterOption name="Power"/>
+						<FilterOption name="Toughness"/>
+						<FilterOption name="Rarity"/>
+						<FilterOption name="Color"/>
+						<FilterOption name="Type"/>
+						<ol><button className="btn btn-default" onClick={filterApply}>Filter!</button></ol>
+					</ul>
+				</div>
+			);
+		}
+		ReactDOM.render(
+			<FilterList/>,
+			document.getElementById('filtering-options')
+		);
+	</script>
+
+	<div class="magicdb-header">
+		<h1>Cards</h1>
+		<h3>There are thousands of unique cards in Magic, here are some of them. </h3>
+		<span id="sorting-options"></span>
+		<span id="filtering-options"></span>
+	</div>
+
+	<div class="container-fluid">
+		{% for card in cards %}
+			<div class="model-inst">
+				<img src={{card.art}} class="img-fluid">
+				<h4><a href={{"/cards/" + card.cardId}}>{{card.name}}</a></h4>
+			</div>
+		{% endfor %}
+	</div>
+
+	<div id="mdb-pagination">
+		<nav>
+			<ul class="pagination">
+				{% if page > 1 %}
+					<li class="page-item"><a class="page-link" href={{"/cards/" ~ (page - 1)}}>Previous</a></li>
+				{% endif %}
+				<li class="page-item"><a class="page-link" href={{"/cards/" ~ (page + 1)}}>Next</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<div id="mdb-pagination">
+		<nav>
+			<ul class="pagination">
+				{% if page > 1 %}
+					<li class="page-item"><a class="page-link" href={{prev_page(request.path)}}>Previous</a></li>
+				{% endif %}
+				<li class="page-item"><a class="page-link" href={{next_page(request.path)}}>Next</a></li>
+			</ul>
+		</nav>
+	</div>
+	<!--<div class="container-fluid">
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=413585&type=card">
+			<h4><a href="cards-instance.html?id=b611177dca2da89d2915f6ac4b5268a1426086cb">Counterspell</a></h4>
+		</div>
+
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=425915&type=card">
+			<h4><a href="cards-instance.html?id=6e978e23a63cefdfaa34aee0bb4bdadd2ddfd459">Blood Moon</a></h4>
+		</div>
+
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=382866&type=card">
+			<h4><a href="cards-instance.html?id=6ad6463d56da447ab490a1a2b2b8a18759befc5f">Black Lotus</a></h4>
+		</div>
+	</div>-->
+
+
+{%endblock%}

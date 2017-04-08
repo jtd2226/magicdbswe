@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Homepage - MagicDB</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/css/index.css">
+  </head>
+  
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="static/images/MainLogo.png" id="bar-logo" style="position: relative; width: 80px; top: -8px;"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="cards">Cards</a></li>
+            <li><a href="sets">Sets</a></li>
+            <li><a href="subtypes">Subtypes</a></li>
+            <li><a href="artists">Artists</a></li>
+            <li><a href="about">About</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="overlay">
+      <img src="static/images/MainLogo.png" id="main-logo" style="display: block; margin: auto;">
+      <h1 class="index-descr" style="font-family: ;">Magic the Gathering Database</h1>
+    </div>
+
+    <!-- Full Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('static/images/planar.jpg');"></div>
+                <div class="carousel-caption">
+                    <h4>Card: Planar Bridge</h4>
+                    <h4>Set: Aether Revolt</h4>
+                    <h4>Subtype: N/A</h4>
+                    <h4>Artist: Chase Stone</h4>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('static/images/viserys.jpg');"></div>
+                <div class="carousel-caption">
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;">Card: Anguished Unmaking</h4>
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" >Set: Shadows over Innistrad</h4>
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" >Subtype: N/A</h4>
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" >Artist: Wesley Burt</h4>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('static/images/resurgent.jpg');"></div>
+                <div class="carousel-caption">
+                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Card: Zendikar Resurgent</h4>
+                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Set: Oath of the Gatewatch</h4>
+                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Subtype: N/A</h4>
+                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Artist: Chris Rallis</h4>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('static/images/genesis.jpg');"></div>
+                <div class="carousel-caption">
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Card: Progenitus</h4>
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Set: Conflux</h4>
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Subtype: Hydra Avatar</h4>
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Artist: Jaime Jones</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+      // A script to dynamically adjust the font size of the text and image on the splash.
+      function fontResize(){
+        unit = $(window).width() / 100;
+        carouselSize = Math.min(Math.max(10, 2.5 * unit), 30);   
+        indexDescr = Math.min(Math.max(16, 4 * unit), 48);   
+        imageWidth = Math.min(Math.max(100, 50 * unit), 450);
+
+        $('.carousel-caption h2').css('font-size', carouselSize + 'px');
+        $('.index-descr').css('font-size', indexDescr + 'px');
+        document.getElementById("main-logo").width = imageWidth.toString();
+        document.getElementById("main-logo").height = (imageWidth / 3).toString();
+        //font-family: "Times New Roman", Times, serif;
+
+      }
+      fontResize();
+      $(window).resize( function () {fontResize()});
+    </script>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+{%extends "base.html"%}
+
+{%block content%}
+	<link rel="stylesheet" type="text/css" href="/static/css/models.css">
+	<script type="text/babel">
+		function SortOption(props) {
+			return (
+				<ol className="sort-button">
+					<button className="btn btn-default"><a href={props.link}>{props.name}</a></button>
+				</ol>
+			);
+		}
+
+		function sortOrderChange() {
+			$("#sort-order").toggleClass("glyphicon-arrow-down glyphicon-arrow-up");
+			$(".sort-button a").each(function() {
+				if (this.href.indexOf("desc") !== -1) {
+					this.href = this.href.replace("desc", "asce");
+				} else {
+					this.href = this.href.replace("asce", "desc");
+				}
+			});
+		}
+			
+		function SortList() {
+			return (
+				<div className="btn-group">
+					<button className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    Sort By: <span id="sort-order" className="glyphicon glyphicon-arrow-down" onClick={sortOrderChange}></span>
+					</button>
+					<ul className="dropdown-menu">
+						<SortOption name="Name" link="/subtypes/sort/name&desc"/>
+						<SortOption name="Number of Cards" link="/subtypes/sort/numCards&desc"/>
+						<SortOption name="Number of Sets" link="/subtypes/sort/numSets&desc"/>
+					</ul>
+				</div>
+			);
+		}
+		ReactDOM.render(
+			<SortList/>,
+			document.getElementById('sorting-options')
+		);
+	</script>
+	<script type="text/babel">
+		function FilterOption(props) {
+			return (
+				<ol>
+					<label className="checkbox-inline">
+						<input type="checkbox" id={"filter-check-" + props.name.toLowerCase().replace(/\s/g,'')} value=""></input>
+						{props.name}
+					</label>
+					<input type="text" className="form-control" id={"filter-" + props.name.toLowerCase().replace(/\s/g,'')}></input>
+				</ol>
+			);
+		}
+
+		function filterApply() {
+			var numCards = document.getElementById("filter-check-numberofcards").checked ? $("#filter-numberofcards").val() : "NO-NUMCARD";
+			var numSets = document.getElementById("filter-check-numberofsets").checked ? $("#filter-numberofsets").val() : "NO-NUMSETS";
+			var setName = document.getElementById("filter-check-set").checked ? $("#filter-set").val() : "NO-SETNAME";
+
+			window.location.href = "/subtypes/filter/" + (numCards ? numCards : "NO-NUMCARD") + "&" + (numSets ? numSets : "NO-NUMSETS") + "&" + (setName ? setName : "NO-SETNAME");
+		}
+			
+		function FilterList() {
+			return (
+				<div className="btn-group">
+					<button className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    			Filter By: <span className="caret"></span>
+		  			</button>
+					<ul className="dropdown-menu" id="filtering-options">
+						<FilterOption name="Number of Cards"/>
+						<FilterOption name="Number of Sets"/>
+						<FilterOption name="Set"/>
+						<ol><button className="btn btn-default" onClick={filterApply}>Filter!</button></ol>
+					</ul>
+				</div>
+			);
+		}
+		ReactDOM.render(
+			<FilterList/>,
+			document.getElementById('filtering-options')
+		);
+	</script>
+
+	<div class="magicdb-header">
+		<h1>Subtypes</h1>
+		<h3>Here you can search through cards by looking at their different subtypes.</h3>
+		<span id="sorting-options"></span>
+		<span id="filtering-options"></span>
+	</div>
+	
+	<div class="container-fluid">
+		{% for subtype in subtypes %}
+			<div class="model-inst">
+				<img src={{imageUrls[subtype.name]}} class="img-fluid">
+				<h4><a href={{"/subtypes/" + subtype.name}}>{{subtype.name}}</a></h4>
+			</div>
+		{% endfor %}
+	</div>
+
+
+	<div id="mdb-pagination">
+		<nav>
+			<ul class="pagination">
+				{% if page > 1 %}
+					<li class="page-item"><a class="page-link" href={{prev_page(request.path)}}>Previous</a></li>
+				{% endif %}
+				<li class="page-item"><a class="page-link" href={{next_page(request.path)}}>Next</a></li>
+			</ul>
+		</nav>
+	</div>
+<!--
+	<div class="container-fluid">
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card" class="img-fluid">
+			<h4><a href="subtypes-instance.html?name=&quot;Wurm&quot;&id=0b45d0cdfbf851a256d96b7586c2e98ebcfaeef7">Wurm</h4>
+		</div>
+
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=414295&type=card" class="img-fluid">
+			<h4><a href="subtypes-instance.html?name=&quot;Eldrazi&quot;&id=3961b8f27dfebff5024e0d4cea2e5dedcd8ed3cd">Eldrazi</a></h4>
+		</div>
+
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=401636&type=card" class="img-fluid">
+			<h4><a href="subtypes-instance.html?name=&quot;Angel&quot;&id=16b1bce7dd9f6a77480fb6b33f2b211f1c5b9ebc">Angel</a></h4>
+		</div>
+	</div>
+-->
+{%endblock%}

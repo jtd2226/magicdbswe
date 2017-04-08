@@ -1,0 +1,31 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+	<link rel="stylesheet" type="text/css" href="/static/css/instance.css">
+	<div id="instance-main">
+		<h1>{{subtypes_instance.name}}</h1>
+		<img src={{imageUrls}} class="img-fluid">
+		<h4><strong>Number of Cards: </strong>{{subtypes_instance.numCards}}</h4>
+		<h4>
+
+			<strong>Sets:</strong><br>
+			{% for set in subtypes_instance.ssets.all() %}
+				{{set.name}}
+				<br>
+			{% endfor %}
+		</h4>
+		<h4>
+
+			<strong>Cards:</strong><br>
+			{% for card in subtypes_instance.xcards.all() %}
+				{{card.name}}
+				<br>
+			{% endfor %}
+		</h4>
+	</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+{% endblock %}

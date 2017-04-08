@@ -8,14 +8,12 @@ python:
 before_install:
     - pip install --upgrade pip
 
-install:
+install:   
     - pip install autopep8
     - pip install coverage
     - pip install numpy
     - pip install pylint
-    - pip3 install flask 
-    - pip3 install sqlalchemy 
-    - pip3 install flask_sqlalchemy 
+    - pip install Jinja2
 
 before_script:
     - uname -a
@@ -25,3 +23,4 @@ before_script:
 script:
     - date
     - ls -al
+    - make test

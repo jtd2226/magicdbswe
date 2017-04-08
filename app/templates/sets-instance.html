@@ -1,0 +1,57 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+	<link rel="stylesheet" type="text/css" href="/static/css/instance.css">
+	<div id="instance-main">
+		<h1>{{sets_instance.name}}</h1>
+		<img src={{sets_instance.symbol}} class="img-fluid">
+
+		<h4><strong>Code: </strong>{{sets_instance.code}}</h4>
+		<h4><strong>Release Date: </strong>{{sets_instance.rDate}}</h4>
+		<h4><strong>Block: </strong>{{sets_instance.block}}</h4>
+		<h4><strong>Number of Cards: </strong>{{sets_instance.numCards}}</h4>
+		<h4>
+
+			<strong>Subtypes:</strong><br>
+			{% if sets_instance.cards.all() %}
+				{% for subtype in sets_instance.subTypes %}
+					{{subtype.name}}
+					<br>
+				{% endfor %}
+			{% endif %}
+		</h4>
+		<h4>
+
+			<strong>Cards:</strong><br>
+			{% if sets_instance.cards.all() %}
+				{% for card in sets_instance.cards.all() %}
+					{{card.name}}
+					<br>
+				{% endfor %}
+			{% endif %}
+		</h4>
+		<h4>
+
+			<strong>Artists:</strong><br>
+			{% for artist in sets_instance.xartists.all() %}
+				{{artist.name}}
+				<br>
+			{% endfor %}
+		</h4>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!--<script>
+				$("#instance-main").append("<h4><strong>Artists: </strong>" + getUrlParams()["name"].substring(3, getUrlParams()["name"].length - 3).replace("%20", " ") + "</h4>");
+		    }
+		};
+
+		var code = getUrlParams()["code"].substring(3, getUrlParams()["code"].length - 3);
+	    xmlHttp.open("GET", "https://api.magicthegathering.io/v1/sets/" + code, true); 
+	    xmlHttp.send(null);
+	</script>-->
+
+{%endblock%}

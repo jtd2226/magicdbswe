@@ -1,0 +1,128 @@
+{%extends "base.html"%}
+
+{%block content%}
+	
+	<link rel="stylesheet" type="text/css" href="/static/css/models.css">
+	<script type="text/babel">
+		function SortOption(props) {
+			return (
+				<ol className="sort-button">
+					<button className="btn btn-default"><a href={props.link}>{props.name}</a></button>
+				</ol>
+			);
+		}
+
+		function sortOrderChange() {
+			$("#sort-order").toggleClass("glyphicon-arrow-down glyphicon-arrow-up");
+			$(".sort-button a").each(function() {
+				if (this.href.indexOf("desc") !== -1) {
+					this.href = this.href.replace("desc", "asce");
+				} else {
+					this.href = this.href.replace("asce", "desc");
+				}
+			});
+		}
+			
+		function SortList() {
+			return (
+				<div className="btn-group">
+					<button className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    Sort By: <span id="sort-order" className="glyphicon glyphicon-arrow-down" onClick={sortOrderChange}></span>
+					</button>
+					<ul className="dropdown-menu">
+						<SortOption name="Name" link="/sets/sort/name&desc"/>
+						<SortOption name="Code" link="/sets/sort/code&desc"/>
+						<SortOption name="Release Date" link="/sets/sort/relDate&desc"/>
+						<SortOption name="Number of Cards" link="/sets/sort/numCards&desc"/>
+					</ul>
+				</div>
+			);
+		}
+		ReactDOM.render(
+			<SortList/>,
+			document.getElementById('sorting-options')
+		);
+	</script>
+	<script type="text/babel">
+		function FilterOption(props) {
+			return (
+				<ol>
+					<label className="checkbox-inline">
+						<input type="checkbox" id={"filter-check-" + props.name.toLowerCase().replace(/\s/g,'')} value=""></input>
+						{props.name}
+					</label>
+					<input type="text" className="form-control" id={"filter-" + props.name.toLowerCase().replace(/\s/g,'')}></input>
+				</ol>
+			);
+		}
+
+		function filterApply() {
+			var relYear = document.getElementById("filter-check-releasedate").checked ? $("#filter-releasedate").val() : "NO-RELYEAR";
+			var numCards = document.getElementById("filter-check-numberofcards").checked ? $("#filter-numberofcards").val() : "NO-NUMCARD";
+
+			window.location.href = "/sets/filter/" + (relYear ? relYear : "NO-RELYEAR") + "&" + (numCards ? numCards : "NO-NUMCARD");
+		}
+			
+		function FilterList() {
+			return (
+				<div className="btn-group">
+					<button className="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    			Filter By: <span className="caret"></span>
+		  			</button>
+					<ul className="dropdown-menu" id="filtering-options">
+						<FilterOption name="Release Date"/>
+						<FilterOption name="Number of Cards"/>
+						<ol><button className="btn btn-default" onClick={filterApply}>Filter!</button></ol>
+					</ul>
+				</div>
+			);
+		}
+		ReactDOM.render(
+			<FilterList/>,
+			document.getElementById('filtering-options')
+		);
+	</script>
+	<div class="magicdb-header">
+		<h1>Sets</h1>
+		<h3>Cards are released in different sets, here are some of them. </h3>
+		<span id="sorting-options"></span>
+		<span id="filtering-options"></span>
+	</div>
+
+	<div class="container-fluid">
+		{% for set in sets %}
+			<div class="model-inst">
+				<img src={{set.symbol}} width="400" class="img-fluid">
+				<h4><a href={{"/sets/" + set.code}}>{{set.name}}</a></h4>
+			</div>
+		{% endfor %}
+	</div>
+
+	<div id="mdb-pagination">
+		<nav>
+			<ul class="pagination">
+				{% if page > 1 %}
+					<li class="page-item"><a class="page-link" href={{prev_page(request.path)}}>Previous</a></li>
+				{% endif %}
+				<li class="page-item"><a class="page-link" href={{next_page(request.path)}}>Next</a></li>
+			</ul>
+		</nav>
+	</div>
+<!--
+	<div class="container-fluid">
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=413585&type=card">
+			<h4><a href="sets-instance.html?code=&quot;EMA&quot;&cards=&quot;Counterspell&quot;&name=&quot;Zach Stella&quot;">EMA</a></h4>
+		</div>
+
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=425915&type=card">
+			<h4><a href="sets-instance.html?code=&quot;MM3&quot;&cards=&quot;Blood Moon&quot;&name=&quot;Franz Vohwinkel&quot;">MM3</a></h4>
+		</div>
+
+		<div class="model-inst">
+			<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=382866&type=card">
+			<h4><a href="sets-instance.html?code=&quot;VMA&quot;&cards=&quot;Black Lotus&quot;&name=&quot;Chris Rahn&quot;">VMA</a></h4>
+		</div>
+	</div>-->
+{%endblock%}

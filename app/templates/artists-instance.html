@@ -1,0 +1,34 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+	<link rel="stylesheet" type="text/css" href="css/instance.css">
+	<div id="instance-main">
+		<h1><strong>{{artists_instance.name}}</strong></h1>
+		<img src={{artists_instance.cards.first().art}} class="img-fluid">
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!--script>
+		$("#instance-main").append("<h4><strong>Number of Cards: </strong>1</h4>");
+		$("#instance-main").append("<h4><strong>Number of Sets: </strong>1</h4>");
+		
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) { //Successful GET request
+		        var card = JSON.parse(this.responseText);
+
+		        $("#instance-main").prepend("<h1>" + artistName + "</h1>");
+		        $("#instance-main").append("<h4><strong>Cards: </strong>" + card["card"]["name"] + "</h4>");
+				$("#instance-main").append("<h4><strong>Sets: </strong>" + card["card"]["setName"] + "</h4>");
+		    }
+		};
+
+		var cardId = getUrlParams()["id"];
+	    xmlHttp.open("GET", "https://api.magicthegathering.io/v1/cards/" + cardId, true); 
+	    xmlHttp.send(null);
+	</script>
+-->
+{% endblock %}
