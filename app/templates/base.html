@@ -36,16 +36,16 @@
 						<li {%if request.path == '/'%} class="active"{% endif %}>
 							<a href="/">Home</a>
 						</li>
-						<li {%if request.path == '/cards'%} class="active"{% endif %}>
+						<li {%if '/cards' in request.path %} class="active"{% endif %}>
 							<a href="/cards">Cards</a>
 						</li>
-						<li {%if request.path == '/sets'%} class="active"{% endif %}>
+						<li {%if'/sets' in request.path %} class="active"{% endif %}>
 							<a href="/sets">Sets</a>
 						</li>
-						<li {%if request.path == '/subtypes'%} class="active"{% endif %}>
+						<li {%if '/subtypes' in request.path %} class="active"{% endif %}>
 							<a href="/subtypes">Subtypes</a>
 						</li>
-						<li {%if request.path == '/artists'%} class="active"{% endif %}>
+						<li {%if '/artists' in request.path %} class="active"{% endif %}>
 							<a href="/artists">Artists</a>
 						</li>
 						<li {%if request.path == '/about'%} class="active"{% endif %}>
