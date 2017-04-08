@@ -72,13 +72,25 @@
 		<span id="sorting-options"></span>
 		<span id="filtering-options"></span>
 	</div>
+
 	<div class="container-fluid">
 		{% for artist in artists %}
 			<div class="model-inst">
-				<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card" class="img-fluid">
-				<h4><a href={{"/artists/" + artist.name}}>{{artist.name}}</a></h4>
+				<img src={{artist.cards.first().art}} class="img-fluid">
+				<h4><a href={{"/artists&name=\"" ~ artist.name ~ "\""}}>{{artist.name}}</a></h4>
 			</div>
 		{% endfor %}
+	</div>
+
+	<div id="mdb-pagination">
+		<nav>
+			<ul class="pagination">
+				{% if page > 1 %}
+					<li class="page-item"><a class="page-link" href={{prev_page(request.path)}}>Previous</a></li>
+				{% endif %}
+				<li class="page-item"><a class="page-link" href={{next_page(request.path)}}>Next</a></li>
+			</ul>
+		</nav>
 	</div>
 <!--
 	<div class="container-fluid">

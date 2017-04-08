@@ -26,3 +26,8 @@ body {
 .btn-group ol {
 	margin: 10px;
 }
+
+#mdb-pagin {
+	display: inline;
+	text-align: center;
+}

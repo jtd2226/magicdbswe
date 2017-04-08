@@ -4,27 +4,14 @@
 
 	<link rel="stylesheet" type="text/css" href="css/instance.css">
 	<div id="instance-main">
+		<h1><strong>{{artists_instance.name}}</strong></h1>
+		<img src={{artists_instance.cards.first().art}} class="img-fluid">
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script>
-		var getUrlParams = function() {
-		    var vars = [], hash;
-		    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-		    for(var i = 0; i < hashes.length; i++)
-		    {
-		        hash = hashes[i].split('=');
-		        vars.push(hash[0]);
-		        vars[hash[0]] = hash[1];
-		    }
-		    return vars;
-		}
-		var artistName = getUrlParams()["name"].substring(3, getUrlParams()["name"].length - 3).replace("%20", " ");
-		var cardId = getUrlParams()["id"];
-
-		
+	<!--script>
 		$("#instance-main").append("<h4><strong>Number of Cards: </strong>1</h4>");
 		$("#instance-main").append("<h4><strong>Number of Sets: </strong>1</h4>");
 		
@@ -43,5 +30,5 @@
 	    xmlHttp.open("GET", "https://api.magicthegathering.io/v1/cards/" + cardId, true); 
 	    xmlHttp.send(null);
 	</script>
-
+-->
 {% endblock %}
