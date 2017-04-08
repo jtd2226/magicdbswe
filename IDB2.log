@@ -1,3 +1,98 @@
+commit af6109dbdf77a3c2e6a81b16ae653e75a1b29a9b
+Merge: 4e4861e 241d0ad
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Fri Apr 7 21:40:14 2017 -0500
+
+    work
+
+commit 241d0adc768c56dc0fce83561bbd85abeacb7eca
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Fri Apr 7 21:36:53 2017 -0500
+
+    Cards and ~Artists
+
+commit 7626525ec8e16fae6c48844f47c92490b9e2f15f
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Fri Apr 7 21:13:53 2017 -0500
+
+    Fixed navbar so active class shows in subpages
+
+commit 831383defc625d0243977dd1d636239d7b8998ad
+Merge: 1c5b6f8 1633cc8
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Fri Apr 7 19:17:48 2017 -0500
+
+    asdfasdfas123
+
+commit 1c5b6f86e2282fb02b8b7d75e8187360da31f90b
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Fri Apr 7 19:09:30 2017 -0500
+
+    Sets is complete
+
+commit 1633cc81e41bb24a2b911f2516d827fb2b25f13c
+Author: Nestor Castro <nestorcastro@wireless-10-147-64-192.public.utexas.edu>
+Date:   Fri Apr 7 18:59:14 2017 -0500
+
+    pagination through URL completed
+
+commit 62cbd3c603e1a011802d425d0c8379e6a10708cd
+Merge: cf6631f d0b2d2b
+Author: Nestor Castro <nestorcastro@wireless-10-147-64-192.public.utexas.edu>
+Date:   Fri Apr 7 18:48:44 2017 -0500
+
+    Implementation of pagination in filter, subtypes; MERGE
+
+commit cf6631fc0a3abf7b5b8d41107a474ed2bf5a88fa
+Author: Nestor Castro <nestorcastro@wireless-10-147-64-192.public.utexas.edu>
+Date:   Fri Apr 7 18:48:15 2017 -0500
+
+    pagination implemented for filter of subtypes
+
+commit d0b2d2b714fab1680c08e02214425a411978d673
+Merge: 9f61690 b89ccd6
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Fri Apr 7 18:43:24 2017 -0500
+
+    15^2
+
+commit 9f616905643bbdc10cbda49a4c1f5ab1f9ea318c
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Fri Apr 7 18:39:58 2017 -0500
+
+    2^15
+
+commit b89ccd6b1dd411075d993417f59fd7dfd0d0007b
+Author: Nestor Castro <nestorcastro@wireless-10-147-64-192.public.utexas.edu>
+Date:   Fri Apr 7 18:37:16 2017 -0500
+
+    pagination through url fro subtypes including sorting
+
+commit 2430f808d723384f298555ea5b827b423c18bbaa
+Author: Nestor Castro <nestorcastro@wireless-10-147-64-192.public.utexas.edu>
+Date:   Fri Apr 7 18:21:35 2017 -0500
+
+    included pagination to subtypes; only through url
+
+commit b2214f309410a2ddf534b62f730671e2bccaa293
+Merge: e3877b9 d1f0637
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Fri Apr 7 18:00:54 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit e3877b9a33f252fa0163a92601a710ad13a76a4b
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Fri Apr 7 18:00:42 2017 -0500
+
+    JESUS LORD FINALLY GOT THE SUBTYPE BLA
+
+commit d1f06372f828ae5d6a17f10ced725d363273b432
+Author: JoseLRC <joser@cs.utexas.edu>
+Date:   Fri Apr 7 17:53:42 2017 -0500
+
+    add html and log file
+
 commit 9c979502c23d6c5075b2500b5fd015a2fa902bf9
 Author: JoseLRC <joser@cs.utexas.edu>
 Date:   Fri Apr 7 17:48:22 2017 -0500
@@ -350,6 +445,18 @@ Date:   Tue Apr 4 17:12:20 2017 -0500
 
     the monsterSON returns
 
+commit 4e4861e673a99e01f56415db704e1af6b209f637
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Tue Apr 4 17:11:25 2017 -0500
+
+    removed the monsterSON
+
+commit 9959427591e70c1bba5431a74c9cecfe76e1b655
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Tue Apr 4 17:09:15 2017 -0500
+
+    Added the JSON with EVERYTHING
+
 commit 6d2483d44c3dfa023bbf16524e935caed0308d35
 Author: Mfam22 <m.martinez1120@gmail.com>
 Date:   Tue Apr 4 14:32:22 2017 -0500
@@ -597,6 +704,12 @@ Author: Mfam22 <m.martinez1120@gmail.com>
 Date:   Tue Mar 28 18:19:44 2017 -0500
 
     Stuggling to figure out flask, maybe getting somewhere
+
+commit 4b980486831d6d104ab988616f4327a989cedb7b
+Author: JoseLRC <joser@cs.utexas.edu>
+Date:   Fri Mar 24 12:50:58 2017 -0500
+
+    sorry for messing up, sincerely nicc
 
 commit 81fa1d082e4e0c6aa0a9cb414180412d638b79d6
 Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
