@@ -21,6 +21,10 @@ You can create and manage projects at https://console.developers.google.com
 
 import os
 
+
+# Pagination
+POSTS_PER_PAGE = 20
+
 # The secret key is used by Flask to encrypt session cookies.
 # [START secret_key]
 SECRET_KEY = 'secret'
