@@ -119,9 +119,9 @@
 		<nav>
 			<ul class="pagination">
 				{% if page > 1 %}
-					<li class="page-item"><a class="page-link" href={{prev_page(request.path)}}>Previous</a></li>
+					<li class="page-item"><a class="page-link" href={{get_page_url(request.path, page - 1)}}>Previous</a></li>
 				{% endif %}
-				<li class="page-item"><a class="page-link" href={{next_page(request.path)}}>Next</a></li>
+				<li class="page-item"><a class="page-link" href={{get_page_url(request.path, page + 1)}}>Next</a></li>
 			</ul>
 		</nav>
 	</div>

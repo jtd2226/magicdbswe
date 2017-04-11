@@ -18,26 +18,15 @@ from flask_paginate import Pagination # make sure to pyhton3 -m pip install
 # with app.app_context():
 #         model = models
 #         model.init_app(app)
-def next_page(url):
-    url2 = ""
-    if url[-1] == '/':
-        url2 = url + '2'
-    elif url[-1].isalpha():
-        url2 = url + '/2'
-    elif not url[-1].isalpha() and url[-1] != ',':
-        num = int(url[-1])
-        num += 1
-        url2 = url.replace(url[-1], str(num))
-    return url2
+def get_page_url(curr_url, new_page):
+    try:
+        newrl = curr_url.split("/")
+        int(newrl[-1])
+        newrl[-1] = str(new_page)
 
-def prev_page(url):
-    url2 = ""
-    if not url[-1].isalpha() and url[-1] != '/' and  url[-1] != ',':
-        num = int(url[-1])
-        if num > 1:
-            num -= 1
-            url2 = url.replace(url[-1], str(num))
-    return url2
+        return "/".join(newrl)
+    except ValueError:
+        return curr_url + "/" + str(new_page)
 
 @app.route('/')
 @app.route('/index')
@@ -62,7 +51,7 @@ def run_tests():
 @app.route('/cards/<int:page>')
 def cards(page=1):
     cards = db.session.query(MCard).paginate(page, POSTS_PER_PAGE, False).items
-    return render_template('cards.html',cards=cards, title = 'Cards', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('cards.html',cards=cards, title = 'Cards', page=page, get_page_url=get_page_url)
 
 @app.route('/cards/sort/<field>&<order>')
 @app.route('/cards/sort/<field>&<order>/<int:page>')
@@ -98,7 +87,7 @@ def cards_sort(field, order, page=1):
         elif field == "type" :
             cards = db.session.query(MCard).order_by(MCard.mainType.desc()).paginate(page, POSTS_PER_PAGE, False).items
 
-    return render_template('cards.html', cards=cards, title = 'Cards', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('cards.html', cards=cards, title = 'Cards', page=page, get_page_url=get_page_url)
 
 @app.route('/cards/filter/<manaCost>&<power>&<toughness>&<rarity>&<color>&<mainType>')
 @app.route('/cards/filter/<manaCost>&<power>&<toughness>&<rarity>&<color>&<mainType>/<int:page>')
@@ -120,7 +109,7 @@ def cards_filter(manaCost, power, toughness, rarity, color, mainType, page=1):
 
     cards = cards.paginate(page, POSTS_PER_PAGE, False).items
 
-    return render_template('cards.html', cards=cards, title = 'Cards', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('cards.html', cards=cards, title = 'Cards', page=page, get_page_url=get_page_url)
 
 @app.route('/cards/<cardId>')
 def cards_instance(cardId):
@@ -133,7 +122,7 @@ def cards_instance(cardId):
 @app.route('/artists/<int:page>')
 def artists(page=1):
     artists = db.session.query(MArtist).paginate(page, POSTS_PER_PAGE, False).items
-    return render_template('artists.html', artists=artists, title = 'Artists', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('artists.html', artists=artists, title = 'Artists', page=page, get_page_url=get_page_url)
 
 
 @app.route('/artists/filter/<numCard>&<numSets>')
@@ -147,7 +136,7 @@ def artists_filter(numCard, numSets, page=1):
 
     artists = artists.paginate(page, POSTS_PER_PAGE, False).items
 
-    return render_template('artists.html', artists=artists, title = 'Artists', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('artists.html', artists=artists, title = 'Artists', page=page, get_page_url=get_page_url)
 
 @app.route('/artists/sort/<field>&<order>')
 @app.route('/artists/sort/<field>&<order>/<int:page>')
@@ -167,7 +156,7 @@ def artists_sort(field, order, page=1):
         elif field == "numSets" :
             artists = db.session.query(MArtist).order_by(MArtist.numSets.desc()).paginate(page, POSTS_PER_PAGE, False).items
 
-    return render_template('artists.html', artists=artists, title = 'Artists', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('artists.html', artists=artists, title = 'Artists', page=page, get_page_url=get_page_url)
 
 @app.route('/artists&name="<name>"')
 def artists_instance(name):
@@ -179,7 +168,7 @@ def artists_instance(name):
 @app.route('/sets/<int:page>')
 def sets(page=1):
     sets = db.session.query(MSet).paginate(page, POSTS_PER_PAGE, False).items
-    return render_template('sets.html',sets=sets, title = 'Sets', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('sets.html',sets=sets, title = 'Sets', page=page, get_page_url=get_page_url)
 
 @app.route('/sets/filter/<relYear>&<numCard>')
 @app.route('/sets/filter/<relYear>&<numCard>/<int:page>')
@@ -192,7 +181,7 @@ def sets_filter(relYear, numCard, page=1):
 
     sets = sets.paginate(page, POSTS_PER_PAGE, False).items
 
-    return render_template('sets.html', sets=sets, title = 'Sets', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('sets.html', sets=sets, title = 'Sets', page=page, get_page_url=get_page_url)
 
 @app.route('/sets/sort/<field>&<order>')
 @app.route('/sets/sort/<field>&<order>/<int:page>')
@@ -216,7 +205,7 @@ def sets_sort(field, order, page=1):
         elif field == "numCards" :
             sets = db.session.query(MSet).order_by(MSet.numCards.desc()).paginate(page, POSTS_PER_PAGE, False).items
 
-    return render_template('sets.html', sets=sets, title = 'Sets', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('sets.html', sets=sets, title = 'Sets', page=page, get_page_url=get_page_url)
 
 @app.route('/sets/<code>')
 def sets_instance(code):
@@ -228,12 +217,8 @@ def sets_instance(code):
 
 #-------SUBTYPES-----------
 # @app.route('/', methods=['GET', 'POST'])
-@app.route('/subtypes') #included for pagination
+@app.route('/subtypes')
 @app.route('/subtypes/<int:page>') #included for pagination
-# @app.route('/subtypes')
-# @app.route('/subtypes/')
-@app.route('/subtypes/filter')
-@app.route('/subtypes/sort')
 def subtypes(page = 1):
     subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items #included for pagination
     #Get Images
@@ -244,7 +229,7 @@ def subtypes(page = 1):
         else:
             subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, get_page_url=get_page_url)
 
 @app.route('/subtypes/sort/<field>&<order>')
 @app.route('/subtypes/sort/<field>&<order>/<int:page>')
@@ -273,7 +258,7 @@ def subtypes_sort(field, order, page=1):
         else:
             subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, get_page_url=get_page_url)
 
 @app.route('/subtypes/filter/<numCards>&<numSets>&<setName>')
 @app.route('/subtypes/filter/<numCards>&<numSets>&<setName>/<int:page>')
@@ -329,7 +314,7 @@ def subtypes_filter(numCards, numSets, setName, page=1):
         else:
             subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, get_page_url=get_page_url)
 
 @app.route('/subtypes/<name>')
 def subtypes_instance(name):
