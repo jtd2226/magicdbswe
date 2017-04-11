@@ -26,9 +26,7 @@ def next_page(url):
         url2 = url + '/2'
     elif not url[-1].isalpha() and url[-1] != ',':
         num = int(url[-1])
-        print (num)
         num += 1
-        print ("New Num ", num)
         url2 = url.replace(url[-1], str(num))
     return url2
 
@@ -138,12 +136,44 @@ def artists(page=1):
     artists = db.session.query(MArtist).paginate(page, POSTS_PER_PAGE, False).items
     return render_template('artists.html', artists=artists, title = 'Artists', page=page, next_page=next_page, prev_page=prev_page)
 
+
+@app.route('/artists/filter/<numCard>&<numSets>')
+@app.route('/artists/filter/<numCard>&<numSets>/<int:page>')
+def artists_filter(numCard, numSets, page=1):
+    artists = db.session.query(MArtist);
+    if numCard != "NO-NUMCARD":
+        artists = artists.filter_by(numCards=numCard)
+    if numSets != "NO-NUMSETS":
+        artists = artists.filter_by(numSets=numSets)
+
+    artists = artists.paginate(page, POSTS_PER_PAGE, False).items
+
+    return render_template('artists.html', artists=artists, title = 'Artists', page=page, next_page=next_page, prev_page=prev_page)
+
+@app.route('/artists/sort/<field>&<order>')
+@app.route('/artists/sort/<field>&<order>/<int:page>')
+def artists_sort(field, order, page=1):
+    if "desc" in order : # Descending Order
+        if field == "name" :
+            artists = db.session.query(MArtist).order_by(MArtist.name).paginate(page, POSTS_PER_PAGE, False).items
+        elif field == "numCards" :
+            artists = db.session.query(MArtist).order_by(MArtist.numCards).paginate(page, POSTS_PER_PAGE, False).items
+        elif field == "numSets" :
+            artists = db.session.query(MArtist).order_by(MArtist.numSets).paginate(page, POSTS_PER_PAGE, False).items
+    else : # Ascending Order
+        if field == "name" :
+            artists = db.session.query(MArtist).order_by(MArtist.name.desc()).paginate(page, POSTS_PER_PAGE, False).items
+        elif field == "numCards" :
+            artists = db.session.query(MArtist).order_by(MArtist.numCards.desc()).paginate(page, POSTS_PER_PAGE, False).items
+        elif field == "numSets" :
+            artists = db.session.query(MArtist).order_by(MArtist.numSets.desc()).paginate(page, POSTS_PER_PAGE, False).items
+
+    return render_template('artists.html', artists=artists, title = 'Artists', page=page, next_page=next_page, prev_page=prev_page)
+
 @app.route('/artists&name="<name>"')
 def artists_instance(name):
     artists_instance = db.session.query(MArtist).filter_by(name=name).first()
     return render_template('artists-instance.html',artists_instance=artists_instance, title = name)
-
-
 
 #--------SETS--------------
 @app.route('/sets')
