@@ -92,7 +92,13 @@
 	<div class="container-fluid">
 		{% for set in sets %}
 			<div class="model-inst">
-				<img src={{set.symbol}} width="400" class="img-fluid">
+				<img src=
+				{% if set.symbol.lower() != "none" %}
+					{{ set.symbol }}
+				{% else %}
+					{{"https://tournamentcenter.eu/sites/default/files/mtg-logo.png"}}
+				{% endif %}
+				width="400" class="img-fluid">
 				<h4><a href={{"/sets/" + set.code}}>{{set.name}}</a></h4>
 			</div>
 		{% endfor %}

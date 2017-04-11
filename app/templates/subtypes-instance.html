@@ -5,7 +5,13 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/instance.css">
 	<div id="instance-main">
 		<h1>{{subtypes_instance.name}}</h1>
-		<img src={{imageUrls}} class="img-fluid">
+		<img src=
+		{% if imageUrls != "none" %}
+			{{ imageUrls }}
+		{% else %}
+			{{"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"}}
+		{% endif %}
+		class="img-fluid">
 		<h4><strong>Number of Cards: </strong>{{subtypes_instance.numCards}}</h4>
 		<h4>
 

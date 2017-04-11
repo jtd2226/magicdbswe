@@ -123,7 +123,6 @@ def cards_filter(manaCost, power, toughness, rarity, color, mainType, page=1):
     return render_template('cards.html', cards=cards, title = 'Cards', page=page, next_page=next_page, prev_page=prev_page)
 
 @app.route('/cards/<cardId>')
-#@app.route('/cards/<cardId>/<int:page>')
 def cards_instance(cardId):
     cards_instance = db.session.query(MCard).filter_by(cardId=cardId).first()
     return render_template('cards-instance.html',cards_instance=cards_instance, title = cards_instance.name)
@@ -179,7 +178,6 @@ def artists_instance(name):
 @app.route('/sets')
 @app.route('/sets/<int:page>')
 def sets(page=1):
-    #sets = db.session.query(MSet).all()
     sets = db.session.query(MSet).paginate(page, POSTS_PER_PAGE, False).items
     return render_template('sets.html',sets=sets, title = 'Sets', page=page, next_page=next_page, prev_page=prev_page)
 
@@ -237,7 +235,6 @@ def sets_instance(code):
 @app.route('/subtypes/filter')
 @app.route('/subtypes/sort')
 def subtypes(page = 1):
-    #subtypes = db.session.query(MSubtype).all()
     subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items #included for pagination
     #Get Images
     subtypeImageUrls = {}
@@ -254,24 +251,18 @@ def subtypes(page = 1):
 def subtypes_sort(field, order, page=1):
     if "desc" in order : # Descending Order
         if field == "name" :
-            #subtypes = db.session.query(MSubtype).all()
             subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numCards" :
-            #subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).all()
             subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numSets" :
-            #subtypes = db.session.query(MSubtype).all
             subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
             subtypes.sort(key=lambda x: len(x.ssets.all()))
     else : # Ascending Order
         if field == "name" :
-            #subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).all()
             subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numCards" :
-            #subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).all()
             subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numSets" :
-            #subtypes = db.session.query(MSubtype).all()
             subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
             subtypes.sort(key=lambda x: len(x.ssets.all()), reverse=True)
 
@@ -290,7 +281,7 @@ def subtypes_filter(numCards, numSets, setName, page=1):
     subtypes = None
     intNumSets = 0
 
-    #VAriables
+    #Variables
     try: #Verify that a real number is passed
         int(numCards)
     except ValueError:
@@ -305,29 +296,24 @@ def subtypes_filter(numCards, numSets, setName, page=1):
 
 
     if numCards != "NO-NUMCARD": #NumCard Filter
-        #subtypes = db.session.query(MSubtype).filter_by(numCards=numCards).all()
         subtypes = db.session.query(MSubtype).filter_by(numCards=numCards).paginate(page, POSTS_PER_PAGE, False).items
     if numSets != "NO-NUMSETS": #NumSet Filter
         if numCards == "NO-NUMCARD":
-            #subtypes = db.session.query(MSubtype).all()
             subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
         newsub = []
         for subtype in subtypes:
-            #curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
             curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.paginate(page, POSTS_PER_PAGE, False).items
             if len(curr_sets) == intNumSets:
                 newsub.append(subtype)
         subtypes = newsub
     if setName != "NO-SETNAME": #SetName Filter
         if numCards == "NO-NUMCARD" and numSets == "NO-NUMSETS":
-            #subtypes = db.session.query(MSubtype).all()
             subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
 
         print(str(len(subtypes)))
         for subtype in subtypes:
             isInSets = False
             print(subtype.name)
-            #curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
             curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.paginate(page, POSTS_PER_PAGE, False).items
             for cset in curr_sets:
                 if cset.code == setName :

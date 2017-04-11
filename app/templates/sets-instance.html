@@ -5,7 +5,13 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/instance.css">
 	<div id="instance-main">
 		<h1>{{sets_instance.name}}</h1>
-		<img src={{sets_instance.symbol}} class="img-fluid">
+		<img src=
+		{% if sets_instance.symbol.lower() != "none" %}
+			{{ sets_instance.symbol }}
+		{% else %}
+			{{"https://tournamentcenter.eu/sites/default/files/mtg-logo.png"}}
+		{% endif %}
+		width="400" class="img-fluid">
 
 		<h4><strong>Code: </strong>{{sets_instance.code}}</h4>
 		<h4><strong>Release Date: </strong>{{sets_instance.rDate}}</h4>
