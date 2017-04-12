@@ -245,16 +245,14 @@ def subtypes_sort(field, order, page=1):
         elif field == "numCards" :
             subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numSets" :
-            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
-            subtypes.sort(key=lambda x: len(x.ssets.all()))
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.numSets).paginate(page, POSTS_PER_PAGE, False).items
     else : # Ascending Order
         if field == "name" :
             subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numCards" :
             subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numSets" :
-            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
-            subtypes.sort(key=lambda x: len(x.ssets.all()), reverse=True)
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.numSets.desc()).paginate(page, POSTS_PER_PAGE, False).items
 
     subtypeImageUrls = {}
     for subtype in subtypes:
