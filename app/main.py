@@ -123,7 +123,7 @@ def cards_sort(field, order, page=1):
         elif field == "toughness" :
             cards = db.session.query(MCard).order_by(MCard.toughness.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "rarity" :
-            cards = db.session.query(MCard).order_by(MCard.rarity.desc()).paginate(page, POSTS_PER_PAGE, False).items
+            cards = sorted(db.session.query(MCard).order_by(MCard.rarity).all(), key=cmp_to_key(rarity_cmp), reverse=True)[(page - 1) * POSTS_PER_PAGE : page * POSTS_PER_PAGE]
         elif field == "color" :
             cards = db.session.query(MCard).order_by(MCard.color.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "type" :
