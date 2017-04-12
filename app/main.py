@@ -28,6 +28,43 @@ def get_page_url(curr_url, new_page):
     except ValueError:
         return curr_url + "/" + str(new_page)
 
+def cmp_to_key(mycmp):
+    class K:
+        def __init__(self, obj, *args):
+            self.obj = obj
+        def __lt__(self, other):
+            return mycmp(self.obj, other.obj) < 0
+        def __gt__(self, other):
+            return mycmp(self.obj, other.obj) > 0
+        def __eq__(self, other):
+            return mycmp(self.obj, other.obj) == 0
+        def __le__(self, other):
+            return mycmp(self.obj, other.obj) <= 0
+        def __ge__(self, other):
+            return mycmp(self.obj, other.obj) >= 0
+        def __ne__(self, other):
+            return mycmp(self.obj, other.obj) != 0
+    return K
+
+def rarity_cmp(x, y):
+    return get_rarity_val(x) - get_rarity_val(y)
+
+def get_rarity_val(card):
+    rarity = card.rarity.lower()
+    if rarity == "mythic rare":
+        return 5
+    if rarity == "special":
+        return 4
+    if rarity == "rare":
+        return 3
+    if rarity == "uncommon":
+        return 2
+    if rarity == "common":
+        return 1
+    if rarity == "basic land":
+        return 0
+    return -1
+
 @app.route('/')
 @app.route('/index')
 def hello():
@@ -71,7 +108,7 @@ def cards_sort(field, order, page=1):
         elif field == "toughness" :
             cards = db.session.query(MCard).order_by(MCard.toughness).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "rarity" :
-            cards = db.session.query(MCard).order_by(MCard.rarity).paginate(page, POSTS_PER_PAGE, False).items
+            cards = sorted(db.session.query(MCard).order_by(MCard.rarity).all(), key=cmp_to_key(rarity_cmp))[(page - 1) * POSTS_PER_PAGE : page * POSTS_PER_PAGE]
         elif field == "color" :
             cards = db.session.query(MCard).order_by(MCard.color).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "type" :
