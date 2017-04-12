@@ -1,3 +1,86 @@
+commit e344d4d124474b949b5623c2aa0e5aad5f489005
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Apr 11 19:01:36 2017 -0500
+
+    shhhhhhhhhhh
+
+commit 5bbf5c9343d90d096df1f908892c89657349b1cc
+Merge: 5422ced fceb191
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Apr 11 18:46:42 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 5422ced33139a454e04310051c052ce892eca619
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Apr 11 18:46:14 2017 -0500
+
+    fixed pagination logic fixes #49
+
+commit fceb191f24760121eb9d82fe001193f2d75c4886
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Tue Apr 11 18:14:44 2017 -0500
+
+    Something else
+
+commit a16fd64130838f9865c1b83cc68efd76cad6f531
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Tue Apr 11 18:10:37 2017 -0500
+
+    Trying to fix run tests
+
+commit aec98fb2da0e38786f6d25baf12d9551a3d08727
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Apr 11 18:07:56 2017 -0500
+
+    fixed next/prev on cards and added stocc foto for when the image *explicit*s up fixes #41 fixes #44
+
+commit 783abcf6e61a83933a1939570357274e174d9799
+Merge: 6ec74b5 54afe36
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Apr 11 16:43:34 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 6ec74b55350bb14d1eab05ff1282237ab403b05f
+Author: Nicholas Cobb <ncobb314@cs.utexas.edu>
+Date:   Tue Apr 11 16:43:24 2017 -0500
+
+    finally did a doing of the artist filtre and sort fixes #38
+
+commit 54afe364a1ad87377b1b5271a64dbf478d88e7d1
+Merge: afdcf74 042454c
+Author: Mfam22 <m.martinez1120@gmail.com>
+Date:   Mon Apr 10 01:43:40 2017 -0500
+
+    Merge pull request #37 from jtd2226/master
+    
+    Merge
+
+commit 042454cddbb7dce54944f3bd53e2c27de2765afb
+Author: Nestor Castro <nestorcastro@Nestors-MacBook-Pro.local>
+Date:   Fri Apr 7 22:51:52 2017 -0500
+
+    one line in requirements
+
+commit afdcf74087625ff2eb3488a46f93dae19edd8a7c
+Author: Nestor Castro <nestorcastro@Nestors-MacBook-Pro.local>
+Date:   Fri Apr 7 22:49:44 2017 -0500
+
+    moving to master
+
+commit b83c0daced4dcff1dd321d0d45e113313d4ed1c4
+Author: Nestor Castro <nestorcastro@Nestors-MacBook-Pro.local>
+Date:   Fri Apr 7 22:44:56 2017 -0500
+
+    requirements.txt
+
+commit bf7555d2bb391dc699b55938a46e24609f1751b2
+Author: Nilo Lisboa <nilo@cs.utexas.edu>
+Date:   Fri Apr 7 21:48:12 2017 -0500
+
+    Best we can do for now
+
 commit af6109dbdf77a3c2e6a81b16ae653e75a1b29a9b
 Merge: 4e4861e 241d0ad
 Author: Nilo Lisboa <nilo@cs.utexas.edu>

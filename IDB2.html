@@ -8,7 +8,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>testmodels</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/v/filer4b/v38q001/nilo/Desktop/magicdbswe/app/testmodels.py">/v/filer4b/v38q001/nilo/Desktop/magicdbswe/app/testmodels.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/v/filer4b/v38q001/joeldavi/softwareengineering/magicdbswe/app/testmodels.py">/v/filer4b/v38q001/joeldavi/softwareengineering/magicdbswe/app/testmodels.py</a></font></td></tr></table>
     <p><tt>#&nbsp;A&nbsp;Database&nbsp;for&nbsp;Magic&nbsp;the&nbsp;Gathering&nbsp;Cards<br>
 #<br>
 #&nbsp;pylint:disable=invalid-name,line-too-long,no-member,too-few-public-methods,locally-disabled</tt></p>
@@ -72,7 +72,7 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7ffa3f449f28; MArtist&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7f4445d95d68; MArtist&gt;</dl>
 
 <dl><dt><strong>__table__</strong> = Table('artists', MetaData(bind=None), Column('na...mSets', Integer(), table=&lt;artists&gt;), schema=None)</dl>
 
@@ -166,7 +166,7 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7ffa3f4492b0; MCard&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7f4445d950b8; MCard&gt;</dl>
 
 <dl><dt><strong>__table__</strong> = Table('cards', MetaData(bind=None), Column('card...Key('artists.name'), table=&lt;cards&gt;), schema=None)</dl>
 
@@ -244,7 +244,7 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7ffa3f449a58; MSet&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7f4445d95898; MSet&gt;</dl>
 
 <dl><dt><strong>__table__</strong> = Table('sets', MetaData(bind=None), Column('code'..., String(length=256), table=&lt;sets&gt;), schema=None)</dl>
 
@@ -280,6 +280,7 @@ Data descriptors inherited from <a href="flask_sqlalchemy.html#Model">flask_sqla
 &nbsp;<br>
 name&nbsp;=&nbsp;Name&nbsp;of&nbsp;the&nbsp;subtype<br>
 numCards&nbsp;=&nbsp;Number&nbsp;of&nbsp;existing&nbsp;cards&nbsp;of&nbsp;this&nbsp;subtype<br>
+numSets&nbsp;=&nbsp;Number&nbsp;of&nbsp;sets&nbsp;that&nbsp;contain&nbsp;this&nbsp;subtype<br>
 xcards&nbsp;=&nbsp;cards&nbsp;that&nbsp;are&nbsp;of&nbsp;this&nbsp;subtype<br>
 ssets&nbsp;=&nbsp;Sets&nbsp;that&nbsp;contain&nbsp;cards&nbsp;of&nbsp;this&nbsp;subtype<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
@@ -291,7 +292,7 @@ ssets&nbsp;=&nbsp;Sets&nbsp;that&nbsp;contain&nbsp;cards&nbsp;of&nbsp;this&nbsp;
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="MSubtype-__init__"><strong>__init__</strong></a>(self, name, numCards)</dt></dl>
+<dl><dt><a name="MSubtype-__init__"><strong>__init__</strong></a>(self, name, numCards, numSets)</dt></dl>
 
 <dl><dt><a name="MSubtype-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
 
@@ -301,15 +302,17 @@ Data descriptors defined here:<br>
 </dl>
 <dl><dt><strong>numCards</strong></dt>
 </dl>
+<dl><dt><strong>numSets</strong></dt>
+</dl>
 <dl><dt><strong>ssets</strong></dt>
 </dl>
 <dl><dt><strong>xcards</strong></dt>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7ffa3f471240; MSubtype&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x7f4445db50f0; MSubtype&gt;</dl>
 
-<dl><dt><strong>__table__</strong> = Table('subtypes', MetaData(bind=None), Column('n...ards', Integer(), table=&lt;subtypes&gt;), schema=None)</dl>
+<dl><dt><strong>__table__</strong> = Table('subtypes', MetaData(bind=None), Column('n...Sets', Integer(), table=&lt;subtypes&gt;), schema=None)</dl>
 
 <hr>
 Data and other attributes inherited from flask_sqlalchemy.Model:<br>
@@ -345,7 +348,7 @@ Data descriptors inherited from <a href="flask_sqlalchemy.html#Model">flask_sqla
 <strong>STG_LEN</strong> = 12<br>
 <strong>TEXT_LEN</strong> = 1024<br>
 <strong>app</strong> = &lt;Flask 'testmodels'&gt;<br>
-<strong>db</strong> = &lt;SQLAlchemy engine=sqlite:////v/filer4b/v38q001/nilo/Desktop/magicdbswe/app/test&gt;<br>
+<strong>db</strong> = &lt;SQLAlchemy engine=sqlite:////v/filer4b/v38q001/joeldavi/softwareengineering/magicdbswe/app/test&gt;<br>
 <strong>set_artist_table</strong> = Table('set_artist_table', MetaData(bind=None), C...s.name'), table=&lt;set_artist_table&gt;), schema=None)<br>
 <strong>set_subtype_table</strong> = Table('set_subtype_table', MetaData(bind=None), ....code'), table=&lt;set_subtype_table&gt;), schema=None)<br>
 <strong>subtype_table</strong> = Table('subtype_table', MetaData(bind=None), Colu...ds.cardId'), table=&lt;subtype_table&gt;), schema=None)</td></tr></table>

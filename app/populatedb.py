@@ -21,7 +21,7 @@ setCache = dict()
 with open('stypeCache.json') as scache:
     subtypes = json.load(scache)["subtypes"]
 
-subCache["none"] = MSubtype("none", 0)
+subCache["none"] = MSubtype("none", 0, 0)
 
 stypeCount = 0
 
@@ -29,7 +29,7 @@ for stype in subtypes:
 	stypeCount = stypeCount + 1
 	print(str(stypeCount) + " subtype(s) added")
 
-	temp = MSubtype(stype["name"], stype["numCards"])
+	temp = MSubtype(stype["name"], stype["numCards"], stype["numSets"])
 	subCache[stype["name"]] = temp
 	db.session.add(temp)
 	db.session.commit()
