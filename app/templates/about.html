@@ -89,6 +89,9 @@
 	</div>
 
 	<div class="divider"></div>
+	
+	<center><h2><a href = "/run-tests">Run Tests</a></h2></center>
+	<div class="divider"></div><div class="divider"></div>
 
 	<h1 align="center"><strong>Technical Report</strong></h1>
 	<div id="report-toc" class="about-section">
@@ -99,8 +102,6 @@
 		<h4>4. <a href="#tools-sec">Tools</a></h4>
 		<h4>5. <a href="#hosting">Hosting</a></h4>
 	</div>
-	<div class="divider"></div><div class="divider"></div>
-	<center><h2><a href = "/run-tests">Run Tests</a></h2></center>
 	<div class="divider"></div><div class="divider"></div>
 
 	<div id="report" class="about-section">
@@ -131,6 +132,7 @@
 		<p><u>Jose Ramirez: Senior, <b>Back-end:</b> Testing, Assets</u>
 		<br>
 		Jose is a 4th-year Computer Science major at the University of Texas at Austin. He enjoys game development and participates in ACM activities. In his free time, he plays video games and watches gaming streams on twitch. In Phase 1, he was responsible for making unit tests and setting up continuous intergragtion framework with Travis CI. During Phase 2, he helped sorting out library configurations and acquiring assets to be used on the website.</p>
+		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
 		<br>
 	</div>
 
@@ -156,6 +158,8 @@
 		[MCard] many-to-one [MArtist]<br><br>
 		[MSet] many-to-many [MArtist]<br>
 		[MSet] many-to-many [MSubtype]</p>
+		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
+		<br>
 	</div>
 
 	<div id="design-sec" class="about-section" style="clear: both;">
@@ -201,7 +205,8 @@
 		<p><u>Card Types</u> denotes the different types or classes for each card. The types include things like artifact, creature, enchantment, etc. and have different effects and abilities when used in the card game. <br>
 		For types the database has three GET methods which are self explanatory. Get All Types, Get all Supertypes, and Get all Subtypes. </p>
 		<p><u>Formats</u> denotes special formats for playing the game and the database has one GET method for this pillar called Get All Formats. </p>
-
+		
+		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
 		<br>
 	</div>
 
@@ -241,6 +246,8 @@
 				<li><b>cardCache.json</b>- This JSON file contains all information regarding cards. The API provided provided a JSON source, but that lacked card image information, so we had to scrape the API to create this one.</li>
 				<li><b>setCache.json</b>- This file contains all information regarding sets and had to be created to accommodate for the extra information we wanted to use (f.e.: the promo art in logo.json).</li>
 				<li><b>stypeCache.json</b>- Like artists, Subtypes were not treated separately from Sets and Cards in the API, thus we also had to aggregate the data for them manually into this JSON file, which contains all relevant information regarding them.</li>
+		</ul>
+		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
 		<br>
 	</div>
 
@@ -265,6 +272,8 @@
 		<br>
 		<h4><em>Custom Domain</em></h4>
 		<p>In addition, after completing our hosting process, we wanted to link our web app to a custom domain. To accomplish this we used <i>Namecheap</i>’s free educational bundle and acquired the <i>magicdb.me</i> domain. Next, we went over to our console’s settings and added and verified our new domain. Once verified, we added all of the custom domain records to <i>namecheap</i> and waited for a few hours for the linkage to complete. Having completed this process, we were finally able to browse for our website under the <i>magicdb.me</i> URL.</p>
+		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
+		<br>
 	</div>
 
 {%endblock%}
