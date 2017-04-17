@@ -22,7 +22,7 @@
 			<strong>Subtypes:</strong><br>
 			{% if sets_instance.cards.all() %}
 				{% for subtype in sets_instance.subTypes %}
-					{{subtype.name}}
+					<a href = {{"/subtypes/" + subtype.name}}> {{subtype.name}} </a>
 					<br>
 				{% endfor %}
 			{% endif %}
@@ -32,7 +32,7 @@
 			<strong>Cards:</strong><br>
 			{% if sets_instance.cards.all() %}
 				{% for card in sets_instance.cards.all() %}
-					{{card.name}}
+					<a href = {{"/cards/" + card.cardId}}> {{card.name}} </a>
 					<br>
 				{% endfor %}
 			{% endif %}
@@ -41,7 +41,7 @@
 
 			<strong>Artists:</strong><br>
 			{% for artist in sets_instance.xartists.all() %}
-				{{artist.name}}
+				<a href={{"/artists&name=\"" ~ artist.name.replace(" ", "%20") ~ "\""}}>{{artist.name}}</a>
 				<br>
 			{% endfor %}
 		</h4>

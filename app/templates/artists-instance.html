@@ -19,7 +19,7 @@
 			<strong>Cards:</strong><br>
 			{% if artists_instance.cards.all() %}
 				{% for card in artists_instance.cards.all() %}
-					{{card.name}}
+					<a href = {{"/cards/" + card.cardId}}> {{card.name}}</a>
 					<br>
 				{% endfor %}
 			{% endif %}
@@ -27,7 +27,7 @@
 		<h4>
 			<strong>Sets:</strong><br>
 			{% for set in artists_instance.sets %}
-				{{set.name}}
+				<a href = {{"/sets/" + set.code}}> {{set.name}}</a>
 				<br>
 			{% endfor %}
 		</h4>

@@ -17,7 +17,7 @@
 
 			<strong>Sets:</strong><br>
 			{% for set in subtypes_instance.ssets.all() %}
-				{{set.name}}
+				<a href = {{"/sets/" + set.code}}> {{set.name}}</a>
 				<br>
 			{% endfor %}
 		</h4>
@@ -25,7 +25,7 @@
 
 			<strong>Cards:</strong><br>
 			{% for card in subtypes_instance.xcards.all() %}
-				{{card.name}}
+				<a href = {{"/cards/" + card.cardId}}> {{card.name}} </a>
 				<br>
 			{% endfor %}
 		</h4>
