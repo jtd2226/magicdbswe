@@ -368,6 +368,10 @@ def subtypes_instance(name):
 
     return render_template('subtypes-instance.html',subtypes_instance=subtypes_instance, title = name, imageUrls=subtypeImageUrls)
 
+@app.route('/visualization')
+def visualization():
+    return render_template('visualization.html', title = 'Visualization of ggnoswe')
+
 @app.route('/cool')
 def test():
     return render_template('cool.html')
