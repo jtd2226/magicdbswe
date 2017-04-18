@@ -2,8 +2,16 @@
 
 {%block content%}
 	<link rel="stylesheet" type="text/css" href="/static/css/search-style.css">
-	<h1><strong><em>Cards</em></strong></h1>
 
+	<ul class="nav nav-pills" role="tablist">
+		<li style="position: relative; top: -15px; margin-right: 5px;"><h3><span class="label label-default">Search in:</span></h3><li>
+		<li role="presentation" class="active"><a href="#">Cards</a></li>
+		<li role="presentation"><a href={{"/search/sets/" + searchText}}>Sets</a></li>
+		<li role="presentation"><a href={{"/search/subtypes/" + searchText}}>Subtypes</a></li>
+		<li role="presentation"><a href={{"/search/artists/" + searchText}}>Subtypes</a></li>
+	</ul>
+
+	<h1><strong><em>Cards</em></strong></h1>
 	<div class="container-fluid">
 		{% for card in cards %}
 			<div class="model-inst">

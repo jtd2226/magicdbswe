@@ -25,7 +25,7 @@ def get_page_url(curr_url, new_page):
         int(newrl[-1])
         newrl[-1] = str(new_page)
 
-        return "/".join(newrl)
+        return "/".join(newrl).replace(" ", "%20")
     except ValueError:
         return curr_url + "/" + str(new_page)
 
@@ -369,20 +369,16 @@ def subtypes_instance(name):
 
     return render_template('subtypes-instance.html',subtypes_instance=subtypes_instance, title = name, imageUrls=subtypeImageUrls)
 
-@app.route('/visualization')
-def visualization():
-    return render_template('visualization.html', title = 'Visualization of ggnoswe')
-
 @app.route('/cool')
 def test():
     return render_template('cool.html')
 
 #-------SEARCH-----------
-@app.route('/search/<searchText>/<page>')
+@app.route('/search/cards/<searchText>')
+@app.route('/search/cards/<searchText>/<int:page>')
 @app.route('/search/<searchText>')
-def do_search(searchText, page=1):
-    instance_tracker = 0
-    #CARDS SEARCH
+@app.route('/search/<searchText>/<int:page>')
+def card_search(searchText, page=1):
     cards_tracker = {}
     original_cards = db.session.query(MCard);
 
@@ -403,31 +399,39 @@ def do_search(searchText, page=1):
     
     cards_tracker = OrderedDict(sorted(cards_tracker.items()))
     cards = list(cards_tracker.values())[cards_lo_index:cards_hi_index]
-"""
-    #SETS SEARCH
+
+    hasNextPage = (cards_hi_index < len(cards_tracker))
+
+    return render_template('search-cards.html', searchText=searchText, cards = cards, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
+
+#-------SEARCH-----------
+@app.route('/search/sets/<searchText>')
+@app.route('/search/sets/<searchText>/<int:page>')
+def set_search(searchText, page=1):
     sets_tracker = {}
     original_sets = db.session.query(MSet);
 
+    sets_filter_code = original_sets.filter_by(code=searchText)
     sets_filter_name = original_sets.filter_by(name=searchText)
-    sets_filter_type = original_sets.filter_by(mainType=searchText)
+
+    for curr_set in sets_filter_code:
+        sets_tracker[curr_set.code] = curr_set
 
     for curr_set in sets_filter_name:
         sets_tracker[curr_set.code] = curr_set
 
-    for curr_set in sets_filter_type:
-        sets_tracker[curr_set.code] = curr_set
-
+    #if page * POSTS_PER_PAGE 
     sets_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     sets_hi_index = min(len(sets_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
 
+    
+    
     sets_tracker = OrderedDict(sorted(sets_tracker.items()))
-    sets = list(sets_tracker.values())[sets_lo_index:sets_hi_index]
-"""
-
+    sets = list(sets_tracker.values())[cards_lo_index:cards_hi_index]
 
     hasNextPage = (cards_hi_index < len(cards_tracker))
 
-    return render_template('search.html', cards = cards, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
+    return render_template('search-sets.html', searchText=searchText, sets = sets, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
 
 @app.errorhandler(500)
 def server_error(e):
