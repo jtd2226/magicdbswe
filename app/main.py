@@ -464,7 +464,6 @@ def card_search(searchText, page=1):
 
     return render_template('search-cards.html', searchText=searchText, cards = cards, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
 
-#-------SEARCH-----------
 @app.route('/search/sets/<searchText>')
 @app.route('/search/sets/<searchText>/<int:page>')
 def set_search(searchText, page=1):
@@ -473,6 +472,7 @@ def set_search(searchText, page=1):
 
     sets_filter_code = original_sets.filter_by(code=searchText)
     sets_filter_name = original_sets.filter_by(name=searchText)
+    sets_filter_rdate = original_sets.filter_by(rDate=searchText)
 
     for curr_set in sets_filter_code:
         sets_tracker[curr_set.code] = curr_set
@@ -480,18 +480,41 @@ def set_search(searchText, page=1):
     for curr_set in sets_filter_name:
         sets_tracker[curr_set.code] = curr_set
 
+    for curr_set in sets_filter_rdate:
+        sets_tracker[curr_set.code] = curr_set
+
     #if page * POSTS_PER_PAGE 
     sets_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     sets_hi_index = min(len(sets_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
-
-    
     
     sets_tracker = OrderedDict(sorted(sets_tracker.items()))
-    sets = list(sets_tracker.values())[cards_lo_index:cards_hi_index]
+    sets = list(sets_tracker.values())[sets_lo_index:sets_hi_index]
 
-    hasNextPage = (cards_hi_index < len(cards_tracker))
+    hasNextPage = (sets_hi_index < len(sets_tracker))
 
     return render_template('search-sets.html', searchText=searchText, sets = sets, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
+
+@app.route('/search/subtypes/<searchText>')
+@app.route('/search/subtypes/<searchText>/<int:page>')
+def subtype_search(searchText, page=1):
+    subtypes_tracker = {}
+    original_subtypes = db.session.query(MSubtype);
+
+    subtypes_filter_name= original_subtypes.filter_by(name=searchText)
+
+    for curr_subtype in subtypes_filter_name:
+        subtypes_tracker[curr_subtype.name] = curr_subtype
+
+    #if page * POSTS_PER_PAGE 
+    subtypes_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
+    subtypes_hi_index = min(len(subtypes_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
+    
+    subtypes_tracker = OrderedDict(sorted(subtypes_tracker.items()))
+    subtypes = list(subtypes_tracker.values())[subtypes_lo_index:subtypes_hi_index]
+
+    hasNextPage = (subtypes_hi_index < len(subtypes_tracker))
+
+    return render_template('search-subtypes.html', searchText=searchText, subtypes = subtypes, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
 
 @app.errorhandler(500)
 def server_error(e):
