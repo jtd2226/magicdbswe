@@ -442,21 +442,14 @@ def card_search(searchText, page=1):
     cards_tracker = {}
     original_cards = db.session.query(MCard);
 
-    cards_filter_name = original_cards.filter_by(name=searchText)
-    cards_filter_type = original_cards.filter_by(mainType=searchText)
-
-    for card in cards_filter_name:
-        cards_tracker[card.cardId] = card
-
-    for card in cards_filter_type:
-        cards_tracker[card.cardId] = card
+    for c in original_cards:
+        if (searchText.lower() in c.name.lower()) or (searchText.lower() in c.mainType.lower()):
+            cards_tracker[c.cardId] = c
 
     #if page * POSTS_PER_PAGE 
     cards_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     cards_hi_index = min(len(cards_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
-
-    
-    
+  
     cards_tracker = OrderedDict(sorted(cards_tracker.items()))
     cards = list(cards_tracker.values())[cards_lo_index:cards_hi_index]
 
