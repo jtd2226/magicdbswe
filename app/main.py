@@ -3,21 +3,85 @@ import config
 import models
 
 from config import POSTS_PER_PAGE
-from models import db, app, MSubtype, MCard, MArtist, MSet
-from flask import Flask, render_template, request, Markup
+from models import db, app, MSubtype, MCard, MArtist, MSet, Resource, api
+from flask import Flask, render_template, request, Markup, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_paginate import Pagination # make sure to pyhton3 -m pip install
 
-#app = Flask(__name__)
+#-------
+#  API
+#-------
+class Api_Cards(Resource):
+    def get(self):
+        apidict = list()
+        for c in db.session.query(MCard).all():
+            apidict.append(c.cardId)
+        return jsonify(apidict)
 
-#?unix_socket=/cloudsql/tutorial-project-161522:us-central1:magicinstance
-#?host=/cloudsql/tutorial-project-161522:us-central1:magicinstance
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@35.188.87.113:5432/magicdb'
+class Api_Card(Resource):
+    def get(self, id):
+        apicard = db.session.query(MCard).filter_by(cardId=id).first()
+        apilist = list()
+        for s in apicard.subType:
+            apilist.append(s.name)
 
-# with app.app_context():
-#         model = models
-#         model.init_app(app)
+        return jsonify({"cardId": apicard.cardId, "name": apicard.name, "mainType": apicard.mainType,"subType": apilist, "text": apicard.text, "expansionSet": apicard.expansionSet,"manaCost": apicard.manaCost, "color": apicard.color, "power": apicard.power,"toughness": apicard.toughness,
+        "art": apicard.art,"rarity": apicard.rarity, "artist": apicard.artist})
+
+
+api.add_resource(Api_Cards,'/api/cards')
+api.add_resource(Api_Card,'/api/cards/<string:id>')
+
+class Api_Sets(Resource):
+    def get(self):
+        apidict = list()
+        for s in db.session.query(MSet).all():
+            apidict.append(s.code)
+        return jsonify(apidict)
+
+class Api_Set(Resource):
+    def get(self, code):
+        apiset = db.session.query(MSet).filter_by(code=code).first()
+        cl = list()
+        for s in apiset.cards:
+            cl.append(s.cardId)
+        sl = list()
+        for s in apiset.subTypes:
+            sl.append(s.name)
+        al = list()
+        for s in apiset.xartists:
+            al.append(s.name)
+        return jsonify({"code": apiset.code, "name": apiset.name, "rDate": apiset.rDate,
+         "block": apiset.block, "cards": cl, "subTypes": sl, "numCards": apiset.numCards, "symbol": apiset.symbol, "artists": al})
+
+api.add_resource(Api_Sets, '/api/sets')
+api.add_resource(Api_Set, '/api/sets/<string:code>')
+
+class Api_Artists(Resource):
+    def get(self):
+        apilist = list()
+        for apiart in db.session.query(MArtist).all():
+            cl = [s.cardId for s in apiart.cards]
+            sl = [s.code for s in apiart.sets]
+            apilist.append({"name": apiart.name, "numCards": apiart.numCards, "numSets": apiart.numSets,
+            "cards": cl, "sets": sl})
+        return jsonify(apilist)
+
+api.add_resource(Api_Artists, '/api/artists')
+
+class Api_Subtypes(Resource):
+    def get(self):
+        apilist = list()
+        for apist in db.session.query(MSubtype).all():
+            cl = [s.cardId for s in apist.xcards]
+            sl = [s.code for s in apist.ssets]
+            apilist.append({"name": apist.name, "numCards": apist.numCards,
+            "numSets": apist.numSets, "cards": cl, "sets": sl})
+        return jsonify(apilist)
+
+api.add_resource(Api_Subtypes, '/api/subtypes')
+
 def get_page_url(curr_url, new_page):
     try:
         newrl = curr_url.split("/")
