@@ -79,7 +79,7 @@ def about():
 def run_tests():
     import subprocess
     subprocess.run(['make', 'clean'])
-    output = subprocess.run(['make','test'], stdout = subprocess.PIPE).stdout.decode('utf-8')
+    output = subprocess.run(['make'], stdout = subprocess.PIPE).stdout.decode('utf-8')
     output = "<br />".join(output.split("\n"))
     output = Markup(output)
     return render_template('run-tests.html', output = output, title = 'Run Tests')
