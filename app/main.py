@@ -142,13 +142,9 @@ def about():
 @app.route('/run-tests')
 def run_tests():
     import subprocess
-    path = subprocess.run(['pwd'], stdout = subprocess.PIPE).stdout.decode('utf-8')
-    path = "br />".join(path.split("\n"))
-    ls = subprocess.run(['ls'], stdout = subprocess.PIPE).stdout.decode('utf-8')
-    ls = "br />".join(ls.split("\n"))
-    output = subprocess.run(['make','test'], stdout = subprocess.PIPE).stdout.decode('utf-8')
+    subprocess.run(['make', 'clean'])
+    output = subprocess.run(['make'], stdout = subprocess.PIPE).stdout.decode('utf-8')
     output = "<br />".join(output.split("\n"))
-    output = path + ls + output
     output = Markup(output)
     return render_template('run-tests.html', output = output, title = 'Run Tests')
 
