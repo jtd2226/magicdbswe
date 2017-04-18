@@ -7,6 +7,7 @@ from models import db, app, MSubtype, MCard, MArtist, MSet
 from flask import Flask, render_template, request, Markup
 from flask_sqlalchemy import SQLAlchemy
 from flask_paginate import Pagination # make sure to pyhton3 -m pip install
+from collections import OrderedDict
 
 #app = Flask(__name__)
 
@@ -372,6 +373,57 @@ def subtypes_instance(name):
 def test():
     return render_template('cool.html')
 
+#-------SEARCH-----------
+@app.route('/search/<searchText>/<page>')
+@app.route('/search/<searchText>')
+def do_search(searchText, page=1):
+    instance_tracker = 0
+    #CARDS SEARCH
+    cards_tracker = {}
+    original_cards = db.session.query(MCard);
+
+    cards_filter_name = original_cards.filter_by(name=searchText)
+    cards_filter_type = original_cards.filter_by(mainType=searchText)
+
+    for card in cards_filter_name:
+        cards_tracker[card.cardId] = card
+
+    for card in cards_filter_type:
+        cards_tracker[card.cardId] = card
+
+    #if page * POSTS_PER_PAGE 
+    cards_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
+    cards_hi_index = min(len(cards_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
+
+    
+    
+    cards_tracker = OrderedDict(sorted(cards_tracker.items()))
+    cards = list(cards_tracker.values())[cards_lo_index:cards_hi_index]
+"""
+    #SETS SEARCH
+    sets_tracker = {}
+    original_sets = db.session.query(MSet);
+
+    sets_filter_name = original_sets.filter_by(name=searchText)
+    sets_filter_type = original_sets.filter_by(mainType=searchText)
+
+    for curr_set in sets_filter_name:
+        sets_tracker[curr_set.code] = curr_set
+
+    for curr_set in sets_filter_type:
+        sets_tracker[curr_set.code] = curr_set
+
+    sets_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
+    sets_hi_index = min(len(sets_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
+
+    sets_tracker = OrderedDict(sorted(sets_tracker.items()))
+    sets = list(sets_tracker.values())[sets_lo_index:sets_hi_index]
+"""
+
+
+    hasNextPage = (cards_hi_index < len(cards_tracker))
+
+    return render_template('search.html', cards = cards, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
 
 @app.errorhandler(500)
 def server_error(e):
