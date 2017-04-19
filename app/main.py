@@ -432,6 +432,10 @@ def subtypes_instance(name):
 @app.route('/cool')
 def test():
     return render_template('cool.html')
+    
+@app.route('/visualization')
+def visualization():
+    return render_template('visualization.html', title = 'Visualization of ggnoswe')
 
 #-------SEARCH-----------
 @app.route('/search/cards/<searchText>')
