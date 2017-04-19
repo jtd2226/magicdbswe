@@ -330,7 +330,7 @@ def subtypes(page = 1):
         if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
             subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
         else:
-            subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
+            subtypeImageUrls[subtype.name] = "https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"
 
     return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, get_page_url=get_page_url)
 
@@ -357,7 +357,7 @@ def subtypes_sort(field, order, page=1):
         if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
             subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
         else:
-            subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
+            subtypeImageUrls[subtype.name] = "https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"
 
     return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, get_page_url=get_page_url)
 
@@ -413,7 +413,7 @@ def subtypes_filter(numCards, numSets, setName, page=1):
         if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
             subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
         else:
-            subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
+            subtypeImageUrls[subtype.name] = "https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"
 
     return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, get_page_url=get_page_url)
 
@@ -425,7 +425,7 @@ def subtypes_instance(name):
     if db.session.query(MSubtype).filter_by(name=subtypes_instance.name).first().xcards.first():
         subtypeImageUrls = db.session.query(MSubtype).filter_by(name=subtypes_instance.name).first().xcards.first().art
     else:
-        subtypeImageUrls = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
+        subtypeImageUrls = "https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"
 
     return render_template('subtypes-instance.html',subtypes_instance=subtypes_instance, title = name, imageUrls=subtypeImageUrls)
 
@@ -446,7 +446,6 @@ def card_search(searchText, page=1):
         if (searchText.lower() in c.name.lower()) or (searchText.lower() in c.mainType.lower()):
             cards_tracker[c.cardId] = c
 
-    #if page * POSTS_PER_PAGE 
     cards_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     cards_hi_index = min(len(cards_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
   
@@ -457,34 +456,72 @@ def card_search(searchText, page=1):
 
     return render_template('search-cards.html', searchText=searchText, cards = cards, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
 
-#-------SEARCH-----------
 @app.route('/search/sets/<searchText>')
 @app.route('/search/sets/<searchText>/<int:page>')
 def set_search(searchText, page=1):
     sets_tracker = {}
     original_sets = db.session.query(MSet);
 
-    sets_filter_code = original_sets.filter_by(code=searchText)
-    sets_filter_name = original_sets.filter_by(name=searchText)
+    for s in original_sets:
+        if (searchText.lower() in s.name.lower()) or (searchText.lower() in s.code.lower()):
+            sets_tracker[s.code] = s
 
-    for curr_set in sets_filter_code:
-        sets_tracker[curr_set.code] = curr_set
-
-    for curr_set in sets_filter_name:
-        sets_tracker[curr_set.code] = curr_set
-
-    #if page * POSTS_PER_PAGE 
     sets_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     sets_hi_index = min(len(sets_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
-
-    
     
     sets_tracker = OrderedDict(sorted(sets_tracker.items()))
-    sets = list(sets_tracker.values())[cards_lo_index:cards_hi_index]
+    sets = list(sets_tracker.values())[sets_lo_index:sets_hi_index]
 
-    hasNextPage = (cards_hi_index < len(cards_tracker))
+    hasNextPage = (sets_hi_index < len(sets_tracker))
 
     return render_template('search-sets.html', searchText=searchText, sets = sets, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
+
+@app.route('/search/subtypes/<searchText>')
+@app.route('/search/subtypes/<searchText>/<int:page>')
+def subtype_search(searchText, page=1):
+    subtypes_tracker = {}
+    original_subtypes = db.session.query(MSubtype);
+
+    for s in original_subtypes:
+        if (searchText.lower() in s.name.lower()):
+            subtypes_tracker[s.name] = s
+
+    subtypes_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
+    subtypes_hi_index = min(len(subtypes_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
+    
+    subtypes_tracker = OrderedDict(sorted(subtypes_tracker.items()))
+    subtypes = list(subtypes_tracker.values())[subtypes_lo_index:subtypes_hi_index]
+
+    hasNextPage = (subtypes_hi_index < len(subtypes_tracker))
+
+    subtypeImageUrls = {}
+    for subtype in subtypes:
+        if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
+            subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+        else:
+            subtypeImageUrls[subtype.name] = "https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"
+
+    return render_template('search-subtypes.html', searchText=searchText, subtypes = subtypes, imageUrls=subtypeImageUrls, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
+
+@app.route('/search/artists/<searchText>')
+@app.route('/search/artists/<searchText>/<int:page>')
+def artist_search(searchText, page=1):
+    artists_tracker = {}
+    original_artists = db.session.query(MArtist);
+
+    for s in original_artists:
+        if (searchText.lower() in s.name.lower()):
+            artists_tracker[s.name] = s
+
+    artists_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
+    artists_hi_index = min(len(artists_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
+    
+    artists_tracker = OrderedDict(sorted(artists_tracker.items()))
+    artists = list(artists_tracker.values())[artists_lo_index:artists_hi_index]
+
+    hasNextPage = (artists_hi_index < len(artists_tracker))
+
+    return render_template('search-artists.html', searchText=searchText, artists = artists, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
 
 @app.errorhandler(500)
 def server_error(e):

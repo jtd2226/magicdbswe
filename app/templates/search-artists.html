@@ -5,29 +5,29 @@
 
 	<ul class="nav nav-pills" role="tablist">
 		<li style="position: relative; top: -15px; margin-right: 5px;"><h3><span class="label label-default">Search in:</span></h3><li>
-		<li role="presentation" class="active"><a href="#">Cards</a></li>
+		<li role="presentation"><a href={{"/search/cards/" + searchText | replace(" ", "%20")}}>Cards</a></li>
 		<li role="presentation"><a href={{"/search/sets/" + searchText | replace(" ", "%20")}}>Sets</a></li>
 		<li role="presentation"><a href={{"/search/subtypes/" + searchText | replace(" ", "%20")}}>Subtypes</a></li>
-		<li role="presentation"><a href={{"/search/artists/" + searchText | replace(" ", "%20")}}>Artists</a></li>
+		<li role="presentation" class="active"><a href="#">Artists</a></li>
 	</ul>
-	{% if cards|length %}
-		<h1><strong><em>Cards</em></strong></h1>
+	{% if artists|length %}
+		<h1><strong><em>Artists</em></strong></h1>
 		<div class="container-fluid">
-			{% for card in cards %}
+			{% for artist in artists %}
 				<div class="model-inst">
 					<img src=
-					{% if card.art.lower() != "none" %}
-						{{ card.art }}
+					{% if artist.cards.first().art.lower() != "none" %}
+						{{ artist.cards.first().art }}
 					{% else %}
 						{{"https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"}}
 					{% endif %}
 					width="200" class="img-fluid">
-					<h4><a href={{"/cards/" + card.cardId}}>{{card.name}}</a></h4>
+					<h4><a href={{"/artists&name=\"" ~ artist.name.replace(" ", "%20") ~ "\""}}>{{artist.name}}</a></h4>
 				</div>
 			{% endfor %}
 		</div>
 	{% else %}
-		<h1><strong>Sorry! No cards found! Click on one of the other buttons to search elsewhere.</strong></h1>
+		<h1><strong>Sorry! No artists found! Click on one of the other buttons to search elsewhere.</strong></h1>
 	{% endif %}
 	<div id="mdb-pagination">
 		<nav>

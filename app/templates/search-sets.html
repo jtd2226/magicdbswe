@@ -5,29 +5,29 @@
 
 	<ul class="nav nav-pills" role="tablist">
 		<li style="position: relative; top: -15px; margin-right: 5px;"><h3><span class="label label-default">Search in:</span></h3><li>
-		<li role="presentation" class="active"><a href="#">Cards</a></li>
-		<li role="presentation"><a href={{"/search/sets/" + searchText | replace(" ", "%20")}}>Sets</a></li>
+		<li role="presentation"><a href={{"/search/cards/" + searchText | replace(" ", "%20")}}>Cards</a></li>
+		<li role="presentation" class="active"><a href="#">Sets</a></li>
 		<li role="presentation"><a href={{"/search/subtypes/" + searchText | replace(" ", "%20")}}>Subtypes</a></li>
 		<li role="presentation"><a href={{"/search/artists/" + searchText | replace(" ", "%20")}}>Artists</a></li>
 	</ul>
-	{% if cards|length %}
-		<h1><strong><em>Cards</em></strong></h1>
+	{% if sets|length %}
+		<h1><strong><em>Sets</em></strong></h1>
 		<div class="container-fluid">
-			{% for card in cards %}
+			{% for set in sets %}
 				<div class="model-inst">
 					<img src=
-					{% if card.art.lower() != "none" %}
-						{{ card.art }}
+					{% if set.symbol.lower() != "none" %}
+						{{ set.symbol }}
 					{% else %}
-						{{"https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"}}
+						{{"https://tournamentcenter.eu/sites/default/files/mtg-logo.png"}}
 					{% endif %}
-					width="200" class="img-fluid">
-					<h4><a href={{"/cards/" + card.cardId}}>{{card.name}}</a></h4>
+					width="400" class="img-fluid">
+					<h4><a href={{"/sets/" + set.code}}>{{set.name}}</a></h4>
 				</div>
 			{% endfor %}
 		</div>
 	{% else %}
-		<h1><strong>Sorry! No cards found! Click on one of the other buttons to search elsewhere.</strong></h1>
+		<h1><strong>Sorry! No sets found! Click on one of the other buttons to search elsewhere.</strong></h1>
 	{% endif %}
 	<div id="mdb-pagination">
 		<nav>
