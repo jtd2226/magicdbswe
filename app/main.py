@@ -143,8 +143,8 @@ def about():
 @app.route('/run-tests')
 def run_tests():
     import subprocess
-    subprocess.run(['make', 'clean'])
-    output = subprocess.run(['make'], stdout = subprocess.PIPE).stdout.decode('utf-8')
+    #subprocess.run(['make', 'clean', '-C', '/'])
+    output = subprocess.run(['make', '-C', '../'], stdout = subprocess.PIPE).stdout.decode('utf-8')
     output = "<br />".join(output.split("\n"))
     output = Markup(output)
     return render_template('run-tests.html', output = output, title = 'Run Tests')
