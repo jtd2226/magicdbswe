@@ -94,7 +94,7 @@ format:
 	$(AUTOPEP8) -i app/TestMagic.py
 
 status:
-	make clean
+	make cleanpip 
 	@echo
 	git branch
 	git remote -v
