@@ -1,13 +1,13 @@
 .DEFAULT_GOAL := test
 
 FILES :=            \
-    IDB2.log     \
+    IDB3.log     \
     app/models.py      \
     app/TestMagic.out \
     app/TestMagic.py  \
     .travis.yml     \
-    IDB2.html    \
-    IDB2.pdf		\
+    IDB3.html    \
+    IDB3.pdf		\
 
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
@@ -42,13 +42,13 @@ endif
 .pylintrc:
 	$(PYLINT) --disable=locally-disabled --reports=no --generate-rcfile > $@
 
-IDB2.html: app/testmodels.py
+IDB3.html: app/testmodels.py
 	pydoc3 -w app/testmodels.py
-	mv testmodels.html IDB2.html
+	mv testmodels.html IDB3.html
 	rm -f testmodels.html
 
-IDB2.log:
-	git log > IDB2.log
+IDB3.log:
+	git log > IDB3.log
 
 TestMagic.tmp: app/testmodels.py .pylintrc app/models.py 
 	-$(PYLINT) app/models.py
@@ -81,8 +81,8 @@ clean:
 	rm -f  *.pyc
 	rm -f  IDB1.html
 	rm -f  IDB1.log
-	rm -f  IDB2.html
-	rm -f  IDB2.log
+	rm -f  IDB3.html
+	rm -f  IDB3.log
 	rm -f  TestMagic.tmp
 	rm -rf __pycache__\
 
@@ -104,7 +104,7 @@ test: TestMagic.tmp
 	ls -al
 	make check
 
-logtml: IDB2.html IDB2.log 
+logtml: IDB3.html IDB3.log 
 
 versions:
 	which make
