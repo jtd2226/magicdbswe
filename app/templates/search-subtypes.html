@@ -6,28 +6,28 @@
 	<ul class="nav nav-pills" role="tablist">
 		<li style="position: relative; top: -15px; margin-right: 5px;"><h3><span class="label label-default">Search in:</span></h3><li>
 		<li role="presentation"><a href={{"/search/cards/" + searchText | replace(" ", "%20")}}>Cards</a></li>
-		<li role="presentation"><a href="#">Sets</a></li>
-		<li role="presentation"><a href={{"/search/subtypes/" + searchText | replace(" ", "%20")}}>Subtypes</a></li>
+		<li role="presentation"><a href={{"/search/sets/" + searchText | replace(" ", "%20")}}>Sets</a></li>
+		<li role="presentation" class="active"><a href="#">Subtypes</a></li>
 		<li role="presentation"><a href={{"/search/artists/" + searchText | replace(" ", "%20")}}>Artists</a></li>
 	</ul>
-	{% if sets|length %}
-		<h1><strong><em>Sets</em></strong></h1>
+	{% if subtypes|length %}
+		<h1><strong><em>Subtypes</em></strong></h1>
 		<div class="container-fluid">
-			{% for set in sets %}
+			{% for subtype in subtypes %}
 				<div class="model-inst">
 					<img src=
-					{% if set.symbol.lower() != "none" %}
-						{{ set.symbol }}
+					{% if imageUrls[subtype.name] != "none" %}
+						{{ imageUrls[subtype.name] }}
 					{% else %}
-						{{"https://tournamentcenter.eu/sites/default/files/mtg-logo.png"}}
+						{{"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"}}
 					{% endif %}
-					width="400" class="img-fluid">
-					<h4><a href={{"/sets/" + set.code}}>{{set.name}}</a></h4>
+					width="200" class="img-fluid">
+					<h4><a href={{"/subtypes/" + subtype.name}}>{{subtype.name}}</a></h4>
 				</div>
 			{% endfor %}
 		</div>
 	{% else %}
-		<h1><strong>Sorry! No sets found! Click on one of the other buttons to search elsewhere.</strong></h1>
+		<h1><strong>Sorry! No subtypes found! Click on one of the other buttons to search elsewhere.</strong></h1>
 	{% endif %}
 	<div id="mdb-pagination">
 		<nav>

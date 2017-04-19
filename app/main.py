@@ -446,7 +446,6 @@ def card_search(searchText, page=1):
         if (searchText.lower() in c.name.lower()) or (searchText.lower() in c.mainType.lower()):
             cards_tracker[c.cardId] = c
 
-    #if page * POSTS_PER_PAGE 
     cards_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     cards_hi_index = min(len(cards_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
   
@@ -463,20 +462,10 @@ def set_search(searchText, page=1):
     sets_tracker = {}
     original_sets = db.session.query(MSet);
 
-    sets_filter_code = original_sets.filter_by(code=searchText)
-    sets_filter_name = original_sets.filter_by(name=searchText)
-    sets_filter_rdate = original_sets.filter_by(rDate=searchText)
+    for s in original_sets:
+        if (searchText.lower() in s.name.lower()) or (searchText.lower() in s.code.lower()):
+            sets_tracker[s.code] = s
 
-    for curr_set in sets_filter_code:
-        sets_tracker[curr_set.code] = curr_set
-
-    for curr_set in sets_filter_name:
-        sets_tracker[curr_set.code] = curr_set
-
-    for curr_set in sets_filter_rdate:
-        sets_tracker[curr_set.code] = curr_set
-
-    #if page * POSTS_PER_PAGE 
     sets_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     sets_hi_index = min(len(sets_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
     
@@ -493,12 +482,10 @@ def subtype_search(searchText, page=1):
     subtypes_tracker = {}
     original_subtypes = db.session.query(MSubtype);
 
-    subtypes_filter_name= original_subtypes.filter_by(name=searchText)
+    for s in original_subtypes:
+        if (searchText.lower() in s.name.lower()):
+            subtypes_tracker[s.name] = s
 
-    for curr_subtype in subtypes_filter_name:
-        subtypes_tracker[curr_subtype.name] = curr_subtype
-
-    #if page * POSTS_PER_PAGE 
     subtypes_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     subtypes_hi_index = min(len(subtypes_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
     
@@ -507,7 +494,34 @@ def subtype_search(searchText, page=1):
 
     hasNextPage = (subtypes_hi_index < len(subtypes_tracker))
 
-    return render_template('search-subtypes.html', searchText=searchText, subtypes = subtypes, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
+    subtypeImageUrls = {}
+    for subtype in subtypes:
+        if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
+            subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+        else:
+            subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
+
+    return render_template('search-subtypes.html', searchText=searchText, subtypes = subtypes, imageUrls=subtypeImageUrls, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
+
+@app.route('/search/artists/<searchText>')
+@app.route('/search/artists/<searchText>/<int:page>')
+def artist_search(searchText, page=1):
+    artists_tracker = {}
+    original_artists = db.session.query(MArtist);
+
+    for s in original_artists:
+        if (searchText.lower() in s.name.lower()):
+            artists_tracker[s.name] = s
+
+    artists_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
+    artists_hi_index = min(len(artists_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
+    
+    artists_tracker = OrderedDict(sorted(artists_tracker.items()))
+    artists = list(artists_tracker.values())[artists_lo_index:artists_hi_index]
+
+    hasNextPage = (artists_hi_index < len(artists_tracker))
+
+    return render_template('search-artists.html', searchText=searchText, artists = artists, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
 
 @app.errorhandler(500)
 def server_error(e):
