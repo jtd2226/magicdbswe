@@ -440,17 +440,25 @@ def test():
 @app.route('/search/<searchText>/<int:page>')
 def card_search(searchText, page=1):
     cards_tracker = {}
+    or_cards_tracker = {}
     original_cards = db.session.query(MCard);
 
     for c in original_cards:
         if (searchText.lower() in c.name.lower()) or (searchText.lower() in c.mainType.lower()):
             cards_tracker[c.cardId] = c
 
+        for word in searchText.lower().split():
+            if (word in c.name.lower()) or (word in c.mainType.lower()):
+                or_cards_tracker[c.cardId] = c
+
     cards_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     cards_hi_index = min(len(cards_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
   
     cards_tracker = OrderedDict(sorted(cards_tracker.items()))
     cards = list(cards_tracker.values())[cards_lo_index:cards_hi_index]
+
+    or_cards_tracker = OrderedDict(sorted(or_cards_tracker.items()))
+    or_cards = list(or_cards_tracker.values())[cards_lo_index:cards_hi_index]
 
     hasNextPage = (cards_hi_index < len(cards_tracker))
 
