@@ -19,7 +19,7 @@
 					{% if artist.cards.first().art.lower() != "none" %}
 						{{ artist.cards.first().art }}
 					{% else %}
-						{{"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"}}
+						{{"https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"}}
 					{% endif %}
 					width="200" class="img-fluid">
 					<h4><a href={{"/artists&name=\"" ~ artist.name.replace(" ", "%20") ~ "\""}}>{{artist.name}}</a></h4>
