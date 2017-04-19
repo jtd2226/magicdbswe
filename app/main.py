@@ -143,7 +143,6 @@ def about():
 @app.route('/run-tests')
 def run_tests():
     import subprocess
-    subprocess.run(['make', 'clean'])
     output = subprocess.run(['make'], stdout = subprocess.PIPE).stdout.decode('utf-8')
     output = "<br />".join(output.split("\n"))
     output = Markup(output)
@@ -432,6 +431,10 @@ def subtypes_instance(name):
 @app.route('/cool')
 def test():
     return render_template('cool.html')
+    
+@app.route('/visualization')
+def visualization():
+    return render_template('visualization.html', title = 'Visualization of ggnoswe')
 
 #-------SEARCH-----------
 @app.route('/search/<orVal>/cards/<searchText>')
