@@ -4,7 +4,7 @@ A Database for Magic the Gathering Cards
 # pylint:disable=invalid-name,line-too-long,no-member
 # pylint:disable=too-few-public-methods,locally-disabled, mixed-indentation, bad-continuation
 # pylint:disable=mixed-indentation, bad-continuation, redefined-outer-name, undefined-variable
-# pylint:disable=too-many-instance-attributes, too-many-arguments
+# pylint:disable=too-many-instance-attributes, too-many-arguments, unused-import
 
 import config
 from flask import Flask
@@ -99,18 +99,31 @@ class MCard(db.Model):
 
 	def __init__(self, cardId, name, mainType, subType, text, expansionSet,
 				 manaCost, color, power, toughness, art, rarity, artist):
+		assert isinstance(cardId, str)
 		self.cardId = cardId
+		assert isinstance(name, str)
 		self.name = name
+		assert isinstance(mainType, str)
 		self.mainType = mainType
+		assert isinstance(subType, list)
 		self.subType = subType
+		assert isinstance(text, str)
 		self.text = text
+		assert isinstance(expansionSet, str)
 		self.expansionSet = expansionSet
+		assert isinstance(manaCost, int)
 		self.manaCost = manaCost
+		assert isinstance(color, str)
 		self.color = color
+		assert isinstance(power, str)
 		self.power = power
+		assert isinstance(toughness, str)
 		self.toughness = toughness
+		assert isinstance(art, str)
 		self.art = art
+		assert isinstancee(rarity, str)
 		self.rarity = rarity
+		assert isinstance(artist, str)
 		self.artist = artist
 
 	def __repr__(self):
@@ -144,6 +157,15 @@ class MSet(db.Model):
 
 	def __init__(self, code, name, rDate, block, numCards,
 				 symbol, subTypes):
+
+		assert isinstance(code, str)
+		assert isinstance(name, str)
+		assert isinstance(rDate, str)
+		assert isinstance(block, str)
+		assert isinstance(numCards, int)
+		assert isinstance(symbol, str)
+		assert isinstance(subTypes, list)
+
 		self.code = code
 		self.name = name
 		self.rDate = rDate

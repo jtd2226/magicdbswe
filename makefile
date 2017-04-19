@@ -52,9 +52,9 @@ IDB2.log:
 
 TestMagic.tmp: app/testmodels.py .pylintrc app/models.py 
 	-$(PYLINT) app/models.py
-	-$(COVERAGE) run    --branch app/TestMagic.py >  TestMagic.tmp 2>&1
-	-$(COVERAGE) report -m                      >> TestMagic.tmp
-	cat TestMagic.tmp
+	-$(COVERAGE) run    --branch --include=app/TestMagic.py app/TestMagic.py > app/TestMagic.out 2>&1
+	-$(COVERAGE) report -m app/TestMagic.py >> app/TestMagic.out
+	cat app/TestMagic.out
 
 check:
 	@not_found=0;                                 \
