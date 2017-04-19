@@ -90,8 +90,8 @@ config:
 	git config -l
 
 format:
-	$(AUTOPEP8) -i models.py
-	$(AUTOPEP8) -i TestMagic.py
+	$(AUTOPEP8) -i app/models.py
+	$(AUTOPEP8) -i app/TestMagic.py
 
 status:
 	make clean

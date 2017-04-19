@@ -21,8 +21,8 @@ from testmodels import app, db, MCard, MSet, MArtist, MSubtype
 # TestMagic
 # -----------
 
-class TestMagic (TestCase):
 
+class TestMagic (TestCase):
 
     def create_app(self):
         return app
@@ -47,7 +47,8 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        example1 = MCard("123", "name", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        example1 = MCard("123", "name", "Creature", [
+                         example3], "flying", 'ktk', 5, "Red", "1", "1", "url", "common", "thomas")
         db.session.add(example1)
         db.session.commit()
 
@@ -68,7 +69,8 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        example1 = MCard("123", "name", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        example1 = MCard("123", "name", "Creature", [
+                         example3], "flying", 'ktk', 5, "Red", "1", "1", "url", "common", "thomas")
         db.session.add(example1)
         db.session.commit()
 
@@ -89,7 +91,8 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        example1 = MCard("123", "name", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        example1 = MCard("123", "name", "Creature", [
+                         example3], "flying", 'ktk', 5, "Red", "1", "1", "url", "common", "thomas")
         db.session.add(example1)
         db.session.commit()
 
@@ -110,15 +113,18 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        example1 = MCard("123", "name", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        example1 = MCard("123", "name", "Creature", [
+                         example3], "flying", 'ktk', 5, "Red", "1", "1", "url", "common", "thomas")
         db.session.add(example1)
         db.session.commit()
 
-        example2 = MCard("124", "weewoocardnumber2", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        example2 = MCard("124", "weewoocardnumber2", "Creature", [
+                         example3], "flying", 'ktk', 5, "Red", "1", "1", "url", "common", "thomas")
         db.session.add(example2)
         db.session.commit()
 
-        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
+        exampleSet = MSet(
+            'ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
         db.session.add(exampleSet)
         db.session.commit()
 
@@ -138,15 +144,18 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
+        exampleSet = MSet(
+            'ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
         db.session.add(exampleSet)
         db.session.commit()
 
-        example1 = MCard("123", "name", "Creature", [example3], "flying", 'LEA', 5, "Red", 1, 1, "url", "common", "thomas")
+        example1 = MCard("123", "name", "Creature", [
+                         example3], "flying", 'LEA', 5, "Red", "1", "1", "url", "common", "thomas")
         db.session.add(example1)
         db.session.commit()
 
-        example2 = MCard("124", "weewoocardnumber2", "Creature", [example3], "flying", 'ktk', 5, "Red", 1, 1, "url", "common", "thomas")
+        example2 = MCard("124", "weewoocardnumber2", "Creature", [
+                         example3], "flying", 'ktk', 5, "Red", "1", "1", "url", "common", "thomas")
         db.session.add(example2)
         db.session.commit()
 
@@ -155,7 +164,6 @@ class TestMagic (TestCase):
 
         db.session.commit()
         db.drop_all()
-
 
     def test_many_relations2(self):
 
@@ -167,11 +175,13 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
+        exampleSet = MSet(
+            'ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
         db.session.add(exampleSet)
         db.session.commit()
 
-        exampleSet2 = MSet('LEA', "Khans of Tarkir", "1", "none", 5, "link", [example3])
+        exampleSet2 = MSet(
+            'LEA', "Khans of Tarkir", "1", "none", 5, "link", [example3])
         db.session.add(exampleSet2)
         db.session.commit()
 
@@ -191,7 +201,8 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
+        exampleSet = MSet(
+            'ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
         db.session.add(exampleSet)
         db.session.commit()
 
@@ -218,7 +229,8 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        exampleSet = MSet('MM3', "Modern Masters 2017 Edition", "1", "none", 5, "link", [example3])
+        exampleSet = MSet(
+            'MM3', "Modern Masters 2017 Edition", "1", "none", 5, "link", [example3])
         db.session.add(exampleSet)
         db.session.commit()
 
@@ -236,7 +248,8 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        exampleSet = MSet('KLD', "Kaladesh", "1", "none", 5, "link", [example3])
+        exampleSet = MSet(
+            'KLD', "Kaladesh", "1", "none", 5, "link", [example3])
         db.session.add(exampleSet)
         db.session.commit()
 
@@ -254,7 +267,8 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        exampleSet = MSet('LEA', "Limited Edition Alpha", "1", "none", 5, "link", [example3])
+        exampleSet = MSet(
+            'LEA', "Limited Edition Alpha", "1", "none", 5, "link", [example3])
         db.session.add(exampleSet)
         db.session.commit()
 
@@ -273,7 +287,8 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        example1 = MCard("123", "name", "Creature", [example3], "flying", 'LEA', 5, "Red", 1, 1, "url", "common", "thomas")
+        example1 = MCard("123", "name", "Creature", [
+                         example3], "flying", 'LEA', 5, "Red", "1", "1", "url", "common", "thomas")
         db.session.add(example1)
         db.session.commit()
 
@@ -305,7 +320,8 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
+        exampleSet = MSet(
+            'ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
         db.session.add(exampleSet)
         db.session.commit()
 
@@ -331,7 +347,8 @@ class TestMagic (TestCase):
         db.session.add(example3)
         db.session.commit()
 
-        exampleSet = MSet('ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
+        exampleSet = MSet(
+            'ktk', "Khans of Tarkir", "1", "none", 5, "link", [example3])
         db.session.add(exampleSet)
         db.session.commit()
 
