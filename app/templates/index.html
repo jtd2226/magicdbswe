@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="static/css/index.css">
     <script>
-            function magicSearch() {
-                window.location.href = "/search/" + document.getElementById("magic-db-search-query").value;
+            function magicSearch(orVal) {
+                window.location.href = "/search/" + orVal + "/" + document.getElementById("magic-db-search-query").value;
             }
     </script>
   </head>
@@ -45,7 +45,14 @@
                 <input type="text" class="form-control" id="magic-db-search-query" placeholder="Type your search text here." style="position: relative; top: 8px;">
             </li>
             <li>
-                <button type="submit" class="btn btn-default" onclick="magicSearch()" style="position: relative; top: 8px; left: -3px;">Submit!</button>
+                <div class="dropdown" style="position: relative; top: 8px; left: -3px;">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Search AND/OR
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li><a id="and-search" onclick="magicSearch(&quot;and&quot;)">AND</a></li>
+                        <li><a id="or-search" onclick="magicSearch(&quot;or&quot;)">OR</a></li>
+                    </ul>
+                </div>
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -54,7 +61,6 @@
 
     <div class="overlay">
       <img src="static/images/MainLogo.png" id="main-logo" style="display: block; margin: auto;">
-      <h1 class="index-descr" style="font-family: ;">Magic the Gathering Database</h1>
     </div>
 
     <!-- Full Page Image Background Carousel Header -->

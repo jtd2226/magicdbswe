@@ -6,9 +6,9 @@
 	<ul class="nav nav-pills" role="tablist">
 		<li style="position: relative; top: -15px; margin-right: 5px;"><h3><span class="label label-default">Search in:</span></h3><li>
 		<li role="presentation" class="active"><a href="#">Cards</a></li>
-		<li role="presentation"><a href={{"/search/sets/" + searchText | replace(" ", "%20")}}>Sets</a></li>
-		<li role="presentation"><a href={{"/search/subtypes/" + searchText | replace(" ", "%20")}}>Subtypes</a></li>
-		<li role="presentation"><a href={{"/search/artists/" + searchText | replace(" ", "%20")}}>Artists</a></li>
+		<li role="presentation"><a href={{"/search/" + orVal + "/sets/" + searchText | replace(" ", "%20")}}>Sets</a></li>
+		<li role="presentation"><a href={{"/search/" + orVal + "/subtypes/" + searchText | replace(" ", "%20")}}>Subtypes</a></li>
+		<li role="presentation"><a href={{"/search/" + orVal + "/artists/" + searchText | replace(" ", "%20")}}>Artists</a></li>
 	</ul>
 	{% if cards|length %}
 		<h1><strong><em>Cards</em></strong></h1>

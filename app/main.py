@@ -91,7 +91,7 @@ def get_page_url(curr_url, new_page):
 
         return "/".join(newrl).replace(" ", "%20")
     except ValueError:
-        return curr_url + "/" + str(new_page)
+        return (curr_url + "/" + str(new_page)).replace(" ", "%20")
 
 def cmp_to_key(mycmp):
     class K:
@@ -434,45 +434,49 @@ def test():
     return render_template('cool.html')
 
 #-------SEARCH-----------
-@app.route('/search/cards/<searchText>')
-@app.route('/search/cards/<searchText>/<int:page>')
-@app.route('/search/<searchText>')
-@app.route('/search/<searchText>/<int:page>')
-def card_search(searchText, page=1):
+@app.route('/search/<orVal>/cards/<searchText>')
+@app.route('/search/<orVal>/cards/<searchText>/<int:page>')
+@app.route('/search/<orVal>/<searchText>')
+@app.route('/search/<orVal>/<searchText>/<int:page>')
+def card_search(orVal, searchText, page=1):
     cards_tracker = {}
-    or_cards_tracker = {}
     original_cards = db.session.query(MCard);
+    if "and" in orVal.lower():
+        for c in original_cards:
+                if (searchText.lower() in c.name.lower()) or (searchText.lower() in c.mainType.lower()):
+                    cards_tracker[c.cardId] = c
+    else:
+        for c in original_cards:
+            for word in searchText.lower().split():
+                    if (word in c.name.lower()) or (word in c.mainType.lower()):
+                        cards_tracker[c.cardId] = c
 
-    for c in original_cards:
-        if (searchText.lower() in c.name.lower()) or (searchText.lower() in c.mainType.lower()):
-            cards_tracker[c.cardId] = c
-
-        for word in searchText.lower().split():
-            if (word in c.name.lower()) or (word in c.mainType.lower()):
-                or_cards_tracker[c.cardId] = c
 
     cards_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     cards_hi_index = min(len(cards_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
-  
+
     cards_tracker = OrderedDict(sorted(cards_tracker.items()))
     cards = list(cards_tracker.values())[cards_lo_index:cards_hi_index]
 
-    or_cards_tracker = OrderedDict(sorted(or_cards_tracker.items()))
-    or_cards = list(or_cards_tracker.values())[cards_lo_index:cards_hi_index]
-
+        
     hasNextPage = (cards_hi_index < len(cards_tracker))
+    return render_template('search-cards.html', searchText=searchText, cards = cards, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search', orVal = orVal)
 
-    return render_template('search-cards.html', searchText=searchText, cards = cards, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
-
-@app.route('/search/sets/<searchText>')
-@app.route('/search/sets/<searchText>/<int:page>')
-def set_search(searchText, page=1):
+@app.route('/search/<orVal>/sets/<searchText>')
+@app.route('/search/<orVal>/sets/<searchText>/<int:page>')
+def set_search(orVal, searchText, page=1):
     sets_tracker = {}
     original_sets = db.session.query(MSet);
 
-    for s in original_sets:
-        if (searchText.lower() in s.name.lower()) or (searchText.lower() in s.code.lower()):
-            sets_tracker[s.code] = s
+    if "and" in orVal.lower():
+        for s in original_sets:
+            if (searchText.lower() in s.name.lower()) or (searchText.lower() in s.code.lower()):
+                sets_tracker[s.code] = s
+    else:
+        for s in original_sets:
+            for word in searchText.lower().split():
+                if (word in s.name.lower()) or (word in s.code.lower()):
+                    sets_tracker[s.code] = s
 
     sets_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     sets_hi_index = min(len(sets_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
@@ -482,17 +486,23 @@ def set_search(searchText, page=1):
 
     hasNextPage = (sets_hi_index < len(sets_tracker))
 
-    return render_template('search-sets.html', searchText=searchText, sets = sets, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
+    return render_template('search-sets.html', searchText=searchText, sets = sets, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search', orVal = orVal)
 
-@app.route('/search/subtypes/<searchText>')
-@app.route('/search/subtypes/<searchText>/<int:page>')
-def subtype_search(searchText, page=1):
+@app.route('/search/<orVal>/subtypes/<searchText>')
+@app.route('/search/<orVal>/subtypes/<searchText>/<int:page>')
+def subtype_search(orVal, searchText, page=1):
     subtypes_tracker = {}
     original_subtypes = db.session.query(MSubtype);
 
-    for s in original_subtypes:
-        if (searchText.lower() in s.name.lower()):
-            subtypes_tracker[s.name] = s
+    if "and" in orVal.lower():
+        for s in original_subtypes:
+            if (searchText.lower() in s.name.lower()):
+                subtypes_tracker[s.name] = s
+    else:
+        for s in original_subtypes:
+            for word in searchText.lower().split():
+                if (word in s.name.lower()):
+                    subtypes_tracker[s.name] = s
 
     subtypes_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     subtypes_hi_index = min(len(subtypes_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
@@ -509,17 +519,23 @@ def subtype_search(searchText, page=1):
         else:
             subtypeImageUrls[subtype.name] = "https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"
 
-    return render_template('search-subtypes.html', searchText=searchText, subtypes = subtypes, imageUrls=subtypeImageUrls, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
+    return render_template('search-subtypes.html', searchText=searchText, subtypes = subtypes, imageUrls=subtypeImageUrls, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search', orVal = orVal)
 
-@app.route('/search/artists/<searchText>')
-@app.route('/search/artists/<searchText>/<int:page>')
-def artist_search(searchText, page=1):
+@app.route('/search/<orVal>/artists/<searchText>')
+@app.route('/search/<orVal>/artists/<searchText>/<int:page>')
+def artist_search(orVal, searchText, page=1):
     artists_tracker = {}
     original_artists = db.session.query(MArtist);
 
-    for s in original_artists:
-        if (searchText.lower() in s.name.lower()):
-            artists_tracker[s.name] = s
+    if "and" in orVal.lower():
+        for s in original_artists:
+            if (searchText.lower() in s.name.lower()):
+                artists_tracker[s.name] = s
+    else:
+        for s in original_artists:
+            for word in searchText.lower().split():
+                if (word in s.name.lower()):
+                    artists_tracker[s.name] = s
 
     artists_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
     artists_hi_index = min(len(artists_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
@@ -529,7 +545,7 @@ def artist_search(searchText, page=1):
 
     hasNextPage = (artists_hi_index < len(artists_tracker))
 
-    return render_template('search-artists.html', searchText=searchText, artists = artists, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
+    return render_template('search-artists.html', searchText=searchText, artists = artists, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search', orVal = orVal)
 
 @app.errorhandler(500)
 def server_error(e):

@@ -5,10 +5,10 @@
 
 	<ul class="nav nav-pills" role="tablist">
 		<li style="position: relative; top: -15px; margin-right: 5px;"><h3><span class="label label-default">Search in:</span></h3><li>
-		<li role="presentation"><a href={{"/search/cards/" + searchText | replace(" ", "%20")}}>Cards</a></li>
+		<li role="presentation"><a href={{"/search/" + orVal + "/cards/" + searchText | replace(" ", "%20")}}>Cards</a></li>
 		<li role="presentation" class="active"><a href="#">Sets</a></li>
-		<li role="presentation"><a href={{"/search/subtypes/" + searchText | replace(" ", "%20")}}>Subtypes</a></li>
-		<li role="presentation"><a href={{"/search/artists/" + searchText | replace(" ", "%20")}}>Artists</a></li>
+		<li role="presentation"><a href={{"/search/" + orVal + "/subtypes/" + searchText | replace(" ", "%20")}}>Subtypes</a></li>
+		<li role="presentation"><a href={{"/search/" + orVal + "/artists/" + searchText | replace(" ", "%20")}}>Artists</a></li>
 	</ul>
 	{% if sets|length %}
 		<h1><strong><em>Sets</em></strong></h1>
