@@ -232,9 +232,9 @@ def artists(page=1):
 def artists_filter(numCard, numSets, page=1):
     artists = db.session.query(MArtist);
     if numCard != "NO-NUMCARD":
-        artists = artists.filter_by(numCards=numCard)
+        artists = artists.filter(MArtist.numCards <= numCard).filter(MArtist.numCards >= (int(numCard) - 20)).order_by(MArtist.numCards.desc())
     if numSets != "NO-NUMSETS":
-        artists = artists.filter_by(numSets=numSets)
+        artists = artists.filter(MArtist.numSets <= numSets).filter(MArtist.numSets >= (int(numSets) - 5)).order_by(MArtist.numSets.desc())
 
     artists = artists.paginate(page, POSTS_PER_PAGE, False).items
 
@@ -277,9 +277,9 @@ def sets(page=1):
 def sets_filter(relYear, numCard, page=1):
     sets = db.session.query(MSet);
     if relYear != "NO-RELYEAR":
-        sets = sets.filter_by(rDate=relYear)
+        sets = sets.filter(MSet.rDate.contains(relYear))
     if numCard != "NO-NUMCARD":
-        sets = sets.filter_by(numCards=numCard)
+        sets = sets.filter(MSet.numCards <= numCard).filter(MSet.numCards >= (int(numCard) - 20)).order_by(MSet.numCards.desc())
 
     sets = sets.paginate(page, POSTS_PER_PAGE, False).items
 
