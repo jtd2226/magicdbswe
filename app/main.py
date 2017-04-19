@@ -202,12 +202,12 @@ def cards_filter(manaCost, power, toughness, rarity, color, mainType, page=1):
     if toughness != "NO-TOUGH":
         cards = cards.filter_by(toughness=toughness)
     if rarity != "NO-RARITY":
-        cards = cards.filter_by(rarity=rarity)
+        cards = cards.filter(MCard.rarity.ilike(rarity))
     if color != "NO-COLOR":
         color = color.capitalize()
         cards = cards.filter_by(color=color)
     if mainType != "NO-TYPE":
-        cards = cards.filter_by(mainType=mainType)
+        cards = cards.filter(MCard.mainType.contains(mainType))
 
     cards = cards.paginate(page, POSTS_PER_PAGE, False).items
 
