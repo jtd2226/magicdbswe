@@ -163,7 +163,7 @@ def run_tests():
     prev = "<br />".join(prev.split("\n"))
     pwd = subprocess.run(['pwd'], stdout = subprocess.PIPE).stdout.decode('utf-8')
     pwd = "<br />".join(pwd.split("\n"))
-    output = subprocess.run(['make'], stdout = subprocess.PIPE, stderr = subprocess.PIPE).stdout.decode('utf-8')
+    output = subprocess.run(['make'], stdout = subprocess.PIPE, stderr = subprocess.STDOUT).stdout.decode('utf-8')
     output = "<br />".join(output.split("\n"))
     output = Markup(pwd) + Markup(ls) + Markup(prev) + Markup(output) 
     return render_template('run-tests.html', output = output, title = 'Run Tests')
