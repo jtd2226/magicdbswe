@@ -1,10 +1,28 @@
 {%extends "base.html"%}
 
 {%block content%}
-<center><h2><a href = "http://ggnoswe.me">ggnoswe.me</a></h2></center>
+<center><h4> 
+  This is a graph of different gaming platforms 
+  and the studios that develop games for them.
+</h4></center>
+<center><h4> 
+  The size of each module is proportional to the number
+  games that each studio produced. 
+</h4></center>
+<center><h4> 
+  Click on a platform or studio to zoom in. 
+  Click the center to zoom out. The data is 
+  collected from <a href = "http://ggnoswe.me">ggnoswe.me</a>
+</h4></center>
 
 
 <style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  position: center;
+}
 
 circle,
 path {
@@ -25,12 +43,12 @@ html {
   font-family: sans-serif;
   
 }
+
 </style>
-<body>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var margin = {top: 350, right: 480, bottom: 350, left: 480},
+var margin = {top: 500, right: 480, bottom: 350, left: 480},
     radius = Math.min(margin.top, margin.right, margin.bottom, margin.left) - 10;
 
 function filter_min_arc_size_text(d, i) {return (d.dx*d.depth*radius/3)>14}; 
@@ -273,26 +291,6 @@ function updateArc(d) {
 
 d3.select(self.frameElement).style("height", margin.top + margin.bottom + "px");
 
-</script> 
+</script>
 
 {%endblock%}
-
-<!--script>
-    $("#instance-main").append("<h4><strong>Number of Cards: </strong>1</h4>");
-    $("#instance-main").append("<h4><strong>Number of Sets: </strong>1</h4>");
-    
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) { //Successful GET request
-            var card = JSON.parse(this.responseText);
-
-            $("#instance-main").prepend("<h1>" + artistName + "</h1>");
-            $("#instance-main").append("<h4><strong>Cards: </strong>" + card["card"]["name"] + "</h4>");
-        $("#instance-main").append("<h4><strong>Sets: </strong>" + card["card"]["setName"] + "</h4>");
-        }
-    };
-
-    var cardId = getUrlParams()["id"];
-      xmlHttp.open("GET", "https://api.magicthegathering.io/v1/cards/" + cardId, true); 
-      xmlHttp.send(null);
-  </script>
