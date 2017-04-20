@@ -156,7 +156,7 @@
 		<p><b>MArtist</b> - The model for an artist, it includes the attributes: name, numCards, numSets, and cards. The cards attribute is a relationship. Any time a card is instantiated to the database, a relationship is established between an artist and any cards that the particular artist designed. This model  serves as another method for a user to distinguish cards, as many cards could have been worked on by a specific artist.</p>
 		<p><b>MSubtype</b> - The model for a subtype, it includes the attributes: name, numCards, sets, and cards. Any time a card is instantiated to the database, if that card has a valid subtype, a relationship is established between that subtype and any cards that share the same subtype attribute. Cards that have similar subtypes often synergize their effects, so it is important to be able to select subtypes of interest and view all related cards. This model is related to the MCard and MSet models.</p>
 		<br>
-		<h4><em>Relations<em></h4>
+		<h4><em>Relations</em></h4>
 		<p>[MCard] many-to-many [MSubtype]
 		[MCard] many-to-one [MSet]<br>
 		[MCard] many-to-one [MArtist]<br><br>
@@ -220,7 +220,7 @@
 
 		<h4><em>Search Capability</em></h4>
 		<p>We were originally going to use Flask libraries to aid us in searching the database for whatever the user queried; however, we ran into difficulties trying to get it to work. So, in the end we found it in our best interests to manually iterate over the models of the database and to use Python libraries to filter through the data. Thankfully, this method turned out to be fairly efficient both in programming time and run-time. We found it efficient in order to separate search results by models. It gives results very quickly and generally speaking, if someone is looking for a particular item, it would be easier to specify whether it was a card, a set, a subtype, or an artist. Separating the models also prevents confusion in the cards, subtypes, and artists that all share the same image. </p>
-		
+
 		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
 		<br>
 	</div>
