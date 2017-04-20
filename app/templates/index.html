@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Homepage - MagicDB</title>
-	<link rel="icon" href = "static/images/logo.png">
+	<link rel="icon" href = "static/images/dragon.png">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="static/css/index.css">
@@ -16,6 +16,9 @@
             if (searchVal) {
                 window.location.href = "/search/" + orVal + "/" + searchVal;
             }
+        }
+        function carouselLink(url) {
+            window.location.href = url;
         }
     </script>
   </head>
@@ -82,40 +85,40 @@
                 <!-- Set the first background image using inline CSS below. -->
                 <div class="fill" style="background-image:url('static/images/planar.jpg');"></div>
                 <div class="carousel-caption">
-                    <h4>Card: Planar Bridge</h4>
-                    <h4>Set: Aether Revolt</h4>
+                    <h4 onclick="carouselLink(&quot;cards/6f21ad99adc5910e6227d480d81ce62822b304bd&quot;)">Card: <u>Planar Bridge</u></h4>
+                    <h4 onclick="carouselLink(&quot;sets/AER&quot;)">Set: <u>Aether Revolt</u></h4>
                     <h4>Subtype: N/A</h4>
-                    <h4>Artist: Chase Stone</h4>
+                    <h4 onclick="carouselLink(&quot;artists&name=\&quot;Chase%20Stone\&quot;&quot;)">Artist: <u>Chase Stone</u></h4>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
                 <div class="fill" style="background-image:url('static/images/viserys.jpg');"></div>
                 <div class="carousel-caption">
-                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;">Card: Anguished Unmaking</h4>
-                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" >Set: Shadows over Innistrad</h4>
-                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" >Subtype: N/A</h4>
-                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" >Artist: Wesley Burt</h4>
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" onclick="carouselLink(&quot;cards/66465a9f3258e916a3d3630d21d45e0741b934fe&quot;)">Card: <u>Anguished Unmaking</u></h4>
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" onclick="carouselLink(&quot;sets/SOI&quot;)">Set: <u>Shadows over Innistrad</u></h4>
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;">Subtype: N/A</h4>
+                    <h4 style="color:#B11B23;text-shadow:1px 1px 2px black;" onclick="carouselLink(&quot;artists&name=\&quot;Wesley%20Burt\&quot;&quot;)">Artist: <u>Wesley Burt</u></h4>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
                 <div class="fill" style="background-image:url('static/images/resurgent.jpg');"></div>
                 <div class="carousel-caption">
-                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Card: Zendikar Resurgent</h4>
-                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Set: Oath of the Gatewatch</h4>
+                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;" onclick="carouselLink(&quot;cards/46c5fbb120b69bf967ff18d2068927ba748bfe78&quot;)">Card: <u>Zendikar Resurgent</u></h4>
+                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;" onclick="carouselLink(&quot;sets/OGW&quot;)">Set: <u>Oath of the Gatewatch</u></h4>
                     <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Subtype: N/A</h4>
-                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;">Artist: Chris Rallis</h4>
+                    <h4 style="color:#B55AC9;text-shadow:1px 1px 2px black;" onclick="carouselLink(&quot;artists&name=\&quot;Chris%20Rallis\&quot;&quot;)">Artist: <u>Chris Rallis</u></h4>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
                 <div class="fill" style="background-image:url('static/images/genesis.jpg');"></div>
                 <div class="carousel-caption">
-                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Card: Progenitus</h4>
-                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Set: Conflux</h4>
-                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Subtype: Hydra Avatar</h4>
-                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;">Artist: Jaime Jones</h4>
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;" onclick="carouselLink(&quot;cards/1e2852f46bc480249252dbbb4c4b7d474c773d0b&quot;)">Card: <u>Progenitus</u></h4>
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;" onclick="carouselLink(&quot;sets/MMA&quot;)">Set: <u>Conflux</u></h4>
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;" >Subtype: <u onclick="carouselLink(&quot;subtypes/Hydra&quot;)">Hydra</u>, <u onclick="carouselLink(&quot;subtypes/Avatar&quot;)">Avatar</u></h4>
+                    <h4 style="color:#1F7D24;text-shadow:1px 1px 2px black;" onclick="carouselLink(&quot;artists&name=\&quot;Jaime%20Jones\&quot;&quot;)">Artist: <u>Jaime Jones</u></h4>
                 </div>
             </div>
         </div>

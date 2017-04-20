@@ -113,28 +113,29 @@
 		<h3 style="margin-bottom: 15px;">Developers: SWEet Gathering</h3>
 		<p><u>Nestor Castro: Junior, <b>Front-end:</b> Hosting, <b>Back-end:</b> Database</u>
 		<br>
-		He is a 3rd year Computer Science major at the University of Texas at Austin. He is the current VP of Communications of Sigma Lambda Beta, a Latino-based multicultural Fraternity. On his free time, he enjoys exploring the outdoors, playing pool, and jamming out to the Red Hot Chili Peppers. During Phase 1, he was responsible for setting up the GCP server and updating the image of the website. During Phase 2, he was responsible for creating and linking the GCP database, as well as setting up the proxy needed for connections to and from the database.</p>
+		He is a 3rd year Computer Science major at the University of Texas at Austin. He is the current VP of Communications of Sigma Lambda Beta, a Latino-based multicultural Fraternity. On his free time, he enjoys exploring the outdoors, playing pool, and jamming out to the Red Hot Chili Peppers. During Phase 1, he was responsible for setting up the GCP server and updating the image of the website. During Phase 2, he was responsible for creating and linking the GCP database, as well as setting up the proxy needed for connections to and from the database.During Phase 3, he was responsible for debugging and helped implemented search on the front-end. </p>
 
-		<p><u>Nicholas Cobb: Junior, <b>Front-end:</b> Website</u>
+		<p><u>Nicholas Cobb: Junior, <b>Front-end:</b> Website</u> <b>Phase 3 Leader</b>
 		<br>
-		He is a 3rd year Computer Science major at the University of Texas at Austin. He has interned at Google two times and am about to again this summer. In his free time, he enjoys writing music and participating in political clubs on campus. In Phase 1, he was responsible for implementing the HTML, CSS and JavaScript/TypeScript for the website. During Phase 2, he was responsible for updating bootstrap, the splash page, and implementing functionality for searching, filtering, and pagination.</p>
+		He is a 3rd year Computer Science major at the University of Texas at Austin. He has interned at Google two times and am about to again this summer. In his free time, he enjoys writing music and participating in political clubs on campus. In Phase 1, he was responsible for implementing the HTML, CSS and JavaScript/TypeScript for the website. During Phase 2, he was responsible for updating bootstrap, the splash page, and implementing functionality for searching, filtering, and pagination.During Phase 3, he was responsible for front-end search, routing and fixing bugs.</p>
 
 		<p><u>Joel Davis: Senior, <b>Front-end:</b> API, <b>Back-end:</b> Testing, Models, Database Population <b>Phase 2 Leader</b></u>
 		<br>
-		He is a 4th-year Computer Science major at the University of Texas at Austin. Enjoys game development and software engineering. In his free time he likes video games, guitar, and skateboarding. During Phase 1, he was responsible for documenting the API with Apiary, writing unit tests, and setting up the team’s continuous integration framework with Travis CI. In Phase 2, apart from leading, he also was responsible for redesigning models and populating the database.</p>
+		He is a 4th-year Computer Science major at the University of Texas at Austin. Enjoys game development and software engineering. In his free time he likes video games, guitar, and skateboarding. During Phase 1, he was responsible for documenting the API with Apiary, writing unit tests, and setting up the team’s continuous integration framework with Travis CI. In Phase 2, apart from leading, he also was responsible for redesigning models and populating the database.During Phase 3, he was responsible for back-end search, back-end filter, fixing bugs, creating unit test, refining and documenting the api and models. He also contributed to the visualization page.</p>
 
 		<p><u>Nilo Lisboa: Senior, <b>Back-end:</b> Models and UML, <b>Front-end:</b> Content <b>Phase 1 Leader</b></u>
 		<br>
 		Nilo is a 4th-year Computer Science Major at UT Austin. He has interned twice at IBM both part-time and full-time. He really enjoys story-driven video games as well as archery and kendo.
-		He was responsible for designing the models and attributes in Phase 1 as well as creating the UML diagram. In Phase 2, he was responsible for updating content on the website as well as acquiring the API JSON.</p>
+		He was responsible for designing the models and attributes in Phase 1 as well as creating the UML diagram. In Phase 2, he was responsible for updating content on the website as well as acquiring the API JSON.During Phase 3, he was responsible for the planning poker user stories, tech report, and visualization. </p>
 
 		<p><u>Matthew Martinez: Junior, <b>Front-end:</b> Design, <b>Back-end:</b> Database</u>
 		<br>
-		Matthew is a third year Computer Science major at the University of Texas at Austin. He is the vice-president of Lambda Omega Alpha, an independent Catholic Service Fraternity on campus. In his very little free time he enjoys watching Netflix and spending quality time with friends. In Phase 1, he was responsible for linking the custom domain and planning some of the general design of the website. During Phase 2, he was responsible for creating/linking the GCP database, and implementing the Flask framework. </p>
+		Matthew is a third year Computer Science major at the University of Texas at Austin. He is the vice-president of Lambda Omega Alpha, an independent Catholic Service Fraternity on campus. In his very little free time he enjoys watching Netflix and spending quality time with friends. In Phase 1, he was responsible for linking the custom domain and planning some of the general design of the website. During Phase 2, he was responsible for creating/linking the GCP database, and implementing the Flask framework. During Phase 3, he was responsible for linking models together, improving the appearance of the website, and contributing to the visualization page. </p>
 
 		<p><u>Jose Ramirez: Senior, <b>Back-end:</b> Testing, Assets</u>
 		<br>
-		Jose is a 4th-year Computer Science major at the University of Texas at Austin. He enjoys game development and participates in ACM activities. In his free time, he plays video games and watches gaming streams on twitch. In Phase 1, he was responsible for making unit tests and setting up continuous intergragtion framework with Travis CI. During Phase 2, he helped sorting out library configurations and acquiring assets to be used on the website.</p>
+		Jose is a 4th-year Computer Science major at the University of Texas at Austin. He enjoys game development and participates in ACM activities. In his free time, he plays video games and watches gaming streams on twitch. In Phase 1, he was responsible for making unit tests and setting up continuous intergragtion framework with Travis CI. During Phase 2, he helped sorting out library configurations and acquiring assets to be used on the website. During Phase 3, he was responsible for unit test, fixing bugs, and updating the tech report.</p>
+
 		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
 		<br>
 	</div>
@@ -155,7 +156,7 @@
 		<p><b>MArtist</b> - The model for an artist, it includes the attributes: name, numCards, numSets, and cards. The cards attribute is a relationship. Any time a card is instantiated to the database, a relationship is established between an artist and any cards that the particular artist designed. This model  serves as another method for a user to distinguish cards, as many cards could have been worked on by a specific artist.</p>
 		<p><b>MSubtype</b> - The model for a subtype, it includes the attributes: name, numCards, sets, and cards. Any time a card is instantiated to the database, if that card has a valid subtype, a relationship is established between that subtype and any cards that share the same subtype attribute. Cards that have similar subtypes often synergize their effects, so it is important to be able to select subtypes of interest and view all related cards. This model is related to the MCard and MSet models.</p>
 		<br>
-		<h4><em>Relations<em></h4>
+		<h4><em>Relations</em></h4>
 		<p>[MCard] many-to-many [MSubtype]
 		[MCard] many-to-one [MSet]<br>
 		[MCard] many-to-one [MArtist]<br><br>
@@ -168,47 +169,58 @@
 	<div id="design-sec" class="about-section" style="clear: both;">
 		<h2>API</h2>
 		<br>
-		<p>The Magic: The Gathering API we are using is structured in a way that allows for easy searching through cards and sets and works with a variety of parameters. The database is grouped into four pillars: Cards, Sets, Card Types, and Formats. </p>
+		<p>The Magic: The Gathering API we are using is structured in a way that allows for easy searching through cards and sets and works with a variety of parameters. The database is grouped into four pillars: Cards, Sets, Subtypes, and Artists </p>
 
 		<p><u>Cards</u> is self explanatory and denotes the cards available in the game. Each card has a variety of parameters:</p>
 		<p><u>name:</u> The card name. For split, double-faced and flip cards, just the name of one side of the card. Basically each ‘sub-card’ has its own record.</p>
-		<p><u>layout:</u> The card layout. Possible values: normal, split, flip, double-faced, token, plane, scheme, phenomenon, leveler, vanguard</p>
-		<p><u>cmc:</u> Converted mana cost. Always a number.</p>
+		<p><u>manaCost:</u> Converted mana cost. Always a number.</p>
 		<p><u>colors:</u> The card colors. Usually this is derived from the casting cost, but some cards are special (like the back of dual sided cards and Ghostfire).</p>
-		<p><u>colorIdentity:</u> The card colors by color code. [“Red”, “Blue”] becomes [“R”, “U”]</p>
-		<p><u>type:</u> The card type. This is the type you would see on the card if printed today. Note: The dash is a UTF8 'long dash’ as per the MTG rules</p>
+		<p><u>subtypes:</u> The subtypes of the card. These appear to the right of the dash in a card type. Usually each word is its own subtype. Example values: Trap, Arcane, Equipment, Aura, Human, Rat, Squirrel, etc.</p>
 		<p><u>supertypes:</u> The supertypes of the card. These appear to the far left of the card type. Example values: Basic, Legendary, Snow, World, Ongoing</p>
 		<p><u>types:</u> The types of the card. These appear to the left of the dash in a card type. Example values: Instant, Sorcery, Artifact, Creature, Enchantment, Land, Planeswalker</p>
 		<p><u>subtypes:</u> The subtypes of the card. These appear to the right of the dash in a card type. Usually each word is its own subtype. Example values: Trap, Arcane, Equipment, Aura, Human, Rat, Squirrel, etc.</p>
 		<p><u>rarity:</u> The rarity of the card. Examples: Common, Uncommon, Rare, Mythic Rare, Special, Basic Land</p>
-		<p><u>set:</u> The set the card belongs to (set code).</p>
-		<p><u>setName:</u> The set the card belongs to.</p>
-		<p><u>text:</u> The oracle text of the card. May contain mana symbols and other symbols.</p>
-		<p><u>flavor:</u> The flavor text of the card.</p>
-		<p><u>artist:</u> The artist of the card. This may not match what is on the card as MTGJSON corrects many card misprints.</p>
-		<p><u>number:</u> The card number. This is printed at the bottom-center of the card in small text. This is a string, not an integer, because some cards have letters in their numbers.</p>
+		<p><u>art:</u> URL link to the image of the card</p>
+		<p><u>expansionSet:</u> The set the card belongs to (set code).</p>
+		<p><u>text:</u> The flavor text of the card.</p>
+		<p><u>artist:</u> The artist of the card.</p>
+		<p><u>cardId:</u> A unique id for this card. It is made up by doing an SHA1 hash of setCode + cardName + cardImageName </p>
 		<p><u>power:</u> The power of the card. This is only present for creatures. This is a string, not an integer, because some cards have powers like: “1+*”</p>
 		<p><u>toughness:</u> The toughness of the card. This is only present for creatures. This is a string, not an integer, because some cards have toughness like: “1+*”</p>
-		<p><u>loyalty:</u> The loyalty of the card. This is only present for planeswalkers.</p>
-		<p><u>foreignName:</u> The name of a card in a foreign language it was printed in</p>
-		<p><u>language:</u> The language the card is printed in. Use this parameter when searching by foreignName</p>
-		<p><u>gameFormat:</u> The game format, such as Commander, Standard, Legacy, etc. (when used, legality defaults to Legal unless supplied)</p>
-		<p><u>legality:</u> The legality of the card for a given format, such as Legal, Banned or Restricted.</p>
-		<p><u>page:</u> The page of data to request</p>
-		<p><u>pageSize:</u> The amount of data to return in a single request. The default is 100, the max is 1000. If more than 1000 is requested, 100 will be returned.</p>
-		<p><u>orderBy:</u> The field to order by in the response results</p>
-		<p><u>random:</u> Fetch any number of cards (controlled by pageSize) randomly</p>
-		<p><u>contains:</u> Filter cards based on whether or not they have a specific field available (like imageUrl) <br>
-		The database has two GET methods for searching through cards: Get All Cards and Get a Specific Card. Get All Cards returns a list of all of the cards in the database up to a specified pageSize, with a maximum of 100 cards per request. Get a Specific Card will retrieve a specific card from the database if given one or more of the paramaters above.</p>
+		<p><u>mainType</u>Primary Type of the Card</p>
+
+		<p>The database has two GET methods for searching through cards: GET All Cards and Get a Specific Card. Get All Cards returns a list of the cardId’s for all of the cards in the database. GET a Specific Card will retrieve a specific card from the database by its cardId in the form of a dictionary containing all of the parameters listed above as keys and values.</p>
 		<p><u>Sets</u> denotes a group of cards that were released at the same time by the developer and were designed to be played in the same environment. Being able to search for cards by set and see what cards are contained in a specific set is an important part of the knowledge of the game.<br>
-		Set has two parameters:</p>
-		<p><u>Name:</u> The name of the set</p>
-		<p><u>Block:</u> the block the set is in <br>
-		The database has commands to GET all sets and GET a specific set by set name. It can also Generate a Booster Pack for a specified set similar to booster packs sold at retail.</p>
-		<p><u>Card Types</u> denotes the different types or classes for each card. The types include things like artifact, creature, enchantment, etc. and have different effects and abilities when used in the card game. <br>
-		For types the database has three GET methods which are self explanatory. Get All Types, Get all Supertypes, and Get all Subtypes. </p>
-		<p><u>Formats</u> denotes special formats for playing the game and the database has one GET method for this pillar called Get All Formats. </p>
-		
+		Set has nine parameters:</p>
+		<p><u>code:</u> ID by which expansions can be identified</p>
+		<p><u>Name:</u> The name of the expansion</p>
+		<p><u>rDate:</u> Release date of the expansion</p>
+		<p><u>block:</u> Block that the expansion belongs to</p>
+		<p><u>cards:</u> List of cards from this expansion</p>
+		<p><u>subTypes:</u> List of all subtypes in the expansion</p>
+		<p><u>numCards:</u> Number of cards that came out in the expansion</p>
+		<p><u>symbol:</u> Symbol used to identify the expansion on cards</p>
+		<p><u>artists:</u> List of artists that made cards for this expansion</p>
+
+		<p>The database has two GET methods for searching through sets: GET all sets, which returns a list of all of the set codes for every set in the game. GET a specific set, which takes a set code and returns a dictionary representing the set with each of the parameters listed above as keys and values.</p>
+		<p><u>Subtypes</u> denotes the different types or classes for each card. <i>Subtype</i> is a characteristic of a card. Every card has a card type and may have one or more subtypes.<br> Subypes has five parameters</p>
+		<p><u>name:</u> Name of the subtype</p>
+		<p><u>numCards:</u> Number of existing cards of this subtype</p>
+		<p><u>cards:</u> list of cards that are of this subtype</p>
+		<p><u>sets:</u> list of sets that contain cards of this subtype</p>
+
+		<p>The database has one GET method for searching through subtypes: GET All Subtypes, which returns a list of dictionaries representing every subtype in the game with all of the above parameters as keys and values. </p>
+		<p><u>Aritsts</u> denotes the wide variety of community artists that the creators and producers of the game have employed to produce the incredible art depicted on their cards and sets.<br>Artists has five parameters:</p>
+		<p><u>name:</u> Name of the artist</p>
+		<p><u>numCards:</u> Number of cards this artist has worked on</p>
+		<p><u>numSets:</u> Number of Sets this artist has contributed to</p>
+		<p><u>cards:</u> List of all cards that this artist has worked on</p>
+		<p><u>sets:</u> List of all sets that this artist has contributed to</p>
+		<p>The database has one GET method for searching through artists: GET All Artists, which returns a list of dictionaries representing every artist in the game with all of the above parameters as keys and values.</p>
+
+		<h4><em>Search Capability</em></h4>
+		<p>We were originally going to use Flask libraries to aid us in searching the database for whatever the user queried; however, we ran into difficulties trying to get it to work. So, in the end we found it in our best interests to manually iterate over the models of the database and to use Python libraries to filter through the data. Thankfully, this method turned out to be fairly efficient both in programming time and run-time. We found it efficient in order to separate search results by models. It gives results very quickly and generally speaking, if someone is looking for a particular item, it would be easier to specify whether it was a card, a set, a subtype, or an artist. Separating the models also prevents confusion in the cards, subtypes, and artists that all share the same image. </p>
+
 		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
 		<br>
 	</div>
@@ -230,7 +242,7 @@
 
 		<p><u>Jinja 2</u>- Jinja 2 allowed us to work simultaneously with flask especially when it came with the base templates, and passing in variables to the templates at runtime. It allows us to mix the html code and backend python to provide a seamless customizable user experience. In particular it eased the process of iterating through large amounts of data, such as the database models. We could dynamically read from the models in the database, and then pass the variables into the html code and render the individual unique pages.</p>
 
-		<p><u>SQLAlchemy</u>- </p>
+		<p><u>SQLAlchemy</u>- SQLAlchemy is used in the back-end to provide the tools for table creation. Our models, their attributes, and relations are all represented together. SQLALchemy also provides a lot of useful tools for the representation of relations. Several of our models have many-to-many relations with each  other. This means that with the creation of a joint table we can accurately represent that.</p>
 
 		<p><u>Google Cloud Platform</u>- The Google Cloud Platform is a means of hosting our website. It provides the ability to create and edit a website in the cloud. The details of the hosting are described in the “Hosting” section below. It also hosts our cloud database that we read and write from in order to populate the instances of our models. We are able to host on individual computers by whitelisting IP’s for our database instance. In order to deploy to the cloud, we set up a CloudSQL proxy on Nestor’s computer so that the cloud data can link with the local code. After deploying from the proxy server, the database is linked and any changes we make to the data are added dynamically. Different methods were tried in the attempt to host and link the database. After many attempts, we were able to find something that worked both locally and in the cloud.</p>
 		<br>
