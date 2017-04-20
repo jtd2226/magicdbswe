@@ -2,6 +2,7 @@ import logging
 import config
 import models
 import random
+import json
 
 from config import POSTS_PER_PAGE
 from models import db, app, MSubtype, MCard, MArtist, MSet, Resource, api
@@ -143,6 +144,10 @@ def get_rarity_val(card):
 @app.route('/index')
 def hello():
     return render_template('index.html')
+
+@app.route('/flare', methods=['GET'])
+def flare_json():
+    return render_template('flare.json')
 
 @app.route('/about')
 def about():
