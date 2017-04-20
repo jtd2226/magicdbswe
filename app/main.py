@@ -82,7 +82,15 @@ class Api_Subtypes(Resource):
             "numSets": apist.numSets, "cards": cl, "sets": sl})
         return jsonify(apilist)
 
+class Api_Subtype(Resource):
+    def get(self):
+        apilist = list()
+        for apist in db.session.query(MSubtype).all():
+            apilist.append({"name": apist.name, "numCards": apist.numCards})
+        return jsonify(apilist)
+
 api.add_resource(Api_Subtypes, '/api/subtypes')
+api.add_resource(Api_Subtype, '/api/subtype')
 
 def get_page_url(curr_url, new_page):
     try:
@@ -397,10 +405,8 @@ def subtypes_filter(numCards, numSets, setName, page=1):
         if numCards == "NO-NUMCARD" and numSets == "NO-NUMSETS":
             subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
 
-        print(str(len(subtypes)))
         for subtype in subtypes:
             isInSets = False
-            print(subtype.name)
             curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.paginate(page, POSTS_PER_PAGE, False).items
             for cset in curr_sets:
                 if cset.code == setName :
@@ -567,6 +573,7 @@ def artist_search(orVal, searchText, page=1):
     hasNextPage = (artists_hi_index < len(artists_tracker))
 
     return render_template('search-artists.html', searchText=searchText, artists = artists, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search', orVal = orVal)
+
 
 @app.errorhandler(500)
 def server_error(e):
