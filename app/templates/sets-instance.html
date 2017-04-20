@@ -31,10 +31,20 @@
 
 			<strong>Cards:</strong><br>
 			{% if sets_instance.cards.all() %}
-				{% for card in sets_instance.cards.all() %}
-					<a href = {{"/cards/" + card.cardId}}> {{card.name}} </a>
-					<br>
-				{% endfor %}
+				<div class="container-fluid">
+					{% for card in sets_instance.cards.all() %}
+						<div class="model-inst">
+							<img src=
+							{% if card.art.lower() != "none" %}
+								{{ card.art }}
+							{% else %}
+								{{"https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"}}
+							{% endif %}
+							width="75" class="img-fluid">
+							<h4><a href={{"/cards/" + card.cardId}}>{{card.name}}</a></h4>
+						</div>
+					{% endfor %}
+				</div>
 			{% endif %}
 		</h4>
 		<h4>
@@ -46,10 +56,6 @@
 			{% endfor %}
 		</h4>
 	</div>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<!--<script>
 				$("#instance-main").append("<h4><strong>Artists: </strong>" + getUrlParams()["name"].substring(3, getUrlParams()["name"].length - 3).replace("%20", " ") + "</h4>");
 		    }

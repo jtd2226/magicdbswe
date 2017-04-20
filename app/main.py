@@ -473,7 +473,20 @@ def set_search(orVal, searchText, page=1):
 
     if "and" in orVal.lower():
         for s in original_sets:
-            if (searchText.lower() in s.name.lower()) or (searchText.lower() in s.code.lower()):
+            switch = True
+            for word in searchText.lower().split():
+                if word not in s.name.lower():
+                    switch = False
+                    break
+            if switch:
+                sets_tracker[s.code] = s
+
+            switch = True
+            for word in searchText.lower().split():
+                if word not in s.code.lower():
+                    switch = False
+                    break
+            if switch:    
                 sets_tracker[s.code] = s
     else:
         for s in original_sets:
