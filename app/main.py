@@ -447,8 +447,8 @@ def card_search(orVal, searchText, page=1):
     cards_tracker = {}
     original_cards = db.session.query(MCard);
     if "and" in orVal.lower():
-        test = True
         for c in original_cards:
+            test = True
             for word in searchText.lower().split():
                 if not((word in c.name.lower()) or (word in c.mainType.lower()) or (word in c.text.lower())):
                     test = False
@@ -457,8 +457,8 @@ def card_search(orVal, searchText, page=1):
     else:
         for c in original_cards:
             for word in searchText.lower().split():
-                    if (word in c.name.lower()) or (word in c.mainType.lower()) or (word in c.text.lower()):
-                        cards_tracker[c.cardId] = c
+                if (word in c.name.lower()) or (word in c.mainType.lower()) or (word in c.text.lower()):
+                    cards_tracker[c.cardId] = c
 
 
     cards_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
