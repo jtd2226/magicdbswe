@@ -15,7 +15,10 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.js"></script>
 	    <script>
             function magicSearch(orVal) {
-                window.location.href = "/search/" + orVal + "/" + document.getElementById("magic-db-search-query").value;
+            	var searchVal = document.getElementById("magic-db-search-query").value;
+            	if (searchVal) {
+                	window.location.href = "/search/" + orVal + "/" + searchVal;
+            	}
             }
     	</script>
 	</head>
@@ -57,7 +60,7 @@
 							<a href="/about">About</a>
 						</li>
 						<li>
-						    <input type="text" class="form-control" id="magic-db-search-query" placeholder="Type your search text here." style="position: relative; top: 8px; width: 500px;">
+						    <input type="text" class="form-control" id="magic-db-search-query" placeholder="Type here." style="position: relative; top: 8px; width: 20vw;">
 						</li>
 						
 			            <li>
