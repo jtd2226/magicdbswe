@@ -8,12 +8,14 @@ A Database for Magic the Gathering Cards
 
 import config
 from flask import Flask
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Resource, Api
 
 
 app = Flask(__name__)
 app.config.from_object(config)
+CORS(app)
 db = SQLAlchemy(app)
 api = Api(app)
 with app.app_context():
