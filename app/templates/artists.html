@@ -2,17 +2,24 @@
 
 {%block content%}
 	<link rel="stylesheet" type="text/css" href="/static/css/models.css">
-		<script type="text/babel">
+	<script type="text/babel">
 		function SortOption(props) {
 			return (
-				<ol>
-					<button className="btn btn-default">{props.name}</button>
+				<ol className="sort-button">
+					<button className="btn btn-default"><a href={props.link}>{props.name}</a></button>
 				</ol>
 			);
 		}
 
 		function sortOrderChange() {
 			$("#sort-order").toggleClass("glyphicon-arrow-down glyphicon-arrow-up")
+			$(".sort-button a").each(function() {
+				if (this.href.indexOf("desc") !== -1) {
+					this.href = this.href.replace("desc", "asce");
+				} else {
+					this.href = this.href.replace("asce", "desc");
+				}
+			});
 		}
 			
 		function SortList() {
@@ -22,9 +29,9 @@
 					    Sort By: <span id="sort-order" className="glyphicon glyphicon-arrow-down" onClick={sortOrderChange}></span>
 					</button>
 					<ul className="dropdown-menu">
-						<SortOption name="Name"/>
-						<SortOption name="Number of Cards"/>
-						<SortOption name="Number of Sets"/>
+						<SortOption name="Name" link="/artists/sort/name&desc"/>
+						<SortOption name="Number of Cards" link="/artists/sort/numCards&desc"/>
+						<SortOption name="Number of Sets" link="/artists/sort/numSets&desc"/>
 					</ul>
 				</div>
 			);
@@ -39,12 +46,19 @@
 			return (
 				<ol>
 					<label className="checkbox-inline">
-						<input type="checkbox" value=""></input>
+						<input type="checkbox" id={"filter-check-" + props.name.toLowerCase().replace(/\s/g,'')} value=""></input>
 						{props.name}
 					</label>
 					<input type="text" className="form-control" id={"filter-" + props.name.toLowerCase().replace(/\s/g,'')}></input>
 				</ol>
 			);
+		}
+
+		function filterApply() {
+			var numCards = document.getElementById("filter-check-numberofcards").checked ? $("#filter-numberofcards").val() : "NO-NUMCARD";
+			var numSets = document.getElementById("filter-check-numberofsets").checked ? $("#filter-numberofsets").val() : "NO-NUMSETS";
+
+			window.location.href = "/artists/filter/" + (numCards ? numCards : "NO-NUMCARD") + "&" + (numSets ? numSets : "NO-NUMSETS");
 		}
 			
 		function FilterList() {
@@ -56,6 +70,7 @@
 					<ul className="dropdown-menu" id="filtering-options">
 						<FilterOption name="Number of Cards"/>
 						<FilterOption name="Number of Sets"/>
+						<ol><button className="btn btn-default" onClick={filterApply}>Filter!</button></ol>
 					</ul>
 				</div>
 			);
@@ -76,8 +91,14 @@
 	<div class="container-fluid">
 		{% for artist in artists %}
 			<div class="model-inst">
-				<img src={{artist.cards.first().art}} class="img-fluid">
-				<h4><a href={{"/artists&name=\"" ~ artist.name ~ "\""}}>{{artist.name}}</a></h4>
+				<img src=
+				{% if artist.cards.first().art.lower() != "none" %}
+					{{ artist.cards.first().art }}
+				{% else %}
+					{{"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"}}
+				{% endif %}
+				width="200" class="img-fluid">
+				<h4><a href={{"/artists&name=\"" ~ artist.name.replace(" ", "%20") ~ "\""}}>{{artist.name}}</a></h4>
 			</div>
 		{% endfor %}
 	</div>
@@ -86,9 +107,9 @@
 		<nav>
 			<ul class="pagination">
 				{% if page > 1 %}
-					<li class="page-item"><a class="page-link" href={{prev_page(request.path)}}>Previous</a></li>
+					<li class="page-item"><a class="page-link" href={{get_page_url(request.path, page - 1)}}>Previous</a></li>
 				{% endif %}
-				<li class="page-item"><a class="page-link" href={{next_page(request.path)}}>Next</a></li>
+				<li class="page-item"><a class="page-link" href={{get_page_url(request.path, page + 1)}}>Next</a></li>
 			</ul>
 		</nav>
 	</div>

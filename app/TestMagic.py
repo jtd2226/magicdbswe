@@ -43,7 +43,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -64,7 +64,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -85,7 +85,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -106,7 +106,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -134,7 +134,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -163,7 +163,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -187,7 +187,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -214,7 +214,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -232,7 +232,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -250,7 +250,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -269,7 +269,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -301,7 +301,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -327,7 +327,7 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
@@ -354,13 +354,14 @@ class TestMagic (TestCase):
         db.drop_all()
         db.create_all()
 
-        example3 = MSubtype("gobbo", 2)
+        example3 = MSubtype("gobbo", 2, 2)
         db.session.add(example3)
         db.session.commit()
 
         est = db.session.query(MSubtype).filter_by(name="gobbo").first()
         self.assertEqual(est.name, "gobbo")
         self.assertEqual(est.numCards, 2)
+        self.assertEqual(est.numSets, 2)
 
         db.session.commit()
         db.drop_all()

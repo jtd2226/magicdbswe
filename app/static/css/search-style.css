@@ -1,0 +1,9 @@
+h1 {
+	text-align: center;
+}
+
+.model-inst {
+	display: inline-block;
+	text-align: center;
+	padding: 1%;
+}

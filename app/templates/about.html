@@ -14,7 +14,7 @@
 			<p>Nestor is a 3rd-year Computer Science major at the University of Texas at Austin. He is the current VP of Communications of Sigma Lambda Beta, a Latino-based multicultural Fraternity. In his free time, he enjoys exploring the outdoors, playing pool, and jamming out to the Red Hot Chili Peppers.<p>
 			<p><strong>Responsibilities: </strong>front-end, hosting</p>
 			<p><strong>Number of commits: 23</strong></p>
-			<p><strong>Number of issues: 4</strong></p>
+			<p><strong>Number of issues: 3</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
 		</div>
 
@@ -24,7 +24,7 @@
 			<p>Nicholas is a 3rd-year Computer Science major at the University of Texas at Austin. Nicholas has interned at Google two times and is about to again this summer. In his free time, he enjoys writing music and participating in political clubs on campus.</p>
 			<p><strong>Responsibilities: </strong>front-end, coding</p>
 			<p><strong>Number of commits: 41</strong></p>
-			<p><strong>Number of issues: 1</strong></p>
+			<p><strong>Number of issues: 4</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
 		</div>
 
@@ -44,7 +44,7 @@
 			<p>Nilo is a 4th-year Computer Science Major at UT Austin. He has interned twice at IBM both part-time and full-time. He really enjoys story-driven video games as well as archery and kendo.</p>
 			<p><strong>Responsibilities: </strong>back-end, Phase I Leader</p>
 			<p><strong>Number of commits: 21</strong></p>
-			<p><strong>Number of issues: 0</strong></p>
+			<p><strong>Number of issues: 2</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
 		</div>
 
@@ -54,7 +54,7 @@
 			<p>Matthew is a 3rd-year Computer Science major at the University of Texas at Austin. He is the vice-president of Lambda Omega Alpha, an independent Catholic Service Fraternity on campus. In his very little free time he enjoys watching Netflix and spending quality time with friends.</p>
 			<p><strong>Responsibilities: </strong>front-end, design</p>
 			<p><strong>Number of commits: 35</strong></p>
-			<p><strong>Number of issues: 24</strong></p>
+			<p><strong>Number of issues: 41</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
 		</div>
 
@@ -74,11 +74,15 @@
 	<div id="stats" class="about-section">
 		<h1><strong>Stats</strong></h1>
 		<p><strong>Number of commits: 191</strong></p>
-		<p><strong>Number of issues: 29</strong></p>
+		<p><strong>Number of issues: 50</strong></p>
 		<p><strong>Number of unit tests: 12</strong></p>
 		<p><strong><a href="http://docs.apimagicthegatheringio.apiary.io">Link to Apiary API</strong></p>
 		<p><strong><a href="https://github.com/jtd2226/magicdbswe/issues">Link to Github Issue Tracker</a></strong></p>
-		<p><strong><a href="https://github.com/jtd2226/magicdbswe">Link to Github Repo</a></strong></p>
+		<p><strong><a href="https://github.com/jtd2226/magicdbswe/tree/dev">Link to Github Repo</a></strong></p>
+		<p><strong><a href="http://google.com">Link to Presentation</a></strong></p>
+		<p><strong>Link to <a href="/visualization">Visualization</a> of <a href="http://ggnoswe.me"> ggnoswe </a></strong></p>
+
+
 	</div>
 
 	<div class="divider"></div>
@@ -89,6 +93,9 @@
 	</div>
 
 	<div class="divider"></div>
+	
+	<center><h2><a href = "/run-tests">Run Tests</a></h2></center>
+	<div class="divider"></div><div class="divider"></div>
 
 	<h1 align="center"><strong>Technical Report</strong></h1>
 	<div id="report-toc" class="about-section">
@@ -99,8 +106,6 @@
 		<h4>4. <a href="#tools-sec">Tools</a></h4>
 		<h4>5. <a href="#hosting">Hosting</a></h4>
 	</div>
-	<div class="divider"></div><div class="divider"></div>
-	<center><h2><a href = "/run-tests">Run Tests</a></h2></center>
 	<div class="divider"></div><div class="divider"></div>
 
 	<div id="report" class="about-section">
@@ -131,6 +136,7 @@
 		<p><u>Jose Ramirez: Senior, <b>Back-end:</b> Testing, Assets</u>
 		<br>
 		Jose is a 4th-year Computer Science major at the University of Texas at Austin. He enjoys game development and participates in ACM activities. In his free time, he plays video games and watches gaming streams on twitch. In Phase 1, he was responsible for making unit tests and setting up continuous intergragtion framework with Travis CI. During Phase 2, he helped sorting out library configurations and acquiring assets to be used on the website.</p>
+		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
 		<br>
 	</div>
 
@@ -156,6 +162,8 @@
 		[MCard] many-to-one [MArtist]<br><br>
 		[MSet] many-to-many [MArtist]<br>
 		[MSet] many-to-many [MSubtype]</p>
+		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
+		<br>
 	</div>
 
 	<div id="design-sec" class="about-section" style="clear: both;">
@@ -201,7 +209,8 @@
 		<p><u>Card Types</u> denotes the different types or classes for each card. The types include things like artifact, creature, enchantment, etc. and have different effects and abilities when used in the card game. <br>
 		For types the database has three GET methods which are self explanatory. Get All Types, Get all Supertypes, and Get all Subtypes. </p>
 		<p><u>Formats</u> denotes special formats for playing the game and the database has one GET method for this pillar called Get All Formats. </p>
-
+		
+		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
 		<br>
 	</div>
 
@@ -241,6 +250,8 @@
 				<li><b>cardCache.json</b>- This JSON file contains all information regarding cards. The API provided provided a JSON source, but that lacked card image information, so we had to scrape the API to create this one.</li>
 				<li><b>setCache.json</b>- This file contains all information regarding sets and had to be created to accommodate for the extra information we wanted to use (f.e.: the promo art in logo.json).</li>
 				<li><b>stypeCache.json</b>- Like artists, Subtypes were not treated separately from Sets and Cards in the API, thus we also had to aggregate the data for them manually into this JSON file, which contains all relevant information regarding them.</li>
+		</ul>
+		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
 		<br>
 	</div>
 
@@ -265,6 +276,8 @@
 		<br>
 		<h4><em>Custom Domain</em></h4>
 		<p>In addition, after completing our hosting process, we wanted to link our web app to a custom domain. To accomplish this we used <i>Namecheap</i>’s free educational bundle and acquired the <i>magicdb.me</i> domain. Next, we went over to our console’s settings and added and verified our new domain. Once verified, we added all of the custom domain records to <i>namecheap</i> and waited for a few hours for the linkage to complete. Having completed this process, we were finally able to browse for our website under the <i>magicdb.me</i> URL.</p>
+		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
+		<br>
 	</div>
 
 {%endblock%}

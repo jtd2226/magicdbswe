@@ -2,10 +2,35 @@
 
 {%block content%}
 
-	<link rel="stylesheet" type="text/css" href="css/instance.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/instance.css">
 	<div id="instance-main">
 		<h1><strong>{{artists_instance.name}}</strong></h1>
-		<img src={{artists_instance.cards.first().art}} class="img-fluid">
+		<img src=
+		{% if artists_instance.cards.first().art.lower() != "none" %}
+			{{ artists_instance.cards.first().art }}
+		{% else %}
+			{{"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"}}
+		{% endif %}
+		class="img-fluid">
+		<h4><strong>Number of Cards: </strong>{{artists_instance.numCards}}</h4>
+		<h4><strong>Number of Sets: </strong>{{artists_instance.numSets}}</h4>
+		<h4>
+		<h4>
+			<strong>Cards:</strong><br>
+			{% if artists_instance.cards.all() %}
+				{% for card in artists_instance.cards.all() %}
+					<a href = {{"/cards/" + card.cardId}}> {{card.name}}</a>
+					<br>
+				{% endfor %}
+			{% endif %}
+		</h4>
+		<h4>
+			<strong>Sets:</strong><br>
+			{% for set in artists_instance.sets %}
+				<a href = {{"/sets/" + set.code}}> {{set.name}}</a>
+				<br>
+			{% endfor %}
+		</h4>
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

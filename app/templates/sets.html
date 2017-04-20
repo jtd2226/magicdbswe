@@ -92,7 +92,13 @@
 	<div class="container-fluid">
 		{% for set in sets %}
 			<div class="model-inst">
-				<img src={{set.symbol}} width="400" class="img-fluid">
+				<img src=
+				{% if set.symbol.lower() != "none" %}
+					{{ set.symbol }}
+				{% else %}
+					{{"https://tournamentcenter.eu/sites/default/files/mtg-logo.png"}}
+				{% endif %}
+				width="400" class="img-fluid">
 				<h4><a href={{"/sets/" + set.code}}>{{set.name}}</a></h4>
 			</div>
 		{% endfor %}
@@ -102,9 +108,9 @@
 		<nav>
 			<ul class="pagination">
 				{% if page > 1 %}
-					<li class="page-item"><a class="page-link" href={{prev_page(request.path)}}>Previous</a></li>
+					<li class="page-item"><a class="page-link" href={{get_page_url(request.path, page - 1)}}>Previous</a></li>
 				{% endif %}
-				<li class="page-item"><a class="page-link" href={{next_page(request.path)}}>Next</a></li>
+				<li class="page-item"><a class="page-link" href={{get_page_url(request.path, page + 1)}}>Next</a></li>
 			</ul>
 		</nav>
 	</div>

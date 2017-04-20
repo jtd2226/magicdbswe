@@ -168,6 +168,7 @@ class MSubtype(db.Model):
 
 	name = Name of the subtype
 	numCards = Number of existing cards of this subtype
+	numSets = Number of sets that contain this subtype
 	xcards = cards that are of this subtype
 	ssets = Sets that contain cards of this subtype
 	"""
@@ -176,12 +177,12 @@ class MSubtype(db.Model):
 
 	name = db.Column(db.String(MED_LEN), primary_key=True)
 	numCards = db.Column(db.Integer)
-	#cards = db.relationship('Card', backref='subtype', lazy='dynamic') 
+	numSets = db.Column(db.Integer) 
 
-	def __init__(self, name, numCards):
+	def __init__(self, name, numCards, numSets):
 		self.name = name
 		self.numCards = numCards
-		#self.cards = cards
+		self.numSets = numSets
 
 	def __repr__(self):
 		return '<MSubtype %r>' % self.name

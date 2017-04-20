@@ -9,11 +9,13 @@ A Database for Magic the Gathering Cards
 import config
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_restful import Resource, Api
 
 
 app = Flask(__name__)
 app.config.from_object(config)
 db = SQLAlchemy(app)
+api = Api(app)
 with app.app_context():
 	db.init_app(app)
 
@@ -188,6 +190,7 @@ class MSubtype(db.Model):
 
 	name = Name of the subtype
 	numCards = Number of existing cards of this subtype
+	numSets = Number of sets that contain this subtype
 	xcards = cards that are of this subtype
 	ssets = Sets that contain cards of this subtype
 	"""
@@ -196,9 +199,12 @@ class MSubtype(db.Model):
 
 	name = db.Column(db.String(MED_LEN), primary_key=True)
 	numCards = db.Column(db.Integer)
-	def __init__(self, name, numCards):
+	numSets = db.Column(db.Integer)
+
+	def __init__(self, name, numCards, numSets):
 		self.name = name
 		self.numCards = numCards
+		self.numSets = numSets
 
 	def __repr__(self):
 		return '<MSubtype %r>' % self.name

@@ -5,18 +5,28 @@
 <link rel="stylesheet" type="text/css" href="/static/css/instance.css">
 <div id="instance-main">
 	<h1><strong>{{cards_instance.name}}</strong></h1>
-	<img src={{cards_instance.art}}>
+	<img src=
+	{% if cards_instance.art.lower() != "none" %}
+		{{ cards_instance.art }}
+	{% else %}
+		{{"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"}}
+	{% endif %}
+	class="img-fluid">
 
 	<h4><strong>Text: </strong>{{cards_instance.text}}</h4>
 	<h4><strong>Type: </strong>{{cards_instance.mainType}}</h4>
-	<h4><strong>Subtype: </strong>{{cards_instance.subType.name}}</h4>
-	<h4><strong>Set Name: </strong>{{cards_instance.expansionSet}}</h4>
+	<h4><strong>Subtype: </strong><br>
+	{% for subType in cards_instance.subType %}
+		<a href = {{"/subtypes/" + subType.name}}> {{subType.name}} </a>
+	{% endfor %}
+	<h4>
+	<h4><strong>Set Name: </strong><a href ={{"/sets/" + cards_instance.expansionSet}}> {{cards_instance.expansionSet}}</a></h4>
 	<h4><strong>Mana Cost: </strong>{{cards_instance.manaCost}}</h4>
 	<h4><strong>Color: </strong>{{cards_instance.color}}</h4>
 	<h4><strong>Power: </strong>{{cards_instance.power}}</h4>
 	<h4><strong>Toughness: </strong>{{cards_instance.toughness}}</h4>
 	<h4><strong>Rarity: </strong>{{cards_instance.rarity}}</h4>
-	<h4><strong>Artist: </strong>{{cards_instance.artist}}</h4>
+	<h4><strong>Artist: </strong><a href={{"/artists&name=\"" ~ cards_instance.artist.replace(" ", "%20") ~ "\""}}>{{cards_instance.artist}}</a></h4>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

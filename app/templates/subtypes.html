@@ -93,7 +93,13 @@
 	<div class="container-fluid">
 		{% for subtype in subtypes %}
 			<div class="model-inst">
-				<img src={{imageUrls[subtype.name]}} class="img-fluid">
+				<img src=
+				{% if imageUrls[subtype.name] != "none" %}
+					{{ imageUrls[subtype.name] }}
+				{% else %}
+					{{"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"}}
+				{% endif %}
+				width="200" class="img-fluid">
 				<h4><a href={{"/subtypes/" + subtype.name}}>{{subtype.name}}</a></h4>
 			</div>
 		{% endfor %}
@@ -104,9 +110,9 @@
 		<nav>
 			<ul class="pagination">
 				{% if page > 1 %}
-					<li class="page-item"><a class="page-link" href={{prev_page(request.path)}}>Previous</a></li>
+					<li class="page-item"><a class="page-link" href={{get_page_url(request.path, page - 1)}}>Previous</a></li>
 				{% endif %}
-				<li class="page-item"><a class="page-link" href={{next_page(request.path)}}>Next</a></li>
+				<li class="page-item"><a class="page-link" href={{get_page_url(request.path, page + 1)}}>Next</a></li>
 			</ul>
 		</nav>
 	</div>

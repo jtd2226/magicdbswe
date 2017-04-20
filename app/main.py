@@ -3,43 +3,132 @@ import config
 import models
 
 from config import POSTS_PER_PAGE
-from models import db, app, MSubtype, MCard, MArtist, MSet
-from flask import Flask, render_template, request, Markup
+from models import db, app, MSubtype, MCard, MArtist, MSet, Resource, api
+from flask import Flask, render_template, request, Markup, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_paginate import Pagination # make sure to pyhton3 -m pip install
+from collections import OrderedDict
 
-#app = Flask(__name__)
+#-------
+#  API
+#-------
+class Api_Cards(Resource):
+    def get(self):
+        apidict = list()
+        for c in db.session.query(MCard).all():
+            apidict.append(c.cardId)
+        return jsonify(apidict)
 
-#?unix_socket=/cloudsql/tutorial-project-161522:us-central1:magicinstance
-#?host=/cloudsql/tutorial-project-161522:us-central1:magicinstance
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://magicdb:mtgdb@35.188.87.113:5432/magicdb'
+class Api_Card(Resource):
+    def get(self, id):
+        apicard = db.session.query(MCard).filter_by(cardId=id).first()
+        apilist = list()
+        for s in apicard.subType:
+            apilist.append(s.name)
 
-# with app.app_context():
-#         model = models
-#         model.init_app(app)
-def next_page(url):
-    url2 = ""
-    if url[-1] == '/':
-        url2 = url + '2'
-    elif url[-1].isalpha():
-        url2 = url + '/2'
-    elif not url[-1].isalpha() and url[-1] != ',':
-        num = int(url[-1])
-        print (num)
-        num += 1
-        print ("New Num ", num)
-        url2 = url.replace(url[-1], str(num))
-    return url2
+        return jsonify({"cardId": apicard.cardId, "name": apicard.name, "mainType": apicard.mainType,"subType": apilist, "text": apicard.text, "expansionSet": apicard.expansionSet,"manaCost": apicard.manaCost, "color": apicard.color, "power": apicard.power,"toughness": apicard.toughness,
+        "art": apicard.art,"rarity": apicard.rarity, "artist": apicard.artist})
 
-def prev_page(url):
-    url2 = ""
-    if not url[-1].isalpha() and url[-1] != '/' and  url[-1] != ',':
-        num = int(url[-1])
-        if num > 1:
-            num -= 1
-            url2 = url.replace(url[-1], str(num))
-    return url2
+
+api.add_resource(Api_Cards,'/api/cards')
+api.add_resource(Api_Card,'/api/cards/<string:id>')
+
+class Api_Sets(Resource):
+    def get(self):
+        apidict = list()
+        for s in db.session.query(MSet).all():
+            apidict.append(s.code)
+        return jsonify(apidict)
+
+class Api_Set(Resource):
+    def get(self, code):
+        apiset = db.session.query(MSet).filter_by(code=code).first()
+        cl = list()
+        for s in apiset.cards:
+            cl.append(s.cardId)
+        sl = list()
+        for s in apiset.subTypes:
+            sl.append(s.name)
+        al = list()
+        for s in apiset.xartists:
+            al.append(s.name)
+        return jsonify({"code": apiset.code, "name": apiset.name, "rDate": apiset.rDate,
+         "block": apiset.block, "cards": cl, "subTypes": sl, "numCards": apiset.numCards, "symbol": apiset.symbol, "artists": al})
+
+api.add_resource(Api_Sets, '/api/sets')
+api.add_resource(Api_Set, '/api/sets/<string:code>')
+
+class Api_Artists(Resource):
+    def get(self):
+        apilist = list()
+        for apiart in db.session.query(MArtist).all():
+            cl = [s.cardId for s in apiart.cards]
+            sl = [s.code for s in apiart.sets]
+            apilist.append({"name": apiart.name, "numCards": apiart.numCards, "numSets": apiart.numSets,
+            "cards": cl, "sets": sl})
+        return jsonify(apilist)
+
+api.add_resource(Api_Artists, '/api/artists')
+
+class Api_Subtypes(Resource):
+    def get(self):
+        apilist = list()
+        for apist in db.session.query(MSubtype).all():
+            cl = [s.cardId for s in apist.xcards]
+            sl = [s.code for s in apist.ssets]
+            apilist.append({"name": apist.name, "numCards": apist.numCards,
+            "numSets": apist.numSets, "cards": cl, "sets": sl})
+        return jsonify(apilist)
+
+api.add_resource(Api_Subtypes, '/api/subtypes')
+
+def get_page_url(curr_url, new_page):
+    try:
+        newrl = curr_url.split("/")
+        int(newrl[-1])
+        newrl[-1] = str(new_page)
+
+        return "/".join(newrl).replace(" ", "%20")
+    except ValueError:
+        return curr_url + "/" + str(new_page)
+
+def cmp_to_key(mycmp):
+    class K:
+        def __init__(self, obj, *args):
+            self.obj = obj
+        def __lt__(self, other):
+            return mycmp(self.obj, other.obj) < 0
+        def __gt__(self, other):
+            return mycmp(self.obj, other.obj) > 0
+        def __eq__(self, other):
+            return mycmp(self.obj, other.obj) == 0
+        def __le__(self, other):
+            return mycmp(self.obj, other.obj) <= 0
+        def __ge__(self, other):
+            return mycmp(self.obj, other.obj) >= 0
+        def __ne__(self, other):
+            return mycmp(self.obj, other.obj) != 0
+    return K
+
+def rarity_cmp(x, y):
+    return get_rarity_val(x) - get_rarity_val(y)
+
+def get_rarity_val(card):
+    rarity = card.rarity.lower()
+    if rarity == "mythic rare":
+        return 5
+    if rarity == "special":
+        return 4
+    if rarity == "rare":
+        return 3
+    if rarity == "uncommon":
+        return 2
+    if rarity == "common":
+        return 1
+    if rarity == "basic land":
+        return 0
+    return -1
 
 @app.route('/')
 @app.route('/index')
@@ -54,7 +143,8 @@ def about():
 @app.route('/run-tests')
 def run_tests():
     import subprocess
-    output = subprocess.run(['make','test', '-C', '../'], stdout = subprocess.PIPE).stdout.decode('utf-8')
+    subprocess.run(['make', 'clean'])
+    output = subprocess.run(['make'], stdout = subprocess.PIPE).stdout.decode('utf-8')
     output = "<br />".join(output.split("\n"))
     output = Markup(output)
     return render_template('run-tests.html', output = output, title = 'Run Tests')
@@ -64,7 +154,7 @@ def run_tests():
 @app.route('/cards/<int:page>')
 def cards(page=1):
     cards = db.session.query(MCard).paginate(page, POSTS_PER_PAGE, False).items
-    return render_template('cards.html',cards=cards, title = 'Cards', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('cards.html',cards=cards, title = 'Cards', page=page, get_page_url=get_page_url)
 
 @app.route('/cards/sort/<field>&<order>')
 @app.route('/cards/sort/<field>&<order>/<int:page>')
@@ -79,7 +169,7 @@ def cards_sort(field, order, page=1):
         elif field == "toughness" :
             cards = db.session.query(MCard).order_by(MCard.toughness).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "rarity" :
-            cards = db.session.query(MCard).order_by(MCard.rarity).paginate(page, POSTS_PER_PAGE, False).items
+            cards = sorted(db.session.query(MCard).order_by(MCard.rarity).all(), key=cmp_to_key(rarity_cmp))[(page - 1) * POSTS_PER_PAGE : page * POSTS_PER_PAGE]
         elif field == "color" :
             cards = db.session.query(MCard).order_by(MCard.color).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "type" :
@@ -94,13 +184,13 @@ def cards_sort(field, order, page=1):
         elif field == "toughness" :
             cards = db.session.query(MCard).order_by(MCard.toughness.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "rarity" :
-            cards = db.session.query(MCard).order_by(MCard.rarity.desc()).paginate(page, POSTS_PER_PAGE, False).items
+            cards = sorted(db.session.query(MCard).order_by(MCard.rarity).all(), key=cmp_to_key(rarity_cmp), reverse=True)[(page - 1) * POSTS_PER_PAGE : page * POSTS_PER_PAGE]
         elif field == "color" :
             cards = db.session.query(MCard).order_by(MCard.color.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "type" :
             cards = db.session.query(MCard).order_by(MCard.mainType.desc()).paginate(page, POSTS_PER_PAGE, False).items
 
-    return render_template('cards.html', cards=cards, title = 'Cards', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('cards.html', cards=cards, title = 'Cards', page=page, get_page_url=get_page_url)
 
 @app.route('/cards/filter/<manaCost>&<power>&<toughness>&<rarity>&<color>&<mainType>')
 @app.route('/cards/filter/<manaCost>&<power>&<toughness>&<rarity>&<color>&<mainType>/<int:page>')
@@ -122,10 +212,9 @@ def cards_filter(manaCost, power, toughness, rarity, color, mainType, page=1):
 
     cards = cards.paginate(page, POSTS_PER_PAGE, False).items
 
-    return render_template('cards.html', cards=cards, title = 'Cards', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('cards.html', cards=cards, title = 'Cards', page=page, get_page_url=get_page_url)
 
 @app.route('/cards/<cardId>')
-#@app.route('/cards/<cardId>/<int:page>')
 def cards_instance(cardId):
     cards_instance = db.session.query(MCard).filter_by(cardId=cardId).first()
     return render_template('cards-instance.html',cards_instance=cards_instance, title = cards_instance.name)
@@ -136,22 +225,53 @@ def cards_instance(cardId):
 @app.route('/artists/<int:page>')
 def artists(page=1):
     artists = db.session.query(MArtist).paginate(page, POSTS_PER_PAGE, False).items
-    return render_template('artists.html', artists=artists, title = 'Artists', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('artists.html', artists=artists, title = 'Artists', page=page, get_page_url=get_page_url)
+
+
+@app.route('/artists/filter/<numCard>&<numSets>')
+@app.route('/artists/filter/<numCard>&<numSets>/<int:page>')
+def artists_filter(numCard, numSets, page=1):
+    artists = db.session.query(MArtist);
+    if numCard != "NO-NUMCARD":
+        artists = artists.filter_by(numCards=numCard)
+    if numSets != "NO-NUMSETS":
+        artists = artists.filter_by(numSets=numSets)
+
+    artists = artists.paginate(page, POSTS_PER_PAGE, False).items
+
+    return render_template('artists.html', artists=artists, title = 'Artists', page=page, get_page_url=get_page_url)
+
+@app.route('/artists/sort/<field>&<order>')
+@app.route('/artists/sort/<field>&<order>/<int:page>')
+def artists_sort(field, order, page=1):
+    if "desc" in order : # Descending Order
+        if field == "name" :
+            artists = db.session.query(MArtist).order_by(MArtist.name).paginate(page, POSTS_PER_PAGE, False).items
+        elif field == "numCards" :
+            artists = db.session.query(MArtist).order_by(MArtist.numCards).paginate(page, POSTS_PER_PAGE, False).items
+        elif field == "numSets" :
+            artists = db.session.query(MArtist).order_by(MArtist.numSets).paginate(page, POSTS_PER_PAGE, False).items
+    else : # Ascending Order
+        if field == "name" :
+            artists = db.session.query(MArtist).order_by(MArtist.name.desc()).paginate(page, POSTS_PER_PAGE, False).items
+        elif field == "numCards" :
+            artists = db.session.query(MArtist).order_by(MArtist.numCards.desc()).paginate(page, POSTS_PER_PAGE, False).items
+        elif field == "numSets" :
+            artists = db.session.query(MArtist).order_by(MArtist.numSets.desc()).paginate(page, POSTS_PER_PAGE, False).items
+
+    return render_template('artists.html', artists=artists, title = 'Artists', page=page, get_page_url=get_page_url)
 
 @app.route('/artists&name="<name>"')
 def artists_instance(name):
     artists_instance = db.session.query(MArtist).filter_by(name=name).first()
     return render_template('artists-instance.html',artists_instance=artists_instance, title = name)
 
-
-
 #--------SETS--------------
 @app.route('/sets')
 @app.route('/sets/<int:page>')
 def sets(page=1):
-    #sets = db.session.query(MSet).all()
     sets = db.session.query(MSet).paginate(page, POSTS_PER_PAGE, False).items
-    return render_template('sets.html',sets=sets, title = 'Sets', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('sets.html',sets=sets, title = 'Sets', page=page, get_page_url=get_page_url)
 
 @app.route('/sets/filter/<relYear>&<numCard>')
 @app.route('/sets/filter/<relYear>&<numCard>/<int:page>')
@@ -164,7 +284,7 @@ def sets_filter(relYear, numCard, page=1):
 
     sets = sets.paginate(page, POSTS_PER_PAGE, False).items
 
-    return render_template('sets.html', sets=sets, title = 'Sets', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('sets.html', sets=sets, title = 'Sets', page=page, get_page_url=get_page_url)
 
 @app.route('/sets/sort/<field>&<order>')
 @app.route('/sets/sort/<field>&<order>/<int:page>')
@@ -188,7 +308,7 @@ def sets_sort(field, order, page=1):
         elif field == "numCards" :
             sets = db.session.query(MSet).order_by(MSet.numCards.desc()).paginate(page, POSTS_PER_PAGE, False).items
 
-    return render_template('sets.html', sets=sets, title = 'Sets', page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('sets.html', sets=sets, title = 'Sets', page=page, get_page_url=get_page_url)
 
 @app.route('/sets/<code>')
 def sets_instance(code):
@@ -200,14 +320,9 @@ def sets_instance(code):
 
 #-------SUBTYPES-----------
 # @app.route('/', methods=['GET', 'POST'])
-@app.route('/subtypes') #included for pagination
+@app.route('/subtypes')
 @app.route('/subtypes/<int:page>') #included for pagination
-# @app.route('/subtypes')
-# @app.route('/subtypes/')
-@app.route('/subtypes/filter')
-@app.route('/subtypes/sort')
 def subtypes(page = 1):
-    #subtypes = db.session.query(MSubtype).all()
     subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items #included for pagination
     #Get Images
     subtypeImageUrls = {}
@@ -217,33 +332,25 @@ def subtypes(page = 1):
         else:
             subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, get_page_url=get_page_url)
 
 @app.route('/subtypes/sort/<field>&<order>')
 @app.route('/subtypes/sort/<field>&<order>/<int:page>')
 def subtypes_sort(field, order, page=1):
     if "desc" in order : # Descending Order
         if field == "name" :
-            #subtypes = db.session.query(MSubtype).all()
             subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numCards" :
-            #subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).all()
             subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numSets" :
-            #subtypes = db.session.query(MSubtype).all
-            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
-            subtypes.sort(key=lambda x: len(x.ssets.all()))
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.numSets).paginate(page, POSTS_PER_PAGE, False).items
     else : # Ascending Order
         if field == "name" :
-            #subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).all()
             subtypes = db.session.query(MSubtype).order_by(MSubtype.name.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numCards" :
-            #subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).all()
             subtypes = db.session.query(MSubtype).order_by(MSubtype.numCards.desc()).paginate(page, POSTS_PER_PAGE, False).items
         elif field == "numSets" :
-            #subtypes = db.session.query(MSubtype).all()
-            subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
-            subtypes.sort(key=lambda x: len(x.ssets.all()), reverse=True)
+            subtypes = db.session.query(MSubtype).order_by(MSubtype.numSets.desc()).paginate(page, POSTS_PER_PAGE, False).items
 
     subtypeImageUrls = {}
     for subtype in subtypes:
@@ -252,7 +359,7 @@ def subtypes_sort(field, order, page=1):
         else:
             subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, get_page_url=get_page_url)
 
 @app.route('/subtypes/filter/<numCards>&<numSets>&<setName>')
 @app.route('/subtypes/filter/<numCards>&<numSets>&<setName>/<int:page>')
@@ -260,7 +367,7 @@ def subtypes_filter(numCards, numSets, setName, page=1):
     subtypes = None
     intNumSets = 0
 
-    #VAriables
+    #Variables
     try: #Verify that a real number is passed
         int(numCards)
     except ValueError:
@@ -275,29 +382,24 @@ def subtypes_filter(numCards, numSets, setName, page=1):
 
 
     if numCards != "NO-NUMCARD": #NumCard Filter
-        #subtypes = db.session.query(MSubtype).filter_by(numCards=numCards).all()
         subtypes = db.session.query(MSubtype).filter_by(numCards=numCards).paginate(page, POSTS_PER_PAGE, False).items
     if numSets != "NO-NUMSETS": #NumSet Filter
         if numCards == "NO-NUMCARD":
-            #subtypes = db.session.query(MSubtype).all()
             subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
         newsub = []
         for subtype in subtypes:
-            #curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
             curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.paginate(page, POSTS_PER_PAGE, False).items
             if len(curr_sets) == intNumSets:
                 newsub.append(subtype)
         subtypes = newsub
     if setName != "NO-SETNAME": #SetName Filter
         if numCards == "NO-NUMCARD" and numSets == "NO-NUMSETS":
-            #subtypes = db.session.query(MSubtype).all()
             subtypes = db.session.query(MSubtype).paginate(page, POSTS_PER_PAGE, False).items
 
         print(str(len(subtypes)))
         for subtype in subtypes:
             isInSets = False
             print(subtype.name)
-            #curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.all()
             curr_sets = db.session.query(MSubtype).filter_by(name=subtype.name).first().ssets.paginate(page, POSTS_PER_PAGE, False).items
             for cset in curr_sets:
                 if cset.code == setName :
@@ -313,7 +415,7 @@ def subtypes_filter(numCards, numSets, setName, page=1):
         else:
             subtypeImageUrls[subtype.name] = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"
 
-    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, next_page=next_page, prev_page=prev_page)
+    return render_template('subtypes.html', subtypes=subtypes, title = 'Subtypes', imageUrls=subtypeImageUrls, page=page, get_page_url=get_page_url)
 
 @app.route('/subtypes/<name>')
 def subtypes_instance(name):
@@ -331,6 +433,65 @@ def subtypes_instance(name):
 def test():
     return render_template('cool.html')
 
+#-------SEARCH-----------
+@app.route('/search/cards/<searchText>')
+@app.route('/search/cards/<searchText>/<int:page>')
+@app.route('/search/<searchText>')
+@app.route('/search/<searchText>/<int:page>')
+def card_search(searchText, page=1):
+    cards_tracker = {}
+    original_cards = db.session.query(MCard);
+
+    cards_filter_name = original_cards.filter_by(name=searchText)
+    cards_filter_type = original_cards.filter_by(mainType=searchText)
+
+    for card in cards_filter_name:
+        cards_tracker[card.cardId] = card
+
+    for card in cards_filter_type:
+        cards_tracker[card.cardId] = card
+
+    #if page * POSTS_PER_PAGE 
+    cards_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
+    cards_hi_index = min(len(cards_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
+
+    
+    
+    cards_tracker = OrderedDict(sorted(cards_tracker.items()))
+    cards = list(cards_tracker.values())[cards_lo_index:cards_hi_index]
+
+    hasNextPage = (cards_hi_index < len(cards_tracker))
+
+    return render_template('search-cards.html', searchText=searchText, cards = cards, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
+
+#-------SEARCH-----------
+@app.route('/search/sets/<searchText>')
+@app.route('/search/sets/<searchText>/<int:page>')
+def set_search(searchText, page=1):
+    sets_tracker = {}
+    original_sets = db.session.query(MSet);
+
+    sets_filter_code = original_sets.filter_by(code=searchText)
+    sets_filter_name = original_sets.filter_by(name=searchText)
+
+    for curr_set in sets_filter_code:
+        sets_tracker[curr_set.code] = curr_set
+
+    for curr_set in sets_filter_name:
+        sets_tracker[curr_set.code] = curr_set
+
+    #if page * POSTS_PER_PAGE 
+    sets_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
+    sets_hi_index = min(len(sets_tracker), page * POSTS_PER_PAGE) #The high index is exclusive!
+
+    
+    
+    sets_tracker = OrderedDict(sorted(sets_tracker.items()))
+    sets = list(sets_tracker.values())[cards_lo_index:cards_hi_index]
+
+    hasNextPage = (cards_hi_index < len(cards_tracker))
+
+    return render_template('search-sets.html', searchText=searchText, sets = sets, get_page_url=get_page_url, page=page, hasNextPage = hasNextPage, title = 'Search')
 
 @app.errorhandler(500)
 def server_error(e):

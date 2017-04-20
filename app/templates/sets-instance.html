@@ -5,7 +5,13 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/instance.css">
 	<div id="instance-main">
 		<h1>{{sets_instance.name}}</h1>
-		<img src={{sets_instance.symbol}} class="img-fluid">
+		<img src=
+		{% if sets_instance.symbol.lower() != "none" %}
+			{{ sets_instance.symbol }}
+		{% else %}
+			{{"https://tournamentcenter.eu/sites/default/files/mtg-logo.png"}}
+		{% endif %}
+		width="400" class="img-fluid">
 
 		<h4><strong>Code: </strong>{{sets_instance.code}}</h4>
 		<h4><strong>Release Date: </strong>{{sets_instance.rDate}}</h4>
@@ -16,7 +22,7 @@
 			<strong>Subtypes:</strong><br>
 			{% if sets_instance.cards.all() %}
 				{% for subtype in sets_instance.subTypes %}
-					{{subtype.name}}
+					<a href = {{"/subtypes/" + subtype.name}}> {{subtype.name}} </a>
 					<br>
 				{% endfor %}
 			{% endif %}
@@ -26,7 +32,7 @@
 			<strong>Cards:</strong><br>
 			{% if sets_instance.cards.all() %}
 				{% for card in sets_instance.cards.all() %}
-					{{card.name}}
+					<a href = {{"/cards/" + card.cardId}}> {{card.name}} </a>
 					<br>
 				{% endfor %}
 			{% endif %}
@@ -35,7 +41,7 @@
 
 			<strong>Artists:</strong><br>
 			{% for artist in sets_instance.xartists.all() %}
-				{{artist.name}}
+				<a href={{"/artists&name=\"" ~ artist.name.replace(" ", "%20") ~ "\""}}>{{artist.name}}</a>
 				<br>
 			{% endfor %}
 		</h4>

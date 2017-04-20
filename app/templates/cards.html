@@ -103,7 +103,13 @@
 	<div class="container-fluid">
 		{% for card in cards %}
 			<div class="model-inst">
-				<img src={{card.art}} class="img-fluid">
+				<img src=
+				{% if card.art.lower() != "none" %}
+					{{ card.art }}
+				{% else %}
+					{{"http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=253575&type=card"}}
+				{% endif %}
+				width="200" class="img-fluid">
 				<h4><a href={{"/cards/" + card.cardId}}>{{card.name}}</a></h4>
 			</div>
 		{% endfor %}
@@ -113,20 +119,9 @@
 		<nav>
 			<ul class="pagination">
 				{% if page > 1 %}
-					<li class="page-item"><a class="page-link" href={{"/cards/" ~ (page - 1)}}>Previous</a></li>
+					<li class="page-item"><a class="page-link" href={{get_page_url(request.path, page - 1)}}>Previous</a></li>
 				{% endif %}
-				<li class="page-item"><a class="page-link" href={{"/cards/" ~ (page + 1)}}>Next</a></li>
-			</ul>
-		</nav>
-	</div>
-
-	<div id="mdb-pagination">
-		<nav>
-			<ul class="pagination">
-				{% if page > 1 %}
-					<li class="page-item"><a class="page-link" href={{prev_page(request.path)}}>Previous</a></li>
-				{% endif %}
-				<li class="page-item"><a class="page-link" href={{next_page(request.path)}}>Next</a></li>
+				<li class="page-item"><a class="page-link" href={{get_page_url(request.path, page + 1)}}>Next</a></li>
 			</ul>
 		</nav>
 	</div>
