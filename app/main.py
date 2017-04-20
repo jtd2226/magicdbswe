@@ -1,6 +1,7 @@
 import logging
 import config
 import models
+import random
 
 from config import POSTS_PER_PAGE
 from models import db, app, MSubtype, MCard, MArtist, MSet, Resource, api
@@ -326,8 +327,9 @@ def subtypes(page = 1):
     #Get Images
     subtypeImageUrls = {}
     for subtype in subtypes:
-        if db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first():
-            subtypeImageUrls[subtype.name] = db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.first().art
+        exCard = random.choice(db.session.query(MSubtype).filter_by(name=subtype.name).first().xcards.all())
+        if exCard:
+            subtypeImageUrls[subtype.name] = exCard.art
         else:
             subtypeImageUrls[subtype.name] = "https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"
 
@@ -446,13 +448,17 @@ def card_search(orVal, searchText, page=1):
     original_cards = db.session.query(MCard);
     if "and" in orVal.lower():
         for c in original_cards:
-                if (searchText.lower() in c.name.lower()) or (searchText.lower() in c.mainType.lower()):
-                    cards_tracker[c.cardId] = c
+            test = True
+            for word in searchText.lower().split():
+                if not((word in c.name.lower()) or (word in c.mainType.lower()) or (word in c.text.lower())):
+                    test = False
+            if test:
+                cards_tracker[c.cardId] = c
     else:
         for c in original_cards:
             for word in searchText.lower().split():
-                    if (word in c.name.lower()) or (word in c.mainType.lower()):
-                        cards_tracker[c.cardId] = c
+                if (word in c.name.lower()) or (word in c.mainType.lower()) or (word in c.text.lower()):
+                    cards_tracker[c.cardId] = c
 
 
     cards_lo_index = max(0, (page - 1) * POSTS_PER_PAGE) #The low index is inclusive!
@@ -473,20 +479,11 @@ def set_search(orVal, searchText, page=1):
 
     if "and" in orVal.lower():
         for s in original_sets:
-            switch = True
+            test = True
             for word in searchText.lower().split():
-                if word not in s.name.lower():
-                    switch = False
-                    break
-            if switch:
-                sets_tracker[s.code] = s
-
-            switch = True
-            for word in searchText.lower().split():
-                if word not in s.code.lower():
-                    switch = False
-                    break
-            if switch:    
+                if not((word in s.name.lower()) or (word in s.code.lower())):
+                    test = False
+            if test:
                 sets_tracker[s.code] = s
     else:
         for s in original_sets:
@@ -512,7 +509,11 @@ def subtype_search(orVal, searchText, page=1):
 
     if "and" in orVal.lower():
         for s in original_subtypes:
-            if (searchText.lower() in s.name.lower()):
+            test = True
+            for word in searchText.lower().split():
+                if not(word in s.name.lower()):
+                    test = False
+            if test:
                 subtypes_tracker[s.name] = s
     else:
         for s in original_subtypes:
@@ -545,7 +546,11 @@ def artist_search(orVal, searchText, page=1):
 
     if "and" in orVal.lower():
         for s in original_artists:
-            if (searchText.lower() in s.name.lower()):
+            test = True
+            for word in searchText.lower().split():
+                if not(word in s.name.lower()):
+                    test = False
+            if test:
                 artists_tracker[s.name] = s
     else:
         for s in original_artists:
