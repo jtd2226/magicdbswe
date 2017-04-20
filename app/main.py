@@ -450,14 +450,14 @@ def card_search(orVal, searchText, page=1):
         test = True
         for c in original_cards:
             for word in searchText.lower().split():
-                    if not((word in c.name.lower()) or (word in c.mainType.lower())):
-                        test = False
+                if not((word in c.name.lower()) or (word in c.mainType.lower()) or (word in c.text.lower())):
+                    test = False
             if test:
                 cards_tracker[c.cardId] = c
     else:
         for c in original_cards:
             for word in searchText.lower().split():
-                    if (word in c.name.lower()) or (word in c.mainType.lower()):
+                    if (word in c.name.lower()) or (word in c.mainType.lower()) or (word in c.text.lower()):
                         cards_tracker[c.cardId] = c
 
 
