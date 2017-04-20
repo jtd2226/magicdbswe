@@ -92,8 +92,9 @@
 		{% for artist in artists %}
 			<div class="model-inst">
 				<img src=
-				{% if artist.cards.first().art.lower() != "none" %}
-					{{ artist.cards.first().art }}
+				{% set exCard = (artist.cards.all()|random).art %}
+				{% if exCard.lower() != "none" %}
+					{{ exCard }}
 				{% else %}
 					{{"https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"}}
 				{% endif %}
