@@ -17,19 +17,22 @@
 		<h4><strong>Release Date: </strong>{{sets_instance.rDate}}</h4>
 		<h4><strong>Block: </strong>{{sets_instance.block}}</h4>
 		<h4><strong>Number of Cards: </strong>{{sets_instance.numCards}}</h4>
-		<h4>
-
-			<strong>Subtypes:</strong><br>
-			{% if sets_instance.cards.all() %}
+		
+		<h3><strong>Subtypes:</strong><br></h3>
 				{% for subtype in sets_instance.subTypes %}
-					<a href = {{"/subtypes/" + subtype.name}}> {{subtype.name}} </a>
-					<br>
+					<div class="model-inst">
+						<img src=
+						{% if subtype.xcards.first().art.lower() != "none" %}
+							{{ subtype.xcards.first().art.lower() }}
+						{% else %}
+							{{"https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"}}
+						{% endif %}
+						width="150" class="img-fluid">
+						<h4><a href={{"/subtypes/" + subtype.name}}>{{subtype.name}}</a></h4>
+					</div>
 				{% endfor %}
-			{% endif %}
-		</h4>
-		<h4>
-
-			<strong>Cards:</strong><br>
+		
+		<h1><strong>Cards:</strong><br></h1>
 			{% if sets_instance.cards.all() %}
 				<div class="container-fluid">
 					{% for card in sets_instance.cards.all() %}
@@ -40,21 +43,18 @@
 							{% else %}
 								{{"https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"}}
 							{% endif %}
-							width="75" class="img-fluid">
+							width="150" class="img-fluid">
 							<h4><a href={{"/cards/" + card.cardId}}>{{card.name}}</a></h4>
 						</div>
 					{% endfor %}
 				</div>
 			{% endif %}
-		</h4>
-		<h4>
-
-			<strong>Artists:</strong><br>
+		<h3><strong>Artists:</strong><br>
 			{% for artist in sets_instance.xartists.all() %}
 				<a href={{"/artists&name=\"" ~ artist.name.replace(" ", "%20") ~ "\""}}>{{artist.name}}</a>
 				<br>
 			{% endfor %}
-		</h4>
+		</h3>
 	</div>
 	<!--<script>
 				$("#instance-main").append("<h4><strong>Artists: </strong>" + getUrlParams()["name"].substring(3, getUrlParams()["name"].length - 3).replace("%20", " ") + "</h4>");
