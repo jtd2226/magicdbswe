@@ -13,21 +13,32 @@
 		{% endif %}
 		class="img-fluid">
 		<h4><strong>Number of Cards: </strong>{{subtypes_instance.numCards}}</h4>
-		<h4>
-
-			<strong>Sets:</strong><br>
-			{% for set in subtypes_instance.ssets.all() %}
-				<a href = {{"/sets/" + set.code}}> {{set.name}}</a>
-				<br>
-			{% endfor %}
-		</h4>
-		<h4>
-
-			<strong>Cards:</strong><br>
-			{% for card in subtypes_instance.xcards.all() %}
-				<a href = {{"/cards/" + card.cardId}}> {{card.name}} </a>
-				<br>
-			{% endfor %}
+		<h3><strong>Sets:</strong><br></h3>
+		{% for set in subtypes_instance.ssets.all() %}
+			<div class="model-inst">
+				<img src=
+				{% if set.symbol.lower() != "none" %}
+					{{ set.symbol }}
+				{% else %}
+					{{"https://tournamentcenter.eu/sites/default/files/mtg-logo.png"}}
+				{% endif %}
+				width="250" class="img-fluid">
+				<h4><a href={{"/sets/" + set.code}}>{{set.name}}</a></h4>
+			</div>
+		{% endfor %}
+		<h1><strong>Cards:</strong><br></h1>
+		{% for card in subtypes_instance.xcards.all() %}
+			<div class="model-inst">
+				<img src=
+				{% if card.art.lower() != "none" %}
+					{{ card.art }}
+				{% else %}
+					{{"https://upload.wikimedia.org/wikipedia/en/a/aa/Magic_the_gathering-card_back.jpg"}}
+				{% endif %}
+				width="150" class="img-fluid">
+				<h4><a href={{"/cards/" + card.cardId}}>{{card.name}}</a></h4>
+			</div>
+		{% endfor %}
 		</h4>
 	</div>
 {% endblock %}
