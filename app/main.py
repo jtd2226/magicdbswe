@@ -157,15 +157,13 @@ def flare():
 @app.route('/run-tests')
 def run_tests():
     import subprocess
-    ls = subprocess.run(['ls'], stdout = subprocess.PIPE).stdout.decode('utf-8')
-    ls = "<br />".join(ls.split("\n"))
-    prev = subprocess.run(['ls', '../'], stdout = subprocess.PIPE).stdout.decode('utf-8')
-    prev = "<br />".join(prev.split("\n"))
-    pwd = subprocess.run(['pwd'], stdout = subprocess.PIPE).stdout.decode('utf-8')
-    pwd = "<br />".join(pwd.split("\n"))
-    output = subprocess.run(['make'], stdout = subprocess.PIPE, stderr = subprocess.STDOUT).stdout.decode('utf-8')
+    subprocess.call("coverage run    --branch TestMagic.py > TestMagic.out 2>&1", shell=True)
+    subprocess.call("coverage report -m --include=\"TestMagic.py\" >> TestMagic.out", shell=True)
+    output = ""
+    with open("TestMagic.out", "r") as f:
+        output = f.read()
     output = "<br />".join(output.split("\n"))
-    output = Markup(pwd) + Markup(ls) + Markup(prev) + Markup(output) 
+    output = Markup(output) 
     return render_template('run-tests.html', output = output, title = 'Run Tests')
 
 #--------CARDS------------
