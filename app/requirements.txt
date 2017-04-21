@@ -2,6 +2,7 @@ Flask==0.12
 Flask-SQLAlchemy==2.2
 Flask-paginate==0.4.5
 Flask-restful==0.3.5
+Flask-cors==3.0.2
 gunicorn==19.7.0
 PyMySQL==0.7.10
 psycopg2==2.7.1
