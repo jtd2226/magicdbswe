@@ -4,7 +4,8 @@ A Database for Magic the Gathering Cards
 # pylint:disable=invalid-name,line-too-long,no-member
 # pylint:disable=too-few-public-methods,locally-disabled, mixed-indentation, bad-continuation
 # pylint:disable=mixed-indentation, bad-continuation, redefined-outer-name, undefined-variable
-# pylint:disable=too-many-instance-attributes, too-many-arguments, unused-import
+# pylint:disable=too-many-instance-attributes, too-many-arguments,
+# unused-import
 
 import config
 from flask import Flask
