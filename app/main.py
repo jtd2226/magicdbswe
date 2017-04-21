@@ -157,15 +157,13 @@ def flare():
 @app.route('/run-tests')
 def run_tests():
     import subprocess
-    ls = subprocess.run(['ls'], stdout = subprocess.PIPE).stdout.decode('utf-8')
-    ls = "<br />".join(ls.split("\n"))
-    prev = subprocess.run(['ls', '../'], stdout = subprocess.PIPE).stdout.decode('utf-8')
-    prev = "<br />".join(prev.split("\n"))
-    pwd = subprocess.run(['pwd'], stdout = subprocess.PIPE).stdout.decode('utf-8')
-    pwd = "<br />".join(pwd.split("\n"))
-    output = subprocess.run(['make'], stdout = subprocess.PIPE, stderr = subprocess.STDOUT).stdout.decode('utf-8')
+    subprocess.call("coverage run    --branch TestMagic.py > TestMagic.out 2>&1", shell=True)
+    subprocess.call("coverage report -m --include=\"TestMagic.py\" >> TestMagic.out", shell=True)
+    output = ""
+    with open("TestMagic.out", "r") as f:
+        output = f.read()
     output = "<br />".join(output.split("\n"))
-    output = Markup(pwd) + Markup(ls) + Markup(prev) + Markup(output) 
+    output = Markup(output) 
     return render_template('run-tests.html', output = output, title = 'Run Tests')
 
 #--------CARDS------------
@@ -453,61 +451,61 @@ def test():
     
 @app.route('/visualization')
 def visualization():
-    purl = "http://ggnoswe.me/api/platforms/"
-    surl = "http://ggnoswe.me/api/studios/"
-    gurl = "http://ggnoswe.me/api/games/"
+    # purl = "http://ggnoswe.me/api/platforms/"
+    # surl = "http://ggnoswe.me/api/studios/"
+    # gurl = "http://ggnoswe.me/api/games/"
 
-    platforms = [
-      {
-        "id": 41, 
-        "name": "Wii U"
-      },    
-      {
-        "id": 37, 
-        "name": "Nintendo 3DS"
-      }, 
-      {
-        "id": 48, 
-        "name": "PlayStation 4"
-      }, 
-      {
-        "id": 49, 
-        "name": "Xbox One"
-      }, 
-      {
-        "id": 130, 
-        "name": "Nintendo Switch"
-      },
-      {
-        "id": 12, 
-        "name": "Xbox 360"
-      }, 
-      {
-        "id": 9, 
-        "name": "PlayStation 3"
-      }
-    ]
+    # platforms = [
+    #   {
+    #     "id": 41, 
+    #     "name": "Wii U"
+    #   },    
+    #   {
+    #     "id": 37, 
+    #     "name": "Nintendo 3DS"
+    #   }, 
+    #   {
+    #     "id": 48, 
+    #     "name": "PlayStation 4"
+    #   }, 
+    #   {
+    #     "id": 49, 
+    #     "name": "Xbox One"
+    #   }, 
+    #   {
+    #     "id": 130, 
+    #     "name": "Nintendo Switch"
+    #   },
+    #   {
+    #     "id": 12, 
+    #     "name": "Xbox 360"
+    #   }, 
+    #   {
+    #     "id": 9, 
+    #     "name": "PlayStation 3"
+    #   }
+    # ]
 
-    root = {"name": "flare",
-            "description": "flare",
-            "children": []}
+    # root = {"name": "flare",
+    #         "description": "flare",
+    #         "children": []}
 
-    for p in platforms:
-        cp = json.loads(urllib.request.urlopen(purl + str(p["id"])).read().decode())
-        d = {}
-        d["name"] = p["name"]
-        d["description"] = cp["summary"]
-        d["children"] = []
-        count = 0;
-        for s in cp["studios"]:
-            cs = json.loads(urllib.request.urlopen(surl + str(s)).read().decode())
-            d["children"].append({"name": cs["name"],"description": cs["description"], "size": len(cs["games"])})
-            count = count + 1 
+    # for p in platforms:
+    #     cp = json.loads(urllib.request.urlopen(purl + str(p["id"])).read().decode())
+    #     d = {}
+    #     d["name"] = p["name"]
+    #     d["description"] = cp["summary"]
+    #     d["children"] = []
+    #     count = 0;
+    #     for s in cp["studios"]:
+    #         cs = json.loads(urllib.request.urlopen(surl + str(s)).read().decode())
+    #         d["children"].append({"name": cs["name"],"description": cs["description"], "size": len(cs["games"])})
+    #         count = count + 1 
 
-        root["children"].append(d)
+    #     root["children"].append(d)
 
-    with open('templates/flare.json', 'w') as outfile:
-        json.dump(root, outfile)
+    # with open('templates/flare.json', 'w') as outfile:
+    #     json.dump(root, outfile)
     return render_template('visualization.html', title = 'Visualization of ggnoswe')
 
 #-------SEARCH-----------

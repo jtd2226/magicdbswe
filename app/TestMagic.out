@@ -1,8 +1,8 @@
 ..............
 ----------------------------------------------------------------------
-Ran 14 tests in 7.430s
+Ran 14 tests in 5.824s
 
 OK
-Name               Stmts   Miss Branch BrPart  Cover   Missing
---------------------------------------------------------------
-app/TestMagic.py     256      1      0      0    99%   28
+Name           Stmts   Miss Branch BrPart  Cover   Missing
+----------------------------------------------------------
+TestMagic.py     256      1      0      0    99%   28
