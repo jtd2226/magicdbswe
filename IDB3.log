@@ -1,3 +1,23 @@
+commit d14423eabe14f98a9fbdec33007500ec135336ea
+Merge: 543eedb 5ce1523
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Tue Apr 25 22:21:49 2017 -0500
+
+    merge
+
+commit 5ce15233b3c0414a59d1ffb1188b4de915575eb8
+Merge: 205ad81 584e4cf
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Tue Apr 25 22:16:42 2017 -0500
+
+    Merge branch 'dev' of https://github.com/jtd2226/magicdbswe into dev
+
+commit 205ad81ca46654367575b8e4a3baf9dcb232a696
+Author: jtd2226 <joeldavi@utexas.edu>
+Date:   Tue Apr 25 22:16:11 2017 -0500
+
+    dynamic calls for visualization
+
 commit 543eedb8498293c524c035a72cc4c643b577fd95
 Author: Mfam22 <m.martinez1120@gmail.com>
 Date:   Thu Apr 20 20:35:09 2017 -0500
