@@ -1,0 +1,86 @@
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+var purl = "http://ggnoswe.me/api/platforms/";
+var surl = "http://ggnoswe.me/api/studios/";
+var gurl = "http://ggnoswe.me/api/games/";
+
+var root = {"name": "flare",
+             "description": "flare",
+             "children": []};
+
+var platforms = [
+   {
+     "id": 41, 
+     "name": "Wii U"
+   },    
+   {
+     "id": 37, 
+     "name": "Nintendo 3DS"
+   }, 
+   {
+     "id": 48, 
+     "name": "PlayStation 4"
+   }, 
+   {
+     "id": 49, 
+     "name": "Xbox One"
+   }, 
+   {
+     "id": 130, 
+     "name": "Nintendo Switch"
+   },
+   {
+     "id": 12, 
+     "name": "Xbox 360"
+   }, 
+   {
+     "id": 9, 
+     "name": "PlayStation 3"
+   }
+ ];
+
+var request_two = function(id, td) {
+	var request = new XMLHttpRequest();
+	request.open('GET', surl + id, false);
+	request.send(null);
+
+	var cs = JSON.parse(request.responseText);
+	if (request.status === 200) {
+		//document.write("Name:" + cs["name"] + "    ");
+		//document.write("Description:" + cs["description"] + "    ");
+		//document.write("Size:" + cs["games"].length + "    ");
+		td.children.push({"name": cs["name"],"description": cs["description"], "size": cs["games"].length});
+	}
+}
+
+var request_one = function(){
+	platforms.forEach(function(plat) {
+		var cp; 
+		var td = {};
+		var request = new XMLHttpRequest();
+		request.open('GET', purl + plat["id"], false);
+		request.send(null);
+
+		cp = JSON.parse(request.responseText);
+		if (request.status === 200) {
+			td["name"] = plat["name"];
+			td["description"] = cp["summary"];
+			td["children"] = [];
+			cp["studios"].forEach(function(stud) {
+				request_two(stud, td);
+			})
+			root.children.push(td); 
+		}
+	})
+}
+
+request_one();
+
+flare = JSON.stringify(root);
+
+document.write(flare);
+
+// JSON.parse(flare, function(root) {
+//   document.write(JSON.stringify(root));
+// })
+</script>

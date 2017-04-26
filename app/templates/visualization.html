@@ -15,7 +15,31 @@
   collected from <a href = "http://ggnoswe.me">ggnoswe.me</a>
 </h4></center>
 
+<style>
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+  position: center;
+}
 
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center; /* To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
+  color: white;
+}
+</style>
+
+<div id="loading">
+  <center>
+    <h1>Loading ...</h1>
+  </center>
+</div>
+<div id="myProgress">
+  <div id="myBar"></div>
+</div>
 <style>
 
 body {
@@ -44,9 +68,38 @@ html {
   
 }
 
+<script>
+
+function move_p_Bar() {
+  var elem = document.getElementById("myBar");   
+  var width = 0;
+  var id = setInterval(frame, 20);
+  function frame() {
+    if (width >= 100) {
+      width = 0;
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+    }
+  }
+}
+
+move_p_Bar();
+
+</script>
+
 </style>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
+
+var bar_width = 0;
+
+function del_p_Bar() {
+  var elem = document.getElementById("myBar");
+  var load = document.getElementById("loading");
+  elem.style.display = "none";
+  load.style.display = "none";
+}
 
 var margin = {top: 500, right: 480, bottom: 350, left: 480},
     radius = Math.min(margin.top, margin.right, margin.bottom, margin.left) - 10;
@@ -120,9 +173,77 @@ function mouseMoveArc (d) {
             .style("left", (d3.event.pageX+10)+"px");
 }
 
-var root_ = null;
-d3.json("flare", function(error, root) {
-  if (error) return console.warn(error);
+var purl = "http://ggnoswe.me/api/platforms/";
+var surl = "http://ggnoswe.me/api/studios/";
+var gurl = "http://ggnoswe.me/api/games/";
+
+var root = {"name": "flare",
+             "description": "flare",
+             "children": []};
+
+var platforms = [
+   {
+     "id": 41, 
+     "name": "Wii U"
+   },    
+   {
+     "id": 37, 
+     "name": "Nintendo 3DS"
+   }, 
+   {
+     "id": 48, 
+     "name": "PlayStation 4"
+   }, 
+   {
+     "id": 49, 
+     "name": "Xbox One"
+   }, 
+   {
+     "id": 130, 
+     "name": "Nintendo Switch"
+   },
+   {
+     "id": 12, 
+     "name": "Xbox 360"
+   }, 
+   {
+     "id": 9, 
+     "name": "PlayStation 3"
+   }
+ ];
+
+platforms.forEach(function(plat) {
+  var cp; 
+  var td = {};
+  var request = new XMLHttpRequest();
+  request.open('GET', purl + plat["id"], false);
+  request.send(null);
+
+  if (request.status === 200) {
+    cp = JSON.parse(request.responseText);
+    td["name"] = plat["name"];
+    td["description"] = cp["summary"];
+    td["children"] = []; 
+  }
+
+  cp["studios"].forEach(function(stud) {
+    request = new XMLHttpRequest();
+    request.open('GET', surl + stud, false);
+    request.send(null);
+    if (request.status === 200) {
+      var cs = JSON.parse(request.responseText);
+      td.children.push({"name": cs["name"],"description": cs["description"], "size": cs["games"].length});
+    }
+  })
+  root.children.push(td);
+})
+
+del_p_Bar();
+//flare = JSON.stringify(root);
+
+// d3.json("flare", function(error, root) {
+//   if (error) return console.warn(error);
+  
   // Compute the initial layout on the entire tree to sum sizes.
   // Also compute the full name and fill color for each node,
   // and stash the children so they can be restored as we descend.
@@ -261,7 +382,7 @@ d3.json("flare", function(error, root) {
         
      
   }
-});
+//});
 
 function key(d) {
   var k = [], p = d;
