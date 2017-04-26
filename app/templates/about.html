@@ -1,7 +1,7 @@
 {%extends "base.html"%}
 
 {%block content%}
-	<link rel="stylesheet" type="text/css" href="../static/css/about.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/about.css">
 	<div id="description" class="about-section">
 		<h1><strong>Meet <em>SWEet Gathering</em>!</strong></h1>
 		<h4>Our website, MagicDB, is a database for the wildly popular card game Magic the Gathering! Fans of this card game can search for and get details about the various cards in the game.</h4>
@@ -12,7 +12,7 @@
 			<img class="img-circle" src="../static/images/Nestor.jpg" width="140" height="140">
 			<h2>Nestor Castro</h2>
 			<p>Nestor is a 3rd-year Computer Science major at the University of Texas at Austin. He is the current VP of Communications of Sigma Lambda Beta, a Latino-based multicultural Fraternity. In his free time, he enjoys exploring the outdoors, playing pool, and jamming out to the Red Hot Chili Peppers.<p>
-			<p><strong>Responsibilities: </strong>front-end, hosting</p>
+			<p><strong>Responsibilities: </strong>Front-end: Hosting, Back-end: Database</p>
 			<p><strong>Number of commits: 41</strong></p>
 			<p><strong>Number of issues: 3</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
@@ -22,7 +22,7 @@
 			<img class="img-circle" src="../static/images/nicholas.jpg" width="140" height="140">
 			<h2>Nicholas Cobb</h2>
 			<p>Nicholas is a 3rd-year Computer Science major at the University of Texas at Austin. Nicholas has interned at Google two times and is about to again this summer. In his free time, he enjoys writing music and participating in political clubs on campus.</p>
-			<p><strong>Responsibilities: </strong>front-end, coding</p>
+			<p><strong>Responsibilities: </strong>Front-end: Website, Phase 3 Leader</p>
 			<p><strong>Number of commits: 81</strong></p>
 			<p><strong>Number of issues: 4</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
@@ -32,7 +32,7 @@
 			<img class="img-circle" src="../static/images/joel.jpg" width="140" height="140">
 			<h2>Joel Davis</h2>
 			<p>Joel is a 4th-year Computer Science major at the University of Texas at Austin. Enjoys game development and software engineering. In his free time he likes video games, guitar, and skateboarding.</p>
-			<p><strong>Responsibilities: </strong>back-end, API</p>
+			<p><strong>Responsibilities: </strong>Front-end: API, Back-end: Testing, Models, Database Population, Phase 2 Leader</p>
 			<p><strong>Number of commits: 81</strong></p>
 			<p><strong>Number of issues: 8</strong></p>
 			<p><strong>Number of unit tests: 6</strong></p>
@@ -42,7 +42,7 @@
 			<img class="img-circle" src="../static/images/nilo.png" width="140" height="140">
 			<h2>Nilo Lisboa</h2>
 			<p>Nilo is a 4th-year Computer Science Major at UT Austin. He has interned twice at IBM both part-time and full-time. He really enjoys story-driven video games as well as archery and kendo.</p>
-			<p><strong>Responsibilities: </strong>back-end, Phase I Leader</p>
+			<p><strong>Responsibilities: </strong>Back-end: Models and UML, Front-end: Content Phase 1 Leader </p>
 			<p><strong>Number of commits: 16</strong></p>
 			<p><strong>Number of issues: 6</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
@@ -52,7 +52,7 @@
 			<img class="img-circle" src="../static/images/Matthew.jpg" width="140" height="140">
 			<h2>Matthew Martinez</h2>
 			<p>Matthew is a 3rd-year Computer Science major at the University of Texas at Austin. He is the vice-president of Lambda Omega Alpha, an independent Catholic Service Fraternity on campus. In his very little free time he enjoys watching Netflix and spending quality time with friends.</p>
-			<p><strong>Responsibilities: </strong>front-end, design</p>
+			<p><strong>Responsibilities: </strong>Front-end: Design, Back-end: Database </p>
 			<p><strong>Number of commits: 74</strong></p>
 			<p><strong>Number of issues: 46</strong></p>
 			<p><strong>Number of unit tests: 0</strong></p>
@@ -62,7 +62,7 @@
 			<img class="img-circle" src="../static/images/jose.jpg" width="140" height="140">
 			<h2>Jose Ramirez</h2>
 			<p>Jose is a 4th-year Computer Science major at the University of Texas at Austin. He enjoys game development and participates in ACM activities. In his free time, he plays video games and watches gaming streams on Twitch. </p>
-			<p><strong>Responsibilities: </strong>back-end, testing</p>
+			<p><strong>Responsibilities: </strong>Back-end: Testing, Assets</p>
 			<p><strong>Number of commits: 23</strong></p>
 			<p><strong>Number of issues: 0</strong></p>
 			<p><strong>Number of unit tests: 8</strong></p>
@@ -104,6 +104,7 @@
 		<h4>3. <a href="#design-sec">API</a></h4>
 		<h4>4. <a href="#tools-sec">Tools</a></h4>
 		<h4>5. <a href="#hosting">Hosting</a></h4>
+		<h4>6. <a href="#hacky-planning">Planning Poker</a></h4>
 	</div>
 	<div class="divider"></div><div class="divider"></div>
 
@@ -290,5 +291,153 @@
 		<h4><a href="#report-toc">Back to Table of Contents</a></h4>
 		<br>
 	</div>
+
+	<div id="hacky-planning">
+		<div id = "design-sec", class= "about-section">
+			<h2>Planning Poker</h2>
+			<p>We used <a href="http://www.planitpoker.com/">http://www.planitpoker.com/</a> in order to do some estimates for the last phase of the project. It was interesting to see how our estimates were for each of the different user stories documented below, and how things changed as we tried to implement them. </p>
+			<p>&nbsp;</p>
+			<p><em><strong>User Story 1:</strong></em></p>
+			<p>App routing for the artist&rsquo;s page needs to be updated. Returning as &lsquo;invalid&rsquo; because the URL cannot recognize the space between first and last names.</p>
+			<p>&nbsp;</p>
+			<p>Nilo Estimate: 1 day</p>
+			<p>Joel Estimate: 2 hours</p>
+			<p>Matthew Estimate: 1 day</p>
+			<p>Nestor Estimate: 1 day</p>
+			<p>Jose Estimate: Unsure</p>
+			<p>Nicholas Estimate: 1 hour</p>
+			<p> &nbsp;&nbsp;&nbsp;</p>
+			<p>Actual Completion Time: 30 minutes</p>
+			<p>&nbsp;</p>
+			<p>The program was parsing artist names incorrectly because the string made use of &ldquo; &ldquo; instead of &ldquo;%20&rdquo;. Nicholas was able to make that change quickly after we realized it was just that. </p>
+			<p>&nbsp;</p>
+			<p><em><strong>User Story 2:</strong></em></p>
+			<p>Implementing an algorithm that could look at each entry of an attribute for the given keywords in the search.</p>
+			<p>&nbsp;</p>
+			<p>Nilo Estimate: 1 hour(s)</p>
+			<p>Joel Estimate: 3 day(s)</p>
+			<p>Matthew Estimate: 5 day(s)</p>
+			<p>Nestor Estimate: 5 day(s)</p>
+			<p>Jose Estimate: 20 minutes</p>
+			<p>Nicholas Estimate: 20 minutes</p>
+			<p> &nbsp;&nbsp;&nbsp;</p>
+			<p>Actual Completion Time: 1 day</p>
+			<p>&nbsp;</p>
+			<p>It took a while to figure out how to do it. At first we tried to implement it using the flask-whooshalchemy library, but it was not fully compatible with python 3 for the what we wanted to do. Instead, what we then opted for was writing our own algorithm for search, that takes the relevant attributes of each model and checks for containment of the keywords.</p>
+			<p>&nbsp;</p>
+			<p><em><strong>User Story 3:</strong></em></p>
+			<p>Displaying search results in a clear and concise manner with given separate results for each model being searched.</p>
+			<p>&nbsp;</p>
+			<p>Nilo Estimate: 30 minute(s)</p>
+			<p>Joel Estimate: 1 hours(s)</p>
+			<p>Matthew Estimate: Unsure</p>
+			<p>Nestor Estimate: 30 minute(s)</p>
+			<p>Jose Estimate: 20 minute(s)</p>
+			<p>Nicholas Estimate: 1 hour</p>
+			<p> &nbsp;&nbsp;&nbsp;</p>
+			<p>Actual Completion Time: 20 minutes</p>
+			<p>&nbsp;</p>
+			<p>An HTML file was created for each model. If there are instances of a model that were matched by search results, it will display instances on each page paginated for 20 results per page. If there are no matches on models, a screen informs the user that no matches were found.</p>
+			<p>&nbsp;</p>
+			<p><em><strong>User Story 4:</strong></em></p>
+			<p>Need to be able to display testing output. We are currently able to run tests making use of the subprocess library, but we are still unable to properly display it on the website.Our problem was that we needed to find a way to display our output of running our tests from the website. So far we had been able to run the tests using the subprocess library, abut we couldn&rsquo;t accurately display the output from the make-test. </p>
+			<p>&nbsp;</p>
+			<p>Nilo Estimate: 3 day(s)</p>
+			<p>Joel Estimate: 2 day(s)</p>
+			<p>Matthew Estimate: 1 day(s)</p>
+			<p>Nestor Estimate: 2 day(s)</p>
+			<p>Jose Estimate: 5 day(s)</p>
+			<p>Nicholas Estimate: 2 day(s)</p>
+			<p>&nbsp;</p>
+			<p>Estimated: 1 day</p>
+			<p>&nbsp;</p>
+			<p>Instead of using the &lsquo;make&rsquo; command, we found that using TestMagic.py, which had its output originally piped to stderror instead of stdout. We have since fixed that issue so that tests can now be run on the website.</p>
+			<p>&nbsp;</p>
+			<p><em><strong>User Story 5:</strong></em></p>
+			<p>Implement filtering and sorting for the Artists page. Other pages already have working sorting and filtering options, but Artists is still missing that functionality.</p>
+			<p>&nbsp;</p>
+			<p>Nilo Estimate: 40 minute(s)</p>
+			<p>Joel Estimate: 30 minute(s)</p>
+			<p>Matthew Estimate: 20 minute(s)</p>
+			<p>Nestor Estimate: 30 minute(s)</p>
+			<p>Jose Estimate: 2 hour(s)</p>
+			<p>Nicholas Estimate: 10 minute(s)</p>
+			<p>&nbsp;</p>
+			<p>Actual: 10 minutes</p>
+			<p>&nbsp;</p>
+			<p>At this point, some of us thought that there was more to it than simply copying code from the other pages, but it turns out that was just it. Thus, it only took 10 minutes.</p>
+			<p>&nbsp;</p>
+			<p><em><strong>User Story 6:</strong></em></p>
+			<p>Creation of a visualization page on the website to exercise another team&rsquo;s API.</p>
+			<p>&nbsp;</p>
+			<p>Nilo Estimate: 2 day(s)</p>
+			<p>Joel Estimate: 8 hour(s)</p>
+			<p>Matthew Estimate: 2 day(s)</p>
+			<p>Nestor Estimate: 3 day(s)</p>
+			<p>Jose Estimate: 2 day(s)</p>
+			<p>Nicholas Estimate:5 day(s)</p>
+			<p>&nbsp;</p>
+			<p>Actual: 1 day</p>
+			<p>&nbsp;</p>
+			<p>For the visualization portion, we read up on the D3 javascript library, which allowed for many different ways to render data. From there we looked up different examples of renderings and picked one we liked. We utilized some of the sample code but threw most of it away in order to attempt to create the graphics with the API data. There was an issue where visualization would impede our deployment. That was resolved though by only making API requests when loading the visualization page, rather than doing it from the start.</p>
+			<p>&nbsp;</p>
+			<p><em><strong>User Story 7:</strong></em></p>
+			<p>Implementation of sorting by rarity on the database. Unlike numbers and letters, rarities rank as [Common - Uncommon - Rare - Mythic Rare] (Ascending Order). There are also rarities such as &ldquo;Special&rdquo; and &ldquo;Basic Land&rdquo; that do not fit into that mold. Thus a method for sorting must be set up.</p>
+			<p>&nbsp;</p>
+			<p>Nilo Estimate: 4 hour(s)</p>
+			<p>Joel Estimate: 3 hour(s)</p>
+			<p>Matthew Estimate: 6 hour(s)</p>
+			<p>Nestor Estimate: Unsure </p>
+			<p>Jose Estimate: 2 hour(s)</p>
+			<p>Nicholas Estimate: Unsure </p>
+			<p>&nbsp;</p>
+			<p>Actual: 3 hours</p>
+			<p>&nbsp;</p>
+			<p>To implement it, we had to do a little bit of research and we discovered that basic land has the same color as common, and the special cards are extremely unique and don&rsquo;t adhere to a lot of the normal requirements for cards, even for things as simple as being a larger sized card. We decided to put special cards at the top of the ranking. We were then able to assign number values to the rarities and sort them that way.</p>
+			<p>&nbsp;</p>
+			<p><em><strong>User Story 8:</strong></em></p>
+			<p>Instance pages are uneven. Certain instance pages have missing photos. That is expected as some cards will be missing from such a massive pool of data, but we need a stock image for those cases.</p>
+			<p>&nbsp;</p>
+			<p>Nilo Estimate: 15 minute(s)</p>
+			<p>Joel Estimate: 5 minute(s)</p>
+			<p>Matthew Estimate: 10 minute(s)</p>
+			<p>Nestor Estimate: 20 minute(s)</p>
+			<p>Jose Estimate: 30 minute(s)</p>
+			<p>Nicholas Estimate: 5 minute(s)</p>
+			<p>&nbsp;</p>
+			<p>Actual: 15 minutes</p>
+			<p>&nbsp;</p>
+			<p>For this we decided to use the cardback used by Magic: The Gathering ever since its release. We had to find an appropriately sized image and add it to the website for usage.</p>
+			<p>&nbsp;</p>
+			<p><em><strong>User Story 9:</strong></em></p>
+			<p>Models were not linking to each other, other models were only displayed in a long list of non-clickable names. These names need to, at least, link to their respective model instances.</p>
+			<p>&nbsp;</p>
+			<p>Nilo Estimate: 1 hour(s)</p>
+			<p>Joel Estimate: 3 hour(s)</p>
+			<p>Matthew Estimate: &nbsp;unknown </p>
+			<p>Nestor Estimate: 2 hour(s)</p>
+			<p>Jose Estimate: 4 hour(s)</p>
+			<p>Nicholas Estimate: 2 hour()s</p>
+			<p>&nbsp;</p>
+			<p>Actual: 2 hours</p>
+			<p>&nbsp;</p>
+			<p>To implement it, we had to do a little bit of refactoring in how we displayed some of the elements. For example we realized the subTypes of a card was a list, because a card can have multiple subTypes. Once we discovered this, we were able to implement it in a timely manner. This was then expanded into a grid layout for aesthetics purposes. </p>
+			<p>&nbsp;</p>
+			<p><em><strong>User Story 10:</strong></em></p>
+			<p>Search terms currently have to be exactly matching the names or attributes models as entire strings and case-sensitivity. Search needs to be changed such that it will accommodate for keyword-based searches.</p>
+			<p>&nbsp;</p>
+			<p>Nilo Estimate: &nbsp;1 hour(s)</p>
+			<p>Joel Estimate: 1 minute(s)</p>
+			<p>Matthew Estimate: unknown </p>
+			<p>Nestor Estimate: 5 minute(s)</p>
+			<p>Jose Estimate: 10 minutes(s)</p>
+			<p>Nicholas Estimate:1 hour(s)</p>
+			<p>&nbsp;</p>
+			<p>Estimated: 5 minutes</p>
+			<p>&nbsp;</p>
+			<p>Speaking to another group, we had been originally told that we might need to create a separate JSON capable of matching keywords on models, but rather we were able to pull the values of the searchable attributes and convert them (and the search terms) to lower-case. After that, we search each attribute and model for the containment of at least one term (OR search) or of all search terms (AND search).</p>
+		</div>
+	</div>
+
 
 {%endblock%}
