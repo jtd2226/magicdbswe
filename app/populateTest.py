@@ -41,19 +41,21 @@ root = {"name": "flare",
  		"description": "flare",
  		"children": []}
 
+count = 0
 for p in platforms:
-	cp = json.loads(urllib.request.urlopen(purl + str(p["id"])).read().decode())
-	d = {}
-	d["name"] = p["name"]
-	d["description"] = cp["summary"]
-	d["children"] = []
-	count = 0;
-	for s in cp["studios"]:
-		cs = json.loads(urllib.request.urlopen(surl + str(s)).read().decode())
-		d["children"].append({"name": cs["name"],"description": cs["description"], "size": len(cs["games"])})
-		count = count + 1 
+  cp = json.loads(urllib.request.urlopen(purl + str(p["id"])).read().decode())
+  d = {}
+  d["name"] = p["name"]
+  d["description"] = cp["summary"]
+  d["children"] = []
 
-	root["children"].append(d)
+  for s in cp["studios"] :
+    cs = json.loads(urllib.request.urlopen(surl + str(s)).read().decode())
+    d["children"].append({"name": cs["name"],"description": cs["description"], "size": len(cs["games"])})
+    print(count)
+    count = count + 1
+
+  root["children"].append(d)
 
 with open('templates/flare.json', 'w') as outfile:
     json.dump(root, outfile)
